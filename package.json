@@ -1,0 +1,8 @@
+{
+  "name": "robo-quest-arena-live",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Realtime 1-4 player robotics arena with offline solo training",
+  "scripts": {"start": "node server.js", "test": "node tests/smoke.js"},
+  "engines": {"node": ">=18"}
+}

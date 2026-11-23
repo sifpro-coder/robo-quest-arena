@@ -1,0 +1,171 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#060b20"><title>ROBO QUEST | ARENA LIVE</title>
+<style>
+:root{--bg:#070b1f;--pane:rgba(16,24,57,.88);--line:rgba(93,124,207,.22);--text:#eef6ff;--muted:#9fb0dc;--cyan:#20e7ff;--pink:#ff56c6;--yellow:#ffca4a;--green:#82ffaf}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 75% 55% at 50% -10%,#2c2466 0,transparent 70%),radial-gradient(ellipse 65% 45% at 90% 85%,#053d4d 0,transparent 75%),#070b1f;color:var(--text);font-family:system-ui,"Segoe UI",Tahoma,Arial,sans-serif;min-height:100dvh;overflow-x:hidden}
+body:before{content:"";pointer-events:none;position:fixed;inset:0;background-image:linear-gradient(#81b5ff06 1px,transparent 1px),linear-gradient(90deg,#81b5ff06 1px,transparent 1px);background-size:40px 40px}
+.app{position:relative;max-width:1040px;margin:auto;padding:14px 16px 24px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-size:12px;font-weight:900;letter-spacing:2px;color:#9deaf7}.chip{border:1px solid #ffffff24;background:#ffffff0c;color:#c3d5ff;border-radius:50px;padding:7px 10px;font-size:11px;display:flex;gap:6px;align-items:center}.dot{display:inline-block;width:8px;height:8px;background:#ffb94e;box-shadow:0 0 8px #ffb94e;border-radius:50%}.dot.online{background:#80ffbd;box-shadow:0 0 8px #80ffbd}.hero{margin:18px auto 0;text-align:center}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:900;color:#caa8ff}.headline{font-weight:1000;line-height:1.05;font-size:clamp(38px,9vw,74px);letter-spacing:1px;margin:5px 0;text-shadow:0 0 28px #2bf0ff49}.headline span{color:var(--cyan)}.sub{font-size:13px;color:#a9b9e4;margin:8px auto 20px;max-width:660px;line-height:1.8}
+.pane{background:var(--pane);border:1px solid var(--line);box-shadow:0 22px 65px #0006,inset 0 1px #ffffff10;border-radius:22px}.home-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:14px}.art{min-height:370px;position:relative;overflow:hidden;background:radial-gradient(circle at 45% 45%,#154d87aa,#10193f 55%,#070b23 95%);display:flex;justify-content:center;align-items:center}.art:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#ffffff04 0 1px,transparent 1px 12px);pointer-events:none}.orbit{position:absolute;border-radius:50%;border:2px solid #3abffd44;box-shadow:0 0 50px #00daff20;transform:rotate(-20deg)}.orbit.one{width:290px;height:230px}.orbit.two{width:385px;height:300px;border-style:dashed;border-color:#a976ff40}.botdraw{z-index:1;font-size:clamp(120px,23vw,200px);filter:drop-shadow(0 18px 30px #00c8ff7e);transform:rotate(-8deg);animation:bob 2.6s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-12px) rotate(7deg)}}.float-text{position:absolute;z-index:3;font-weight:900;font-size:10px;letter-spacing:1px;background:#071530cf;padding:9px 14px;border:1px solid #81e9ff60;border-radius:20px;box-shadow:0 0 25px #24c4fa2a}.float-text.a{top:16%;left:7%;color:var(--cyan)}.float-text.b{bottom:18%;right:6%;color:var(--yellow)}.spark{position:absolute;color:#41ecff;font-size:24px;text-shadow:0 0 20px #40d4ff}.spark.a{top:30%;right:14%}.spark.b{bottom:18%;left:14%;color:#ff5fc8}.games{display:flex;flex-direction:column;gap:12px;padding:22px}.sectiontitle{font-size:21px;font-weight:950;margin:0 0 2px}.caption{color:var(--muted);font-size:12px;line-height:1.7}.field{display:grid;gap:7px}.field label{font-size:12px;color:#c9d3f4;font-weight:750}.entry{width:100%;border:1px solid #596eb156;outline:none;color:white;border-radius:12px;padding:12px 13px;background:#0a1130;font:inherit;font-size:15px}.entry:focus{border-color:#45dcf8;box-shadow:0 0 0 3px #45dcf821}select.entry{appearance:auto}.mode-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mode{cursor:pointer;border:1px solid #536aa54c;border-radius:12px;padding:12px 6px;text-align:center;color:#b7caed;background:#101a3c;font-size:12px;font-weight:850;user-select:none}.mode.active{border-color:#18e4ff;color:white;background:linear-gradient(150deg,#06425a,#17204d);box-shadow:inset 0 0 14px #00ebff19}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:13px;padding:14px 12px;font-size:14px;font-family:inherit;font-weight:900;cursor:pointer;transition:transform .12s,filter .12s;white-space:normal;touch-action:manipulation}.btn:active{transform:scale(.98)}.btn.primary{background:linear-gradient(120deg,#26def5,#7af4ff);color:#04142d;box-shadow:0 7px 30px #1de6fa38}.btn.pink{background:linear-gradient(120deg,#fa56c2,#fc93dc);color:#301135}.btn.ghost{background:#202d59;color:#d2eaff;border:1px solid #617ab44d}.btn.yellow{background:linear-gradient(130deg,#ffca4a,#ffed93);color:#382607}.btn.full{width:100%}.join-row{display:grid;grid-template-columns:1fr 135px;gap:8px}.tip{display:flex;gap:8px;align-items:flex-start;color:#a9b9dc;font-size:11px;line-height:1.7;background:#060d23aa;border:1px solid #ffffff0e;padding:10px;border-radius:12px}.banner{font-size:12px;text-align:center;margin-top:16px;color:#95a6cc}.note{color:#f9d88a;font-size:12px;line-height:1.6;text-align:center;margin:10px auto;min-height:20px}.hide{display:none!important}
+.lobby{max-width:720px;padding:24px;margin:12px auto}.pin{font:950 clamp(40px,12vw,72px) system-ui;letter-spacing:9px;color:var(--cyan);direction:ltr;text-shadow:0 0 25px #19eaff51;text-align:center;margin:15px}.players{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0}.seat{border:1px solid #596aa855;background:#0a1436;border-radius:13px;padding:13px;font-size:14px;display:flex;align-items:center;gap:12px;min-height:55px}.seat .av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--c,#26355c);color:#05142c;font-size:18px}.seat.empty{opacity:.45;border-style:dashed}.lobby-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.lobby-actions .btn{min-width:145px}.tiny{font-size:11px;color:var(--muted);line-height:1.7}
+#gameScreen{margin-top:9px}.hud{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}.hud-item{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;background:#0d1a3a;border-radius:10px;border:1px solid #38558c75;font-size:12px;font-weight:850}.hud-item em{font-style:normal;color:var(--yellow);font-size:17px}.stage{width:100%;position:relative;border-radius:16px;overflow:hidden;border:2px solid #3b76b2;box-shadow:0 0 32px #0788ff19;background:#07162d}.stage canvas{width:100%;height:auto;display:block;touch-action:none}.player-info{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:8px}.health{height:9px;max-width:250px;flex:1;background:#2c2442;border-radius:50px;overflow:hidden}.health span{display:block;height:100%;width:100%;background:linear-gradient(90deg,#f14677,#71ffad);transition:width .18s}.board{display:flex;flex-wrap:wrap;gap:7px;max-height:92px;overflow:auto;margin:8px auto 0}.board span{padding:6px 9px;background:#152348;border-radius:8px;color:#b8dcff;font-size:11px;font-weight:800}.controls{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px;user-select:none;touch-action:none}.joy{width:136px;height:136px;border-radius:50%;border:2px solid #58caff64;background:radial-gradient(circle,#1b4a6c,#101939 73%);position:relative;touch-action:none;box-shadow:inset 0 0 35px #20d9ff26}.joy:before,.joy:after{content:"";position:absolute;top:50%;left:50%;background:#58ceee50;transform:translate(-50%,-50%)}.joy:before{height:1px;width:100%}.joy:after{width:1px;height:100%}.knob{position:absolute;left:50%;top:50%;width:58px;height:58px;background:radial-gradient(circle at 35% 26%,#8defff,#14a5ec 75%);box-shadow:0 0 22px #03c8f9b5;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:2}.control-right{display:flex;gap:12px;align-items:center}.fire{width:97px;height:97px;background:radial-gradient(circle at 30% 25%,#ff95e3,#f33287);border:3px solid #ffbfe1;border-radius:50%;box-shadow:0 0 26px #ff289a66;color:white;font-size:17px;font-weight:1000;touch-action:none}.boost{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#ffed9f,#ffb92d);border:3px solid #ffe6a1;color:#392005;font-size:12px;font-weight:1000;touch-action:none}.quit{font-size:11px;padding:8px 10px;margin-top:8px}
+.overlay{position:fixed;inset:0;z-index:20;background:#03091dd9;display:grid;place-items:center;padding:14px;backdrop-filter:blur(10px)}.modal{width:min(100%,530px);padding:24px;box-shadow:0 30px 100px #0009}.modal h2{font-size:23px;margin:0 0 10px}.answers{display:grid;gap:9px;margin:20px 0}.answer{background:#0b1941;color:white;border:1px solid #476495;border-radius:12px;padding:14px;font:750 15px inherit;text-align:right;cursor:pointer}.answer:active{background:#1c5172}.answer:hover{border-color:#63d7f8}.toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#091c3e;color:#dbfaff;border:1px solid #5df2ff88;border-radius:14px;padding:11px 20px;box-shadow:0 0 30px #00d9fa35;z-index:30;font-size:13px;font-weight:850;max-width:92vw;text-align:center;pointer-events:none}.result-table{display:grid;gap:8px;margin:16px 0}.result-row{display:flex;justify-content:space-between;padding:12px;background:#0d1a3d;border:1px solid #ffffff1d;border-radius:12px}
+@media(max-width:680px){.app{padding:10px 10px 18px}.home-grid{grid-template-columns:1fr}.art{min-height:210px}.orbit.one{width:210px;height:140px}.orbit.two{width:290px;height:200px}.botdraw{font-size:125px}.games{padding:15px}.hero{margin:10px 0 0}.headline{font-size:42px}.sub{margin-bottom:10px}.joy{width:113px;height:113px}.knob{width:48px;height:48px}.fire{width:86px;height:86px}.boost{width:61px;height:61px}.control-right{gap:8px}.hud-item{padding:6px 9px;font-size:11px}.hud-item em{font-size:14px}}
+@media(max-height:540px) and (orientation:landscape){.app{max-width:1000px;padding:5px 10px}.top{display:none}.hud{margin:0 0 3px}.stage{max-width:740px;margin:auto}.stage canvas{max-height:calc(100dvh - 160px);width:auto;max-width:100%;margin:auto}.controls{position:fixed;bottom:7px;left:10px;right:10px;pointer-events:none}.joy,.fire,.boost{pointer-events:auto}.joy{height:90px;width:90px}.fire{height:77px;width:77px}.boost{height:62px;width:62px}.player-info,.board{display:none}}
+</style></head><body>
+<div class="app">
+  <header class="top"><div class="brand">⚡ ROBO QUEST / ARENA</div><div class="chip"><i id="statusDot" class="dot"></i><span id="status">تجربة فردية جاهزة</span></div></header>
+  <section id="homeScreen">
+    <div class="hero"><div class="eyebrow">⚔️ ROBOT BATTLE • LEARN & PLAY</div><h1 class="headline">ROBO <span>ARENA</span></h1><div class="sub">روبوتات • معارك ليزر • مغامرة • أسئلة روبوتيك — واحد ضد واحد أو 4 لاعبين <b>في نفس الوقت</b></div></div>
+    <div class="home-grid">
+      <div class="pane art"><div class="orbit one"></div><div class="orbit two"></div><span class="spark a">⚡</span><span class="spark b">✦</span><div class="botdraw">🤖</div><div class="float-text a">⚔️ 1 — 4 PLAYERS</div><div class="float-text b">🔥 LIVE BATTLE</div></div>
+      <div class="pane games"><h2 class="sectiontitle">🚀 حضّر المعركة</h2><p class="caption">كل واحد يلعب من تليفونو. أعمل غرفة وابعث الكود للأصحاب.</p>
+        <div class="field"><label for="playerName">اسم اللاعب</label><input id="playerName" class="entry" maxlength="16" placeholder="مثال: يحيى" value="لاعب 1"></div>
+        <div class="field"><label>نوع المغامرة</label><div class="mode-row"><button type="button" class="mode active" data-mode="versus">⚔️ ضدّ بعضكم<br><small>1v1 / 3 أو 4 الكل ضد الكل</small></button><button type="button" class="mode" data-mode="coop">🤝 فريق واحد<br><small>ضد روبوتات العدو</small></button></div></div>
+        <button id="createBtn" class="btn primary full">🌐 أنشئ غرفة LIVE (1–4 لاعبين)</button>
+        <div class="join-row"><input id="roomCode" class="entry" inputmode="numeric" maxlength="6" placeholder="كود الغرفة 6 أرقام"><button id="joinBtn" class="btn pink">⚡ ادخل العب</button></div>
+        <button id="soloBtn" class="btn ghost full">🎮 تجربة فردية بدون سيرفر</button>
+        <div class="tip">💡 <span>المنافسة بين 2–4 تليفونات تحتاج نشر السيرفر. أمّا التجربة الفردية تخدم حتى من ملف HTML بلا إنترنت.</span></div>
+      </div>
+    </div><div class="banner">🎓 صمّمناها لتعليم الروبوتيك لعمر 9–14 سنة • أسئلة تربحك طاقة ونقاط داخل اللعب</div>
+  </section>
+  <section id="lobbyScreen" class="hide"><div class="pane lobby"><div style="text-align:center;color:#a8edff;font-weight:900">🚀 غرفة اللاعبين • ROOM CODE</div><div class="pin" id="codeLabel">------</div><p class="caption" style="text-align:center">خلّي أصحابك يفتحوا نفس الرابط ويدخلوا الكود. تبداو تلعبوا في نفس الوقت.</p><div id="seatList" class="players"></div><div class="lobby-actions"><button id="shareBtn" class="btn ghost">🔗 مشاركة الغرفة</button><button id="startBtn" class="btn primary">▶️ ابدأ المعركة</button><button id="leaveBtn" class="btn ghost">↩ رجوع</button></div><div id="lobbyHint" class="note"></div><p class="tiny" style="text-align:center">في وضع المنافسة، الليزر يضرب المنافسين والـDrones. في وضع الفريق نعاونوا بعضنا على هزيمة الـDrones.</p></div></section>
+  <section id="gameScreen" class="hide">
+    <div class="hud"><div class="hud-item">⏳ <em id="timeLabel">120</em> ثانية</div><div class="hud-item">⚡ نقاط <em id="scoreLabel">0</em></div><div class="hud-item">🔫 <span id="modeLabel">Battle</span></div><div class="hud-item">👥 <em id="countLabel">1</em> لاعبين</div></div>
+    <div class="stage"><canvas id="arena" width="1000" height="620" aria-label="ساحة معركة الروبوتات"></canvas></div>
+    <div class="player-info"><span style="font-size:13px;font-weight:800" id="myNameLabel">🤖</span><div class="health"><span id="healthBar"></span></div><span id="hpLabel" style="font-size:12px">❤️ 100%</span></div>
+    <div id="leaderboard" class="board"></div>
+    <div class="controls"><div id="joystick" class="joy"><div id="knob" class="knob"></div></div><div class="control-right"><button id="boostBtn" class="boost">⚡<br>BOOST</button><button id="fireBtn" class="fire">🔥<br>LASER</button></div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><span class="tiny">🎮 حرّك بالـJoystick واضغط مطوّل على LASER • PC: WASD + Space</span><button id="exitGameBtn" class="btn ghost quit">خروج</button></div>
+  </section>
+</div>
+<div id="quizOverlay" class="overlay hide"><div class="pane modal"><p class="eyebrow">🧠 ROBOTICS POWER-UP</p><h2 id="quizText">سؤال الروبوتيك</h2><p class="caption">جاوب صحيح تربح +65 نقطة و+25 صحة ودرع!</p><div id="quizAnswers" class="answers"></div><p id="quizWhy" class="note"></p><button id="quizClose" class="btn ghost full hide">كمّل المعركة ⚔️</button></div></div>
+<div id="endOverlay" class="overlay hide"><div class="pane modal"><p class="eyebrow">🏁 END OF ROUND</p><h2 style="text-align:center">🏆 انتهت المعركة!</h2><div id="results" class="result-table"></div><button id="againBtn" class="btn primary full">🔁 العودة للغرفة</button></div></div>
+<div id="toast" class="toast hide"></div>
+<script>
+(()=>{'use strict';
+const $=x=>document.getElementById(x),show=x=>$(x).classList.remove('hide'),hide=x=>$(x).classList.add('hide');
+let socket=null,connected=false,connectedOnce=false,myId='',code='',isHost=false,mode='versus',phase='home',state=null,local=false,localLoop=null;
+const WALLS=[{x:193,y:159,w:106,h:30},{x:701,y:160,w:106,h:30},{x:193,y:426,w:106,h:30},{x:701,y:426,w:106,h:30},{x:461,y:120,w:78,h:52},{x:461,y:450,w:78,h:52},{x:415,y:290,w:170,h:40}];
+const COLORS=['#22e6ff','#ff4fbc','#ffc857','#77ff83'];
+const QUIZ=[
+ ['شنوّة دور Ultrason؟',['قياس المسافة','تشغيل الشاشة','خزن البرنامج'],0,'حساس Ultrason يقيس المسافة بالموجات فوق الصوتية.'],
+ ['شنوّة يستعمل PWM؟',['تخزين الملفات','التحكّم في نسبة تشغيل إشارة','قراءة البريد'],1,'PWM ينجم يتحكم في سرعة موتور أو إضاءة LED عبر الدائرة المناسبة.'],
+ ['في MicroPython، شنوة يعمل if؟',['يختبر شرط','يمسح الكود','يشعل Wi-Fi'],0,'if ينفّذ أوامر كي يتحقق شرط.'],
+ ['GPIO في ESP32 تعني؟',['مداخل ومخارج عامة','بطارية','مكبر صوت'],0,'GPIO أرجل يمكن برمجتها للتحكّم في المداخل والمخارج.'],
+ ['شنوّة وظيفة Servo؟',['قياس الحرارة','التحكم في زاوية','عرض الصورة'],1,'Servo يسمح بالتحكم في زاوية الدوران ضمن مجاله.'],
+ ['Robot suiveur de ligne يستخدم؟',['حساسات IR','حساسات الصوت فقط','كاميرا حرارية فقط'],0,'حساسات IR تساعد الروبوت يتبع المسار ويعدّل اتجاهه.']
+];
+const pad={x:0,y:0,fire:false,boost:false};const keys=new Set();const canvas=$('arena'),ctx=canvas.getContext('2d');let animation=0,particles=[],toastTimeout=0,shotSoundAt=0;
+function message(t){$('toast').textContent=t;show('toast');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>hide('toast'),2400)}
+function screen(name){['homeScreen','lobbyScreen','gameScreen'].forEach(x=>hide(x));show(name+'Screen');phase=name;if(name==='game')startDrawing();}
+function setStatus(s,on){$('status').textContent=s;$('statusDot').classList.toggle('online',!!on)}
+const name=()=>$('playerName').value.trim().slice(0,16)||'لاعب';
+function send(data){if(socket?.readyState===1)socket.send(JSON.stringify(data));}
+function connect(then){if(location.protocol==='file:'){message('اللعب الجماعي يحتاج نشر السيرفر. جرّب الفردي الآن.');return}
+ if(socket && socket.readyState===1){then();return}
+ if(socket && socket.readyState===0){message('جاري الاتصال بالسيرفر');return}
+ const url=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';connectedOnce=false;
+ try{socket=new WebSocket(url)}catch(e){message('تعذّر الاتصال بالسيرفر');return}
+ setStatus('جاري الربط...',false);
+ socket.onopen=()=>{connected=true;setStatus('LIVE • متّصل',true);then()};
+ socket.onmessage=e=>{let data;try{data=JSON.parse(e.data)}catch(err){return}handle(data)};
+ socket.onclose=()=>{connected=false;setStatus('السيرفر غير متصل',false);if(!local && phase!=='home'){message('انقطع الاتصال. جرّب إعادة الدخول.');leave(true)}};
+ socket.onerror=()=>{message('ما ثماش اتصال بالسيرفر. تأكد من الاستضافة.')} ;
+}
+function handle(d){switch(d.type){
+ case 'welcome':myId=d.id;break;
+ case 'error':message(d.message);break;
+ case 'joined':code=d.code;screen('lobby');$('codeLabel').textContent=code;break;
+ case 'lobby':code=d.code;mode=d.mode;isHost=d.host===myId;renderLobby(d);if(d.phase==='lobby'&&phase==='game'){screen('lobby')}break;
+ case 'started':hide('endOverlay');screen('game');message('⚔️ انطلقت المعركة!');break;
+ case 'state':state=d;updateHud();break;
+ case 'question':openQuiz(d.question,d.options,false);break;
+ case 'answerResult':$('quizWhy').textContent=(d.correct?'✅ برافو! ':'❌ موش صحيحة. ')+d.why;show('quizClose');if(d.correct)beep(740);break;
+ case 'finished':endRound(d.board);break;
+ case 'event':if(d.kind==='kill'||d.kind==='battery')beep(d.kind==='kill'?850:600);if(d.kind==='hit')beep(180);message(d.text);break;
+ }}
+function renderLobby(d){$('codeLabel').textContent=d.code;$('seatList').innerHTML='';for(let i=0;i<4;i++){const p=d.players[i],el=document.createElement('div');el.className='seat'+(p?'':' empty');const av=document.createElement('span');av.className='av';av.style.setProperty('--c',p?p.color:'#26355c');av.textContent=p?'🤖':'+';const lab=document.createElement('span');lab.textContent=p?p.name+(p.id===d.host?' 👑':''):'المكان '+(i+1)+' فارغ';el.append(av,lab);$('seatList').appendChild(el)}
+ $('startBtn').classList.toggle('hide',!isHost);$('lobbyHint').textContent=isHost?'إنت قائد الغرفة. إضغط «ابدأ المعركة» وقت يدخلوا أصحابك.':'استنّى قائد الغرفة يبدأ المعركة.';
+}
+function leave(disconnect=false){if(local){clearInterval(localLoop);local=false;state=null}else if(!disconnect){send({type:'leave'})}hide('quizOverlay');hide('endOverlay');phase='home';screen('home');if(!disconnect)message('رجعت للقائمة الرئيسية')}
+function endRound(board){$('results').innerHTML='';(board||[]).forEach((p,i)=>{const div=document.createElement('div');div.className='result-row';div.innerHTML=`<span>${['🥇','🥈','🥉','🤖'][i]} ${escapeText(p.name)}</span><b style="color:${p.color}">${p.score} XP</b>`;$('results').appendChild(div)});show('endOverlay');beep(900)}
+function escapeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+let questionBlocked=false;
+function openQuiz(q,opts,solo){questionBlocked=false;$('quizText').textContent=q;$('quizWhy').textContent='';$('quizAnswers').innerHTML='';hide('quizClose');show('quizOverlay');opts.forEach((label,i)=>{const btn=document.createElement('button');btn.className='answer';btn.textContent=['🅰️','🅱️','©️'][i]+' '+label;btn.onclick=()=>{if(questionBlocked)return;questionBlocked=true;[...$('quizAnswers').children].forEach(b=>b.disabled=true);
+ if(solo){const good=i===localQuestion[2];if(good){localState.players[0].score+=65;localState.players[0].hp=Math.min(100,localState.players[0].hp+25)}$('quizWhy').textContent=(good?'✅ برافو! ':'❌ جرّب سؤال آخر. ')+localQuestion[3];show('quizClose');beep(good?730:160)}else send({type:'answer',answer:i});};$('quizAnswers').appendChild(btn)})}
+let localQuestion=null;
+$('quizClose').onclick=()=>hide('quizOverlay');$('againBtn').onclick=()=>{hide('endOverlay');if(local){leave();return}screen('lobby');send({type:'input',dx:0,dy:0,shoot:false});message('اضغط ابدأ المعركة لجولة جديدة')};
+$('createBtn').onclick=()=>{local=false;connect(()=>send({type:'create',name:name(),mode}))};
+$('joinBtn').onclick=()=>{const c=$('roomCode').value.trim();if(!/^\d{6}$/.test(c)){message('اكتب كود الغرفة المكوّن من 6 أرقام');return}local=false;connect(()=>send({type:'join',code:c,name:name()}))};
+$('startBtn').onclick=()=>send({type:'start'});$('leaveBtn').onclick=()=>leave();$('exitGameBtn').onclick=()=>leave();
+$('shareBtn').onclick=async()=>{const link=location.href.split('?')[0]+'?room='+code;try{if(navigator.share){await navigator.share({title:'ROBO QUEST ARENA',text:'ادخل للغرفة بالكود '+code,url:link});return}await navigator.clipboard.writeText(link);message('✅ رابط الغرفة تنسخ')}
+ catch(e){message('كود الغرفة: '+code+' — ابعثو لأصحابك')}};
+document.querySelectorAll('[data-mode]').forEach(el=>el.onclick=()=>{mode=el.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===el))});
+const u=new URLSearchParams(location.search);if(/^\d{6}$/.test(u.get('room')||''))$('roomCode').value=u.get('room');
+// Touch controls + keyboard
+let joyPointer=null;
+function setJoy(e){const r=$('joystick').getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,dx=e.clientX-cx,dy=e.clientY-cy,max=r.width*.31,m=Math.hypot(dx,dy),k=m>max?max/m:1;pad.x=dx*k/max;pad.y=dy*k/max;$('knob').style.transform=`translate(calc(-50% + ${dx*k}px),calc(-50% + ${dy*k}px))`}
+$('joystick').addEventListener('pointerdown',e=>{e.preventDefault();joyPointer=e.pointerId;$('joystick').setPointerCapture(e.pointerId);setJoy(e)});
+$('joystick').addEventListener('pointermove',e=>{if(e.pointerId===joyPointer)setJoy(e)});
+const releaseJoy=e=>{if(e.pointerId!==joyPointer)return;joyPointer=null;pad.x=pad.y=0;$('knob').style.transform='translate(-50%,-50%)'};
+$('joystick').addEventListener('pointerup',releaseJoy);$('joystick').addEventListener('pointercancel',releaseJoy);
+function hold(el,field){el.addEventListener('pointerdown',e=>{e.preventDefault();el.setPointerCapture(e.pointerId);pad[field]=true;beep(field==='fire'?270:390)});el.addEventListener('pointerup',()=>pad[field]=false);el.addEventListener('pointercancel',()=>pad[field]=false);}
+hold($('fireBtn'),'fire');hold($('boostBtn'),'boost');
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowDown','ArrowUp','Space'].includes(e.code))e.preventDefault();keys.add(e.code)});
+window.addEventListener('keyup',e=>keys.delete(e.code));
+function inputs(){const x=pad.x+(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0),y=pad.y+(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-(keys.has('KeyW')||keys.has('ArrowUp')?1:0);const mag=Math.hypot(x,y);return {dx:mag>1?x/mag:x,dy:mag>1?y/mag:y,shoot:pad.fire||keys.has('Space'),boost:pad.boost||keys.has('ShiftLeft')||keys.has('ShiftRight')}}
+setInterval(()=>{if(phase!=='game')return;const input=inputs();if(local){localInput=input}else send({type:'input',...input});},60);
+// Canvas visuals
+const rand=(a,b)=>a+Math.random()*(b-a);const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+function glow(x,y,r,color){const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,color);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2)}
+function polygon(points,fill,stroke){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=3;ctx.stroke()}}
+function robot(x,y,col,name,hp=100,angle=0,t=0){ctx.save();ctx.translate(x,y);glow(0,0,35,col+'50');ctx.rotate(angle);ctx.shadowColor=col;ctx.shadowBlur=12;
+ polygon([[-21,-21],[16,-21],[25,-13],[25,16],[16,23],[-21,23],[-27,11],[-27,-10]],'#182b52',col);
+ ctx.shadowBlur=0;ctx.fillStyle=col;ctx.fillRect(-13,-9,8,8);ctx.fillRect(8,-9,8,8);ctx.fillStyle='#0c1830';ctx.fillRect(-11,-6,5,3);ctx.fillRect(10,-6,5,3);ctx.fillStyle='#b1f9ff';ctx.fillRect(16,-3,27,8);
+ ctx.fillStyle=col;ctx.fillRect(-17,17,34,4);ctx.fillStyle='#15213b';ctx.fillRect(-20,-25,40,6);ctx.restore();
+ ctx.save();ctx.textAlign='center';ctx.font='bold 13px system-ui';ctx.fillStyle='white';ctx.shadowColor='#000';ctx.shadowBlur=6;ctx.fillText(name,x,y-38);ctx.shadowBlur=0;
+ ctx.fillStyle='#142447';ctx.fillRect(x-23,y+33,46,5);ctx.fillStyle=hp<40?'#f74b73':'#7cfbb2';ctx.fillRect(x-23,y+33,46*Math.max(0,hp)/100,5);ctx.restore()}
+function draw(){if(phase!=='game')return;const w=canvas.width,h=canvas.height,t=performance.now()/1000;
+ ctx.clearRect(0,0,w,h);const bg=ctx.createLinearGradient(0,0,w,h);bg.addColorStop(0,'#0b1a39');bg.addColorStop(.5,'#0d2146');bg.addColorStop(1,'#08152d');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+ ctx.save();ctx.strokeStyle='#49a3f415';ctx.lineWidth=1;for(let x=0;x<=w;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=0;y<=h;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}ctx.restore();
+ glow(190,60,145,'#2776fc18');glow(830,570,150,'#bf38fc1c');
+ // Station neon floor corners
+ for(const [x,y] of [[70,70],[930,70],[70,550],[930,550]]){ctx.strokeStyle='#36dfff4b';ctx.lineWidth=3;ctx.strokeRect(x-36,y-36,72,72);glow(x,y,48,'#21efff14')}
+ for(const o of WALLS){ctx.fillStyle='#213354';ctx.shadowColor='#0da5ec';ctx.shadowBlur=9;ctx.fillRect(o.x,o.y,o.w,o.h);ctx.shadowBlur=0;ctx.strokeStyle='#55bafb';ctx.lineWidth=2;ctx.strokeRect(o.x+1,o.y+1,o.w-2,o.h-2);ctx.fillStyle='#1c709c';for(let i=6;i<o.w-8;i+=17)ctx.fillRect(o.x+i,o.y+3,8,3)}
+ if(state){
+  for(const p of state.pickups||[]){const color=p.type==='quiz'?'#bd7dff':p.type==='heal'?'#84ffa6':'#ffcc48';glow(p.x,p.y,36,color+'75');ctx.save();ctx.translate(p.x,p.y+Math.sin(t*3+p.id)*5);ctx.rotate(Math.sin(t+p.id)*.23);ctx.font='30px system-ui';ctx.textAlign='center';ctx.fillText(p.type==='quiz'?'❓':p.type==='heal'?'💚':'🔋',0,10);ctx.restore()}
+  for(const e of state.enemies||[]){ctx.save();ctx.translate(e.x,e.y);glow(0,0,32,'#ff434b5f');ctx.rotate(Math.sin(t*2+e.id)*.14);polygon([[-16,-16],[16,-16],[22,0],[16,16],[-16,16],[-22,0]],'#641e4a','#ff526f');ctx.fillStyle='#ffb5c5';ctx.fillRect(-12,-4,8,7);ctx.fillRect(5,-4,8,7);ctx.restore()}
+  for(const s of state.shots||[]){let owner=(state.players||[]).find(p=>p.id===s.owner);const color=owner?.color||'#f7bcff';glow(s.x,s.y,25,color+'9a');ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=18;ctx.beginPath();ctx.arc(s.x,s.y,6,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0}
+  for(const p of state.players||[]){if(p.respawning)continue;const isMe=p.id===myId;const angle=local?Math.atan2(localDir.y,localDir.x):0;robot(p.x,p.y,p.color,(isMe?'⭐ ':'')+p.name,p.hp,angle,t);if(p.quiz){ctx.font='23px system-ui';ctx.fillText('🧠',p.x+22,p.y-24)}}
+ }
+ ctx.save();ctx.strokeStyle='#44ccff77';ctx.lineWidth=5;ctx.strokeRect(3,3,w-6,h-6);ctx.restore();
+ if(!state){ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='bold 27px system-ui';ctx.fillText('جاري تجهيز ساحة اللعب...',500,300)}
+ animation=requestAnimationFrame(draw);
+}
+function startDrawing(){cancelAnimationFrame(animation);animation=requestAnimationFrame(draw)}
+function updateHud(){if(!state)return;const m=state.players.find(p=>p.id===myId)||state.players[0];$('timeLabel').textContent=state.remaining;$('countLabel').textContent=state.players.length;$('modeLabel').textContent=state.mode==='coop'?'🤝 فريق':'⚔️ منافسة';$('scoreLabel').textContent=m?.score||0;$('myNameLabel').textContent='🤖 '+(m?.name||'');$('healthBar').style.width=(m?.hp||0)+'%';$('hpLabel').textContent='❤️ '+(m?.hp||0)+'%';$('leaderboard').innerHTML='';(state.board||[]).slice(0,4).forEach((p,i)=>{const el=document.createElement('span');el.textContent=['🥇','🥈','🥉','4️⃣'][i]+' '+p.name+': '+p.score;el.style.borderBottom='2px solid '+p.color;$('leaderboard').appendChild(el)})}
+let audio=null;function beep(f=440){try{audio??=new (window.AudioContext||window.webkitAudioContext)();const osc=audio.createOscillator(),gain=audio.createGain();osc.type='square';osc.frequency.value=f;gain.gain.setValueAtTime(.04,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.0005,audio.currentTime+.09);osc.connect(gain);gain.connect(audio.destination);osc.start();osc.stop(audio.currentTime+.1)}catch(e){}}
+// Offline single-player simulation. Live 2–4 phones requires server.
+let localState=null,localInput={dx:0,dy:0,shoot:false,boost:false},localDir={x:1,y:0},localShotAt=0,localBoostAt=0,localTime=0,localSeq=1;
+function clamp(x,a,b){return Math.max(a,Math.min(x,b))}function collision(x,y,r=20){if(x<r||x>1000-r||y<r||y>620-r)return true;return WALLS.some(o=>{const ax=clamp(x,o.x,o.x+o.w),ay=clamp(y,o.y,o.y+o.h);return (x-ax)**2+(y-ay)**2<r*r})}
+function localPos(){for(let i=0;i<40;i++){let x=rand(45,955),y=rand(45,575);if(!collision(x,y,30))return{x,y}}return{x:320,y:300}}
+function localSpawn(type){let pos=localPos();return{id:localSeq++,...pos,...(type==='enemy'?{hp:40,attackAt:0}:{type})}}
+function startSolo(){if(socket&&socket.readyState===1)send({type:'leave'});local=true;myId='solo';localTime=Date.now()+120000;localShotAt=0;localBoostAt=0;localSeq=1;localDir={x:1,y:0};
+ const p={id:'solo',name:name(),color:COLORS[0],x:90,y:90,hp:100,score:0,kills:0};localState={type:'state',mode:'coop',players:[p],shots:[],enemies:Array.from({length:5},()=>localSpawn('enemy')),pickups:[...Array.from({length:4},()=>localSpawn('battery')),localSpawn('quiz'),localSpawn('heal')],remaining:120,board:[]};state=localState;
+ hide('endOverlay');screen('game');message('🎮 تجربة فردية! جمّع بطّاريات واضرب بالليزر');clearInterval(localLoop);localLoop=setInterval(localTick,50);updateHud()}
+$('soloBtn').onclick=startSolo;
+function localTick(){if(!local||phase!=='game')return;const now=Date.now();localState.remaining=Math.max(0,Math.ceil((localTime-now)/1000));if(now>=localTime){clearInterval(localLoop);endRound([{name:localState.players[0].name,score:localState.players[0].score,color:COLORS[0]}]);return}
+ const p=localState.players[0];const i=localInput;
+ if(p.hp<=0){p.hp=100;p.x=80;p.y=80;p.score=Math.max(0,p.score-20)}
+ if(!(!$('quizOverlay').classList.contains('hide'))){let speed=4.1;if(i.boost&&now>localBoostAt){speed=8;localBoostAt=now+4000;}let len=Math.hypot(i.dx,i.dy)||1;let vx=i.dx/len*speed,vy=i.dy/len*speed;if(Math.hypot(i.dx,i.dy)<.05){vx=vy=0}else{localDir={x:vx/speed,y:vy/speed}}if(!collision(p.x+vx,p.y,20))p.x+=vx;if(!collision(p.x,p.y+vy,20))p.y+=vy;
+ if(i.shoot&&now-localShotAt>230){localShotAt=now;const enemies=localState.enemies.slice().sort((a,b)=>dist(a,p)-dist(b,p));let target=enemies[0],x=localDir.x,y=localDir.y;if(target&&dist(target,p)<650){let d=dist(target,p)||1;x=(target.x-p.x)/d;y=(target.y-p.y)/d}localState.shots.push({x:p.x+x*30,y:p.y+y*30,vx:x*14,vy:y*14,owner:'solo',life:45});}}
+ for(const e of localState.enemies){const d=dist(p,e)||1;let vx=(p.x-e.x)/d*.9,vy=(p.y-e.y)/d*.9;if(!collision(e.x+vx,e.y,17))e.x+=vx;if(!collision(e.x,e.y+vy,17))e.y+=vy;if(d<41&&now-e.attackAt>850){p.hp=Math.max(0,p.hp-10);e.attackAt=now;beep(140)}}
+ for(let j=localState.shots.length-1;j>=0;j--){const s=localState.shots[j];s.x+=s.vx;s.y+=s.vy;s.life--;let hit=s.life<=0||collision(s.x,s.y,5);if(!hit){for(let k=localState.enemies.length-1;k>=0;k--){const e=localState.enemies[k];if(dist(e,s)<24){e.hp-=24;hit=true;if(e.hp<=0){p.score+=35;p.kills++;localState.enemies.splice(k,1);beep(700)}break;}}}if(hit)localState.shots.splice(j,1)}
+ if(localState.enemies.length<6&&Math.random()<.017)localState.enemies.push(localSpawn('enemy'));
+ for(let j=localState.pickups.length-1;j>=0;j--){const c=localState.pickups[j];if(dist(c,p)<29){localState.pickups.splice(j,1);if(c.type==='quiz'){localQuestion=QUIZ[Math.floor(Math.random()*QUIZ.length)];openQuiz(localQuestion[0],localQuestion[1],true)}else if(c.type==='heal'){p.hp=Math.min(100,p.hp+35);message('💚 +35 صحة')}else {p.score+=20;message('🔋 +20 نقطة');beep(550)}}}
+ if(localState.pickups.length<7&&Math.random()<.017){let v=Math.random(),typ=v<.3?'quiz':v<.55?'heal':'battery';localState.pickups.push(localSpawn(typ));}
+ localState.board=[{id:'solo',name:p.name,score:p.score,color:p.color}];updateHud();}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){pad.fire=false;pad.boost=false;pad.x=pad.y=0;}});
+})();
+</script></body></html>
