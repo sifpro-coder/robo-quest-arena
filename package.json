@@ -1,9 +1,16 @@
 {
   "name": "cfi-robotics-arena",
-  "version": "2.0.0",
-  "description": "CFI: robotics games and live quiz / arena for 1-10 students",
+  "version": "5.0.0",
+  "description": "CFI: robotics games, learning levels and monthly student memberships",
   "private": true,
-  "scripts": {"start": "node server.js"},
-  "engines": {"node": ">=18"},
-  "license": "UNLICENSED"
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "nodemailer": "^7.0.0"
+  }
 }
