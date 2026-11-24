@@ -1,8 +1,9 @@
 {
-  "name": "robo-quest-arena-live",
-  "version": "1.0.0",
+  "name": "cfi-robotics-arena",
+  "version": "2.0.0",
+  "description": "CFI: robotics games and live quiz / arena for 1-10 students",
   "private": true,
-  "description": "Realtime 1-4 player robotics arena with offline solo training",
-  "scripts": {"start": "node server.js", "test": "node tests/smoke.js"},
-  "engines": {"node": ">=18"}
+  "scripts": {"start": "node server.js"},
+  "engines": {"node": ">=18"},
+  "license": "UNLICENSED"
 }
