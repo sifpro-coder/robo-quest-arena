@@ -1,0 +1,20 @@
+CFI ACADEMY V5.3 — ESP32 Formation Complète
+=====================================================
+Contenu: 26 modules ESP32 FR/Tunisien enrichis, 135 QCM au lieu de 83, trois exercices par module, explication du code, dépannage, auto-évaluation et barème pratique /20 pour le professeur.
+
+IMPORTANT: Le QCM est corrigé par le serveur et conservé dans Supabase. Le barème pratique /20 est un guide pédagogique, PAS une nouvelle note automatique ni un nouveau champ Supabase. La vérification pratique reste manuelle par le professeur.
+
+INSTALLATION SUR BASE V5.2 : extraire CE ZIP et uploader dans le dépôt GitHub en remplaçant à la racine :
+  academy.html
+  academy-content.json
+  academy-bank.json
+  academy-solutions.json
+
+Aucun changement dans academy-api.js, server.js, les comptes, la base de données, les abonnements, les certificats ou les 22 cours historiques. Pas de SQL à exécuter.
+
+Github: https://github.com/sifpro-coder/robo-quest-arena/upload/main
+Site après publication: https://cfi-robot.onrender.com/academy
+
+NOTES MATÉRIEL: exemples prévus pour ESP32 classique, à vérifier avec le pinout exact. Pas de simulateur électronique réel dans cette version. Moteurs/servos à alimenter via matériel approprié.
+
+Ne pas uploader le ZIP tel quel: extraire et téléverser les quatre fichiers. Prendre une copie des quatre fichiers en ligne avant remplacement. Après déploiement Render, tester l’ouverture d’une leçon et le QCM avec un compte élève test avant les cours.

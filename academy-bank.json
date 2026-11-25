@@ -1122,6 +1122,32 @@
       ],
       "answer": 0,
       "why": "Wi-Fi خاصّ بالاتصال اللاسلكي."
+    },
+    {
+      "id": "pro-01-q4",
+      "textAr": "Quel outil exécute réellement le programme après l’envoi ?",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "La carte ESP32",
+        "Le document PDF",
+        "Le câble seul",
+        "Le navigateur seul"
+      ],
+      "answer": 0,
+      "why": "Le microcontrôleur exécute le programme."
+    },
+    {
+      "id": "pro-01-q5",
+      "textAr": "Dans Thonny, la console Shell sert surtout à…",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "Voir les messages et erreurs",
+        "Alimenter un moteur",
+        "Mesurer 220 V",
+        "Dessiner un PCB"
+      ],
+      "answer": 0,
+      "why": "La console affiche le retour de MicroPython."
     }
   ],
   "pro-02": [
@@ -1163,6 +1189,32 @@
       ],
       "answer": 0,
       "why": "GPIO ESP32 عادة 3,3 V، 5 V مباشرة خطر."
+    },
+    {
+      "id": "pro-02-q4",
+      "textAr": "Sur ESP32 classique, GPIO35 peut servir à…",
+      "term": "Carte ESP32 et pinout",
+      "options": [
+        "Lire un signal en entrée",
+        "Fournir du PWM en sortie",
+        "Alimenter un moteur",
+        "Réinitialiser EN"
+      ],
+      "answer": 0,
+      "why": "GPIO34–GPIO39 sont uniquement des entrées."
+    },
+    {
+      "id": "pro-02-q5",
+      "textAr": "Que vérifies-tu avant de choisir une broche ?",
+      "term": "Carte ESP32 et pinout",
+      "options": [
+        "Le pinout du modèle exact",
+        "La couleur du câble uniquement",
+        "La taille du fichier",
+        "Le nom du Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "Les familles ESP32 ne partagent pas toutes le même pinout."
     }
   ],
   "pro-03": [
@@ -1204,6 +1256,32 @@
       ],
       "answer": 0,
       "why": "المقاومة تحدّ التيار وتحمي LED."
+    },
+    {
+      "id": "pro-03-q4",
+      "textAr": "Dans le montage, la résistance sert à…",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Limiter le courant dans la LED",
+        "Accélérer le Wi-Fi",
+        "Transformer GND en 5 V",
+        "Enregistrer le programme"
+      ],
+      "answer": 0,
+      "why": "La résistance protège la LED."
+    },
+    {
+      "id": "pro-03-q5",
+      "textAr": "Que provoque sleep(0.5) ?",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Une pause de 0,5 seconde",
+        "Une pause de 5 secondes",
+        "Une lecture analogique",
+        "Une remise à zéro"
+      ],
+      "answer": 0,
+      "why": "sleep travaille en secondes."
     }
   ],
   "pro-04": [
@@ -1245,6 +1323,32 @@
       ],
       "answer": 0,
       "why": "read() ترجّع القراءة."
+    },
+    {
+      "id": "pro-04-q4",
+      "textAr": "Pourquoi une lecture ADC change quand on tourne le bouton ?",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "La tension du curseur varie",
+        "Le Wi-Fi change de nom",
+        "Le programme devient plus long",
+        "GND disparaît"
+      ],
+      "answer": 0,
+      "why": "Un potentiomètre agit comme diviseur de tension."
+    },
+    {
+      "id": "pro-04-q5",
+      "textAr": "Avec le Wi-Fi sur ESP32 classique, quel groupe ADC est préférable ?",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "ADC1",
+        "ADC2 pour tous les usages",
+        "DAC",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "ADC2 a des restrictions liées au Wi-Fi sur ESP32 classique."
     }
   ],
   "pro-05": [
@@ -1286,6 +1390,32 @@
       ],
       "answer": 0,
       "why": "لازم نثبت الـvariante، DAC موش متوفر في الكل."
+    },
+    {
+      "id": "pro-05-q4",
+      "textAr": "Sur ESP32 classique, quel GPIO possède DAC1 ?",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "GPIO25",
+        "GPIO34",
+        "GPIO18",
+        "GPIO5"
+      ],
+      "answer": 0,
+      "why": "Le DAC1 de l’ESP32 classique se trouve sur GPIO25."
+    },
+    {
+      "id": "pro-05-q5",
+      "textAr": "Pour mesurer la sortie DAC, on utilise…",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "Un multimètre entre sortie et GND",
+        "Un moteur directement",
+        "Un interrupteur 220 V",
+        "Le port UART TX"
+      ],
+      "answer": 0,
+      "why": "La sortie analogique se mesure par rapport à la masse."
     }
   ],
   "pro-06": [
@@ -1327,6 +1457,32 @@
       ],
       "answer": 0,
       "why": "PWM إشارة رقمية متقطعة، DAC خرج analogique."
+    },
+    {
+      "id": "pro-06-q4",
+      "textAr": "Qu’est-ce que le duty cycle ?",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "La proportion du temps à l’état haut",
+        "L’adresse IP",
+        "Le numéro USB",
+        "Le nombre de capteurs"
+      ],
+      "answer": 0,
+      "why": "Le duty cycle règle la proportion de ON."
+    },
+    {
+      "id": "pro-06-q5",
+      "textAr": "Pourquoi ne pas connecter un moteur directement à GPIO19 ?",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "Le courant demandé peut être trop élevé",
+        "Le PWM n’existe pas",
+        "GPIO19 est une batterie",
+        "Le moteur exige du Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "Un driver fournit le courant moteur."
     }
   ],
   "pro-07": [
@@ -1368,6 +1524,32 @@
       ],
       "answer": 0,
       "why": "GPIO OUT تتحكم في HIGH/LOW."
+    },
+    {
+      "id": "pro-07-q4",
+      "textAr": "Pour lire un potentiomètre, on choisit…",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "ADC",
+        "PWM",
+        "DAC",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "ADC convertit une entrée analogique en nombre."
+    },
+    {
+      "id": "pro-07-q5",
+      "textAr": "Pour faire varier une LED, on choisit en général…",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "PWM",
+        "RTC uniquement",
+        "SPI uniquement",
+        "DAC obligatoire"
+      ],
+      "answer": 0,
+      "why": "Le PWM contrôle la luminosité apparente."
     }
   ],
   "pro-08": [
@@ -1409,6 +1591,32 @@
       ],
       "answer": 0,
       "why": "SDA هي Data."
+    },
+    {
+      "id": "pro-08-q4",
+      "textAr": "À quoi sert i2c.scan() ?",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "Détecter les adresses qui répondent",
+        "Créer du PWM",
+        "Écrire un fichier Word",
+        "Mesurer le courant moteur"
+      ],
+      "answer": 0,
+      "why": "Le scan explore les périphériques sur le bus."
+    },
+    {
+      "id": "pro-08-q5",
+      "textAr": "Quelles sont les deux lignes principales I2C ?",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "SDA et SCL",
+        "TX et RX",
+        "MOSI et MISO uniquement",
+        "VIN et EN"
+      ],
+      "answer": 0,
+      "why": "I2C utilise SDA/SCL."
     }
   ],
   "pro-09": [
@@ -1450,6 +1658,32 @@
       ],
       "answer": 0,
       "why": "CS تختار module من bus SPI."
+    },
+    {
+      "id": "pro-09-q4",
+      "textAr": "MOSI transporte surtout…",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Les données émises vers le périphérique",
+        "Le +5 V",
+        "La masse",
+        "Le reset de carte"
+      ],
+      "answer": 0,
+      "why": "MOSI signifie Master Out Slave In."
+    },
+    {
+      "id": "pro-09-q5",
+      "textAr": "Le rôle de CS est de…",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Sélectionner un périphérique SPI",
+        "Mesurer une température",
+        "Créer un ADC",
+        "Changer le réseau Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "CS sélectionne le périphérique actif."
     }
   ],
   "pro-10": [
@@ -1491,6 +1725,32 @@
       ],
       "answer": 0,
       "why": "نفس سرعة الاتصال مطلوبة."
+    },
+    {
+      "id": "pro-10-q4",
+      "textAr": "Pourquoi croiser TX et RX ?",
+      "term": "UART — communication série",
+      "options": [
+        "La sortie de l’un rejoint l’entrée de l’autre",
+        "Pour augmenter la tension à 12 V",
+        "Pour alimenter un moteur",
+        "Pour remplacer la masse"
+      ],
+      "answer": 0,
+      "why": "Un appareil transmet vers la réception de l’autre."
+    },
+    {
+      "id": "pro-10-q5",
+      "textAr": "Que doivent partager les deux appareils ?",
+      "term": "UART — communication série",
+      "options": [
+        "Un débit compatible et GND commun",
+        "Le même nom commercial",
+        "La même batterie obligatoirement",
+        "Un écran OLED"
+      ],
+      "answer": 0,
+      "why": "La liaison UART nécessite des niveaux et paramètres compatibles."
     }
   ],
   "pro-11": [
@@ -1532,6 +1792,32 @@
       ],
       "answer": 0,
       "why": "GPS UART يتواصل عبر TX/RX."
+    },
+    {
+      "id": "pro-11-q4",
+      "textAr": "Un module avec SDA et SCL utilise généralement…",
+      "term": "Résumé I2C, SPI et UART",
+      "options": [
+        "I2C",
+        "UART",
+        "DAC",
+        "PWM"
+      ],
+      "answer": 0,
+      "why": "SDA et SCL sont les lignes I2C."
+    },
+    {
+      "id": "pro-11-q5",
+      "textAr": "Un périphérique avec TX et RX utilise généralement…",
+      "term": "Résumé I2C, SPI et UART",
+      "options": [
+        "UART",
+        "ADC",
+        "DAC",
+        "Touch"
+      ],
+      "answer": 0,
+      "why": "TX/RX identifient une liaison série asynchrone."
     }
   ],
   "pro-12": [
@@ -1573,6 +1859,32 @@
       ],
       "answer": 0,
       "why": "الـvariante تغيّر الدعم."
+    },
+    {
+      "id": "pro-12-q4",
+      "textAr": "Pourquoi mesurer plusieurs fois au repos ?",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Pour calibrer un seuil fiable",
+        "Pour charger le firmware",
+        "Pour créer du PWM",
+        "Pour alimenter la LED"
+      ],
+      "answer": 0,
+      "why": "Le niveau tactile dépend de l’environnement."
+    },
+    {
+      "id": "pro-12-q5",
+      "textAr": "Est-ce que toutes les variantes ESP32 ont les mêmes Touch Pins ?",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Non",
+        "Oui sur GPIO27 toujours",
+        "Oui sur 5 V",
+        "Uniquement en UART"
+      ],
+      "answer": 0,
+      "why": "Les capteurs tactiles diffèrent selon la famille."
     }
   ],
   "pro-13": [
@@ -1614,6 +1926,32 @@
       ],
       "answer": 0,
       "why": "لازم prévoir réveil."
+    },
+    {
+      "id": "pro-13-q4",
+      "textAr": "Pourquoi utiliser deep sleep ?",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Réduire la consommation",
+        "Accélérer le CPU",
+        "Générer une vidéo",
+        "Changer la langue"
+      ],
+      "answer": 0,
+      "why": "Le mode sommeil réduit la consommation d’énergie."
+    },
+    {
+      "id": "pro-13-q5",
+      "textAr": "RTC GPIO et rtc.datetime() désignent…",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Des fonctions RTC liées mais différentes",
+        "Toujours le même branchement",
+        "Un type de LED",
+        "Une tension 12 V"
+      ],
+      "answer": 0,
+      "why": "L’horloge RTC et les GPIO de réveil sont deux sujets distincts."
     }
   ],
   "pro-14": [
@@ -1655,6 +1993,32 @@
       ],
       "answer": 0,
       "why": "يلزم نعرفوا niveau au boot."
+    },
+    {
+      "id": "pro-14-q4",
+      "textAr": "À quel moment les strapping pins sont-elles importantes ?",
+      "term": "Strapping Pins — démarrage",
+      "options": [
+        "Au démarrage",
+        "Seulement à la lecture ADC",
+        "Lors du calcul d’un QCM",
+        "À la fin d’un cours"
+      ],
+      "answer": 0,
+      "why": "La puce échantillonne leur état au démarrage."
+    },
+    {
+      "id": "pro-14-q5",
+      "textAr": "Sur ESP32 classique, BOOT est souvent associé à…",
+      "term": "Strapping Pins — démarrage",
+      "options": [
+        "GPIO0",
+        "GPIO34",
+        "GPIO25 DAC",
+        "GPIO19 PWM"
+      ],
+      "answer": 0,
+      "why": "GPIO0 sert au mode de téléchargement sur beaucoup de cartes."
     }
   ],
   "pro-15": [
@@ -1696,6 +2060,32 @@
       ],
       "answer": 0,
       "why": "GPIO ما تعطيش courant moteur."
+    },
+    {
+      "id": "pro-15-q4",
+      "textAr": "Une entrée GPIO ESP32 accepte-t-elle normalement 5 V directs ?",
+      "term": "Power Pins — alimentation",
+      "options": [
+        "Non",
+        "Oui sans condition",
+        "Uniquement avec Wi-Fi",
+        "Uniquement avec SPI"
+      ],
+      "answer": 0,
+      "why": "La logique ESP32 est en 3,3 V."
+    },
+    {
+      "id": "pro-15-q5",
+      "textAr": "Pourquoi partager GND entre modules compatibles ?",
+      "term": "Power Pins — alimentation",
+      "options": [
+        "Pour avoir la même référence électrique",
+        "Pour créer du Bluetooth",
+        "Pour augmenter la fréquence PWM",
+        "Pour installer Thonny"
+      ],
+      "answer": 0,
+      "why": "GND commun sert de référence aux signaux."
     }
   ],
   "pro-16": [
@@ -1737,6 +2127,32 @@
       ],
       "answer": 0,
       "why": "EN خط حسّاس، 12 V خطر."
+    },
+    {
+      "id": "pro-16-q4",
+      "textAr": "Quelle est la fonction de EN ?",
+      "term": "Enable Pin — EN",
+      "options": [
+        "Activer ou réinitialiser la puce",
+        "Lire un potentiomètre",
+        "Produire du DAC",
+        "Faire office de moteur"
+      ],
+      "answer": 0,
+      "why": "EN pilote l’activation de la puce."
+    },
+    {
+      "id": "pro-16-q5",
+      "textAr": "Que fait le bouton RESET ?",
+      "term": "Enable Pin — EN",
+      "options": [
+        "Il redémarre le microcontrôleur",
+        "Il modifie automatiquement le Wi-Fi",
+        "Il supprime la résistance",
+        "Il change le langage"
+      ],
+      "answer": 0,
+      "why": "RESET relance la puce."
     }
   ],
   "pro-17": [
@@ -1778,6 +2194,32 @@
       ],
       "answer": 0,
       "why": "Capteur tactile."
+    },
+    {
+      "id": "pro-17-q4",
+      "textAr": "Une broche qui influe sur le boot est…",
+      "term": "Résumé des fonctions avancées",
+      "options": [
+        "Une broche de strapping",
+        "Un potentiomètre",
+        "Un écran",
+        "Une LED"
+      ],
+      "answer": 0,
+      "why": "Strapping agit au démarrage."
+    },
+    {
+      "id": "pro-17-q5",
+      "textAr": "Pour économiser de l’énergie lors du sommeil, on regarde surtout…",
+      "term": "Résumé des fonctions avancées",
+      "options": [
+        "RTC et modes basse consommation",
+        "DAC obligatoirement",
+        "UART TX uniquement",
+        "VIN 12 V"
+      ],
+      "answer": 0,
+      "why": "Les fonctions basse consommation passent par le domaine RTC."
     }
   ],
   "pro-18": [
@@ -1819,6 +2261,32 @@
       ],
       "answer": 0,
       "why": "Button HIGH عبر 3V3."
+    },
+    {
+      "id": "pro-18-q4",
+      "textAr": "Pourquoi utiliser PULL_DOWN ?",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "Pour lire 0 de façon stable au repos",
+        "Pour produire du PWM",
+        "Pour activer DAC",
+        "Pour alimenter le moteur"
+      ],
+      "answer": 0,
+      "why": "PULL_DOWN fixe un état stable."
+    },
+    {
+      "id": "pro-18-q5",
+      "textAr": "Dans cet exemple, appuyer connecte GPIO18 à…",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "3V3",
+        "12 V",
+        "GND seulement",
+        "USB D-"
+      ],
+      "answer": 0,
+      "why": "Appui = niveau haut avec notre câblage."
     }
   ],
   "pro-19": [
@@ -1860,6 +2328,32 @@
       ],
       "answer": 0,
       "why": "ADC2 peut entrer en conflit avec Wi-Fi."
+    },
+    {
+      "id": "pro-19-q4",
+      "textAr": "Que fait if valeur < seuil ?",
+      "term": "Lecture des capteurs analogiques",
+      "options": [
+        "Il teste si la mesure est sous une limite",
+        "Il modifie le câble USB",
+        "Il lance le Wi-Fi",
+        "Il redémarre la carte"
+      ],
+      "answer": 0,
+      "why": "if choisit une action selon une condition."
+    },
+    {
+      "id": "pro-19-q5",
+      "textAr": "Avant de choisir un seuil, il faut…",
+      "term": "Lecture des capteurs analogiques",
+      "options": [
+        "Mesurer les valeurs réelles du capteur",
+        "Choisir 4095 sans mesurer",
+        "Débrancher GND",
+        "Passer à 12 V"
+      ],
+      "answer": 0,
+      "why": "Le seuil dépend du capteur et du montage."
     }
   ],
   "pro-20": [
@@ -1901,6 +2395,32 @@
       ],
       "answer": 0,
       "why": "الـpulse width تحدّد position."
+    },
+    {
+      "id": "pro-20-q4",
+      "textAr": "Quel élément porte l’ordre de position ?",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "Le signal PWM",
+        "La masse seule",
+        "Le câble USB seul",
+        "Le Wi-Fi obligatoirement"
+      ],
+      "answer": 0,
+      "why": "Le servo décode le signal de commande."
+    },
+    {
+      "id": "pro-20-q5",
+      "textAr": "Pourquoi relier les masses du servo et de l’ESP32 ?",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "Pour une référence commune du signal",
+        "Pour charger une batterie",
+        "Pour générer DAC",
+        "Pour agrandir la mémoire"
+      ],
+      "answer": 0,
+      "why": "Le signal a besoin d’une référence GND commune."
     }
   ],
   "pro-21": [
@@ -1942,6 +2462,32 @@
       ],
       "answer": 0,
       "why": "لازم bibliothèque ssd1306.py."
+    },
+    {
+      "id": "pro-21-q4",
+      "textAr": "Quelle vérification faire avant d’afficher du texte sur OLED I2C ?",
+      "term": "Affichage LCD et OLED",
+      "options": [
+        "Scanner l’adresse I2C",
+        "Brancher 12 V",
+        "Utiliser une broche DAC obligatoire",
+        "Réinitialiser tous les élèves"
+      ],
+      "answer": 0,
+      "why": "Le scan confirme que le périphérique répond."
+    },
+    {
+      "id": "pro-21-q5",
+      "textAr": "Pourquoi faut-il un driver adapté ?",
+      "term": "Affichage LCD et OLED",
+      "options": [
+        "Chaque contrôleur a ses commandes",
+        "Pour rendre le câble rouge",
+        "Pour augmenter le 3V3",
+        "Pour supprimer GND"
+      ],
+      "answer": 0,
+      "why": "Le pilote sait communiquer avec le contrôleur."
     }
   ],
   "pro-22": [
@@ -1983,6 +2529,32 @@
       ],
       "answer": 0,
       "why": "GND commune référence."
+    },
+    {
+      "id": "pro-22-q4",
+      "textAr": "Que faut-il entre GPIO et moteur DC ?",
+      "term": "Commande des moteurs",
+      "options": [
+        "Un driver moteur adapté",
+        "Une LED seule",
+        "Une entrée ADC directe",
+        "Un câble USB uniquement"
+      ],
+      "answer": 0,
+      "why": "Le driver gère le courant du moteur."
+    },
+    {
+      "id": "pro-22-q5",
+      "textAr": "Comment changer le sens sur un pont en H ?",
+      "term": "Commande des moteurs",
+      "options": [
+        "Inverser la combinaison IN1/IN2",
+        "Augmenter le Wi-Fi",
+        "Changer GPIO34 en sortie",
+        "Débrancher GND"
+      ],
+      "answer": 0,
+      "why": "Les deux entrées définissent le sens de rotation."
     }
   ],
   "pro-23": [
@@ -2024,6 +2596,32 @@
       ],
       "answer": 0,
       "why": "ما ننشروش secrets في public."
+    },
+    {
+      "id": "pro-23-q4",
+      "textAr": "À quoi sert le Wi-Fi sur ESP32 ?",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
+      "options": [
+        "À rejoindre un réseau IP",
+        "À produire directement 220 V",
+        "À remplacer GND",
+        "À alimenter un moteur"
+      ],
+      "answer": 0,
+      "why": "Le Wi-Fi permet une communication réseau."
+    },
+    {
+      "id": "pro-23-q5",
+      "textAr": "Où faut-il éviter d’écrire les vrais mots de passe ?",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
+      "options": [
+        "Dans un dépôt GitHub public",
+        "Dans une zone sûre hors ligne",
+        "Dans la configuration protégée",
+        "Dans un secret côté serveur"
+      ],
+      "answer": 0,
+      "why": "Les secrets ne doivent pas être publiés dans le code."
     }
   ],
   "pro-24": [
@@ -2130,6 +2728,32 @@
       ],
       "answer": 0,
       "why": "DAC dépend de variante."
+    },
+    {
+      "id": "pro-24-q9",
+      "textAr": "Quel choix est adapté à une entrée variable ?",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "ADC",
+        "DAC",
+        "EN",
+        "PWM seul"
+      ],
+      "answer": 0,
+      "why": "ADC mesure une tension analogique."
+    },
+    {
+      "id": "pro-24-q10",
+      "textAr": "Pour une communication I2C, on recherche…",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "SDA, SCL et une adresse",
+        "TX/RX obligatoires",
+        "Seulement GPIO34",
+        "Un moteur 12 V"
+      ],
+      "answer": 0,
+      "why": "I2C a des lignes et des adresses."
     }
   ],
   "pro-25": [
@@ -2171,6 +2795,32 @@
       ],
       "answer": 0,
       "why": "La méthode read() fournit une valeur numérisée ADC."
+    },
+    {
+      "id": "pro-25-q4",
+      "textAr": "Que doit contenir un compte rendu TP ?",
+      "term": "Exercices pratiques — consolidation",
+      "options": [
+        "Code, montage et observation",
+        "Seulement le nom",
+        "Une image sans explication",
+        "La couleur du câble"
+      ],
+      "answer": 0,
+      "why": "Une réalisation est vérifiable par ses résultats."
+    },
+    {
+      "id": "pro-25-q5",
+      "textAr": "Quel ordre est le plus utile pour diagnostiquer ?",
+      "term": "Exercices pratiques — consolidation",
+      "options": [
+        "Câblage puis mesures puis code",
+        "Changer tout au hasard",
+        "Supprimer le projet",
+        "Augmenter à 12 V"
+      ],
+      "answer": 0,
+      "why": "Un diagnostic progressif évite les erreurs."
     }
   ],
   "pro-26": [
@@ -2212,6 +2862,32 @@
       ],
       "answer": 0,
       "why": "الأستاذ يراجع montage والشرح."
+    },
+    {
+      "id": "pro-26-q4",
+      "textAr": "Pourquoi tester chaque composant séparément ?",
+      "term": "Mini-projet de synthèse — Smart Home",
+      "options": [
+        "Pour isoler facilement les erreurs",
+        "Pour accélérer le Wi-Fi",
+        "Pour éviter toute programmation",
+        "Pour supprimer le GND"
+      ],
+      "answer": 0,
+      "why": "Tester par blocs facilite le diagnostic."
+    },
+    {
+      "id": "pro-26-q5",
+      "textAr": "Que doit présenter l’élève au final ?",
+      "term": "Mini-projet de synthèse — Smart Home",
+      "options": [
+        "Montage, code et démonstration expliquée",
+        "Seulement une capture d’écran",
+        "Une note sans projet",
+        "Un mot de passe Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "Le projet prouve l’application des compétences."
     }
   ]
 }
