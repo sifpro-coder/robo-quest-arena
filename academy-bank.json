@@ -1,1 +1,2217 @@
-{"lesson-1":[{"id":"lesson-1-q1","textAr":"شنوّة هي ESP32 بالضبط؟","term":"ESP32 / Microcontrôleur","options":["Microcontrôleur","Moteur DC","Écran","Résistance"],"answer":0,"why":"هي carte فيها microcontrôleur نبرمجوه."},{"id":"lesson-1-q2","textAr":"بقدّاش تخدم الإشارات المنطقية للـESP32 classique؟","term":"Tension logique","options":["3,3 V","5 V","9 V","12 V"],"answer":0,"why":"الـGPIO متاع ESP32 تخدم عادةً بـ3,3 V."},{"id":"lesson-1-q3","textAr":"بأنهي logiciel نجموا نبرمجوا ESP32 بـMicroPython؟","term":"Thonny","options":["Thonny","Photoshop","Word","Excel"],"answer":0,"why":"Thonny محرّر مناسب لكتابة وتشغيل MicroPython."},{"id":"lesson-1-q4","textAr":"شنوّة فايدة Wokwi؟","term":"Simulation","options":["محاكاة circuit","طباعة وثائق","تشغيل محرك بلا دارة","تعديل صور"],"answer":0,"why":"Wokwi ينجم يحاكي circuit والكود في navigateur."},{"id":"lesson-1-q5","textAr":"ESP32 فيها اتصال لاسلكي مدمج، شنوّة نوعه؟","term":"Connectivité","options":["Wi-Fi وBluetooth","GSM فقط","NFC فقط","Infra-rouge فقط"],"answer":0,"why":"في ESP32 classique نلقاو Wi-Fi وBluetooth."}],"lesson-2":[{"id":"lesson-2-q1","textAr":"شنوّة يوريك Pinout؟","term":"Pinout","options":["البروشات والوظائف","مخطط كهرباء الدار","كود Python","قياس حرارة"],"answer":0,"why":"الـPinout يحدّد مكان ووظائف broches."},{"id":"lesson-2-q2","textAr":"GPIO 34 في ESP32 classique ينجم يخدم كشنوّة؟","term":"GPIO34","options":["Entrée فقط","Sortie فقط","Alimentation 5V","GND"],"answer":0,"why":"GPIO34 input-only على ESP32 classique."},{"id":"lesson-2-q3","textAr":"ينجم نربطوا 5V مباشرة بمدخل GPIO؟","term":"3.3 V","options":["لا، خطر","إي ديما","كان مع Wi-Fi","كان مع PWM"],"answer":0,"why":"لازم نحترم حدّ 3,3 V للمدخل."},{"id":"lesson-2-q4","textAr":"علاش نفضّلوا ADC1 مع Wi-Fi؟","term":"ADC1 / ADC2","options":["ADC2 ينجم يتعارض مع Wi-Fi","ADC1 يخرج 5V","ADC1 يشغّل Bluetooth","ADC1 يوقف CPU"],"answer":0,"why":"على ESP32 classique استعمال Wi-Fi يقيّد ADC2."},{"id":"lesson-2-q5","textAr":"شنوّة معنى GND؟","term":"GND","options":["الماسّة المشتركة","مدخل صوت","خروج UART","زر تشغيل"],"answer":0,"why":"GND هي référence électrique متاع الدارة."}],"lesson-3":[{"id":"lesson-3-q1","textAr":"أنهي GPIO استعملناها للـLED؟","term":"GPIO 5","options":["GPIO 5","GPIO 34","GPIO 39","GPIO 36"],"answer":0,"why":"في الدرس LED مربوطة بـGPIO5."},{"id":"lesson-3-q2","textAr":"شنوّة نكتب باش نخليو GPIO 5 مخرج؟","term":"Pin.OUT","options":["Pin(5, Pin.OUT)","Pin(5, Pin.IN)","ADC(Pin(5))","DAC(Pin(5))"],"answer":0,"why":"Pin.OUT تعمل broche كـsortie."},{"id":"lesson-3-q3","textAr":"sleep(1) تعني شنوة؟","term":"Temporisation","options":["نستناو ثانية","نستناو 1 دقيقة","نطفيو LED","نقروا ADC"],"answer":0,"why":"sleep(1) تعمل pause ثانية."},{"id":"lesson-3-q4","textAr":"علاش نحطّوا résistance مع LED؟","term":"Résistance","options":["باش نحدّوا courant","باش نقيسوا Wi-Fi","باش نزيدوا voltage","باش نخزّنوا كود"],"answer":0,"why":"résistance تحمي LED وتحدّ التيار."},{"id":"lesson-3-q5","textAr":"شنوّة تخدم while True؟","term":"Boucle","options":["تعاود الأوامر ديما","تشغّل مرّة برك","تبدّل البروش","تحفظ ملف"],"answer":0,"why":"حلقة while True تخلي البرنامج يعاود."}],"lesson-4":[{"id":"lesson-4-q1","textAr":"شنوّة يخدم ADC؟","term":"Analog to Digital Converter","options":["يحوّل tension لعدد","يخرج tension ثابتة","يبعث Wi-Fi","يشعل Buzzer"],"answer":0,"why":"ADC entrée analogique وتحويل رقمي."},{"id":"lesson-4-q2","textAr":"أنهي broche قرينا بيها pot؟","term":"GPIO 34","options":["GPIO 34","GPIO 5","GPIO 25","GPIO 19"],"answer":0,"why":"GPIO 34 من ADC1."},{"id":"lesson-4-q3","textAr":"القراءة 12 bits تنجم تكون بين شنوّة وشنوّة؟","term":"Résolution 12 bits","options":["0 إلى 4095","0 إلى 255","0 إلى 1","0 إلى 65535"],"answer":0,"why":"2 للقوة 12 = 4096 قيم من 0 حتى 4095."},{"id":"lesson-4-q4","textAr":"شنوّة فايدة ATTN_11DB؟","term":"Atténuation ADC","options":["يوسّع plage de mesure","يشغّل servo","يبدّل Wi-Fi","يكتب message"],"answer":0,"why":"الـAtténuation تخلي plage de mesure أوسع."},{"id":"lesson-4-q5","textAr":"Potentiomètre شنوة يبدّل؟","term":"Potentiomètre","options":["tension على المدخل","تردّد Wi-Fi","عدد broches","الحجم متاع الكارت"],"answer":0,"why":"tension على pin الوسطانية تتبدّل."}],"lesson-5":[{"id":"lesson-5-q1","textAr":"DAC يعطينا شنوة؟","term":"DAC","options":["tension analogique","قراءة bouton","حركة PIR","connexion réseau"],"answer":0,"why":"DAC يخرج tension analogique من قيمة رقمية."},{"id":"lesson-5-q2","textAr":"DAC1 على ESP32 classique في أنهي GPIO؟","term":"DAC1","options":["GPIO 25","GPIO 34","GPIO 5","GPIO 18"],"answer":0,"why":"DAC1 على GPIO25."},{"id":"lesson-5-q3","textAr":"القيم متاع DAC بثمانية bits بين؟","term":"8 bits","options":["0 إلى 255","0 إلى 4095","0 إلى 1023","0 إلى 1"],"answer":0,"why":"8 bits تعطينا 256 مستوى."},{"id":"lesson-5-q4","textAr":"dac.write(128) تقريبًا شنوة يعمل؟","term":"DAC.write","options":["نصّ plage de tension","3,3 V بالضبط","يطفّي الـCPU","يقرى 128 V"],"answer":0,"why":"128 تقريبًا وسط 0–255."},{"id":"lesson-5-q5","textAr":"شنوّة الفرق بين DAC وADC؟","term":"DAC vs ADC","options":["DAC يخرج وADC يقرى","الزوز Wi-Fi","الزوز moteurs","ADC يخرج وDAC يقرى"],"answer":0,"why":"ADC entrée / DAC sortie."}],"lesson-6":[{"id":"lesson-6-q1","textAr":"PWM يبدّل شنوة باش يتحكّم في luminosité؟","term":"Duty Cycle","options":["نسبة الوقت HIGH","عدد broches","اسم البرنامج","نوع الكابل"],"answer":0,"why":"Duty cycle هي نسبة HIGH في كل période."},{"id":"lesson-6-q2","textAr":"Duty Cycle 50% معناها شنوة؟","term":"Rapport cyclique","options":["نصّ الوقت HIGH","ديما HIGH","ديما LOW","50 Hz"],"answer":0,"why":"50% معناها نصف الدورة HIGH."},{"id":"lesson-6-q3","textAr":"led.duty(1023) في المثال شنوة تعمل؟","term":"PWM 10 bits","options":["أقصى إضاءة","تطفي LED","تقرى ADC","تغيّر Pin.IN"],"answer":0,"why":"1023 تمثل duty maximal في API المستعملة."},{"id":"lesson-6-q4","textAr":"GPIO34 تنجم تولّد PWM في ESP32 classique؟","term":"GPIO Input-only","options":["لا، خاطرها entrée فقط","إي، كيف GPIO5","إي كان في Thonny","إي كان مع Servo"],"answer":0,"why":"GPIO34 ما تنجمش تكون sortie."},{"id":"lesson-6-q5","textAr":"PWM هي نفس tension analogique حقيقية؟","term":"PWM vs DAC","options":["لا، نبضات numériques","إي نفس DAC","إي موجة DC ثابتة","إي خرج 12 V"],"answer":0,"why":"PWM impulsions، موش DAC analogique متواصل."}],"lesson-7":[{"id":"lesson-7-q1","textAr":"شنوّة نستعملوا باش نقروا Potentiomètre؟","term":"ADC","options":["ADC","DAC","PWM","UART"],"answer":0,"why":"ADC يقرأ tension analogique."},{"id":"lesson-7-q2","textAr":"باش نخرّجوا tension analogique حقيقية نستعملوا؟","term":"DAC","options":["DAC","ADC","GPIO.IN","Wi-Fi"],"answer":0,"why":"DAC هو convertisseur numérique-analogique."},{"id":"lesson-7-q3","textAr":"باش نبدّلوا ضو LED نفضّلوا؟","term":"PWM","options":["PWM","ADC","SPI","UART"],"answer":0,"why":"PWM ينظّم luminosité."},{"id":"lesson-7-q4","textAr":"باش نقروا bouton 0 أو 1 نستعملوا؟","term":"GPIO numérique","options":["GPIO en entrée","DAC فقط","PWM فقط","Bluetooth"],"answer":0,"why":"bouton يتقرا بمدخل numérique."},{"id":"lesson-7-q5","textAr":"أنهي واحد يخدم entrée analogique؟","term":"Entrée analogique","options":["ADC","DAC","PWM sortie","Pin.OUT"],"answer":0,"why":"ADC مخصص لقراءة tension."}],"tp-01":[{"id":"tp-01-q1","textAr":"كي نخدموا rouge.on() شنوة يصير؟","term":"Pin.on()","options":["LED تشعل","LED تطفى","Buzzer يرن","ADC يتقرى"],"answer":0,"why":"rouge.on() تشعل الـLED."},{"id":"tp-01-q2","textAr":"في TP01 الأنهي GPIO استعملناها؟","term":"GPIO","options":["GPIO 5","GPIO 34","GPIO 18","GPIO 26"],"answer":0,"why":"الحمراء مربوطة بـGPIO5."},{"id":"tp-01-q3","textAr":"شنوّة نوع broche متاع LED؟","term":"Pin.OUT","options":["Sortie","Entrée analogique","Entrée فقط","I2C"],"answer":0,"why":"نحتاجوا sortie numérique."}],"tp-02":[{"id":"tp-02-q1","textAr":"باش LED ترمش ديما، نستعملوا شنوّة؟","term":"Boucle","options":["while True","print فقط","ADC فقط","GND"],"answer":0,"why":"الحلقة تعاود on/off."},{"id":"tp-02-q2","textAr":"في المثال قداش تضوي LED قبل ما تطفى؟","term":"Temporisation","options":["1 ثانية","5 ثواني","2 دقايق","0 ثانية"],"answer":0,"why":"sleep(1) يعمل ثانية."},{"id":"tp-02-q3","textAr":"باش نطفيوا LED نكتبوا؟","term":"Pin.off()","options":["rouge.off()","rouge.on()","rouge.read()","rouge.duty(1)"],"answer":0,"why":"off() تطفي sortie."}],"tp-03":[{"id":"tp-03-q1","textAr":"باش نعرضوا الحالة في Console، شنوة نستعملوا؟","term":"print()","options":["print()","PWM()","ADC()","Pin.IN"],"answer":0,"why":"print يعرض نص في console."},{"id":"tp-03-q2","textAr":"كي تشتعل LED شنوّة message نطبعوا؟","term":"Console","options":["LED ON","LED OFF","ADC 0","STOP"],"answer":0,"why":"في TP03 نطبعوا LED ON."},{"id":"tp-03-q3","textAr":"كي تطفى LED نكتبوا؟","term":"Console","options":["LED OFF","LED ON","SERVO 90","DAC 25"],"answer":0,"why":"LED OFF عند الإطفاء."}],"tp-04":[{"id":"tp-04-q1","textAr":"باش نقراو الزر نستعملوا؟","term":"Bouton","options":["Pin.IN","Pin.OUT","DAC","PWM"],"answer":0,"why":"البوتون input."},{"id":"tp-04-q2","textAr":"GPIO 18 متاع bouton يتربط بـ3.3V ولا 5V؟","term":"PULL_DOWN","options":["3.3 V","5 V","12 V","24 V"],"answer":0,"why":"بـPULL_DOWN نربطوا bouton بـ3.3 V."},{"id":"tp-04-q3","textAr":"وقت نضغطوا الزر شنوة تعمل LED؟","term":"if / else","options":["تشعل","تطفى","تبدّل لونها","تزيد Wi-Fi"],"answer":0,"why":"TP04: appuyé = ON."}],"tp-05":[{"id":"tp-05-q1","textAr":"LED الخضراء مربوطة بأنهي GPIO؟","term":"GPIO","options":["GPIO 19","GPIO 34","GPIO 25","GPIO 35"],"answer":0,"why":"في TP05 الخضراء على GPIO19."},{"id":"tp-05-q2","textAr":"وقت الزر مضغوط، شكون يشعل؟","term":"Deux LEDs","options":["الخضراء","الحمراء","الزوز","حتى واحدة"],"answer":0,"why":"الخضراء ON والحمراء OFF."},{"id":"tp-05-q3","textAr":"ينجموا الزوز LEDs يتشعلوا في نفس اللحظة في TP05؟","term":"Alternance","options":["لا","إي ديما","كان مع Wi-Fi","كان مع ADC"],"answer":0,"why":"TP05 يعمل alternance."}],"tp-06":[{"id":"tp-06-q1","textAr":"Potentiomètre وين نقراوه؟","term":"ADC","options":["GPIO 34","GPIO 19","GPIO 18","GPIO 5"],"answer":0,"why":"GPIO34 ADC1."},{"id":"tp-06-q2","textAr":"أنهي أمر يقرى القيمة؟","term":"ADC.read()","options":["pot.read()","pot.on()","pot.off()","pot.write()"],"answer":0,"why":"pot.read() ترجع valeur ADC."},{"id":"tp-06-q3","textAr":"شنوّة نطاق قيمة ADC 12 bits؟","term":"12 bits","options":["0–4095","0–255","0–100","0–1"],"answer":0,"why":"12 bits: 0 حتى 4095."}],"tp-07":[{"id":"tp-07-q1","textAr":"قدّاش seuil في TP07؟","term":"Seuil","options":["2000","100","5000","255"],"answer":0,"why":"الـSeuil هو 2000."},{"id":"tp-07-q2","textAr":"كي الزر appuyé وADC=2500، شكون تشعل؟","term":"Condition","options":["LED verte","LED rouge","حتى LED","Buzzer فقط"],"answer":0,"why":"2500 ≥ 2000."},{"id":"tp-07-q3","textAr":"كي الزر موش appuyé، شكون تشعل؟","term":"Bouton","options":["LED rouge","LED verte","الزوز","ولا واحدة"],"answer":0,"why":"الزر مرخّي يفرض الحمراء."}],"tp-08":[{"id":"tp-08-q1","textAr":"ADC أكبر من 3000 والزر مضغوط، شنوة تعمل الخضراء؟","term":"PWM","options":["ضوها أقصى حد","تطفى","تبدّل لحمرا","تعمل 3 bips"],"answer":0,"why":"فوق 3000 duty maximal."},{"id":"tp-08-q2","textAr":"من 1000 حتى 3000 نستعملوا شنوة لتغيير الضو؟","term":"PWM","options":["duty()","print() فقط","Pin.IN","DAC(Pin(34))"],"answer":0,"why":"نعدّل duty."},{"id":"tp-08-q3","textAr":"ADC أقل من 1000، شنوّة يصير؟","term":"Seuil","options":["الخضراء ترمش","الزوز يضويو ديما","يظهر OLED","يعمل Servo"],"answer":0,"why":"TP08 تحت 1000: clignotement."}],"tp-09":[{"id":"tp-09-q1","textAr":"قدّاش بيس يعمل Buzzer وقت الإنذار؟","term":"Buzzer","options":["3 bips","1 bip","5 bips","10 bips"],"answer":0,"why":"الإنذار 3 بيس."},{"id":"tp-09-q2","textAr":"الإنذار يعاود طول الوقت وقت الشرط ثابت؟","term":"Mémoire d’état","options":["لا، مرة واحدة","إي كل ثانية","إي 10 مرات","إي مع Wi-Fi"],"answer":0,"why":"variable état تمنع التكرار."},{"id":"tp-09-q3","textAr":"شنوّة seuil متاع الإنذار؟","term":"Seuil ADC","options":["ADC > 3000","ADC < 100","ADC = 0","ADC > 4095"],"answer":0,"why":"فوق 3000 مع الزر مضغوط."}],"tp-10":[{"id":"tp-10-q1","textAr":"قدّاش زاوية في TP10؟","term":"Servo angles","options":["0°, 45°, 90°, 180°","0°, 30°, 60°, 90°","20°, 40°, 80°, 100°","10°, 20°, 30°, 40°"],"answer":0,"why":"الـServo عندو أربع positions."},{"id":"tp-10-q2","textAr":"كي الزر مرخّي الباب يكون؟","term":"Servo","options":["مغلوق 0°","مفتوح 180°","90°","45°"],"answer":0,"why":"button relâché يسكر الباب."},{"id":"tp-10-q3","textAr":"شنوّة لازم في تغذية SG90؟","term":"Alimentation Servo","options":["5V مناسبة وGND مشترك","GPIO يمد 12V","ربط 220V","بلا GND"],"answer":0,"why":"Servo تغذية خارجية مناسبة مع masse مشتركة."}],"tp-11":[{"id":"tp-11-q1","textAr":"شنوّة تقيس LDR؟","term":"LDR","options":["الضو","الرطوبة","الحرارة","المسافة"],"answer":0,"why":"LDR مقاومتها تتبدّل مع الضوء."},{"id":"tp-11-q2","textAr":"شنوّة زوز حالات نعرضوا في Console؟","term":"Jour / Nuit","options":["JOUR / NUIT","ON / OFF","START / END","UP / DOWN"],"answer":0,"why":"نميّز بين النهار والليل."},{"id":"tp-11-q3","textAr":"LDR تقرا analogique عادة عبر؟","term":"Pont diviseur","options":["ADC مع pont diviseur","DAC","PWM sortie","UART"],"answer":0,"why":"نقيسوا voltage متغيّر."}],"tp-12":[{"id":"tp-12-q1","textAr":"شنوّة يكشف PIR؟","term":"PIR","options":["الحركة","الرطوبة","جهد DAC","Wi-Fi"],"answer":0,"why":"PIR détecteur de mouvement."},{"id":"tp-12-q2","textAr":"وقتاش يصير إنذار PIR في TP12؟","term":"Condition double","options":["حركة + ليل","نهار بلا حركة","حرارة 10°","زر برك"],"answer":0,"why":"لازم mouvement وNUIT."},{"id":"tp-12-q3","textAr":"قدّاش يعمل Buzzer؟","term":"Buzzer","options":["3 bips","7 bips","1 seconde صامت","بلا صوت"],"answer":0,"why":"3 bips عند trigger."}],"tp-13":[{"id":"tp-13-q1","textAr":"DHT22 يعطينا شنوّة؟","term":"DHT22","options":["حرارة ورطوبة","ضوء ومسافة","Wi-Fi","فولتاج وبروتوكول"],"answer":0,"why":"DHT22 température/humidité."},{"id":"tp-13-q2","textAr":"وقتاش نكتبوا TEMPERATURE ELEVEE؟","term":"Seuil température","options":["T > 30°C","T < 0°C","T = 5°C","T > 100°C"],"answer":0,"why":"في TP13 seuil هو 30°C."},{"id":"tp-13-q3","textAr":"كل قداش نقراو تقريبًا capteur؟","term":"Période de lecture","options":["كل زوز ثواني","كل 30 دقيقة","كل ثانية 0.001","مرّة في نهار"],"answer":0,"why":"تقريبًا كل ثانيتين."}],"tp-14":[{"id":"tp-14-q1","textAr":"بأي bus نربطوا OLED؟","term":"I2C","options":["I2C","ADC","DAC","PWM"],"answer":0,"why":"OLED تتصل عبر I2C."},{"id":"tp-14-q2","textAr":"شنوّة زوز lignes في I2C؟","term":"SDA / SCL","options":["SDA وSCL","TX وRX فقط","GND وVIN فقط","LED وServo"],"answer":0,"why":"I2C فيه SDA وSCL."},{"id":"tp-14-q3","textAr":"شنوّة نعرضوا على OLED في TP14؟","term":"Affichage","options":["ADC وLDR وTempérature وHumidité وPIR","Wi-Fi فقط","اسم المشروع فقط","PWM فقط"],"answer":0,"why":"تجمّع معطيات maison."}],"tp-15":[{"id":"tp-15-q1","textAr":"TP15 علاش نخدموه؟","term":"Validation","options":["نختبروا المشروع كامل","نتعلّموا Wi-Fi فقط","نحذفوا الكود","نبدّلوا ESP32"],"answer":0,"why":"آخر TP للـvalidation."},{"id":"tp-15-q2","textAr":"شنوّة نعملوا كي نلقاو غلطة؟","term":"Compte rendu","options":["نوثّقوها وكيفاش صلّحناها","نتجاهلوها","نخبيوها","نبدّلوا الدرس"],"answer":0,"why":"نكتبوا erreurs et corrections."},{"id":"tp-15-q3","textAr":"لازم نجرّبوا شنوة؟","term":"Check-list","options":["LED وButton وCapteurs وServo وOLED","LED برك","OLED برك","Wi-Fi برك"],"answer":0,"why":"اختبارات على جميع الأجزاء."}]}
+{
+  "lesson-1": [
+    {
+      "id": "lesson-1-q1",
+      "textAr": "شنوّة هي ESP32 بالضبط؟",
+      "term": "ESP32 / Microcontrôleur",
+      "options": [
+        "Microcontrôleur",
+        "Moteur DC",
+        "Écran",
+        "Résistance"
+      ],
+      "answer": 0,
+      "why": "هي carte فيها microcontrôleur نبرمجوه."
+    },
+    {
+      "id": "lesson-1-q2",
+      "textAr": "بقدّاش تخدم الإشارات المنطقية للـESP32 classique؟",
+      "term": "Tension logique",
+      "options": [
+        "3,3 V",
+        "5 V",
+        "9 V",
+        "12 V"
+      ],
+      "answer": 0,
+      "why": "الـGPIO متاع ESP32 تخدم عادةً بـ3,3 V."
+    },
+    {
+      "id": "lesson-1-q3",
+      "textAr": "بأنهي logiciel نجموا نبرمجوا ESP32 بـMicroPython؟",
+      "term": "Thonny",
+      "options": [
+        "Thonny",
+        "Photoshop",
+        "Word",
+        "Excel"
+      ],
+      "answer": 0,
+      "why": "Thonny محرّر مناسب لكتابة وتشغيل MicroPython."
+    },
+    {
+      "id": "lesson-1-q4",
+      "textAr": "شنوّة فايدة Wokwi؟",
+      "term": "Simulation",
+      "options": [
+        "محاكاة circuit",
+        "طباعة وثائق",
+        "تشغيل محرك بلا دارة",
+        "تعديل صور"
+      ],
+      "answer": 0,
+      "why": "Wokwi ينجم يحاكي circuit والكود في navigateur."
+    },
+    {
+      "id": "lesson-1-q5",
+      "textAr": "ESP32 فيها اتصال لاسلكي مدمج، شنوّة نوعه؟",
+      "term": "Connectivité",
+      "options": [
+        "Wi-Fi وBluetooth",
+        "GSM فقط",
+        "NFC فقط",
+        "Infra-rouge فقط"
+      ],
+      "answer": 0,
+      "why": "في ESP32 classique نلقاو Wi-Fi وBluetooth."
+    }
+  ],
+  "lesson-2": [
+    {
+      "id": "lesson-2-q1",
+      "textAr": "شنوّة يوريك Pinout؟",
+      "term": "Pinout",
+      "options": [
+        "البروشات والوظائف",
+        "مخطط كهرباء الدار",
+        "كود Python",
+        "قياس حرارة"
+      ],
+      "answer": 0,
+      "why": "الـPinout يحدّد مكان ووظائف broches."
+    },
+    {
+      "id": "lesson-2-q2",
+      "textAr": "GPIO 34 في ESP32 classique ينجم يخدم كشنوّة؟",
+      "term": "GPIO34",
+      "options": [
+        "Entrée فقط",
+        "Sortie فقط",
+        "Alimentation 5V",
+        "GND"
+      ],
+      "answer": 0,
+      "why": "GPIO34 input-only على ESP32 classique."
+    },
+    {
+      "id": "lesson-2-q3",
+      "textAr": "ينجم نربطوا 5V مباشرة بمدخل GPIO؟",
+      "term": "3.3 V",
+      "options": [
+        "لا، خطر",
+        "إي ديما",
+        "كان مع Wi-Fi",
+        "كان مع PWM"
+      ],
+      "answer": 0,
+      "why": "لازم نحترم حدّ 3,3 V للمدخل."
+    },
+    {
+      "id": "lesson-2-q4",
+      "textAr": "علاش نفضّلوا ADC1 مع Wi-Fi؟",
+      "term": "ADC1 / ADC2",
+      "options": [
+        "ADC2 ينجم يتعارض مع Wi-Fi",
+        "ADC1 يخرج 5V",
+        "ADC1 يشغّل Bluetooth",
+        "ADC1 يوقف CPU"
+      ],
+      "answer": 0,
+      "why": "على ESP32 classique استعمال Wi-Fi يقيّد ADC2."
+    },
+    {
+      "id": "lesson-2-q5",
+      "textAr": "شنوّة معنى GND؟",
+      "term": "GND",
+      "options": [
+        "الماسّة المشتركة",
+        "مدخل صوت",
+        "خروج UART",
+        "زر تشغيل"
+      ],
+      "answer": 0,
+      "why": "GND هي référence électrique متاع الدارة."
+    }
+  ],
+  "lesson-3": [
+    {
+      "id": "lesson-3-q1",
+      "textAr": "أنهي GPIO استعملناها للـLED؟",
+      "term": "GPIO 5",
+      "options": [
+        "GPIO 5",
+        "GPIO 34",
+        "GPIO 39",
+        "GPIO 36"
+      ],
+      "answer": 0,
+      "why": "في الدرس LED مربوطة بـGPIO5."
+    },
+    {
+      "id": "lesson-3-q2",
+      "textAr": "شنوّة نكتب باش نخليو GPIO 5 مخرج؟",
+      "term": "Pin.OUT",
+      "options": [
+        "Pin(5, Pin.OUT)",
+        "Pin(5, Pin.IN)",
+        "ADC(Pin(5))",
+        "DAC(Pin(5))"
+      ],
+      "answer": 0,
+      "why": "Pin.OUT تعمل broche كـsortie."
+    },
+    {
+      "id": "lesson-3-q3",
+      "textAr": "sleep(1) تعني شنوة؟",
+      "term": "Temporisation",
+      "options": [
+        "نستناو ثانية",
+        "نستناو 1 دقيقة",
+        "نطفيو LED",
+        "نقروا ADC"
+      ],
+      "answer": 0,
+      "why": "sleep(1) تعمل pause ثانية."
+    },
+    {
+      "id": "lesson-3-q4",
+      "textAr": "علاش نحطّوا résistance مع LED؟",
+      "term": "Résistance",
+      "options": [
+        "باش نحدّوا courant",
+        "باش نقيسوا Wi-Fi",
+        "باش نزيدوا voltage",
+        "باش نخزّنوا كود"
+      ],
+      "answer": 0,
+      "why": "résistance تحمي LED وتحدّ التيار."
+    },
+    {
+      "id": "lesson-3-q5",
+      "textAr": "شنوّة تخدم while True؟",
+      "term": "Boucle",
+      "options": [
+        "تعاود الأوامر ديما",
+        "تشغّل مرّة برك",
+        "تبدّل البروش",
+        "تحفظ ملف"
+      ],
+      "answer": 0,
+      "why": "حلقة while True تخلي البرنامج يعاود."
+    }
+  ],
+  "lesson-4": [
+    {
+      "id": "lesson-4-q1",
+      "textAr": "شنوّة يخدم ADC؟",
+      "term": "Analog to Digital Converter",
+      "options": [
+        "يحوّل tension لعدد",
+        "يخرج tension ثابتة",
+        "يبعث Wi-Fi",
+        "يشعل Buzzer"
+      ],
+      "answer": 0,
+      "why": "ADC entrée analogique وتحويل رقمي."
+    },
+    {
+      "id": "lesson-4-q2",
+      "textAr": "أنهي broche قرينا بيها pot؟",
+      "term": "GPIO 34",
+      "options": [
+        "GPIO 34",
+        "GPIO 5",
+        "GPIO 25",
+        "GPIO 19"
+      ],
+      "answer": 0,
+      "why": "GPIO 34 من ADC1."
+    },
+    {
+      "id": "lesson-4-q3",
+      "textAr": "القراءة 12 bits تنجم تكون بين شنوّة وشنوّة؟",
+      "term": "Résolution 12 bits",
+      "options": [
+        "0 إلى 4095",
+        "0 إلى 255",
+        "0 إلى 1",
+        "0 إلى 65535"
+      ],
+      "answer": 0,
+      "why": "2 للقوة 12 = 4096 قيم من 0 حتى 4095."
+    },
+    {
+      "id": "lesson-4-q4",
+      "textAr": "شنوّة فايدة ATTN_11DB؟",
+      "term": "Atténuation ADC",
+      "options": [
+        "يوسّع plage de mesure",
+        "يشغّل servo",
+        "يبدّل Wi-Fi",
+        "يكتب message"
+      ],
+      "answer": 0,
+      "why": "الـAtténuation تخلي plage de mesure أوسع."
+    },
+    {
+      "id": "lesson-4-q5",
+      "textAr": "Potentiomètre شنوة يبدّل؟",
+      "term": "Potentiomètre",
+      "options": [
+        "tension على المدخل",
+        "تردّد Wi-Fi",
+        "عدد broches",
+        "الحجم متاع الكارت"
+      ],
+      "answer": 0,
+      "why": "tension على pin الوسطانية تتبدّل."
+    }
+  ],
+  "lesson-5": [
+    {
+      "id": "lesson-5-q1",
+      "textAr": "DAC يعطينا شنوة؟",
+      "term": "DAC",
+      "options": [
+        "tension analogique",
+        "قراءة bouton",
+        "حركة PIR",
+        "connexion réseau"
+      ],
+      "answer": 0,
+      "why": "DAC يخرج tension analogique من قيمة رقمية."
+    },
+    {
+      "id": "lesson-5-q2",
+      "textAr": "DAC1 على ESP32 classique في أنهي GPIO؟",
+      "term": "DAC1",
+      "options": [
+        "GPIO 25",
+        "GPIO 34",
+        "GPIO 5",
+        "GPIO 18"
+      ],
+      "answer": 0,
+      "why": "DAC1 على GPIO25."
+    },
+    {
+      "id": "lesson-5-q3",
+      "textAr": "القيم متاع DAC بثمانية bits بين؟",
+      "term": "8 bits",
+      "options": [
+        "0 إلى 255",
+        "0 إلى 4095",
+        "0 إلى 1023",
+        "0 إلى 1"
+      ],
+      "answer": 0,
+      "why": "8 bits تعطينا 256 مستوى."
+    },
+    {
+      "id": "lesson-5-q4",
+      "textAr": "dac.write(128) تقريبًا شنوة يعمل؟",
+      "term": "DAC.write",
+      "options": [
+        "نصّ plage de tension",
+        "3,3 V بالضبط",
+        "يطفّي الـCPU",
+        "يقرى 128 V"
+      ],
+      "answer": 0,
+      "why": "128 تقريبًا وسط 0–255."
+    },
+    {
+      "id": "lesson-5-q5",
+      "textAr": "شنوّة الفرق بين DAC وADC؟",
+      "term": "DAC vs ADC",
+      "options": [
+        "DAC يخرج وADC يقرى",
+        "الزوز Wi-Fi",
+        "الزوز moteurs",
+        "ADC يخرج وDAC يقرى"
+      ],
+      "answer": 0,
+      "why": "ADC entrée / DAC sortie."
+    }
+  ],
+  "lesson-6": [
+    {
+      "id": "lesson-6-q1",
+      "textAr": "PWM يبدّل شنوة باش يتحكّم في luminosité؟",
+      "term": "Duty Cycle",
+      "options": [
+        "نسبة الوقت HIGH",
+        "عدد broches",
+        "اسم البرنامج",
+        "نوع الكابل"
+      ],
+      "answer": 0,
+      "why": "Duty cycle هي نسبة HIGH في كل période."
+    },
+    {
+      "id": "lesson-6-q2",
+      "textAr": "Duty Cycle 50% معناها شنوة؟",
+      "term": "Rapport cyclique",
+      "options": [
+        "نصّ الوقت HIGH",
+        "ديما HIGH",
+        "ديما LOW",
+        "50 Hz"
+      ],
+      "answer": 0,
+      "why": "50% معناها نصف الدورة HIGH."
+    },
+    {
+      "id": "lesson-6-q3",
+      "textAr": "led.duty(1023) في المثال شنوة تعمل؟",
+      "term": "PWM 10 bits",
+      "options": [
+        "أقصى إضاءة",
+        "تطفي LED",
+        "تقرى ADC",
+        "تغيّر Pin.IN"
+      ],
+      "answer": 0,
+      "why": "1023 تمثل duty maximal في API المستعملة."
+    },
+    {
+      "id": "lesson-6-q4",
+      "textAr": "GPIO34 تنجم تولّد PWM في ESP32 classique؟",
+      "term": "GPIO Input-only",
+      "options": [
+        "لا، خاطرها entrée فقط",
+        "إي، كيف GPIO5",
+        "إي كان في Thonny",
+        "إي كان مع Servo"
+      ],
+      "answer": 0,
+      "why": "GPIO34 ما تنجمش تكون sortie."
+    },
+    {
+      "id": "lesson-6-q5",
+      "textAr": "PWM هي نفس tension analogique حقيقية؟",
+      "term": "PWM vs DAC",
+      "options": [
+        "لا، نبضات numériques",
+        "إي نفس DAC",
+        "إي موجة DC ثابتة",
+        "إي خرج 12 V"
+      ],
+      "answer": 0,
+      "why": "PWM impulsions، موش DAC analogique متواصل."
+    }
+  ],
+  "lesson-7": [
+    {
+      "id": "lesson-7-q1",
+      "textAr": "شنوّة نستعملوا باش نقروا Potentiomètre؟",
+      "term": "ADC",
+      "options": [
+        "ADC",
+        "DAC",
+        "PWM",
+        "UART"
+      ],
+      "answer": 0,
+      "why": "ADC يقرأ tension analogique."
+    },
+    {
+      "id": "lesson-7-q2",
+      "textAr": "باش نخرّجوا tension analogique حقيقية نستعملوا؟",
+      "term": "DAC",
+      "options": [
+        "DAC",
+        "ADC",
+        "GPIO.IN",
+        "Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "DAC هو convertisseur numérique-analogique."
+    },
+    {
+      "id": "lesson-7-q3",
+      "textAr": "باش نبدّلوا ضو LED نفضّلوا؟",
+      "term": "PWM",
+      "options": [
+        "PWM",
+        "ADC",
+        "SPI",
+        "UART"
+      ],
+      "answer": 0,
+      "why": "PWM ينظّم luminosité."
+    },
+    {
+      "id": "lesson-7-q4",
+      "textAr": "باش نقروا bouton 0 أو 1 نستعملوا؟",
+      "term": "GPIO numérique",
+      "options": [
+        "GPIO en entrée",
+        "DAC فقط",
+        "PWM فقط",
+        "Bluetooth"
+      ],
+      "answer": 0,
+      "why": "bouton يتقرا بمدخل numérique."
+    },
+    {
+      "id": "lesson-7-q5",
+      "textAr": "أنهي واحد يخدم entrée analogique؟",
+      "term": "Entrée analogique",
+      "options": [
+        "ADC",
+        "DAC",
+        "PWM sortie",
+        "Pin.OUT"
+      ],
+      "answer": 0,
+      "why": "ADC مخصص لقراءة tension."
+    }
+  ],
+  "tp-01": [
+    {
+      "id": "tp-01-q1",
+      "textAr": "كي نخدموا rouge.on() شنوة يصير؟",
+      "term": "Pin.on()",
+      "options": [
+        "LED تشعل",
+        "LED تطفى",
+        "Buzzer يرن",
+        "ADC يتقرى"
+      ],
+      "answer": 0,
+      "why": "rouge.on() تشعل الـLED."
+    },
+    {
+      "id": "tp-01-q2",
+      "textAr": "في TP01 الأنهي GPIO استعملناها؟",
+      "term": "GPIO",
+      "options": [
+        "GPIO 5",
+        "GPIO 34",
+        "GPIO 18",
+        "GPIO 26"
+      ],
+      "answer": 0,
+      "why": "الحمراء مربوطة بـGPIO5."
+    },
+    {
+      "id": "tp-01-q3",
+      "textAr": "شنوّة نوع broche متاع LED؟",
+      "term": "Pin.OUT",
+      "options": [
+        "Sortie",
+        "Entrée analogique",
+        "Entrée فقط",
+        "I2C"
+      ],
+      "answer": 0,
+      "why": "نحتاجوا sortie numérique."
+    }
+  ],
+  "tp-02": [
+    {
+      "id": "tp-02-q1",
+      "textAr": "باش LED ترمش ديما، نستعملوا شنوّة؟",
+      "term": "Boucle",
+      "options": [
+        "while True",
+        "print فقط",
+        "ADC فقط",
+        "GND"
+      ],
+      "answer": 0,
+      "why": "الحلقة تعاود on/off."
+    },
+    {
+      "id": "tp-02-q2",
+      "textAr": "في المثال قداش تضوي LED قبل ما تطفى؟",
+      "term": "Temporisation",
+      "options": [
+        "1 ثانية",
+        "5 ثواني",
+        "2 دقايق",
+        "0 ثانية"
+      ],
+      "answer": 0,
+      "why": "sleep(1) يعمل ثانية."
+    },
+    {
+      "id": "tp-02-q3",
+      "textAr": "باش نطفيوا LED نكتبوا؟",
+      "term": "Pin.off()",
+      "options": [
+        "rouge.off()",
+        "rouge.on()",
+        "rouge.read()",
+        "rouge.duty(1)"
+      ],
+      "answer": 0,
+      "why": "off() تطفي sortie."
+    }
+  ],
+  "tp-03": [
+    {
+      "id": "tp-03-q1",
+      "textAr": "باش نعرضوا الحالة في Console، شنوة نستعملوا؟",
+      "term": "print()",
+      "options": [
+        "print()",
+        "PWM()",
+        "ADC()",
+        "Pin.IN"
+      ],
+      "answer": 0,
+      "why": "print يعرض نص في console."
+    },
+    {
+      "id": "tp-03-q2",
+      "textAr": "كي تشتعل LED شنوّة message نطبعوا؟",
+      "term": "Console",
+      "options": [
+        "LED ON",
+        "LED OFF",
+        "ADC 0",
+        "STOP"
+      ],
+      "answer": 0,
+      "why": "في TP03 نطبعوا LED ON."
+    },
+    {
+      "id": "tp-03-q3",
+      "textAr": "كي تطفى LED نكتبوا؟",
+      "term": "Console",
+      "options": [
+        "LED OFF",
+        "LED ON",
+        "SERVO 90",
+        "DAC 25"
+      ],
+      "answer": 0,
+      "why": "LED OFF عند الإطفاء."
+    }
+  ],
+  "tp-04": [
+    {
+      "id": "tp-04-q1",
+      "textAr": "باش نقراو الزر نستعملوا؟",
+      "term": "Bouton",
+      "options": [
+        "Pin.IN",
+        "Pin.OUT",
+        "DAC",
+        "PWM"
+      ],
+      "answer": 0,
+      "why": "البوتون input."
+    },
+    {
+      "id": "tp-04-q2",
+      "textAr": "GPIO 18 متاع bouton يتربط بـ3.3V ولا 5V؟",
+      "term": "PULL_DOWN",
+      "options": [
+        "3.3 V",
+        "5 V",
+        "12 V",
+        "24 V"
+      ],
+      "answer": 0,
+      "why": "بـPULL_DOWN نربطوا bouton بـ3.3 V."
+    },
+    {
+      "id": "tp-04-q3",
+      "textAr": "وقت نضغطوا الزر شنوة تعمل LED؟",
+      "term": "if / else",
+      "options": [
+        "تشعل",
+        "تطفى",
+        "تبدّل لونها",
+        "تزيد Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "TP04: appuyé = ON."
+    }
+  ],
+  "tp-05": [
+    {
+      "id": "tp-05-q1",
+      "textAr": "LED الخضراء مربوطة بأنهي GPIO؟",
+      "term": "GPIO",
+      "options": [
+        "GPIO 19",
+        "GPIO 34",
+        "GPIO 25",
+        "GPIO 35"
+      ],
+      "answer": 0,
+      "why": "في TP05 الخضراء على GPIO19."
+    },
+    {
+      "id": "tp-05-q2",
+      "textAr": "وقت الزر مضغوط، شكون يشعل؟",
+      "term": "Deux LEDs",
+      "options": [
+        "الخضراء",
+        "الحمراء",
+        "الزوز",
+        "حتى واحدة"
+      ],
+      "answer": 0,
+      "why": "الخضراء ON والحمراء OFF."
+    },
+    {
+      "id": "tp-05-q3",
+      "textAr": "ينجموا الزوز LEDs يتشعلوا في نفس اللحظة في TP05؟",
+      "term": "Alternance",
+      "options": [
+        "لا",
+        "إي ديما",
+        "كان مع Wi-Fi",
+        "كان مع ADC"
+      ],
+      "answer": 0,
+      "why": "TP05 يعمل alternance."
+    }
+  ],
+  "tp-06": [
+    {
+      "id": "tp-06-q1",
+      "textAr": "Potentiomètre وين نقراوه؟",
+      "term": "ADC",
+      "options": [
+        "GPIO 34",
+        "GPIO 19",
+        "GPIO 18",
+        "GPIO 5"
+      ],
+      "answer": 0,
+      "why": "GPIO34 ADC1."
+    },
+    {
+      "id": "tp-06-q2",
+      "textAr": "أنهي أمر يقرى القيمة؟",
+      "term": "ADC.read()",
+      "options": [
+        "pot.read()",
+        "pot.on()",
+        "pot.off()",
+        "pot.write()"
+      ],
+      "answer": 0,
+      "why": "pot.read() ترجع valeur ADC."
+    },
+    {
+      "id": "tp-06-q3",
+      "textAr": "شنوّة نطاق قيمة ADC 12 bits؟",
+      "term": "12 bits",
+      "options": [
+        "0–4095",
+        "0–255",
+        "0–100",
+        "0–1"
+      ],
+      "answer": 0,
+      "why": "12 bits: 0 حتى 4095."
+    }
+  ],
+  "tp-07": [
+    {
+      "id": "tp-07-q1",
+      "textAr": "قدّاش seuil في TP07؟",
+      "term": "Seuil",
+      "options": [
+        "2000",
+        "100",
+        "5000",
+        "255"
+      ],
+      "answer": 0,
+      "why": "الـSeuil هو 2000."
+    },
+    {
+      "id": "tp-07-q2",
+      "textAr": "كي الزر appuyé وADC=2500، شكون تشعل؟",
+      "term": "Condition",
+      "options": [
+        "LED verte",
+        "LED rouge",
+        "حتى LED",
+        "Buzzer فقط"
+      ],
+      "answer": 0,
+      "why": "2500 ≥ 2000."
+    },
+    {
+      "id": "tp-07-q3",
+      "textAr": "كي الزر موش appuyé، شكون تشعل؟",
+      "term": "Bouton",
+      "options": [
+        "LED rouge",
+        "LED verte",
+        "الزوز",
+        "ولا واحدة"
+      ],
+      "answer": 0,
+      "why": "الزر مرخّي يفرض الحمراء."
+    }
+  ],
+  "tp-08": [
+    {
+      "id": "tp-08-q1",
+      "textAr": "ADC أكبر من 3000 والزر مضغوط، شنوة تعمل الخضراء؟",
+      "term": "PWM",
+      "options": [
+        "ضوها أقصى حد",
+        "تطفى",
+        "تبدّل لحمرا",
+        "تعمل 3 bips"
+      ],
+      "answer": 0,
+      "why": "فوق 3000 duty maximal."
+    },
+    {
+      "id": "tp-08-q2",
+      "textAr": "من 1000 حتى 3000 نستعملوا شنوة لتغيير الضو؟",
+      "term": "PWM",
+      "options": [
+        "duty()",
+        "print() فقط",
+        "Pin.IN",
+        "DAC(Pin(34))"
+      ],
+      "answer": 0,
+      "why": "نعدّل duty."
+    },
+    {
+      "id": "tp-08-q3",
+      "textAr": "ADC أقل من 1000، شنوّة يصير؟",
+      "term": "Seuil",
+      "options": [
+        "الخضراء ترمش",
+        "الزوز يضويو ديما",
+        "يظهر OLED",
+        "يعمل Servo"
+      ],
+      "answer": 0,
+      "why": "TP08 تحت 1000: clignotement."
+    }
+  ],
+  "tp-09": [
+    {
+      "id": "tp-09-q1",
+      "textAr": "قدّاش بيس يعمل Buzzer وقت الإنذار؟",
+      "term": "Buzzer",
+      "options": [
+        "3 bips",
+        "1 bip",
+        "5 bips",
+        "10 bips"
+      ],
+      "answer": 0,
+      "why": "الإنذار 3 بيس."
+    },
+    {
+      "id": "tp-09-q2",
+      "textAr": "الإنذار يعاود طول الوقت وقت الشرط ثابت؟",
+      "term": "Mémoire d’état",
+      "options": [
+        "لا، مرة واحدة",
+        "إي كل ثانية",
+        "إي 10 مرات",
+        "إي مع Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "variable état تمنع التكرار."
+    },
+    {
+      "id": "tp-09-q3",
+      "textAr": "شنوّة seuil متاع الإنذار؟",
+      "term": "Seuil ADC",
+      "options": [
+        "ADC > 3000",
+        "ADC < 100",
+        "ADC = 0",
+        "ADC > 4095"
+      ],
+      "answer": 0,
+      "why": "فوق 3000 مع الزر مضغوط."
+    }
+  ],
+  "tp-10": [
+    {
+      "id": "tp-10-q1",
+      "textAr": "قدّاش زاوية في TP10؟",
+      "term": "Servo angles",
+      "options": [
+        "0°, 45°, 90°, 180°",
+        "0°, 30°, 60°, 90°",
+        "20°, 40°, 80°, 100°",
+        "10°, 20°, 30°, 40°"
+      ],
+      "answer": 0,
+      "why": "الـServo عندو أربع positions."
+    },
+    {
+      "id": "tp-10-q2",
+      "textAr": "كي الزر مرخّي الباب يكون؟",
+      "term": "Servo",
+      "options": [
+        "مغلوق 0°",
+        "مفتوح 180°",
+        "90°",
+        "45°"
+      ],
+      "answer": 0,
+      "why": "button relâché يسكر الباب."
+    },
+    {
+      "id": "tp-10-q3",
+      "textAr": "شنوّة لازم في تغذية SG90؟",
+      "term": "Alimentation Servo",
+      "options": [
+        "5V مناسبة وGND مشترك",
+        "GPIO يمد 12V",
+        "ربط 220V",
+        "بلا GND"
+      ],
+      "answer": 0,
+      "why": "Servo تغذية خارجية مناسبة مع masse مشتركة."
+    }
+  ],
+  "tp-11": [
+    {
+      "id": "tp-11-q1",
+      "textAr": "شنوّة تقيس LDR؟",
+      "term": "LDR",
+      "options": [
+        "الضو",
+        "الرطوبة",
+        "الحرارة",
+        "المسافة"
+      ],
+      "answer": 0,
+      "why": "LDR مقاومتها تتبدّل مع الضوء."
+    },
+    {
+      "id": "tp-11-q2",
+      "textAr": "شنوّة زوز حالات نعرضوا في Console؟",
+      "term": "Jour / Nuit",
+      "options": [
+        "JOUR / NUIT",
+        "ON / OFF",
+        "START / END",
+        "UP / DOWN"
+      ],
+      "answer": 0,
+      "why": "نميّز بين النهار والليل."
+    },
+    {
+      "id": "tp-11-q3",
+      "textAr": "LDR تقرا analogique عادة عبر؟",
+      "term": "Pont diviseur",
+      "options": [
+        "ADC مع pont diviseur",
+        "DAC",
+        "PWM sortie",
+        "UART"
+      ],
+      "answer": 0,
+      "why": "نقيسوا voltage متغيّر."
+    }
+  ],
+  "tp-12": [
+    {
+      "id": "tp-12-q1",
+      "textAr": "شنوّة يكشف PIR؟",
+      "term": "PIR",
+      "options": [
+        "الحركة",
+        "الرطوبة",
+        "جهد DAC",
+        "Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "PIR détecteur de mouvement."
+    },
+    {
+      "id": "tp-12-q2",
+      "textAr": "وقتاش يصير إنذار PIR في TP12؟",
+      "term": "Condition double",
+      "options": [
+        "حركة + ليل",
+        "نهار بلا حركة",
+        "حرارة 10°",
+        "زر برك"
+      ],
+      "answer": 0,
+      "why": "لازم mouvement وNUIT."
+    },
+    {
+      "id": "tp-12-q3",
+      "textAr": "قدّاش يعمل Buzzer؟",
+      "term": "Buzzer",
+      "options": [
+        "3 bips",
+        "7 bips",
+        "1 seconde صامت",
+        "بلا صوت"
+      ],
+      "answer": 0,
+      "why": "3 bips عند trigger."
+    }
+  ],
+  "tp-13": [
+    {
+      "id": "tp-13-q1",
+      "textAr": "DHT22 يعطينا شنوّة؟",
+      "term": "DHT22",
+      "options": [
+        "حرارة ورطوبة",
+        "ضوء ومسافة",
+        "Wi-Fi",
+        "فولتاج وبروتوكول"
+      ],
+      "answer": 0,
+      "why": "DHT22 température/humidité."
+    },
+    {
+      "id": "tp-13-q2",
+      "textAr": "وقتاش نكتبوا TEMPERATURE ELEVEE؟",
+      "term": "Seuil température",
+      "options": [
+        "T > 30°C",
+        "T < 0°C",
+        "T = 5°C",
+        "T > 100°C"
+      ],
+      "answer": 0,
+      "why": "في TP13 seuil هو 30°C."
+    },
+    {
+      "id": "tp-13-q3",
+      "textAr": "كل قداش نقراو تقريبًا capteur؟",
+      "term": "Période de lecture",
+      "options": [
+        "كل زوز ثواني",
+        "كل 30 دقيقة",
+        "كل ثانية 0.001",
+        "مرّة في نهار"
+      ],
+      "answer": 0,
+      "why": "تقريبًا كل ثانيتين."
+    }
+  ],
+  "tp-14": [
+    {
+      "id": "tp-14-q1",
+      "textAr": "بأي bus نربطوا OLED؟",
+      "term": "I2C",
+      "options": [
+        "I2C",
+        "ADC",
+        "DAC",
+        "PWM"
+      ],
+      "answer": 0,
+      "why": "OLED تتصل عبر I2C."
+    },
+    {
+      "id": "tp-14-q2",
+      "textAr": "شنوّة زوز lignes في I2C؟",
+      "term": "SDA / SCL",
+      "options": [
+        "SDA وSCL",
+        "TX وRX فقط",
+        "GND وVIN فقط",
+        "LED وServo"
+      ],
+      "answer": 0,
+      "why": "I2C فيه SDA وSCL."
+    },
+    {
+      "id": "tp-14-q3",
+      "textAr": "شنوّة نعرضوا على OLED في TP14؟",
+      "term": "Affichage",
+      "options": [
+        "ADC وLDR وTempérature وHumidité وPIR",
+        "Wi-Fi فقط",
+        "اسم المشروع فقط",
+        "PWM فقط"
+      ],
+      "answer": 0,
+      "why": "تجمّع معطيات maison."
+    }
+  ],
+  "tp-15": [
+    {
+      "id": "tp-15-q1",
+      "textAr": "TP15 علاش نخدموه؟",
+      "term": "Validation",
+      "options": [
+        "نختبروا المشروع كامل",
+        "نتعلّموا Wi-Fi فقط",
+        "نحذفوا الكود",
+        "نبدّلوا ESP32"
+      ],
+      "answer": 0,
+      "why": "آخر TP للـvalidation."
+    },
+    {
+      "id": "tp-15-q2",
+      "textAr": "شنوّة نعملوا كي نلقاو غلطة؟",
+      "term": "Compte rendu",
+      "options": [
+        "نوثّقوها وكيفاش صلّحناها",
+        "نتجاهلوها",
+        "نخبيوها",
+        "نبدّلوا الدرس"
+      ],
+      "answer": 0,
+      "why": "نكتبوا erreurs et corrections."
+    },
+    {
+      "id": "tp-15-q3",
+      "textAr": "لازم نجرّبوا شنوة؟",
+      "term": "Check-list",
+      "options": [
+        "LED وButton وCapteurs وServo وOLED",
+        "LED برك",
+        "OLED برك",
+        "Wi-Fi برك"
+      ],
+      "answer": 0,
+      "why": "اختبارات على جميع الأجزاء."
+    }
+  ],
+  "pro-01": [
+    {
+      "id": "pro-01-q1",
+      "textAr": "ESP32 هي شنوّة؟ / Qu’est-ce que l’ESP32 ?",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "Microcontrôleur programmable",
+        "Écran LCD",
+        "Résistance",
+        "Batterie"
+      ],
+      "answer": 0,
+      "why": "ESP32 تنفّذ البرنامج وتتحكم في المداخل والمخارج."
+    },
+    {
+      "id": "pro-01-q2",
+      "textAr": "باش نكتبوا MicroPython نستعملوا شنوّة؟",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "Thonny",
+        "PowerPoint",
+        "Paint",
+        "Word"
+      ],
+      "answer": 0,
+      "why": "Thonny محرّر بسيط مناسب للـESP32."
+    },
+    {
+      "id": "pro-01-q3",
+      "textAr": "Wi-Fi في ESP32 ينجم يخدم على شنوّة؟",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "Communication sans fil",
+        "Alimentation 12 V",
+        "Résistance LED",
+        "Mesure du poids"
+      ],
+      "answer": 0,
+      "why": "Wi-Fi خاصّ بالاتصال اللاسلكي."
+    }
+  ],
+  "pro-02": [
+    {
+      "id": "pro-02-q1",
+      "textAr": "GPIO34 في ESP32 classique ينجم يكون؟",
+      "term": "Carte ESP32 et pinout",
+      "options": [
+        "Entrée uniquement",
+        "Sortie PWM",
+        "Alimentation USB",
+        "GND"
+      ],
+      "answer": 0,
+      "why": "GPIO34 input-only على ESP32 classique."
+    },
+    {
+      "id": "pro-02-q2",
+      "textAr": "GND تعني شنوّة؟",
+      "term": "Carte ESP32 et pinout",
+      "options": [
+        "Référence 0 V",
+        "Sortie 12 V",
+        "Wi-Fi",
+        "UART"
+      ],
+      "answer": 0,
+      "why": "GND هي المرجع المشترك للدارة."
+    },
+    {
+      "id": "pro-02-q3",
+      "textAr": "نجم نربط 5 V مباشرة بـGPIO ؟",
+      "term": "Carte ESP32 et pinout",
+      "options": [
+        "Non",
+        "Oui toujours",
+        "Oui en Wi-Fi",
+        "Oui avec PWM"
+      ],
+      "answer": 0,
+      "why": "GPIO ESP32 عادة 3,3 V، 5 V مباشرة خطر."
+    }
+  ],
+  "pro-03": [
+    {
+      "id": "pro-03-q1",
+      "textAr": "Pin.OUT تستعمل في شنوّة؟",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Commander une sortie",
+        "Lire une tension analogique",
+        "Mesurer le Wi-Fi",
+        "Installer Python"
+      ],
+      "answer": 0,
+      "why": "Pin.OUT تستعمل للتحكّم في المخرجات."
+    },
+    {
+      "id": "pro-03-q2",
+      "textAr": "led.on() تعمل شنوّة؟",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Met le GPIO à 1",
+        "Éteint le Wi-Fi",
+        "Lit un capteur",
+        "Arrête le programme"
+      ],
+      "answer": 0,
+      "why": "led.on() تخلي الـsortie على HIGH."
+    },
+    {
+      "id": "pro-03-q3",
+      "textAr": "علاش نحطّوا résistance مع LED ؟",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Limiter le courant",
+        "Amplifier le Wi-Fi",
+        "Ajouter de la mémoire",
+        "Changer le langage"
+      ],
+      "answer": 0,
+      "why": "المقاومة تحدّ التيار وتحمي LED."
+    }
+  ],
+  "pro-04": [
+    {
+      "id": "pro-04-q1",
+      "textAr": "ADC يعمل شنوّة؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "Convertit une tension en nombre",
+        "Écrit un fichier",
+        "Commande un servo",
+        "Affiche une image"
+      ],
+      "answer": 0,
+      "why": "ADC يحوّل signal analogique إلى valeur numérique."
+    },
+    {
+      "id": "pro-04-q2",
+      "textAr": "Potentiomètre نربطوا وسطه في المثال على؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "GPIO34",
+        "GPIO5",
+        "EN",
+        "GND seulement"
+      ],
+      "answer": 0,
+      "why": "الـcurseur يتربط بـGPIO34."
+    },
+    {
+      "id": "pro-04-q3",
+      "textAr": "باش نقروا ADC نستعملوا؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "pot.read()",
+        "pot.on()",
+        "pot.write(255)",
+        "pot.connect()"
+      ],
+      "answer": 0,
+      "why": "read() ترجّع القراءة."
+    }
+  ],
+  "pro-05": [
+    {
+      "id": "pro-05-q1",
+      "textAr": "DAC يعمل شنوّة؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "Convertit un nombre en tension analogique",
+        "Lit un bouton",
+        "Capte le Wi-Fi",
+        "Alimente à 12 V"
+      ],
+      "answer": 0,
+      "why": "DAC يعمل conversion numérique-analogique."
+    },
+    {
+      "id": "pro-05-q2",
+      "textAr": "GPIO متاع DAC في ESP32 classique؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "GPIO25",
+        "GPIO34",
+        "GPIO5",
+        "GPIO18"
+      ],
+      "answer": 0,
+      "why": "DAC1 في classique على GPIO25."
+    },
+    {
+      "id": "pro-05-q3",
+      "textAr": "DAC sur ESP32-C3 موجود كيف ESP32 classique؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "Non, pas le même périphérique",
+        "Oui sur GPIO25",
+        "Oui sur GND",
+        "Oui sur EN"
+      ],
+      "answer": 0,
+      "why": "لازم نثبت الـvariante، DAC موش متوفر في الكل."
+    }
+  ],
+  "pro-06": [
+    {
+      "id": "pro-06-q1",
+      "textAr": "PWM تغيّر شنوّة في LED؟",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "Luminosité apparente",
+        "Adresse IP",
+        "Tension USB",
+        "Code PIN"
+      ],
+      "answer": 0,
+      "why": "PWM تبدّل الإضاءة باستعمال Duty."
+    },
+    {
+      "id": "pro-06-q2",
+      "textAr": "duty(0) يخلي LED ؟",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "Éteinte",
+        "Toujours brillante",
+        "En mode Wi-Fi",
+        "Rouge فقط"
+      ],
+      "answer": 0,
+      "why": "Duty 0 يعني وقت ON صفر."
+    },
+    {
+      "id": "pro-06-q3",
+      "textAr": "PWM هي نفس DAC؟",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "Non, impulsions vs sortie analogique",
+        "Oui toujours",
+        "PWM entrée فقط",
+        "DAC خاص Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "PWM إشارة رقمية متقطعة، DAC خرج analogique."
+    }
+  ],
+  "pro-07": [
+    {
+      "id": "pro-07-q1",
+      "textAr": "نقروا Potentiomètre باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "ADC",
+        "DAC",
+        "PWM",
+        "UART"
+      ],
+      "answer": 0,
+      "why": "Pot يعطي analogique وADC تقراه."
+    },
+    {
+      "id": "pro-07-q2",
+      "textAr": "نبدّلوا luminosité LED باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "PWM",
+        "SPI",
+        "RTC",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "PWM تسمح بتغيير Duty."
+    },
+    {
+      "id": "pro-07-q3",
+      "textAr": "نشعلوا LED ON/OFF باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "GPIO OUT",
+        "ADC seul",
+        "I2C obligatoire",
+        "Bluetooth obligatoire"
+      ],
+      "answer": 0,
+      "why": "GPIO OUT تتحكم في HIGH/LOW."
+    }
+  ],
+  "pro-08": [
+    {
+      "id": "pro-08-q1",
+      "textAr": "I2C عندها شحال من خط أساسي؟",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "Deux: SDA et SCL",
+        "Quatre sorties PWM",
+        "Un seul GND",
+        "Huit lignes data"
+      ],
+      "answer": 0,
+      "why": "SDA données وSCL horloge."
+    },
+    {
+      "id": "pro-08-q2",
+      "textAr": "i2c.scan() ترجع؟",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "Adresses détectées",
+        "Code Python",
+        "Liste Wi-Fi",
+        "Température مباشرة"
+      ],
+      "answer": 0,
+      "why": "scan() تكتشف الأجهزة المتصلة."
+    },
+    {
+      "id": "pro-08-q3",
+      "textAr": "SDA تعني؟",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "Ligne des données",
+        "Alimentation 12 V",
+        "Sortie analogique",
+        "Reset"
+      ],
+      "answer": 0,
+      "why": "SDA هي Data."
+    }
+  ],
+  "pro-09": [
+    {
+      "id": "pro-09-q1",
+      "textAr": "SCK هي شنوّة؟",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Horloge SPI",
+        "Sortie DAC",
+        "Broche EN",
+        "Capteur analogique"
+      ],
+      "answer": 0,
+      "why": "SCK تعطي Clock."
+    },
+    {
+      "id": "pro-09-q2",
+      "textAr": "MOSI نقل بيانات في اتجاه؟",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Maître vers périphérique",
+        "Périphérique vers maître",
+        "GND vers 3V3",
+        "LED vers masse"
+      ],
+      "answer": 0,
+      "why": "MOSI Master Out Slave In."
+    },
+    {
+      "id": "pro-09-q3",
+      "textAr": "CS تستعمل غالبًا في؟",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Sélectionner un périphérique",
+        "Réinitialiser le Wi-Fi",
+        "Mesurer ADC",
+        "Alimenter 5 V"
+      ],
+      "answer": 0,
+      "why": "CS تختار module من bus SPI."
+    }
+  ],
+  "pro-10": [
+    {
+      "id": "pro-10-q1",
+      "textAr": "TX في UART تعمل شنوّة؟",
+      "term": "UART — communication série",
+      "options": [
+        "Transmettre",
+        "Recevoir",
+        "Mesurer tension",
+        "Alimenter moteur"
+      ],
+      "answer": 0,
+      "why": "SCK est la ligne d’horloge de la liaison SPI."
+    },
+    {
+      "id": "pro-10-q2",
+      "textAr": "UART TX عادة يتربط بـ؟",
+      "term": "UART — communication série",
+      "options": [
+        "RX de l’autre appareil",
+        "TX de l’autre appareil",
+        "5 V مباشرة",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "TX من جهة يتربط RX من الجهة الأخرى."
+    },
+    {
+      "id": "pro-10-q3",
+      "textAr": "Baudrate لازم يكون؟",
+      "term": "UART — communication série",
+      "options": [
+        "Identique des deux côtés",
+        "Toujours zéro",
+        "Seulement côté ESP32",
+        "Peu important"
+      ],
+      "answer": 0,
+      "why": "نفس سرعة الاتصال مطلوبة."
+    }
+  ],
+  "pro-11": [
+    {
+      "id": "pro-11-q1",
+      "textAr": "OLED I2C عادة يستعمل؟",
+      "term": "Résumé I2C, SPI et UART",
+      "options": [
+        "SDA + SCL",
+        "TX + RX",
+        "DAC",
+        "PWM فقط"
+      ],
+      "answer": 0,
+      "why": "I2C بالزوج SDA/SCL."
+    },
+    {
+      "id": "pro-11-q2",
+      "textAr": "Carte SD SPI تستعمل غالبًا؟",
+      "term": "Résumé I2C, SPI et UART",
+      "options": [
+        "SPI",
+        "ADC",
+        "Touch",
+        "RTC"
+      ],
+      "answer": 0,
+      "why": "SD modules proposent souvent SPI."
+    },
+    {
+      "id": "pro-11-q3",
+      "textAr": "GPS avec TX/RX يستعمل؟",
+      "term": "Résumé I2C, SPI et UART",
+      "options": [
+        "UART",
+        "DAC",
+        "PWM",
+        "Strapping"
+      ],
+      "answer": 0,
+      "why": "GPS UART يتواصل عبر TX/RX."
+    }
+  ],
+  "pro-12": [
+    {
+      "id": "pro-12-q1",
+      "textAr": "TouchPad يكتشف؟",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Variation de capacité",
+        "Vitesse Wi-Fi",
+        "Courant moteur",
+        "Température USB"
+      ],
+      "answer": 0,
+      "why": "Touch Capacitif."
+    },
+    {
+      "id": "pro-12-q2",
+      "textAr": "أوّل حاجة نعملوها لاختيار seuil؟",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Mesurer sans et avec toucher",
+        "Mettre 5 V sur Touch",
+        "Supprimer GND",
+        "Augmenter baudrate"
+      ],
+      "answer": 0,
+      "why": "الـcalibration تبدأ بالقراءات."
+    },
+    {
+      "id": "pro-12-q3",
+      "textAr": "Touch موجود بنفس الطريقة في كل ESP32؟",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Non",
+        "Oui toujours",
+        "Uniquement sur Arduino",
+        "Seulement dans l’ordinateur"
+      ],
+      "answer": 0,
+      "why": "الـvariante تغيّر الدعم."
+    }
+  ],
+  "pro-13": [
+    {
+      "id": "pro-13-q1",
+      "textAr": "RTC GPIO يستعملوها في شنوّة؟",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Fonctions basse consommation",
+        "Alimenter moteur 12 V",
+        "Créer DAC sur PC",
+        "Afficher PNG"
+      ],
+      "answer": 0,
+      "why": "RTC domain للـlow power."
+    },
+    {
+      "id": "pro-13-q2",
+      "textAr": "Deep sleep معناها؟",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Mode de très faible consommation",
+        "Wi-Fi plus rapide",
+        "GPIO5 sortie فقط",
+        "Code compilé"
+      ],
+      "answer": 0,
+      "why": "Deep sleep يقتصد الطاقة."
+    },
+    {
+      "id": "pro-13-q3",
+      "textAr": "قبل deep sleep مهم نعرفوا؟",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Comment réveiller la carte",
+        "Couleur LED",
+        "Nom du fichier Word",
+        "Taille écran"
+      ],
+      "answer": 0,
+      "why": "لازم prévoir réveil."
+    }
+  ],
+  "pro-14": [
+    {
+      "id": "pro-14-q1",
+      "textAr": "Strapping Pins تأثّر في؟",
+      "term": "Strapping Pins — démarrage",
+      "options": [
+        "Mode de démarrage",
+        "Luminosité شاشة",
+        "Taille programme Word",
+        "Note Quiz"
+      ],
+      "answer": 0,
+      "why": "Strapping تحدّد boot."
+    },
+    {
+      "id": "pro-14-q2",
+      "textAr": "زرّ BOOT في ESP32 classique مرتبط غالبًا بـ؟",
+      "term": "Strapping Pins — démarrage",
+      "options": [
+        "GPIO0",
+        "GPIO34",
+        "GPIO25 DAC",
+        "GND دائمًا"
+      ],
+      "answer": 0,
+      "why": "GPIO0 مهم في mode téléchargement."
+    },
+    {
+      "id": "pro-14-q3",
+      "textAr": "نركّبوا circuit على strapping pin من غير تحقق؟",
+      "term": "Strapping Pins — démarrage",
+      "options": [
+        "Non",
+        "Oui, toujours",
+        "Oui en 12 V",
+        "Oui مع moteur"
+      ],
+      "answer": 0,
+      "why": "يلزم نعرفوا niveau au boot."
+    }
+  ],
+  "pro-15": [
+    {
+      "id": "pro-15-q1",
+      "textAr": "Logique GPIO ESP32 عادة؟",
+      "term": "Power Pins — alimentation",
+      "options": [
+        "3,3 V",
+        "12 V",
+        "24 V",
+        "220 V"
+      ],
+      "answer": 0,
+      "why": "الـGPIO عادة 3,3 V."
+    },
+    {
+      "id": "pro-15-q2",
+      "textAr": "GND في الدارة؟",
+      "term": "Power Pins — alimentation",
+      "options": [
+        "Masse commune",
+        "Sortie PWM",
+        "UART RX",
+        "Batterie externe"
+      ],
+      "answer": 0,
+      "why": "GND référence مشتركة."
+    },
+    {
+      "id": "pro-15-q3",
+      "textAr": "موتور DC نربطوه مباشرة على GPIO؟",
+      "term": "Power Pins — alimentation",
+      "options": [
+        "Non, utiliser un driver",
+        "Oui toujours",
+        "Uniquement la nuit",
+        "Oui مع I2C"
+      ],
+      "answer": 0,
+      "why": "GPIO ما تعطيش courant moteur."
+    }
+  ],
+  "pro-16": [
+    {
+      "id": "pro-16-q1",
+      "textAr": "EN معناها؟",
+      "term": "Enable Pin — EN",
+      "options": [
+        "Activation de la puce",
+        "Analog Read",
+        "Moteur driver",
+        "Bluetooth"
+      ],
+      "answer": 0,
+      "why": "EN أو CHIP_PU للتحكّم في activation."
+    },
+    {
+      "id": "pro-16-q2",
+      "textAr": "Bouton RESET يعمل؟",
+      "term": "Enable Pin — EN",
+      "options": [
+        "Redémarrer l’ESP32",
+        "Changer le Wi-Fi",
+        "Modifier DAC",
+        "Supprimer MicroPython"
+      ],
+      "answer": 0,
+      "why": "Reset يعاود تشغيل الكارتة."
+    },
+    {
+      "id": "pro-16-q3",
+      "textAr": "EN لازم نربطوه بـ12V؟",
+      "term": "Enable Pin — EN",
+      "options": [
+        "Non",
+        "Oui",
+        "Uniquement avec OLED",
+        "Quand LED rouge"
+      ],
+      "answer": 0,
+      "why": "EN خط حسّاس، 12 V خطر."
+    }
+  ],
+  "pro-17": [
+    {
+      "id": "pro-17-q1",
+      "textAr": "EN مرتبطة بـ؟",
+      "term": "Résumé des fonctions avancées",
+      "options": [
+        "Activation / reset",
+        "Lecture ADC",
+        "I2C SDA",
+        "Servo PWM"
+      ],
+      "answer": 0,
+      "why": "EN activation."
+    },
+    {
+      "id": "pro-17-q2",
+      "textAr": "Strapping مرتبطة بـ؟",
+      "term": "Résumé des fonctions avancées",
+      "options": [
+        "Boot",
+        "Température",
+        "Affichage OLED",
+        "Wi-Fi DNS"
+      ],
+      "answer": 0,
+      "why": "Strapping au démarrage."
+    },
+    {
+      "id": "pro-17-q3",
+      "textAr": "Touch مرتبطة بـ؟",
+      "term": "Résumé des fonctions avancées",
+      "options": [
+        "Capacité tactile",
+        "Sortie DAC",
+        "Alimentation USB",
+        "LED série"
+      ],
+      "answer": 0,
+      "why": "Capteur tactile."
+    }
+  ],
+  "pro-18": [
+    {
+      "id": "pro-18-q1",
+      "textAr": "Pin.PULL_DOWN تخدم شنوّة؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "Stabiliser l’entrée à 0",
+        "Créer du Wi-Fi",
+        "Allumer OLED",
+        "Régler PWM"
+      ],
+      "answer": 0,
+      "why": "Pull-down يمنع input float."
+    },
+    {
+      "id": "pro-18-q2",
+      "textAr": "bouton.value() تقرى؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "0 ou 1",
+        "Une tension continue directe",
+        "Une photo",
+        "Adresse IP"
+      ],
+      "answer": 0,
+      "why": "Digital input 0/1."
+    },
+    {
+      "id": "pro-18-q3",
+      "textAr": "توصيل bouton في المثال؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "GPIO18 vers 3V3 à l’appui",
+        "GPIO18 vers 12 V",
+        "GPIO5 vers USB",
+        "EN vers 5 V"
+      ],
+      "answer": 0,
+      "why": "Button HIGH عبر 3V3."
+    }
+  ],
+  "pro-19": [
+    {
+      "id": "pro-19-q1",
+      "textAr": "Seuil معناها؟",
+      "term": "Lecture des capteurs analogiques",
+      "options": [
+        "Valeur limite pour décision",
+        "Nouveau protocole",
+        "Port USB",
+        "Horloge SPI"
+      ],
+      "answer": 0,
+      "why": "Seuil حدّ نقارنوا به."
+    },
+    {
+      "id": "pro-19-q2",
+      "textAr": "capteur.read() تعطينا؟",
+      "term": "Lecture des capteurs analogiques",
+      "options": [
+        "Valeur ADC",
+        "Courant moteur",
+        "Photo",
+        "Code HTML"
+      ],
+      "answer": 0,
+      "why": "ADC lecture."
+    },
+    {
+      "id": "pro-19-q3",
+      "textAr": "ADC مع Wi-Fi في ESP32 classique نفضّلوا؟",
+      "term": "Lecture des capteurs analogiques",
+      "options": [
+        "ADC1",
+        "ADC2 obligatoire",
+        "DAC",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "ADC2 peut entrer en conflit avec Wi-Fi."
+    }
+  ],
+  "pro-20": [
+    {
+      "id": "pro-20-q1",
+      "textAr": "Servo القياسي يستعمل غالبًا fréquence؟",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "Environ 50 Hz",
+        "10000 Hz",
+        "0 Hz",
+        "1 MHz"
+      ],
+      "answer": 0,
+      "why": "Servo hobby غالبًا 50 Hz."
+    },
+    {
+      "id": "pro-20-q2",
+      "textAr": "Servo يحتاج شنوّة مع alimentation externe؟",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "GND commune",
+        "12 V sur GPIO",
+        "Débrancher GND",
+        "EN à 0"
+      ],
+      "answer": 0,
+      "why": "لازم Masse commune."
+    },
+    {
+      "id": "pro-20-q3",
+      "textAr": "PWM تتحكّم في servo بواسطة؟",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "Largeur des impulsions",
+        "Adresse IP",
+        "Mesure ADC",
+        "Strapping"
+      ],
+      "answer": 0,
+      "why": "الـpulse width تحدّد position."
+    }
+  ],
+  "pro-21": [
+    {
+      "id": "pro-21-q1",
+      "textAr": "OLED I2C تتربط عبر؟",
+      "term": "Affichage LCD et OLED",
+      "options": [
+        "SDA et SCL",
+        "TX et RX uniquement",
+        "DAC 25",
+        "PWM 19 فقط"
+      ],
+      "answer": 0,
+      "why": "OLED I2C بالـSDA/SCL."
+    },
+    {
+      "id": "pro-21-q2",
+      "textAr": "ecran.show() تخدم شنوّة؟",
+      "term": "Affichage LCD et OLED",
+      "options": [
+        "Envoyer le dessin vers l’écran",
+        "Lire ADC",
+        "Redémarrer Wi-Fi",
+        "Allumer servo"
+      ],
+      "answer": 0,
+      "why": "show() تحدّث affichage."
+    },
+    {
+      "id": "pro-21-q3",
+      "textAr": "No module named ssd1306 معناها؟",
+      "term": "Affichage LCD et OLED",
+      "options": [
+        "Bibliothèque manquante",
+        "GPIO 34 cassé",
+        "Batterie faible forcément",
+        "Serveur Render arrêté"
+      ],
+      "answer": 0,
+      "why": "لازم bibliothèque ssd1306.py."
+    }
+  ],
+  "pro-22": [
+    {
+      "id": "pro-22-q1",
+      "textAr": "علاش نستعملوا driver moteur؟",
+      "term": "Commande des moteurs",
+      "options": [
+        "Fournir le courant nécessaire",
+        "Ajouter du Wi-Fi",
+        "Lire le DAC",
+        "Dessiner OLED"
+      ],
+      "answer": 0,
+      "why": "GPIO ما تتحمّلش courant moteur."
+    },
+    {
+      "id": "pro-22-q2",
+      "textAr": "نبدّلوا direction باستعمال؟",
+      "term": "Commande des moteurs",
+      "options": [
+        "IN1 et IN2",
+        "SDA et SCL",
+        "GPIO34 ADC",
+        "EN de l’ESP32"
+      ],
+      "answer": 0,
+      "why": "IN1/IN2 لتبديل sens."
+    },
+    {
+      "id": "pro-22-q3",
+      "textAr": "Masse بين ESP32 وdriver لازم؟",
+      "term": "Commande des moteurs",
+      "options": [
+        "Commune",
+        "Toujours séparée",
+        "Connectée au 12 V",
+        "Aucune importance"
+      ],
+      "answer": 0,
+      "why": "GND commune référence."
+    }
+  ],
+  "pro-23": [
+    {
+      "id": "pro-23-q1",
+      "textAr": "Wi-Fi نستعملوه في؟",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
+      "options": [
+        "Réseau IP",
+        "Sortie DAC",
+        "GND",
+        "Strapping"
+      ],
+      "answer": 0,
+      "why": "Wi-Fi يدخّل ESP32 للشبكة."
+    },
+    {
+      "id": "pro-23-q2",
+      "textAr": "BLE معناها؟",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
+      "options": [
+        "Bluetooth Low Energy",
+        "Bus LCD Ethernet",
+        "Batterie LED Enable",
+        "Boot Link ESP"
+      ],
+      "answer": 0,
+      "why": "BLE Bluetooth منخفض الطاقة."
+    },
+    {
+      "id": "pro-23-q3",
+      "textAr": "كلمة سر Wi-Fi نحطّوها في GitHub public؟",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
+      "options": [
+        "Non",
+        "Oui toujours",
+        "Oui مع OLED",
+        "Oui في صورة"
+      ],
+      "answer": 0,
+      "why": "ما ننشروش secrets في public."
+    }
+  ],
+  "pro-24": [
+    {
+      "id": "pro-24-q1",
+      "textAr": "LED ON/OFF تحتاج؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "GPIO OUT",
+        "ADC",
+        "DAC obligatoire",
+        "I2C"
+      ],
+      "answer": 0,
+      "why": "GPIO configuré en sortie numérique pour commander la LED."
+    },
+    {
+      "id": "pro-24-q2",
+      "textAr": "Potentiomètre analogique يتقرا بـ؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "ADC",
+        "UART",
+        "EN",
+        "Strapping"
+      ],
+      "answer": 0,
+      "why": "ADC lecture analogique."
+    },
+    {
+      "id": "pro-24-q3",
+      "textAr": "OLED I2C تستعمل؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "SDA/SCL",
+        "MOSI فقط",
+        "TX فقط",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "I2C à deux fils."
+    },
+    {
+      "id": "pro-24-q4",
+      "textAr": "Servo تتحكم في position بـ؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "PWM",
+        "ADC فقط",
+        "RTC فقط",
+        "DAC obligé"
+      ],
+      "answer": 0,
+      "why": "Servo PWM pulses."
+    },
+    {
+      "id": "pro-24-q5",
+      "textAr": "GPIO ESP32 تتحمّل 5V مباشرة؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "Non",
+        "Oui",
+        "Seulement en Wi-Fi",
+        "Oui sur GPIO34"
+      ],
+      "answer": 0,
+      "why": "3,3 V logic."
+    },
+    {
+      "id": "pro-24-q6",
+      "textAr": "Driver moteur يستعمل علاش؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "Fournir courant moteur",
+        "Compresser images",
+        "Activer USB",
+        "Lire météo"
+      ],
+      "answer": 0,
+      "why": "Protection et puissance."
+    },
+    {
+      "id": "pro-24-q7",
+      "textAr": "UART تستعمل؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "TX/RX",
+        "SDA/SCL",
+        "DAC25",
+        "PWM19 uniquement"
+      ],
+      "answer": 0,
+      "why": "UART sert à échanger les données par TX et RX."
+    },
+    {
+      "id": "pro-24-q8",
+      "textAr": "مستوى DAC خاص بكل ESP32؟",
+      "term": "QCM de révision — ESP32",
+      "options": [
+        "Non",
+        "Oui",
+        "Toujours sur GPIO34",
+        "Toujours sur 5V"
+      ],
+      "answer": 0,
+      "why": "DAC dépend de variante."
+    }
+  ],
+  "pro-25": [
+    {
+      "id": "pro-25-q1",
+      "textAr": "AND في شرط البرنامج معناها؟",
+      "term": "Exercices pratiques — consolidation",
+      "options": [
+        "Les deux conditions vraies",
+        "Une seule condition vraie",
+        "Une condition fausse",
+        "Aucune condition"
+      ],
+      "answer": 0,
+      "why": "AND يلزم الشرطين."
+    },
+    {
+      "id": "pro-25-q2",
+      "textAr": "OR معناها؟",
+      "term": "Exercices pratiques — consolidation",
+      "options": [
+        "Au moins une condition vraie",
+        "Toujours zéro",
+        "Les deux fausses",
+        "PWM uniquement"
+      ],
+      "answer": 0,
+      "why": "OR تكفي condition وحدة."
+    },
+    {
+      "id": "pro-25-q3",
+      "textAr": "pot.read() تعطينا؟",
+      "term": "Exercices pratiques — consolidation",
+      "options": [
+        "Valeur analogique numérisée",
+        "Valeur du bouton",
+        "Adresse OLED",
+        "Signal TX"
+      ],
+      "answer": 0,
+      "why": "La méthode read() fournit une valeur numérisée ADC."
+    }
+  ],
+  "pro-26": [
+    {
+      "id": "pro-26-q1",
+      "textAr": "Smart Home Mini تجمع شنوّة؟",
+      "term": "Mini-projet de synthèse — Smart Home",
+      "options": [
+        "GPIO, ADC et logique",
+        "DAC فقط",
+        "UART فقط",
+        "SDA فقط"
+      ],
+      "answer": 0,
+      "why": "Projet intégrateur."
+    },
+    {
+      "id": "pro-26-q2",
+      "textAr": "actif = not actif تعمل؟",
+      "term": "Mini-projet de synthèse — Smart Home",
+      "options": [
+        "Inverse l’état booléen",
+        "Lit le Wi-Fi",
+        "Redémarre",
+        "Efface fichier"
+      ],
+      "answer": 0,
+      "why": "Toggle ON/OFF."
+    },
+    {
+      "id": "pro-26-q3",
+      "textAr": "علاش لازم démonstration projet؟",
+      "term": "Mini-projet de synthèse — Smart Home",
+      "options": [
+        "Vérifier fonctionnement réel",
+        "Remplacer la résistance",
+        "Changer nom Bluetooth",
+        "Aucune raison"
+      ],
+      "answer": 0,
+      "why": "الأستاذ يراجع montage والشرح."
+    }
+  ]
+}

@@ -6,7 +6,9 @@ const path = require('path');
 const crypto = require('crypto');
 const content = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-content.json'),'utf8')).modules;
 const bank = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-bank.json'),'utf8'));
-const baseIds = content.map(c=>c.id);
+// Legacy 22 modules remain the only mandatory units for the existing certificate.
+// ESP32 PRO submissions are graded and saved, but never reset legacy progress.
+const baseIds = content.filter(c=>c.track!=='esp32-pro').map(c=>c.id);
 const byId = new Map(content.map(x=>[x.id,x]));
 const SESS_NAME = 'cfi_academy_session';
 const SIGN_KEY = process.env.SESSION_SECRET || '';
@@ -127,7 +129,7 @@ async function body(req){const contentType=req.headers['content-type']||'';if(!c
  let n=0,parts=[];for await(const chunk of req){n+=chunk.length;if(n>45000)throw apiError('المحتوى كبير برشا',413);parts.push(chunk)}
  try{return JSON.parse(Buffer.concat(parts).toString('utf8')||'{}')}catch{throw apiError('JSON غير صحيح')}
 }
-function publicInfo(m){return {id:m.id,title:m.arTitle,originalTitle:m.shortTitle,type:m.type,subject:m.subject,level:Number(m.level),week:Number(m.week),term:m.terms};}
+function publicInfo(m){return {id:m.id,title:m.arTitle,originalTitle:m.shortTitle,type:m.type,subject:m.subject,level:Number(m.level),week:Number(m.week),term:m.terms,track:m.track||"classic",part:m.part||null};}
 async function allLessons(){const extras=await db('cfi_extra_lessons','GET','?select=*&order=created_at.asc');return [...content,...extras.map(x=>({id:x.id,type:x.type||'lesson',subject:x.subject||'ESP32',level:'1',week:x.week||23,shortTitle:x.title,arTitle:x.title,arIntro:x.intro,terms:x.terms,arTask:x.task,body:'',source:'درس جديد من الأستاذ',custom:true}))];}
 async function courseById(id){return byId.get(id)|| (await allLessons()).find(x=>x.id===id);}
 async function questionsFor(id){if(bank[id])return bank[id];const rows=await db('cfi_extra_lessons','GET',`?select=id,quiz&id=eq.${encodeURIComponent(id)}&limit=1`);return rows[0]?.quiz||[];}
