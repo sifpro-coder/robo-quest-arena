@@ -6,9 +6,9 @@ const path = require('path');
 const crypto = require('crypto');
 const content = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-content.json'),'utf8')).modules;
 const bank = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-bank.json'),'utf8'));
-// Legacy 22 modules remain the only mandatory units for the existing certificate.
-// ESP32 PRO submissions are graded and saved, but never reset legacy progress.
-const baseIds = content.filter(c=>c.track!=='esp32-pro').map(c=>c.id);
+// V5.4 : nouveau cursus ESP32 PRO seul. Les 22 cours historiques restent archivés dans les fichiers.
+const proLessons=content.filter(c=>c.track==='esp32-pro');
+const baseIds=proLessons.map(c=>c.id);
 const byId = new Map(content.map(x=>[x.id,x]));
 const SESS_NAME = 'cfi_academy_session';
 const SIGN_KEY = process.env.SESSION_SECRET || '';
@@ -40,7 +40,15 @@ function payReady(){return Boolean(process.env.KONNECT_API_KEY && process.env.KO
 async function amountMillimes(){const data=await getOne('cfi_settings','&key=eq.monthly_price_millimes');const n=Number(data?.value_int??10000);if(!Number.isInteger(n)||n<1000||n>1000000)throw apiError('سعر الاشتراك غير صحيح في قاعدة البيانات.',503);return n;}
 function addOneMonth(date){const d=new Date(date);const day=d.getUTCDate();d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+1);const last=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,0)).getUTCDate();d.setUTCDate(Math.min(day,last));return d;}
 async function extendTeacherMonth(u){const start=u.access_expires_at&&new Date(u.access_expires_at)>new Date()?new Date(u.access_expires_at):new Date();const expiry=addOneMonth(start).toISOString();await db('cfi_users','PATCH','?id=eq.'+encodeURIComponent(u.id),{active:true,activation_status:'active',access_expires_at:expiry,access_source:'prof'});return expiry;}
-function requireCourseAccess(u,lesson,subs){if(u.role==='admin')return;const access=subscription(u);if(!access.valid)throw apiError('اشتراكك الشهري انتهى أو مازال ما تفعلش. جدّد بـ10 د أو تواصل مع الأستاذ.',402);if(Number(lesson.level)===2){const pr=progress(subs);if(!pr.level2Unlocked)throw apiError('المستوى 2 مسكّر. كمّل جميع أسئلة دروس وTP المستوى 1 وانجح فيهم قبل ما تتعدّى.',403);}}
+function requireCourseAccess(u,lesson,subs){
+ if(u.role==='admin')return;
+ const access=subscription(u);
+ if(!access.valid)throw apiError('الاشتراك موش نشيط. يلزم تجديده قبل الدخول للدروس.',402);
+ if(lesson.track!=='esp32-pro')throw apiError('المسار هذا مؤرشف. استعمل Formation ESP32 PRO.',403);
+ const pr=progress(subs);
+ if(!pr.unlocked.includes(lesson.id))throw apiError('🔒 يلزم تجيب 12/20 على الأقل في الدرس السابق باش يتفتح هذا.',403);
+}
+
 const mailAttempts=new Map();
 function guardSignUp(req){const ip=requestIp(req),now=Date.now();let obj=mailAttempts.get(ip)||{count:0,expire:now+60*60*1000};if(now>obj.expire)obj={count:0,expire:now+60*60*1000};obj.count++;mailAttempts.set(ip,obj);if(obj.count>5)throw apiError('برشا محاولات تسجيل. عاود بعد ساعة.',429);if(mailAttempts.size>3000)mailAttempts.clear();}
 function publicOrigin(req){const configuredOrigin=process.env.CFI_PUBLIC_URL||'';let u;try{u=new URL(configuredOrigin)}catch{throw apiError('يلزم إعداد CFI_PUBLIC_URL في Render برابط HTTPS متاع الموقع.',503)}if(u.protocol!=='https:'||!u.hostname||u.username||u.password||u.pathname!=='/'||u.search||u.hash)throw apiError('CFI_PUBLIC_URL يلزمها رابط HTTPS متاع الموقع، بلا /academy.',503);return u.origin;}
@@ -138,7 +146,75 @@ function optionToken(nonce,qid,index){return crypto.createHmac('sha256',SIGN_KEY
 function ticketQuiz(user,id,qset){const selection=shuffle(qset).slice(0,Math.min(10,qset.length)),nonce=crypto.randomBytes(16).toString('hex');const qt=selection.map(q=>({id:q.id,textAr:q.textAr,term:q.term,choices:shuffle(q.options.map((label,index)=>({value:optionToken(nonce,q.id,index),label})))}));
  const ticket=sign({type:'quiz',id,userId:user.id,qids:qt.map(q=>q.id),nonce,exp:Date.now()+30*60*1000});return {questions:qt,ticket};}
 async function mySubmissions(u){return db('cfi_submissions','GET',`?select=*&user_id=eq.${encodeURIComponent(u.id)}&order=updated_at.desc`);}
-function progress(rows){const map=new Map(rows.map(r=>[r.lesson_id,r]));const required=baseIds.map(id=>{const r=map.get(id);const x=byId.get(id);return{id,level:Number(x.level),passed:!!r&&r.best_score>=12&&r.total>0&&r.total>=((bank[id]||[]).length)&& (x.type!=='tp'||str(r.code,8000).length>=15)}});const level1=required.filter(x=>x.level===1),level2=required.filter(x=>x.level===2),level2Unlocked=level1.length>0&&level1.every(x=>x.passed);return{done:required.filter(x=>x.passed).length,total:required.length,required,level2Unlocked,level1Done:level1.filter(x=>x.passed).length,level1Total:level1.length,level2Done:level2.filter(x=>x.passed).length,level2Total:level2.length};}
+function progress(rows){
+ const map=new Map(rows.map(r=>[r.lesson_id,r]));
+ const required=baseIds.map((id,index)=>{
+  const r=map.get(id),score=Number(r?.best_score||0);
+  return {id,index:index+1,score,passed:score>=12,mastered:score===20,unlocked:index===0||Number(map.get(baseIds[index-1])?.best_score||0)>=12};
+ });
+ const done=required.filter(x=>x.mastered).length;
+ const passed=required.filter(x=>x.passed).length;
+ return {done,total:required.length,passed,mastered:done,required,unlocked:required.filter(x=>x.unlocked).map(x=>x.id),
+  pending:required.filter(x=>x.passed&&!x.mastered).map(x=>x.id),certificateReady:required.length>0&&done===required.length,
+  level2Unlocked:required.length>7&&required[7].unlocked,level1Done:required.slice(0,7).filter(x=>x.mastered).length,level1Total:7,
+  level2Done:required.slice(7).filter(x=>x.mastered).length,level2Total:required.length-7};
+}
+function studyDay(){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Africa/Tunis',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
+function robotParts(pr){const parts=['🧠 Puce ESP32','💡 LED','🔌 GPIO','🎛️ ADC','🔊 DAC','🌈 PWM','📟 Interface','🛰️ I2C','⚡ SPI','📡 UART','🧩 Bus','👆 Touch','🌙 RTC','🔐 Boot','🔋 Power','⏻ Enable','🛡️ Sécurité','🔘 Bouton','🌡️ Capteur','🦾 Servo','🖥️ OLED','⚙️ Moteur','📶 Wi-Fi','🏅 Révision','🛞 Robot','🤖 Robot complet'];return parts.filter((_,i)=>pr.required[i]?.mastered);}
+async function attemptsByUser(u){return db('cfi_quiz_attempts','GET','?select=user_id,lesson_id,score,study_day,created_at&user_id=eq.'+encodeURIComponent(u.id)+'&order=created_at.asc&limit=2000');}
+function myAttemptSummary(rows,pr){
+ const proRows=rows.filter(x=>baseIds.includes(x.lesson_id));const perLesson={};for(const a of proRows)perLesson[a.lesson_id]=(perLesson[a.lesson_id]||0)+1;
+ const daySet=[...new Set(proRows.map(x=>x.study_day))];
+ const firstTry=pr.required.filter(x=>x.mastered&&proRows.findIndex(a=>a.lesson_id===x.id&&a.score===20)>=0&&proRows.filter(a=>a.lesson_id===x.id).findIndex(a=>a.score===20)===0).length;
+ return {totalAttempts:proRows.length,byLesson:perLesson,activeDays:daySet.length,firstTry,parts:robotParts(pr)};
+}
+async function issueCertificate(u,subs){
+ const pr=progress(subs);if(!pr.certificateReady)return null;
+ const existing=await getOne('cfi_certificates','&user_id=eq.'+encodeURIComponent(u.id));
+ if(existing){if(existing.session!=='ESP32 MicroPython · Parcours numérique V5.4')return null;return existing;}
+ try{const r=await db('cfi_certificates','POST','',[{user_id:u.id,code:certificateCode(),session:'ESP32 MicroPython · Parcours numérique V5.4'}]);return r[0];}
+ catch(e){const retry=await getOne('cfi_certificates','&user_id=eq.'+encodeURIComponent(u.id));if(retry?.session==='ESP32 MicroPython · Parcours numérique V5.4')return retry;throw e;}
+}
+function verificationUrl(code){
+ let origin='https://cfi-robot.onrender.com';
+ try{const u=new URL(process.env.CFI_PUBLIC_URL||origin);if(u.protocol==='https:'&&u.hostname&&!u.username&&!u.password)origin=u.origin;}catch{}
+ return origin+'/academy?verify='+encodeURIComponent(code);
+}
+function certificateQR(code){
+ // Local SVG from an MIT-licensed QR engine shipped by qrcode-terminal; no external third-party QR service.
+ try{
+  const QRCode=require('qrcode-terminal/vendor/QRCode');
+  const level=require('qrcode-terminal/vendor/QRCode/QRErrorCorrectLevel');
+  const qr=new QRCode(-1,level.M);qr.addData(verificationUrl(code));qr.make();
+  const n=qr.getModuleCount(),size=n+8;
+  let path='';for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(qr.isDark(y,x))path+=`M${x+4} ${y+4}h1v1h-1z`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="220" height="220" shape-rendering="crispEdges"><rect width="${size}" height="${size}" fill="white"/><path d="${path}" fill="#121212"/></svg>`;
+  return 'data:image/svg+xml;base64,'+Buffer.from(svg).toString('base64');
+ }catch(e){console.warn('CFI QR non disponible:',e?.code||'QR_FAILED');return null;}
+}
+function pseudonym(id){return 'Robot-'+crypto.createHmac('sha256',SIGN_KEY).update(id).digest('hex').slice(0,5).toUpperCase();}
+async function getRanking(u){
+ // Serve only pseudonyms; no email/real name. Individual activity != classroom attendance.
+ const [users,allSub,allAttempts]=await Promise.all([
+  db('cfi_users','GET','?select=id,role,active&role=eq.student&active=eq.true&limit=500'),
+  db('cfi_submissions','GET','?select=user_id,lesson_id,best_score&limit=10000'),
+  db('cfi_quiz_attempts','GET','?select=user_id,lesson_id,score,study_day,created_at&order=created_at.desc&limit=10000')]);
+ const cutoff=Date.now()-7*24*3600*1000;
+ const result=users.map(t=>{
+  const rows=allSub.filter(x=>x.user_id===t.id&&baseIds.includes(x.lesson_id));
+  const mastered=rows.filter(x=>Number(x.best_score)===20).length;
+  const attempts=allAttempts.filter(a=>a.user_id===t.id&&baseIds.includes(a.lesson_id));
+  const daily=[...new Set(attempts.filter(a=>new Date(a.created_at).getTime()>=cutoff).map(a=>a.study_day))].length;
+  const triesToFirstPerfect=id=>{const ordered=attempts.filter(a=>a.lesson_id===id).slice().reverse();const i=ordered.findIndex(a=>Number(a.score)===20);return i<0?Infinity:i+1;};
+  const firstTry=rows.filter(x=>Number(x.best_score)===20&&triesToFirstPerfect(x.lesson_id)===1).length;
+  // A learner can practice after mastering without losing their first-success efficiency points.
+  const efficiency=mastered?rows.filter(x=>Number(x.best_score)===20).reduce((z,x)=>z+1/triesToFirstPerfect(x.lesson_id),0)/mastered:0;
+  const points=Math.round(100*(.25*Math.min(1,daily/7)+.35*efficiency+.40*mastered/baseIds.length));
+  return {alias:pseudonym(t.id),points,activeDays7:daily,mastered,firstTry,isMe:t.id===u.id,participated:attempts.length>0};
+ }).filter(x=>x.participated).sort((a,b)=>b.points-a.points||b.mastered-a.mastered||b.firstTry-a.firstTry||a.alias.localeCompare(b.alias));
+ return result.slice(0,100).map((x,i)=>({...x,rank:i+1}));
+}
+
 function requestIp(req){return String(req.headers['x-forwarded-for']||req.socket.remoteAddress||'unknown').split(',')[0].trim().slice(0,64);}
 function limitLogin(req,username){const ip=requestIp(req)+'|'+username,now=Date.now();let entry=failures.get(ip)||{count:0,until:now+15*60*1000};if(now>entry.until)entry={count:0,until:now+15*60*1000};if(entry.count>=12)throw apiError('محاولات برشا. عاود بعد ربع ساعة.',429);failures.set(ip,entry);return()=>{entry.count++;failures.set(ip,entry)};}
 function unlock(req,username){failures.delete(requestIp(req)+'|'+username);}
@@ -147,9 +223,9 @@ async function respond(req,res,url){
  const method=req.method;const route=url.pathname;
  if(!route.startsWith('/api/academy/'))return false;
  try{
-  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:baseIds.length,mode:'email-approval-or-verified-payment'}),true;}
+  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:baseIds.length,version:'5.4',mode:'email-approval-or-verified-payment'}),true;}
   if(method==='GET'&&route==='/api/academy/catalog'){
-   const bases=content.map(publicInfo);let extras=[];if(configured())try{extras=(await db('cfi_extra_lessons','GET','?select=id,title,type,subject,week,terms')).map(x=>({id:x.id,title:x.title,originalTitle:x.title,type:x.type||'lesson',subject:x.subject||'ESP32',week:x.week,term:x.terms}))}catch{}return send(res,200,{courses:[...bases,...extras]}),true;
+   const bases=proLessons.map(publicInfo);let extras=[];if(configured())try{extras=(await db('cfi_extra_lessons','GET','?select=id,title,type,subject,week,terms')).map(x=>({id:x.id,title:x.title,originalTitle:x.title,type:x.type||'lesson',subject:x.subject||'ESP32',week:x.week,term:x.terms}))}catch{}return send(res,200,{courses:bases}),true;
   }
   requireReady();
   // Registration is public but cannot grant an active role: professor approval or verified payment required.
@@ -235,7 +311,7 @@ async function respond(req,res,url){
    const qs=await questionsFor(id);if(!qs.length)throw apiError('الدرس هذا مازال ما عندوش QCM');return send(res,200,ticketQuiz(u,id,qs)),true;
   }
   if(method==='GET'&&route==='/api/academy/mine'){
-   requireRole(u,['student']);const subs=await mySubmissions(u);const prog=progress(subs);const cert=await getOne('cfi_certificates','&user_id=eq.'+u.id);return send(res,200,{submissions:subs,progress:prog,subscription:subscription(u),certificate:cert?{code:cert.code,issuedAt:cert.issued_at}:null}),true;
+   requireRole(u,['student']);const subs=await mySubmissions(u);const prog=progress(subs);const cert=prog.certificateReady?await issueCertificate(u,subs):null;const attempts=await attemptsByUser(u);return send(res,200,{submissions:subs.filter(x=>baseIds.includes(x.lesson_id)),progress:prog,attempts:myAttemptSummary(attempts,prog),subscription:subscription(u),certificate:cert?{code:cert.code,issuedAt:cert.issued_at,session:cert.session}:null}),true;
   }
   if(method==='POST'&&route==='/api/academy/submit'){
    requireRole(u,['student']);if(u.must_change_password)throw apiError('بدّل كلمة السرّ المؤقّتة قبل ما تبدأ',403);
@@ -244,15 +320,30 @@ async function respond(req,res,url){
    const answers=b.answers||{},used=new Set();let correct=0,details=[];
    for(const qid of p.qids){if(used.has(qid))throw apiError('سؤال مكرّر');used.add(qid);const q=qBank.find(x=>x.id===qid);if(!q)throw apiError('سؤال غير موجود');const answerToken=String(answers[qid]||'');const chosen=q.options.findIndex((_,i)=>optionToken(p.nonce,qid,i)===answerToken);if(!Object.prototype.hasOwnProperty.call(answers,qid)||chosen<0)throw apiError('جاوب على كل الأسئلة');if(chosen===q.answer)correct++;details.push({id:qid,chosen,correct:q.answer,why:q.why,question:q.textAr,goodAnswer:q.options[q.answer],isCorrect:chosen===q.answer});}
    const score=Math.round(correct*20/p.qids.length);const code=str(b.code,8000),notes=str(b.notes,4000);
+   // Prevent duplicate scoring of the same signed quiz ticket, and retain every attempt for ranking.
+   const ticketHash=crypto.createHash('sha256').update(String(b.ticket)).digest('hex');
    const existing=await getOne('cfi_submissions',`&user_id=eq.${u.id}&lesson_id=eq.${encodeURIComponent(p.id)}`);
-   const best=Math.max(score,existing?.best_score||0),row={user_id:u.id,lesson_id:p.id,code,notes,score,best_score:best,correct,total:p.qids.length,quiz_details:details,updated_at:new Date().toISOString()};
+   const best=Math.max(score,existing?.best_score||0);
+   const row={user_id:u.id,lesson_id:p.id,code:code||existing?.code||'',notes:notes||existing?.notes||'',score,best_score:best,correct,total:p.qids.length,quiz_details:details,updated_at:new Date().toISOString()};
+   const duplicate=await getOne('cfi_quiz_attempts','&user_id=eq.'+encodeURIComponent(u.id)+'&ticket_hash=eq.'+ticketHash);
+   if(duplicate)throw apiError('الاختبار هذا تسلّم قبل. ابدأ محاولة جديدة.',409);
+   await db('cfi_quiz_attempts','POST','',[{user_id:u.id,lesson_id:p.id,ticket_hash:ticketHash,score,correct,total:p.qids.length,study_day:studyDay()}]);
    const updated=await db('cfi_submissions','POST','?on_conflict=user_id,lesson_id',[row],'resolution=merge-duplicates,return=representation');
-   return send(res,200,{score,bestScore:best,correct,total:p.qids.length,feedback:details,submission:updated[0]||row}),true;
+   const newSubs=await mySubmissions(u),pr=progress(newSubs),certificate=pr.certificateReady?await issueCertificate(u,newSubs):null;
+   const atts=await attemptsByUser(u);
+   return send(res,200,{score,bestScore:best,correct,total:p.qids.length,feedback:details,submission:updated[0]||row,
+    mastery:best===20,canContinue:best>=12,attemptCount:atts.filter(x=>x.lesson_id===p.id).length,
+    progress:pr,certificate:certificate?{code:certificate.code,issuedAt:certificate.issued_at,session:certificate.session}:null}),true;
   }
   if(method==='POST'&&route==='/api/academy/certificate'){
-   requireRole(u,['student']);if(!subscription(u).valid)throw apiError('يلزم اشتراك شهري نشيط قبل إصدار شهادة جديدة.',402);const subs=await mySubmissions(u),prog=progress(subs);if(prog.done!==prog.total)throw apiError(`مازال عندك ${prog.total-prog.done} وحدة ناقصة قبل الشهادة.`,400);
-   let cert=await getOne('cfi_certificates','&user_id=eq.'+u.id);if(!cert){let rows=await db('cfi_certificates','POST','',[{user_id:u.id,code:certificateCode(),session:'ESP32 · Smart Home Mini'}]);cert=rows[0]}
-   return send(res,200,{certificate:{code:cert.code,issuedAt:cert.issued_at,studentName:u.display_name,session:cert.session}}),true;
+   requireRole(u,['student']);if(!subscription(u).valid)throw apiError('يلزم اشتراك نشيط.',402);
+   const subs=await mySubmissions(u),pr=progress(subs);if(!pr.certificateReady)throw apiError(`مازال يلزم 20/20 في ${pr.total-pr.done} درس قبل الشهادة.`,400);
+   const cert=await issueCertificate(u,subs);if(!cert)throw apiError('شهادة قديمة موجودة. يلزم ترحيلها بطريقة آمنة.',409);
+   return send(res,200,{certificate:{code:cert.code,issuedAt:cert.issued_at,studentName:u.display_name,session:cert.session,verificationUrl:verificationUrl(cert.code),qrCode:certificateQR(cert.code)}}),true;
+  }
+  if(method==='GET'&&route==='/api/academy/ranking'){
+   requireRole(u,['student','admin']);return send(res,200,{ranking:await getRanking(u),weights:{presence:25,efficiency:35,mastery:40},
+    note:'Présence = journées avec quiz sur la plateforme, pas présence physique. Classement pseudonyme.'}),true;
   }
   if(method==='GET'&&route==='/api/academy/verify'){
    const code=str(url.searchParams.get('code'),30);if(!/^CFI-[A-F0-9]{12}$/.test(code))throw apiError('رقم شهادة غير صحيح',404);

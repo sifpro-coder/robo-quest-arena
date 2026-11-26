@@ -1,6 +1,6 @@
 {
   "name": "cfi-robotics-arena",
-  "version": "5.0.0",
+  "version": "5.4.0",
   "description": "CFI: robotics games, learning levels and monthly student memberships",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "nodemailer": "^7.0.0"
+    "nodemailer": "^7.0.0",
+    "qrcode-terminal": "^0.12.0"
   }
 }
