@@ -412,4 +412,4 @@ async function respond(req,res,url){
   throw apiError('المسار هذا موش موجود',404);
  }catch(e){const status=e.status||500;if(status>=500)console.error('CFI Academy server:',e.message);send(res,status,{error:e.message||'خطأ في السيرفر'});return true;}
 }
-module.exports={respond,configured,hash,check,sign,verify,progress,baseIds};
+module.exports={respond,configured,hash,check,sign,verify,progress,baseIds,viewer,subscription,db};

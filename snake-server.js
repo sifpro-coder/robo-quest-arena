@@ -39,13 +39,13 @@ const FOOD = [
   {kind:'led',label:'LED',icon:'💡',value:1},
   {kind:'resistor',label:'Résistance',icon:'🟤',value:1},
   {kind:'cable',label:'Câble',icon:'🔌',value:1},
-  {kind:'arduino',label:'Arduino',icon:'🟦',value:2},
-  {kind:'esp32',label:'ESP32',icon:'📟',value:2},
-  {kind:'sensor',label:'Capteur',icon:'📡',value:2},
-  {kind:'battery',label:'Batterie',icon:'🔋',value:2},
-  {kind:'servo',label:'Servo',icon:'⚙️',value:2},
-  {kind:'motor',label:'Moteur',icon:'🌀',value:2},
-  {kind:'chip',label:'Circuit intégré',icon:'🧩',value:2}
+  {kind:'arduino',label:'Arduino',icon:'🟦',value:1},
+  {kind:'esp32',label:'ESP32',icon:'📟',value:1},
+  {kind:'sensor',label:'Capteur',icon:'📡',value:1},
+  {kind:'battery',label:'Batterie',icon:'🔋',value:1},
+  {kind:'servo',label:'Servo',icon:'⚙️',value:1},
+  {kind:'motor',label:'Moteur',icon:'🌀',value:1},
+  {kind:'chip',label:'Circuit intégré',icon:'🧩',value:1}
 ];
 const COLORS=['#74E4B7','#F6C75A','#67BCFF','#F48EAF','#AD92FF','#FF9A69','#6DE2E5','#E6DF70','#C1EB85','#FDA7EA','#B3B6F9','#FFB3A1'];
 const rooms = new Map();
@@ -59,9 +59,9 @@ function randomFood(){const d=FOOD[crypto.randomInt(FOOD.length)];return {...d,i
 function send(c,obj){if(!c||!c.alive||c.socket.destroyed||c.socket.writableLength>350000)return;const body=Buffer.from(JSON.stringify(obj));let head;if(body.length<126)head=Buffer.from([129,body.length]);else if(body.length<65536)head=Buffer.from([129,126,body.length>>8,body.length&255]);else return;try{c.socket.write(Buffer.concat([head,body]))}catch{}}
 function online(r){return [...r.players.values()].filter(p=>p.connected)}
 function announce(r,msg){for(const p of online(r))send(p.conn,msg)}
-function roomInfo(r){return {type:'snakeLobby',code:r.code,phase:r.phase,host:r.host,topic:r.topic,level:r.level,from:r.from,to:r.to,players:[...r.players.values()].map(p=>({id:p.id,name:p.name,color:p.color,connected:p.connected,mass:p.mass})),max:MAX_PLAYERS};}
+function roomInfo(r){return {type:'snakeLobby',code:r.code,phase:r.phase,host:r.host,topic:r.topic,level:r.level,from:r.from,to:r.to,duration:r.duration,players:[...r.players.values()].map(p=>({id:p.id,name:p.name,color:p.color,connected:p.connected,mass:p.mass})),max:MAX_PLAYERS};}
 function refresh(r){announce(r,roomInfo(r))}
-function makeRoom(options={}){const opts=courseInfo(options.topic||'esp32academy',options.level,options.from,options.to);if(!opts)return null;const r={code:code(),phase:'lobby',host:null,topic:opts.topic,level:opts.level,from:opts.from,to:opts.to,asked:new Set(),players:new Map(),food:[],created:Date.now(),lastUsed:Date.now(),lastTick:Date.now()};rooms.set(r.code,r);return r}
+function makeRoom(options={}){const opts=courseInfo(options.topic||'esp32academy',options.level,options.from,options.to);if(!opts)return null;const r={code:code(),phase:'lobby',host:null,topic:opts.topic,level:opts.level,from:opts.from,to:opts.to,duration:Math.max(1,Math.min(5,Number.isInteger(Number(options.duration))?Number(options.duration):3)),ends:0,asked:new Set(),players:new Map(),food:[],created:Date.now(),lastUsed:Date.now(),lastTick:Date.now()};rooms.set(r.code,r);return r}
 function newPlayer(r,name,c){const p={id:crypto.randomUUID(),token:crypto.randomBytes(24).toString('hex'),name:sanitize(name),color:COLORS[r.players.size%COLORS.length],x:crypto.randomInt(120,1160),y:crypto.randomInt(120,680),vx:1,vy:0,dx:1,dy:0,mass:5,points:0,eaten:0,trail:[],connected:true,conn:c,offlineAt:0,quiz:null,respawnAt:0,shieldUntil:Date.now()+3000,joinedAt:Date.now()};p.trail=Array.from({length:65},(_,i)=>({x:p.x-i*3,y:p.y}));r.players.set(p.id,p);return p}
 function detach(c){const ref=sessionsByConn.get(c);sessionsByConn.delete(c);if(!ref)return;const r=rooms.get(ref.code),p=r?.players.get(ref.id);if(!p||p.conn!==c)return;p.connected=false;p.conn=null;p.offlineAt=Date.now();p.dx=0;p.dy=0;r.lastUsed=Date.now();if(r.host===p.id){const next=online(r)[0];if(next)r.host=next.id}refresh(r)}
 function join(c,m,create){const requested=String(m.code||'').replace(/\s/g,'');const r=create?makeRoom(m):rooms.get(requested);if(!r){send(c,{type:'snakeError',message:create?'اختيار الدروس غير صحيح أو ما فيهاش أسئلة. راجع من وإلى.':'الكود غير موجود، تأكّد من رقم الغرفة.'});return}
@@ -77,7 +77,7 @@ function join(c,m,create){const requested=String(m.code||'').replace(/\s/g,'');c
  if(r.phase==='playing'){send(c,{type:'snakeStarted',late:true});if(p.quiz&&p.quiz.deadline>Date.now())sendQuiz(c,p.quiz);}
 }
 function start(c,r){const ref=sessionsByConn.get(c);if(r.host!==ref.id)return;for(const p of r.players.values()){if(!p.connected)continue;p.mass=5;p.points=0;p.eaten=0;p.quiz=null;p.respawnAt=0;p.shieldUntil=Date.now()+2500;p.trail=Array.from({length:65},(_,i)=>({x:p.x-i*3,y:p.y}));}
- r.asked=new Set();r.food=Array.from({length:75},randomFood);r.food.push(...Array.from({length:7},quizFood));r.phase='playing';r.lastTick=Date.now();refresh(r);announce(r,{type:'snakeStarted',late:false});}
+ r.asked=new Set();r.food=Array.from({length:75},randomFood);r.food.push(...Array.from({length:7},quizFood));r.phase='playing';r.lastTick=Date.now();r.ends=r.lastTick+r.duration*60000;refresh(r);announce(r,{type:'snakeStarted',late:false});}
 function quizFood(){return {kind:'quiz',label:'Quiz',icon:'❓',value:0,id:crypto.randomUUID().slice(0,8),x:Math.random()*WORLD.w,y:Math.random()*WORLD.h}}
 function sendQuiz(c,q){send(c,{type:'snakeQuestion',question:q.question,options:q.options,lesson:q.lesson,deadline:q.deadline})}
 function handle(c,m){if(!m||typeof m!=='object')return;const t=m.type;
@@ -87,7 +87,7 @@ function handle(c,m){if(!m||typeof m!=='object')return;const t=m.type;
  const ref=sessionsByConn.get(c);if(!ref)return;const r=rooms.get(ref.code),p=r?.players.get(ref.id);if(!r||!p||p.conn!==c)return;r.lastUsed=Date.now();
  if(t==='snakeStart'){if(r.phase==='lobby'||r.phase==='finished')start(c,r);return}
  if(t==='snakeDirection'&&r.phase==='playing'){const x=Number(m.x),y=Number(m.y);if(!Number.isFinite(x)||!Number.isFinite(y))return;const length=Math.hypot(x,y);if(length>.05){p.dx=x/length;p.dy=y/length}return}
- if(t==='snakeAnswer'&&r.phase==='playing'&&p.quiz){const q=p.quiz,n=Number(m.answer),now=Date.now();if(!Number.isInteger(n)||n<0||n>3)return;p.quiz=null;const correct=now<=q.deadline&&n===q.answer;if(correct){p.mass=Math.min(130,p.mass+3);p.points+=60}p.shieldUntil=Math.max(p.shieldUntil,now+1300);send(c,{type:'snakeAnswerResult',correct,why:q.why,answer:q.answer,bonus:correct?60:0});return}
+ if(t==='snakeAnswer'&&r.phase==='playing'&&p.quiz){const q=p.quiz,n=Number(m.answer),now=Date.now();if(!Number.isInteger(n)||n<0||n>3)return;p.quiz=null;const correct=now<=q.deadline&&n===q.answer;if(correct){p.mass=Math.min(40,p.mass+1);p.points+=10}p.shieldUntil=Math.max(p.shieldUntil,now+1300);send(c,{type:'snakeAnswerResult',correct,why:q.why,answer:q.answer,bonus:correct?10:0});return}
  if(t==='snakeStop'&&r.host===p.id){r.phase='finished';refresh(r);announce(r,{type:'snakeFinished'});return}
 }
 function body(p){const result=[],gap=14,head=p.trail[0];if(!head)return[{x:mod(p.x,WORLD.w),y:mod(p.y,WORLD.h)}];result.push({x:mod(head.x,WORLD.w),y:mod(head.y,WORLD.h)});let next=gap,travel=0;
@@ -95,7 +95,7 @@ function body(p){const result=[],gap=14,head=p.trail[0];if(!head)return[{x:mod(p
  return result;
 }
 function eat(r,p,prey,now){if(p.mass<=prey.mass||!p.connected||!prey.connected||prey.respawnAt>now||prey.shieldUntil>now)return false;
- const xp=prey.mass*25;p.mass=Math.min(130,p.mass+Math.max(2,Math.floor(prey.mass*.65)));p.points+=xp;p.eaten++;
+ const xp=prey.mass*25;p.mass=Math.min(40,p.mass+1);p.points+=xp;p.eaten++;
  for(let j=0;j<Math.min(12,prey.mass);j++){const f=randomFood();const a=2*Math.PI*j/Math.min(12,prey.mass);f.x=mod(prey.x+Math.cos(a)*(16+j*3),WORLD.w);f.y=mod(prey.y+Math.sin(a)*(16+j*3),WORLD.h);r.food.push(f)}
  prey.mass=5;prey.respawnAt=now+1800;prey.shieldUntil=now+4300;prey.x=crypto.randomInt(100,1180);prey.y=crypto.randomInt(100,700);prey.trail=Array.from({length:65},(_,i)=>({x:prey.x-i*3,y:prey.y}));
  send(p.conn,{type:'snakeEvent',message:`🏆 كليت ${prey.name}! +${xp} XP`,kind:'eat'});
@@ -105,7 +105,7 @@ function tick(now=Date.now()){
  for(const [id,r] of rooms){if(now-r.lastUsed>REJOIN_MS&&!online(r).length){rooms.delete(id);continue}
   for(const [pid,p] of r.players){if(!p.connected&&now-p.offlineAt>REJOIN_MS){r.players.delete(pid);if(r.host===pid){r.host=online(r)[0]?.id||null}}}
   if(!r.players.size){rooms.delete(id);continue}
-  if(r.phase!=='playing')continue;
+  if(r.phase!=='playing')continue;if(now>=r.ends){r.phase='finished';refresh(r);announce(r,{type:'snakeFinished',board:[...r.players.values()].sort((a,b)=>b.mass-a.mass||b.points-a.points).map((p,i)=>({rank:i+1,name:p.name,mass:p.mass,points:p.points,color:p.color}))});continue}
   const dt=Math.min(2,Math.max(.35,(now-r.lastTick)/STEP_MS));r.lastTick=now;
   if(r.food.length<85)for(let i=r.food.length;i<85;i++)r.food.push(randomFood());if(r.food.filter(x=>x.kind==='quiz').length<7)r.food.push(quizFood());if(r.food.length>170)r.food.splice(0,r.food.length-170);
   for(const p of r.players.values()){
@@ -113,7 +113,7 @@ function tick(now=Date.now()){
    const dx=p.dx,dy=p.dy,km=Math.hypot(dx,dy);if(km>.05){p.vx=dx/km;p.vy=dy/km}
    const speed=(3.65-Math.min(.85,Math.max(0,p.mass-5)*.006))*dt;
    p.x+=p.vx*speed;p.y+=p.vy*speed;p.trail.unshift({x:p.x,y:p.y});p.trail.length=Math.min(p.trail.length,(p.mass*6)+30);
-   for(let i=r.food.length-1;i>=0;i--){if(distance({x:mod(p.x,WORLD.w),y:mod(p.y,WORLD.h)},r.food[i])<20){const food=r.food[i];r.food.splice(i,1);if(food.kind==='quiz'){const q=quizDraw(r);if(q){p.quiz={...q,deadline:now+20000};p.shieldUntil=now+24000;sendQuiz(p.conn,p.quiz)}break}else{p.mass=Math.min(130,p.mass+food.value);p.points+=food.value*10;}}}
+   for(let i=r.food.length-1;i>=0;i--){if(distance({x:mod(p.x,WORLD.w),y:mod(p.y,WORLD.h)},r.food[i])<20){const food=r.food[i];r.food.splice(i,1);if(food.kind==='quiz'){const q=quizDraw(r);if(q){p.quiz={...q,deadline:now+20000};p.shieldUntil=now+24000;sendQuiz(p.conn,p.quiz)}break}else{p.mass=Math.min(40,p.mass+1);p.points+=5;}}}
   }
   const players=online(r).filter(p=>p.respawnAt<=now&&!p.quiz).sort((a,b)=>b.mass-a.mass);
   const shape=new Map(players.map(p=>[p.id,body(p)]));
@@ -123,7 +123,7 @@ function tick(now=Date.now()){
     }
   }
   const leaderboard=[...r.players.values()].sort((a,b)=>b.mass-a.mass||b.points-a.points).slice(0,12).map(p=>({id:p.id,name:p.name,mass:p.mass,points:p.points,color:p.color,connected:p.connected}));
-  const state={type:'snakeState',code:r.code,phase:r.phase,players:[...r.players.values()].filter(p=>p.connected).map(p=>({id:p.id,name:p.name,color:p.color,mass:p.mass,points:p.points,eaten:p.eaten,body:p.respawnAt>now?[]:body(p),shield:p.shieldUntil>now})),food:r.food,board:leaderboard};
+  const state={type:'snakeState',code:r.code,phase:r.phase,remaining:Math.max(0,Math.ceil((r.ends-now)/1000)),players:[...r.players.values()].filter(p=>p.connected).map(p=>({id:p.id,name:p.name,color:p.color,mass:p.mass,points:p.points,eaten:p.eaten,body:p.respawnAt>now?[]:body(p),shield:p.shieldUntil>now})),food:r.food,board:leaderboard};
   // Send 10 frames/s. Movement is computed at 20Hz server-side.
   if(!r.nextFrame||now>=r.nextFrame){announce(r,state);r.nextFrame=now+100;}
  }

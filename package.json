@@ -1,7 +1,7 @@
 {
   "name": "cfi-robotics-arena",
-  "version": "5.5.0",
-  "description": "CFI Academy ESP32 + Electro Snake multiplayer room-code rejoin",
+  "version": "5.6.0",
+  "description": "CFI Academy + Snake + timed arena/quiz + Robot Battle with premium inventory",
   "private": true,
   "scripts": {
     "start": "node server.js"
