@@ -1,0 +1,72 @@
+CFI ACADEMY V5.5 — ELECTRO SNAKE + RETOUR AUX PARTIES + SELECTION DES LEÇONS
+================================================================================
+
+1. CE QUI A ÉTÉ RÉALISÉ
+----------------------
+• CFI Electro Snake : jeu multijoueur temps réel, 12 joueurs maximum, code à 6 chiffres.
+• La grande Snake peut manger une Snake plus petite ; la petite ne peut pas blesser la grande.
+• Bords téléportants : droite ↔ gauche ; haut ↔ bas.
+• Nourriture : LED, Arduino, ESP32, capteur, résistance, moteur, batterie, servo, câble.
+• Noms des joueurs visibles au-dessus de la tête ; commandes tactiles ou clavier/souris.
+• Entrée possible avec le code de la salle PENDANT une partie déjà commencée.
+• Retour avec la même identité et les mêmes scores après déconnexion, sous réserve que
+  le serveur et la salle soient toujours actifs. Durée hors ligne par défaut : 30 minutes.
+• Retour pendant les parties de Quiz Live et Arena (les deux autres jeux multijoueurs existants).
+• Jeu solo : reprise locale possible pour les modes pris en charge par le code existant.
+• Dans Snake, l'organisateur choisit les questions ESP32 : une leçon, une plage de leçons,
+  toutes les leçons ou la dernière leçon disponible.
+• Les questions sont tirées d'academy-bank.json et les leçons d'academy-content.json.
+• Un futur cours pro-27, pro-28, etc. muni d'un quiz apparaît au prochain déploiement,
+  sans modifier la logique Snake. Le compteur 26 n'est PAS codé en dur.
+
+2. INSTALLATION SUR GITHUB / RENDER
+----------------------------------
+A) Pour passer de la plateforme V5.4 existante à V5.5 :
+   - Téléchargez CFI_V5_5_MISE_A_JOUR_GITHUB.zip
+   - Décompressez le fichier ZIP.
+   - Dans le dépôt GitHub du projet, remplacez à la RACINE :
+        server.js
+        snake-server.js (nouveau)
+        snake.html (nouveau)
+        index.html
+        package.json
+   - Faites « Commit changes » et attendez le déploiement réussi sur Render.
+   - Ouvrez https://cfi-robot.onrender.com/snake
+   - Actualisez les anciens onglets de jeu sur les appareils.
+B) Le ZIP « CODE_COMPLET » est une archive complète si vous préférez déployer tout le projet.
+
+Aucune nouvelle requête SQL n'est nécessaire pour Electro Snake.
+Ne pas modifier les tables Supabase ni les identifiants existants pour cette mise à jour.
+
+3. CHOIX DES LEÇONS
+------------------
+• « De la leçon » = premier cours choisi.
+• « À la leçon » = dernier cours choisi, inclus.
+• Pour une seule leçon : même numéro dans les deux listes.
+• « Tous les cours » = leçon 1 jusqu'à la dernière leçon avec quiz.
+• « Dernière leçon » = la dernière leçon avec quiz disponible.
+• L'enseignant crée la salle et détermine ainsi les questions de TOUS les participants.
+• Pour les autres matières (Arduino / Wokwi / ESP32 général), le choix Niveau 1/2 reste.
+
+4. TESTS EFFECTUÉS
+------------------
+Test automatisé Node.js OK : règles de taille, bord circulaire, création de salle,
+entrée tardive, reconnexion avec le même token, sélection d'une plage de leçons,
+rejet d'une plage invalide, route HTML, catalogue de leçons et retour dans les
+anciens jeux Quiz Live et Arena. Vérification syntaxique JS OK.
+
+5. LIMITES TECHNIQUES À CONNAÎTRE AVANT UN LANCEMENT MONDIAL
+------------------------------------------------------------
+• Les salles et joueurs sont stockés dans la mémoire du serveur Node.js.
+  Une redémarrage de Render ou un changement d'instance efface les parties en cours.
+  Pour la production mondiale : stocker les sessions dans Redis et prévoir la
+  synchronisation entre plusieurs serveurs, le filtrage d'accès et la surveillance.
+• Les utilisateurs d'une salle doivent partager le même serveur en fonctionnement.
+• Les noms d'usage (pseudonymes) sont recommandés pour les mineurs.
+• Le catalogue de cours ESP32 est lu à l'initialisation depuis les fichiers JSON.
+  Quand un cours est ajouté à ces fichiers, redéployez pour l'actualiser.
+  Des cours ajoutés uniquement en base Supabase n'apparaîtront PAS automatiquement
+  sans intégration supplémentaire.
+• La validation réelle sur votre domaine Render et avec plusieurs téléphones reste à faire.
+
+ENV OPTIONNELLE : CFI_REJOIN_MINUTES = 30 (min 5, max 180)

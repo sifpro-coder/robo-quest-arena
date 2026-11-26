@@ -1,7 +1,7 @@
 {
   "name": "cfi-robotics-arena",
-  "version": "5.4.0",
-  "description": "CFI: robotics games, learning levels and monthly student memberships",
+  "version": "5.5.0",
+  "description": "CFI Academy ESP32 + Electro Snake multiplayer room-code rejoin",
   "private": true,
   "scripts": {
     "start": "node server.js"
