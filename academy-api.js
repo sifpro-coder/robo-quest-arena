@@ -379,11 +379,11 @@ async function respond(req,res,url){
    requireRole(u,['admin']);const b=await body(req),username=normalUsername(b.username),name=str(b.name,80);
    const password=String(b.password||''),confirmPassword=String(b.confirmPassword||'');
    if(!validUsername(username)||name.length<2)throw apiError('اكتب اسم تلميذ صحيح وUsername لاتيني 3–32 حرف');
-   if(password.length<12||password.length>128)throw apiError('كلمة السرّ المؤقتة يلزمها من 12 إلى 128 حرف.');
+   if(password.length<12||password.length>128)throw apiError('كلمة السرّ يلزمها من 12 إلى 128 حرف.');
    if(password!==confirmPassword)throw apiError('كلمتا السرّ موش متطابقتين.');
    if(password.toLowerCase()===username||/^(.{1,4})\1{2,}$/.test(password))throw apiError('اختار كلمة سرّ أقوى وما تكونش كيف Username.');
    if(await getUserByUsername(username))throw apiError('Username مستعمل من قبل');
-   const saved=await db('cfi_users','POST','',[{username,display_name:name,password_hash:hash(password),role:'student',active:true,must_change_password:true,access_expires_at:b.plan==='premium'?addOneMonth(new Date()).toISOString():null,access_source:b.plan==='premium'?'prof':null}]);
+   const saved=await db('cfi_users','POST','',[{username,display_name:name,password_hash:hash(password),role:'student',active:true,must_change_password:b.forcePasswordChange===true||b.forcePasswordChange==='true',access_expires_at:b.plan==='premium'?addOneMonth(new Date()).toISOString():null,access_source:b.plan==='premium'?'prof':null}]);
    return send(res,201,{student:cleanUser(saved[0]),passwordSetByAdmin:true}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/reset-password'){
@@ -392,7 +392,7 @@ async function respond(req,res,url){
    if(password.length<12||password.length>128)throw apiError('كلمة السرّ الجديدة يلزمها من 12 إلى 128 حرف.');
    if(password!==confirmPassword)throw apiError('كلمتا السرّ موش متطابقتين.');
    if(password.toLowerCase()===target.username||/^(.{1,4})\1{2,}$/.test(password))throw apiError('اختار كلمة سرّ أقوى.');
-   await db('cfi_users','PATCH',`?id=eq.${encodeURIComponent(id)}`,{password_hash:hash(password),must_change_password:true,session_version:(target.session_version||1)+1});
+   await db('cfi_users','PATCH',`?id=eq.${encodeURIComponent(id)}`,{password_hash:hash(password),must_change_password:b.forcePasswordChange===true||b.forcePasswordChange==='true',session_version:(target.session_version||1)+1});
    return send(res,200,{username:target.username,passwordChanged:true}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/approve'){
