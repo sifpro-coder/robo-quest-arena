@@ -26,11 +26,11 @@ function apiError(message,status=400){const e=new Error(message);e.status=status
 function send(res,status,obj,headers={}){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...headers});res.end(JSON.stringify(obj));}
 function subscription(u){const until=u?.access_expires_at||null;return {expiresAt:until,valid:!!(u&&u.active&&u.role==='student'&&until&&new Date(until).getTime()>Date.now()),source:u?.access_source||null};}
 // V7 permanent ownership is independent from monthly access.
-function ownership(u){return {arduino:u?.lifetime_arduino===true,esp32:u?.lifetime_esp32===true};}
-function accessRule(lesson){const track=lesson.track;const product=['arduino-basic','project-traffic'].includes(track)?'arduino':['esp32-basic','project-home','esp32-pro'].includes(track)?'esp32':null;const index=activeLessons.filter(x=>x.track===track).findIndex(x=>x.id===lesson.id);const free=index>=0&&((['arduino-basic','esp32-basic'].includes(track)&&index<5)||(['project-traffic','project-home'].includes(track)&&index<2));return {product,free};}
-function hasCourseAccess(u,lesson){if(!u?.active)return false;if(u.role==='admin')return true;if(u.role!=='student'||!activeIds.has(lesson.id))return false;const rule=accessRule(lesson);return rule.free||subscription(u).valid||Boolean(rule.product&&ownership(u)[rule.product]);}
-const productKeys={arduino:'lifetime_arduino_millimes',esp32:'lifetime_esp32_millimes',pack:'lifetime_pack_millimes'};
-const productDefaults={arduino:49000,esp32:59000,pack:89000};
+function ownership(u){return {arduino:u?.lifetime_arduino===true,esp32:u?.lifetime_esp32===true,traffic:u?.lifetime_traffic===true,home:u?.lifetime_home===true};}
+function accessRule(lesson){const track=lesson.track;const product=['arduino-basic','project-traffic'].includes(track)?'arduino':['esp32-basic','project-home','esp32-pro'].includes(track)?'esp32':null;const index=activeLessons.filter(x=>x.track===track).findIndex(x=>x.id===lesson.id);const free=index>=0&&((['arduino-basic','esp32-basic'].includes(track)&&index<5)||(['project-traffic','project-home'].includes(track)&&index<2));return {product,free,project:track==='project-traffic'?'traffic':track==='project-home'?'home':null};}
+function hasCourseAccess(u,lesson){if(!u?.active)return false;if(u.role==='admin')return true;if(u.role!=='student'||!activeIds.has(lesson.id))return false;const rule=accessRule(lesson);return rule.free||subscription(u).valid||Boolean(rule.product&&ownership(u)[rule.product])||Boolean(rule.project&&ownership(u)[rule.project]);}
+const productKeys={arduino:'lifetime_arduino_millimes',esp32:'lifetime_esp32_millimes',pack:'lifetime_pack_millimes',traffic:'lifetime_traffic_millimes',home:'lifetime_home_millimes'};
+const productDefaults={arduino:49000,esp32:59000,pack:89000,traffic:9000,home:19000};
 async function storePrices(){const rows=await db('cfi_settings','GET','?select=key,value_int');return Object.fromEntries(Object.entries(productKeys).map(([k,v])=>[k,rows.find(x=>x.key===v)?.value_int??productDefaults[k]]));}
 function cleanUser(u){return {id:u.id,username:u.username,name:u.display_name,role:u.role,mustChangePassword:!!u.must_change_password,email:u.email||null,subscription:subscription(u),ownership:ownership(u)};}
 function randPass(){return crypto.randomBytes(13).toString('base64url');}
@@ -234,7 +234,7 @@ async function respond(req,res,url){
  const method=req.method;const route=url.pathname;
  if(!route.startsWith('/api/academy/'))return false;
  try{
-  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:activeLessons.length,version:'7.0',mode:'email-approval-or-verified-payment'}),true;}
+  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:activeLessons.length,version:'7.1',mode:'email-approval-or-verified-payment'}),true;}
   if(method==='GET'&&route==='/api/academy/catalog'){
    const bases=activeLessons.map(publicInfo);let extras=[];if(configured())try{extras=(await db('cfi_extra_lessons','GET','?select=id,title,type,subject,week,terms')).map(x=>({id:x.id,title:x.title,originalTitle:x.title,type:x.type||'lesson',subject:x.subject||'ESP32',week:x.week,term:x.terms}))}catch{}return send(res,200,{courses:bases}),true;
   }
@@ -363,7 +363,7 @@ async function respond(req,res,url){
   }
   // Admin-only account provisioning and private student grades.
   if(method==='GET'&&route==='/api/academy/admin/overview'){
-   requireRole(u,['admin']);const users=await db('cfi_users','GET','?select=id,username,display_name,email,email_verified,approval_method,activation_status,role,active,access_expires_at,access_source,must_change_password,lifetime_arduino,lifetime_esp32&role=eq.student&order=created_at.desc');const submissions=await db('cfi_submissions','GET','?select=user_id,lesson_id,score,best_score,code,notes,updated_at,review_status&order=updated_at.desc&limit=2000');
+   requireRole(u,['admin']);const users=await db('cfi_users','GET','?select=id,username,display_name,email,email_verified,approval_method,activation_status,role,active,access_expires_at,access_source,must_change_password,lifetime_arduino,lifetime_esp32,lifetime_traffic,lifetime_home&role=eq.student&order=created_at.desc');const submissions=await db('cfi_submissions','GET','?select=user_id,lesson_id,score,best_score,code,notes,updated_at,review_status&order=updated_at.desc&limit=2000');
    return send(res,200,{students:users,submissions,monthlyPriceMillimes:await amountMillimes(),storePrices:await storePrices()}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/students'){
@@ -410,9 +410,9 @@ async function respond(req,res,url){
   if(method==='POST'&&route==='/api/academy/admin/grant'){
    requireRole(u,['admin']);const b=await body(req),target=await getUserById(str(b.id,64));
    if(!target||target.role!=='student')throw apiError('تلميذ غير موجود',404);
-   if(!['arduino','esp32','pack'].includes(b.product))throw apiError('منتج غير صحيح');
+   if(!Object.hasOwn(productKeys,b.product))throw apiError('منتج غير صحيح');
    if(target.email&&!target.email_verified)throw apiError('يلزم تأكيد البريد أولاً.',403);
-   const patch={};if(b.product!=='esp32')patch.lifetime_arduino=true;if(b.product!=='arduino')patch.lifetime_esp32=true;
+   const patch={};if(['arduino','pack'].includes(b.product))patch.lifetime_arduino=true;if(['esp32','pack'].includes(b.product))patch.lifetime_esp32=true;if(b.product==='traffic')patch.lifetime_traffic=true;if(b.product==='home')patch.lifetime_home=true;
    await db('cfi_users','PATCH',`?id=eq.${encodeURIComponent(target.id)}`,patch);return send(res,200,{ok:true}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/store-price'){
