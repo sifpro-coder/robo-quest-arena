@@ -25,7 +25,14 @@ const failures = new Map();
 function apiError(message,status=400){const e=new Error(message);e.status=status;return e;}
 function send(res,status,obj,headers={}){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...headers});res.end(JSON.stringify(obj));}
 function subscription(u){const until=u?.access_expires_at||null;return {expiresAt:until,valid:!!(u&&u.active&&u.role==='student'&&until&&new Date(until).getTime()>Date.now()),source:u?.access_source||null};}
-function cleanUser(u){return {id:u.id,username:u.username,name:u.display_name,role:u.role,mustChangePassword:!!u.must_change_password,email:u.email||null,subscription:subscription(u)};}
+// V7 permanent ownership is independent from monthly access.
+function ownership(u){return {arduino:u?.lifetime_arduino===true,esp32:u?.lifetime_esp32===true};}
+function accessRule(lesson){const track=lesson.track;const product=['arduino-basic','project-traffic'].includes(track)?'arduino':['esp32-basic','project-home','esp32-pro'].includes(track)?'esp32':null;const index=activeLessons.filter(x=>x.track===track).findIndex(x=>x.id===lesson.id);const free=index>=0&&((['arduino-basic','esp32-basic'].includes(track)&&index<5)||(['project-traffic','project-home'].includes(track)&&index<2));return {product,free};}
+function hasCourseAccess(u,lesson){if(!u?.active)return false;if(u.role==='admin')return true;if(u.role!=='student'||!activeIds.has(lesson.id))return false;const rule=accessRule(lesson);return rule.free||subscription(u).valid||Boolean(rule.product&&ownership(u)[rule.product]);}
+const productKeys={arduino:'lifetime_arduino_millimes',esp32:'lifetime_esp32_millimes',pack:'lifetime_pack_millimes'};
+const productDefaults={arduino:49000,esp32:59000,pack:89000};
+async function storePrices(){const rows=await db('cfi_settings','GET','?select=key,value_int');return Object.fromEntries(Object.entries(productKeys).map(([k,v])=>[k,rows.find(x=>x.key===v)?.value_int??productDefaults[k]]));}
+function cleanUser(u){return {id:u.id,username:u.username,name:u.display_name,role:u.role,mustChangePassword:!!u.must_change_password,email:u.email||null,subscription:subscription(u),ownership:ownership(u)};}
 function randPass(){return crypto.randomBytes(13).toString('base64url');}
 function hash(p){const salt=crypto.randomBytes(16).toString('hex');return `scrypt$${salt}$${crypto.scryptSync(p,salt,64).toString('hex')}`;}
 function check(p,stored){try{const [algo,salt,key]=String(stored||'').split('$');if(algo!=='scrypt'||!salt||!key)return false;const actual=crypto.scryptSync(p,salt,64),expected=Buffer.from(key,'hex');return actual.length===expected.length && crypto.timingSafeEqual(actual,expected);}catch{return false;}}
@@ -47,9 +54,8 @@ function addOneMonth(date){const d=new Date(date);const day=d.getUTCDate();d.set
 async function extendTeacherMonth(u){const start=u.access_expires_at&&new Date(u.access_expires_at)>new Date()?new Date(u.access_expires_at):new Date();const expiry=addOneMonth(start).toISOString();await db('cfi_users','PATCH','?id=eq.'+encodeURIComponent(u.id),{active:true,activation_status:'active',access_expires_at:expiry,access_source:'prof'});return expiry;}
 function requireCourseAccess(u,lesson,subs){
  if(u.role==='admin')return;
- const access=subscription(u);
- if(!access.valid)throw apiError('الاشتراك موش نشيط. يلزم تجديده قبل الدخول للدروس.',402);
  if(!activeIds.has(lesson.id))throw apiError('المسار هذا مؤرشف.',403);
+ if(!hasCourseAccess(u,lesson))throw apiError('الدرس مدفوع: يلزم امتلاك المسار أو اشتراك Premium نشيط.',402);
  const pr=beginnerTracks.includes(lesson.track)?beginnerProgress(subs,lesson.track):progress(subs);
  if(!pr.unlocked.includes(lesson.id))throw apiError('🔒 يلزم تجيب 12/20 على الأقل في الدرس السابق باش يتفتح هذا.',403);
 }
@@ -142,7 +148,7 @@ async function body(req){const contentType=req.headers['content-type']||'';if(!c
  let n=0,parts=[];for await(const chunk of req){n+=chunk.length;if(n>45000)throw apiError('المحتوى كبير برشا',413);parts.push(chunk)}
  try{return JSON.parse(Buffer.concat(parts).toString('utf8')||'{}')}catch{throw apiError('JSON غير صحيح')}
 }
-function publicInfo(m){return {id:m.id,title:m.arTitle,originalTitle:m.shortTitle,type:m.type,subject:m.subject,level:Number(m.level),week:Number(m.week),term:m.terms,track:m.track||"classic",part:m.part||null};}
+function publicInfo(m){return {id:m.id,title:m.arTitle,originalTitle:m.shortTitle,type:m.type,subject:m.subject,level:Number(m.level),week:Number(m.week),term:m.terms,track:m.track||"classic",part:m.part||null,access:accessRule(m)};}
 async function allLessons(){const extras=await db('cfi_extra_lessons','GET','?select=*&order=created_at.asc');return [...content,...extras.map(x=>({id:x.id,type:x.type||'lesson',subject:x.subject||'ESP32',level:'1',week:x.week||23,shortTitle:x.title,arTitle:x.title,arIntro:x.intro,terms:x.terms,arTask:x.task,body:'',source:'درس جديد من الأستاذ',custom:true}))];}
 async function courseById(id){return byId.get(id)|| (await allLessons()).find(x=>x.id===id);}
 async function questionsFor(id){if(bank[id])return bank[id];const rows=await db('cfi_extra_lessons','GET',`?select=id,quiz&id=eq.${encodeURIComponent(id)}&limit=1`);return rows[0]?.quiz||[];}
@@ -228,11 +234,12 @@ async function respond(req,res,url){
  const method=req.method;const route=url.pathname;
  if(!route.startsWith('/api/academy/'))return false;
  try{
-  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:activeLessons.length,version:'6.3',mode:'email-approval-or-verified-payment'}),true;}
+  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:activeLessons.length,version:'7.0',mode:'email-approval-or-verified-payment'}),true;}
   if(method==='GET'&&route==='/api/academy/catalog'){
    const bases=activeLessons.map(publicInfo);let extras=[];if(configured())try{extras=(await db('cfi_extra_lessons','GET','?select=id,title,type,subject,week,terms')).map(x=>({id:x.id,title:x.title,originalTitle:x.title,type:x.type||'lesson',subject:x.subject||'ESP32',week:x.week,term:x.terms}))}catch{}return send(res,200,{courses:bases}),true;
   }
   requireReady();
+  if(method==='GET'&&route==='/api/academy/store')return send(res,200,{prices:await storePrices(),monthlyPriceMillimes:await amountMillimes(),freeLessons:5,freeProjectStages:2,lifetimePayment:'manual'}),true;
   // Registration is public but cannot grant an active role: professor approval or verified payment required.
   if(method==='POST'&&route==='/api/academy/register'){
    if(!emailReady())throw apiError('التسجيل بالبريد موش مفعّل. لازم تهيئة SMTP في Render.',503);
@@ -316,7 +323,7 @@ async function respond(req,res,url){
    const qs=await questionsFor(id);if(!qs.length)throw apiError('الدرس هذا مازال ما عندوش QCM');return send(res,200,ticketQuiz(u,id,qs)),true;
   }
   if(method==='GET'&&route==='/api/academy/mine'){
-   requireRole(u,['student']);const subs=await mySubmissions(u);const prog=progress(subs);const cert=prog.certificateReady?await issueCertificate(u,subs):null;const attempts=await attemptsByUser(u);return send(res,200,{submissions:subs.filter(x=>activeIds.has(x.lesson_id)),progress:prog,beginnerProgress:allBeginnerProgress(subs),beginnerAttempts:Object.fromEntries(beginnerTracks.map(t=>[t,attempts.filter(x=>byId.get(x.lesson_id)?.track===t).length])),attempts:myAttemptSummary(attempts,prog),subscription:subscription(u),certificate:cert?{code:cert.code,issuedAt:cert.issued_at,session:cert.session}:null}),true;
+   requireRole(u,['student']);const subs=await mySubmissions(u);const prog=progress(subs);const cert=prog.certificateReady?await issueCertificate(u,subs):null;const attempts=await attemptsByUser(u);return send(res,200,{submissions:subs.filter(x=>activeIds.has(x.lesson_id)),progress:prog,beginnerProgress:allBeginnerProgress(subs),beginnerAttempts:Object.fromEntries(beginnerTracks.map(t=>[t,attempts.filter(x=>byId.get(x.lesson_id)?.track===t).length])),attempts:myAttemptSummary(attempts,prog),subscription:subscription(u),ownership:ownership(u),certificate:cert?{code:cert.code,issuedAt:cert.issued_at,session:cert.session}:null}),true;
   }
   if(method==='POST'&&route==='/api/academy/submit'){
    requireRole(u,['student']);if(u.must_change_password)throw apiError('بدّل كلمة السرّ المؤقّتة قبل ما تبدأ',403);
@@ -341,7 +348,7 @@ async function respond(req,res,url){
     progress:pr,beginnerProgress:allBeginnerProgress(newSubs),certificate:certificate?{code:certificate.code,issuedAt:certificate.issued_at,session:certificate.session}:null}),true;
   }
   if(method==='POST'&&route==='/api/academy/certificate'){
-   requireRole(u,['student']);if(!subscription(u).valid)throw apiError('يلزم اشتراك نشيط.',402);
+   requireRole(u,['student']);if(u.must_change_password)throw apiError('بدّل كلمة السرّ المؤقّتة.',403);
    const subs=await mySubmissions(u),pr=progress(subs);if(!pr.certificateReady)throw apiError(`مازال يلزم 20/20 في ${pr.total-pr.done} درس قبل الشهادة.`,400);
    const cert=await issueCertificate(u,subs);if(!cert)throw apiError('شهادة قديمة موجودة. يلزم ترحيلها بطريقة آمنة.',409);
    return send(res,200,{certificate:{code:cert.code,issuedAt:cert.issued_at,studentName:u.display_name,session:cert.session,verificationUrl:verificationUrl(cert.code),qrCode:certificateQR(cert.code)}}),true;
@@ -356,8 +363,8 @@ async function respond(req,res,url){
   }
   // Admin-only account provisioning and private student grades.
   if(method==='GET'&&route==='/api/academy/admin/overview'){
-   requireRole(u,['admin']);const users=await db('cfi_users','GET','?select=id,username,display_name,email,email_verified,approval_method,activation_status,role,active,access_expires_at,access_source,must_change_password&role=eq.student&order=created_at.desc');const submissions=await db('cfi_submissions','GET','?select=user_id,lesson_id,score,best_score,code,notes,updated_at,review_status&order=updated_at.desc&limit=2000');
-   return send(res,200,{students:users,submissions,monthlyPriceMillimes:await amountMillimes()}),true;
+   requireRole(u,['admin']);const users=await db('cfi_users','GET','?select=id,username,display_name,email,email_verified,approval_method,activation_status,role,active,access_expires_at,access_source,must_change_password,lifetime_arduino,lifetime_esp32&role=eq.student&order=created_at.desc');const submissions=await db('cfi_submissions','GET','?select=user_id,lesson_id,score,best_score,code,notes,updated_at,review_status&order=updated_at.desc&limit=2000');
+   return send(res,200,{students:users,submissions,monthlyPriceMillimes:await amountMillimes(),storePrices:await storePrices()}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/students'){
    requireRole(u,['admin']);const b=await body(req),username=normalUsername(b.username),name=str(b.name,80);
@@ -367,7 +374,7 @@ async function respond(req,res,url){
    if(password!==confirmPassword)throw apiError('كلمتا السرّ موش متطابقتين.');
    if(password.toLowerCase()===username||/^(.{1,4})\1{2,}$/.test(password))throw apiError('اختار كلمة سرّ أقوى وما تكونش كيف Username.');
    if(await getUserByUsername(username))throw apiError('Username مستعمل من قبل');
-   const saved=await db('cfi_users','POST','',[{username,display_name:name,password_hash:hash(password),role:'student',active:true,must_change_password:true,access_expires_at:addOneMonth(new Date()).toISOString(),access_source:'prof'}]);
+   const saved=await db('cfi_users','POST','',[{username,display_name:name,password_hash:hash(password),role:'student',active:true,must_change_password:true,access_expires_at:b.plan==='premium'?addOneMonth(new Date()).toISOString():null,access_source:b.plan==='premium'?'prof':null}]);
    return send(res,201,{student:cleanUser(saved[0]),passwordSetByAdmin:true}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/reset-password'){
@@ -383,8 +390,8 @@ async function respond(req,res,url){
    requireRole(u,['admin']);const b=await body(req),target=await getUserById(str(b.id,64));
    if(!target||target.role!=='student')throw apiError('تلميذ غير موجود',404);
    if(target.email&&!target.email_verified)throw apiError('يلزم التلميذ يؤكّد Email قبل الموافقة.',403);
-   const expiresAt=await extendTeacherMonth(target);
-   return send(res,200,{ok:true,expiresAt}),true;
+   await db('cfi_users','PATCH',`?id=eq.${target.id}`,{active:true,activation_status:'active'});
+   return send(res,200,{ok:true}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/enable'){
    requireRole(u,['admin']);const b=await body(req),target=await getUserById(str(b.id,64));if(!target||target.role!=='student')throw apiError('تلميذ غير موجود',404);if(!!b.active&&target.email&&!target.email_verified)throw apiError('ما تنجمش تفعّل حساب قبل تأكيد Email',403);await db('cfi_users','PATCH',`?id=eq.${target.id}`,{active:!!b.active,activation_status:b.active?'active':'suspended'});return send(res,200,{ok:true}),true;
@@ -399,6 +406,19 @@ async function respond(req,res,url){
    if(!target||target.role!=='student')throw apiError('تلميذ غير موجود',404);
    if(target.email&&!target.email_verified)throw apiError('يلزم تأكيد البريد أولًا',403);
    const expiresAt=await extendTeacherMonth(target);return send(res,200,{ok:true,expiresAt}),true;
+  }
+  if(method==='POST'&&route==='/api/academy/admin/grant'){
+   requireRole(u,['admin']);const b=await body(req),target=await getUserById(str(b.id,64));
+   if(!target||target.role!=='student')throw apiError('تلميذ غير موجود',404);
+   if(!['arduino','esp32','pack'].includes(b.product))throw apiError('منتج غير صحيح');
+   if(target.email&&!target.email_verified)throw apiError('يلزم تأكيد البريد أولاً.',403);
+   const patch={};if(b.product!=='esp32')patch.lifetime_arduino=true;if(b.product!=='arduino')patch.lifetime_esp32=true;
+   await db('cfi_users','PATCH',`?id=eq.${encodeURIComponent(target.id)}`,patch);return send(res,200,{ok:true}),true;
+  }
+  if(method==='POST'&&route==='/api/academy/admin/store-price'){
+   requireRole(u,['admin']);const b=await body(req);if(!Object.hasOwn(productKeys,b.product))throw apiError('منتج غير صحيح');
+   const dt=Number(b.priceDT),millimes=Math.round(dt*1000);if(!Number.isFinite(dt)||millimes<1000||millimes>1000000||Math.abs(dt*1000-millimes)>1e-6)throw apiError('السعر غير صحيح');
+   await db('cfi_settings','POST','?on_conflict=key',[{key:productKeys[b.product],value_int:millimes,updated_at:new Date().toISOString()}],'resolution=merge-duplicates,return=representation');return send(res,200,{ok:true}),true;
   }
   if(method==='POST'&&route==='/api/academy/admin/price'){
    requireRole(u,['admin']);const b=await body(req),dt=Number(b.priceDT),millimes=Math.round(dt*1000);
@@ -417,4 +437,4 @@ async function respond(req,res,url){
   throw apiError('المسار هذا موش موجود',404);
  }catch(e){const status=e.status||500;if(status>=500)console.error('CFI Academy server:',e.message);send(res,status,{error:e.message||'خطأ في السيرفر'});return true;}
 }
-module.exports={respond,configured,hash,check,sign,verify,progress,baseIds,viewer,subscription,db,beginnerProgress};
+module.exports={respond,configured,hash,check,sign,verify,progress,baseIds,viewer,subscription,db,beginnerProgress,ownership,accessRule,hasCourseAccess,requireCourseAccess};
