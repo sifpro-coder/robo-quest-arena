@@ -4345,8 +4345,8 @@
       "why": "الزر يعطي معلومة للبرنامج."
     },
     {
-      "id": "arduino-basic-10-q2",
-      "textAr": "شنوة حالة زر مفتوح مع Pull-up؟",
+      "id": "arduino-basic-10-q2-pd",
+      "textAr": "شنوة حالة زر مفتوح مع Pull-down؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
         "LOW",
@@ -4354,12 +4354,12 @@
         "HIGH",
         "قصر"
       ],
-      "answer": 2,
-      "why": "المقاومة الداخلية ترفع المدخل."
+      "answer": 0,
+      "why": "المقاومة تربط المدخل بالأرضي عند الإفلات."
     },
     {
-      "id": "arduino-basic-10-q3",
-      "textAr": "وقت نضغط زر مربوط بـGND؟",
+      "id": "arduino-basic-10-q3-pd",
+      "textAr": "وقت نضغط زر مربوط بـ5 V في دارة Pull-down؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
         "5 أمبير",
@@ -4367,12 +4367,12 @@
         "تتوقف اللوحة",
         "HIGH"
       ],
-      "answer": 1,
-      "why": "المدخل يتصل بالأرضي."
+      "answer": 3,
+      "why": "المدخل يتصل بجهد التغذية المنطقي ويقرأ 1."
     },
     {
-      "id": "arduino-basic-10-q4",
-      "textAr": "شنوة وظيفة Pull-up؟",
+      "id": "arduino-basic-10-q4-pd",
+      "textAr": "شنوة وظيفة Pull-down؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
         "تخزين الكود",
@@ -4381,7 +4381,7 @@
         "تثبيت حالة المدخل"
       ],
       "answer": 3,
-      "why": "تمنع المدخل من البقاء عائماً."
+      "why": "تمنع المدخل من البقاء عائماً وتثبّته في LOW عند الإفلات."
     },
     {
       "id": "arduino-basic-10-q5",
@@ -4423,7 +4423,7 @@
       "why": "تحمي LED والمخرج."
     },
     {
-      "id": "arduino-basic-10-q8",
+      "id": "arduino-basic-10-q8-pd",
       "textAr": "في الرسم، الزر مضغوط. شنوّة القراءة؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
@@ -4432,9 +4432,9 @@
         "1",
         "4095"
       ],
-      "answer": 0,
-      "why": "Pull-up مع زر إلى GND يعني 0.",
-      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150\" y=\"37\">OPEN / 1</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410\" y=\"37\">PRESSED / 0</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150\" y=\"65\">VCC</text><path d=\"M150 72 L150 85\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"30\" rx=\"10\" width=\"60\" x=\"120\" y=\"85\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150.0\" y=\"106.0\">R pull</text><path d=\"M150 115 L150 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M150 142 L215 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"215\" y=\"132\">IN</text><path d=\"M150 142 L150 155\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><circle cx=\"150\" cy=\"155\" fill=\"#345\" r=\"5\"></circle><circle cx=\"150\" cy=\"192\" fill=\"#345\" r=\"5\"></circle><path d=\"M150 155 L173 192\" fill=\"none\" stroke=\"#159b9b\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M150 192 L150 208\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150\" y=\"226\">GND</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410\" y=\"65\">VCC</text><path d=\"M410 72 L410 85\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"30\" rx=\"10\" width=\"60\" x=\"380\" y=\"85\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410.0\" y=\"106.0\">R pull</text><path d=\"M410 115 L410 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M410 142 L475 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"475\" y=\"132\">IN</text><path d=\"M410 142 L410 155\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><circle cx=\"410\" cy=\"155\" fill=\"#345\" r=\"5\"></circle><circle cx=\"410\" cy=\"192\" fill=\"#345\" r=\"5\"></circle><path d=\"M410 155 L410 192\" fill=\"none\" stroke=\"#159b9b\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M410 192 L410 208\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410\" y=\"226\">GND</text></svg>"
+      "answer": 2,
+      "why": "Pull-down مع زر مضغوط إلى جهد التغذية يعني 1.",
+      "visual": "<svg aria-label=\"Pull-down : bouton ouvert et fermé\" role=\"img\" viewBox=\"0 0 560 250\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"550\" height=\"240\" rx=\"20\" fill=\"#edf5ff\"/><text x=\"130\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">OPEN</text><text x=\"130\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">5V</text><path d=\"M130 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"130\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M130 86 L153 111\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M130 120 V160 H205\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"205\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M130 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"94\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"130\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M130 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"130\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text><text x=\"390\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">PRESSED</text><text x=\"390\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">5V</text><path d=\"M390 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"390\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M390 86 L390 120\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M390 120 V160 H465\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"465\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M390 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"354\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"390\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M390 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"390\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text></svg>"
     },
     {
       "id": "arduino-basic-10-q9",
@@ -7534,8 +7534,8 @@
       "why": "الزر يعطي معلومة للبرنامج."
     },
     {
-      "id": "esp32-basic-10-q2",
-      "textAr": "شنوة حالة زر مفتوح مع Pull-up؟",
+      "id": "esp32-basic-10-q2-pd",
+      "textAr": "شنوة حالة زر مفتوح مع Pull-down؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
         "PWM",
@@ -7543,12 +7543,12 @@
         "قصر",
         "HIGH"
       ],
-      "answer": 3,
-      "why": "المقاومة الداخلية ترفع المدخل."
+      "answer": 1,
+      "why": "المقاومة تربط المدخل بالأرضي عند الإفلات."
     },
     {
-      "id": "esp32-basic-10-q3",
-      "textAr": "وقت نضغط زر مربوط بـGND؟",
+      "id": "esp32-basic-10-q3-pd",
+      "textAr": "وقت نضغط زر مربوط بـ3,3 V (3V3) في دارة Pull-down؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
         "تتوقف اللوحة",
@@ -7556,12 +7556,12 @@
         "LOW",
         "5 أمبير"
       ],
-      "answer": 2,
-      "why": "المدخل يتصل بالأرضي."
+      "answer": 1,
+      "why": "المدخل يتصل بجهد التغذية المنطقي ويقرأ 1."
     },
     {
-      "id": "esp32-basic-10-q4",
-      "textAr": "شنوة وظيفة Pull-up؟",
+      "id": "esp32-basic-10-q4-pd",
+      "textAr": "شنوة وظيفة Pull-down؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
         "تخزين الكود",
@@ -7570,7 +7570,7 @@
         "زيادة سرعة المعالج"
       ],
       "answer": 2,
-      "why": "تمنع المدخل من البقاء عائماً."
+      "why": "تمنع المدخل من البقاء عائماً وتثبّته في LOW عند الإفلات."
     },
     {
       "id": "esp32-basic-10-q5",
@@ -7612,7 +7612,7 @@
       "why": "تحمي LED والمخرج."
     },
     {
-      "id": "esp32-basic-10-q8",
+      "id": "esp32-basic-10-q8-pd",
       "textAr": "في الرسم، الزر مضغوط. شنوّة القراءة؟",
       "term": "Digital Input — Bouton poussoir",
       "options": [
@@ -7621,9 +7621,9 @@
         "0",
         "4095"
       ],
-      "answer": 2,
-      "why": "Pull-up مع زر إلى GND يعني 0.",
-      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150\" y=\"37\">OPEN / 1</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410\" y=\"37\">PRESSED / 0</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150\" y=\"65\">VCC</text><path d=\"M150 72 L150 85\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"30\" rx=\"10\" width=\"60\" x=\"120\" y=\"85\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150.0\" y=\"106.0\">R pull</text><path d=\"M150 115 L150 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M150 142 L215 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"215\" y=\"132\">IN</text><path d=\"M150 142 L150 155\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><circle cx=\"150\" cy=\"155\" fill=\"#345\" r=\"5\"></circle><circle cx=\"150\" cy=\"192\" fill=\"#345\" r=\"5\"></circle><path d=\"M150 155 L173 192\" fill=\"none\" stroke=\"#159b9b\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M150 192 L150 208\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"150\" y=\"226\">GND</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410\" y=\"65\">VCC</text><path d=\"M410 72 L410 85\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"30\" rx=\"10\" width=\"60\" x=\"380\" y=\"85\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410.0\" y=\"106.0\">R pull</text><path d=\"M410 115 L410 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M410 142 L475 142\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"475\" y=\"132\">IN</text><path d=\"M410 142 L410 155\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><circle cx=\"410\" cy=\"155\" fill=\"#345\" r=\"5\"></circle><circle cx=\"410\" cy=\"192\" fill=\"#345\" r=\"5\"></circle><path d=\"M410 155 L410 192\" fill=\"none\" stroke=\"#159b9b\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M410 192 L410 208\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"410\" y=\"226\">GND</text></svg>"
+      "answer": 0,
+      "why": "Pull-down مع زر مضغوط إلى جهد التغذية يعني 1.",
+      "visual": "<svg aria-label=\"Pull-down : bouton ouvert et fermé\" role=\"img\" viewBox=\"0 0 560 250\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"550\" height=\"240\" rx=\"20\" fill=\"#edf5ff\"/><text x=\"130\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">OPEN</text><text x=\"130\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">3V3</text><path d=\"M130 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"130\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M130 86 L153 111\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M130 120 V160 H205\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"205\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M130 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"94\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"130\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M130 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"130\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text><text x=\"390\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">PRESSED</text><text x=\"390\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">3V3</text><path d=\"M390 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"390\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M390 86 L390 120\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M390 120 V160 H465\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"465\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M390 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"354\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"390\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M390 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"390\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text></svg>"
     },
     {
       "id": "esp32-basic-10-q9",
