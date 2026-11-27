@@ -6134,16 +6134,16 @@
     },
     {
       "id": "esp32-basic-01-q5",
-      "textAr": "شنية GND؟",
-      "term": "نتعرّف على ESP32",
+      "textAr": "ESP32 هي شنوّة؟ / Qu’est-ce que l’ESP32 ?",
+      "term": "Introduction à l’ESP32",
       "options": [
-        "مرجع 0V",
-        "إشارة Wi-Fi",
-        "محرّك",
-        "ذاكرة"
+        "Microcontrôleur programmable",
+        "Écran LCD",
+        "Résistance",
+        "Batterie"
       ],
       "answer": 0,
-      "why": "مرجع الجهد."
+      "why": "ESP32 تنفّذ البرنامج وتتحكم في المداخل والمخارج."
     },
     {
       "id": "esp32-basic-01-q6",
@@ -6175,42 +6175,42 @@
     },
     {
       "id": "esp32-basic-01-q8",
-      "textAr": "شنية جهد إشارات GPIO؟",
-      "term": "نتعرّف على ESP32",
+      "textAr": "باش نكتبوا MicroPython نستعملوا شنوّة؟",
+      "term": "Introduction à l’ESP32",
       "options": [
-        "12V",
-        "9V",
-        "5V",
-        "3.3V"
+        "Thonny",
+        "PowerPoint",
+        "Paint",
+        "Word"
       ],
-      "answer": 3,
-      "why": "GPIO في ESP32 الكلاسيكي يعمل بمنطق 3.3V."
+      "answer": 0,
+      "why": "Thonny محرّر بسيط مناسب للـESP32."
     },
     {
       "id": "esp32-basic-01-q9",
-      "textAr": "Pin.OUT تعني؟",
-      "term": "نتعرّف على ESP32",
+      "textAr": "GPIO34 في ESP32 classique ينجم يكون؟",
+      "term": "Carte ESP32 et pinout",
       "options": [
-        "مخرج",
-        "مدخل",
-        "اتصال Wi-Fi",
-        "إيقاف"
+        "Entrée uniquement",
+        "Sortie PWM",
+        "Alimentation USB",
+        "GND"
       ],
       "answer": 0,
-      "why": "تعيّن الطرف كمخرج."
+      "why": "GPIO34 input-only على ESP32 classique."
     },
     {
       "id": "esp32-basic-01-q10",
-      "textAr": "while True تعمل؟",
-      "term": "نتعرّف على ESP32",
+      "textAr": "GND تعني شنوّة؟",
+      "term": "Carte ESP32 et pinout",
       "options": [
-        "مرة واحدة",
-        "حلقة مستمرة",
-        "تمحي البرنامج",
-        "تبدل الجهد"
+        "Référence 0 V",
+        "Sortie 12 V",
+        "Wi-Fi",
+        "UART"
       ],
-      "answer": 1,
-      "why": "تكرر التعليمات."
+      "answer": 0,
+      "why": "GND هي المرجع المشترك للدارة."
     },
     {
       "id": "esp32-basic-01-q11",
@@ -6699,29 +6699,29 @@
     },
     {
       "id": "esp32-basic-04-q11",
-      "textAr": "في المثال نطفّي LED كيفاش؟",
-      "term": "Thonny وMicroPython",
+      "textAr": "ESP32 هي شنوّة؟ / Qu’est-ce que l’ESP32 ?",
+      "term": "Introduction à l’ESP32",
       "options": [
-        "HIGH",
-        "Port",
-        "led.off()",
-        "USB"
+        "Microcontrôleur programmable",
+        "Écran LCD",
+        "Résistance",
+        "Batterie"
       ],
-      "answer": 2,
-      "why": "هذا الأمر يخفض المخرج."
+      "answer": 0,
+      "why": "ESP32 تنفّذ البرنامج وتتحكم في المداخل والمخارج."
     },
     {
       "id": "esp32-basic-04-q12",
-      "textAr": "نجاح تشغيل البرنامج يكفي للتأكد من صحة الدارة؟",
-      "term": "Thonny وMicroPython",
+      "textAr": "باش نكتبوا MicroPython نستعملوا شنوّة؟",
+      "term": "Introduction à l’ESP32",
       "options": [
-        "نعم إذا الخط كبير",
-        "لا، لازم نراجع التوصيلات ونلاحظ النتيجة",
-        "نعم إذا الحاسوب جديد",
-        "نعم دائماً"
+        "Thonny",
+        "PowerPoint",
+        "Paint",
+        "Word"
       ],
-      "answer": 1,
-      "why": "البرنامج والدارة يحتاجان تحققاً منفصلين."
+      "answer": 0,
+      "why": "Thonny محرّر بسيط مناسب للـESP32."
     }
   ],
   "esp32-basic-05": [
@@ -6858,29 +6858,29 @@
     },
     {
       "id": "esp32-basic-05-q11",
-      "textAr": "شنوة نعمل قبل تبديل الأسلاك؟",
-      "term": "Digital Output — المخرج الرقمي",
+      "textAr": "Pin.OUT تستعمل في شنوّة؟",
+      "term": "GPIO — entrées et sorties numériques",
       "options": [
-        "نربط HIGH مع GND",
-        "نزيد جهد التغذية",
-        "ننحي المقاومة",
-        "نفصل USB"
+        "Commander une sortie",
+        "Lire une tension analogique",
+        "Mesurer le Wi-Fi",
+        "Installer Python"
       ],
-      "answer": 3,
-      "why": "نفصل التغذية لحماية الدارة."
+      "answer": 0,
+      "why": "Pin.OUT تستعمل للتحكّم في المخرجات."
     },
     {
       "id": "esp32-basic-05-q12",
-      "textAr": "هل الحالة تبقى حتى أمر آخر؟",
-      "term": "Digital Output — المخرج الرقمي",
+      "textAr": "led.on() تعمل شنوّة؟",
+      "term": "GPIO — entrées et sorties numériques",
       "options": [
-        "لا، لازم Wi-Fi",
-        "لا، لازم زر",
-        "نعم في المثال",
-        "لا تتغير كل ثانية وحدها"
+        "Met le GPIO à 1",
+        "Éteint le Wi-Fi",
+        "Lit un capteur",
+        "Arrête le programme"
       ],
-      "answer": 2,
-      "why": "المخرج يحافظ على الحالة ما دام البرنامج ما غيّرهاش."
+      "answer": 0,
+      "why": "led.on() تخلي الـsortie على HIGH."
     }
   ],
   "esp32-basic-06": [
@@ -7653,29 +7653,29 @@
     },
     {
       "id": "esp32-basic-10-q11",
-      "textAr": "لو نحب نعكس سلوك LED؟",
-      "term": "Digital Input — Bouton poussoir",
+      "textAr": "Pin.PULL_DOWN تخدم شنوّة؟",
+      "term": "Contrôle des LED et boutons",
       "options": [
-        "نزيد بطارية",
-        "نعكس الشرط",
-        "نلغي المدخل",
-        "نربط LED بلا مقاومة"
+        "Stabiliser l’entrée à 0",
+        "Créer du Wi-Fi",
+        "Allumer OLED",
+        "Régler PWM"
       ],
-      "answer": 1,
-      "why": "البرنامج يحدد المنطق."
+      "answer": 0,
+      "why": "Pull-down يمنع input float."
     },
     {
       "id": "esp32-basic-10-q12",
-      "textAr": "شنوة الأمر لقراءة الزر؟",
-      "term": "Digital Input — Bouton poussoir",
+      "textAr": "bouton.value() تقرى؟",
+      "term": "Contrôle des LED et boutons",
       "options": [
-        "Pin.OUT",
-        "sleep(18)",
-        "led.on()",
-        "bouton.value()"
+        "0 ou 1",
+        "Une tension continue directe",
+        "Une photo",
+        "Adresse IP"
       ],
-      "answer": 3,
-      "why": "value() دون وسيط تقرأ الحالة."
+      "answer": 0,
+      "why": "Digital input 0/1."
     }
   ],
   "esp32-basic-11": [
@@ -7786,55 +7786,55 @@
     },
     {
       "id": "esp32-basic-11-q9",
-      "textAr": "شنوة دور GND؟",
-      "term": "Analog Input — ADC & Potentiomètre",
+      "textAr": "ADC يعمل شنوّة؟",
+      "term": "ADC — entrées analogiques",
       "options": [
-        "كود البرنامج",
-        "مرجع للجهد",
-        "محرك",
-        "إشارة Wi-Fi"
+        "Convertit une tension en nombre",
+        "Écrit un fichier",
+        "Commande un servo",
+        "Affiche une image"
       ],
-      "answer": 1,
-      "why": "القياس يحتاج مرجعاً."
+      "answer": 0,
+      "why": "ADC يحوّل signal analogique إلى valeur numérique."
     },
     {
       "id": "esp32-basic-11-q10",
-      "textAr": "قبل توصيل جهد بالمدخل؟",
-      "term": "Analog Input — ADC & Potentiomètre",
+      "textAr": "Potentiomètre نربطوا وسطه في المثال على؟",
+      "term": "ADC — entrées analogiques",
       "options": [
-        "نجرب أعلى جهد",
-        "نتثبت من الحد المسموح",
-        "نوصل 12V",
-        "ننحي GND"
+        "GPIO34",
+        "GPIO5",
+        "EN",
+        "GND seulement"
       ],
-      "answer": 1,
-      "why": "الجهد الزائد ينجم يتلف اللوحة."
+      "answer": 0,
+      "why": "الـcurseur يتربط بـGPIO34."
     },
     {
       "id": "esp32-basic-11-q11",
-      "textAr": "كيف نعرف إذا البكرة تخدم؟",
-      "term": "Analog Input — ADC & Potentiomètre",
+      "textAr": "DAC يعمل شنوّة؟",
+      "term": "DAC — sorties analogiques",
       "options": [
-        "نسمع الصوت",
-        "نبدّل USB كل مرة",
-        "نراقب تغيّر القراءات",
-        "نحذف البرنامج"
+        "Convertit un nombre en tension analogique",
+        "Lit un bouton",
+        "Capte le Wi-Fi",
+        "Alimente à 12 V"
       ],
-      "answer": 2,
-      "why": "نقرأ القيم عبر نافذة المراقبة."
+      "answer": 0,
+      "why": "DAC يعمل conversion numérique-analogique."
     },
     {
       "id": "esp32-basic-11-q12",
-      "textAr": "أعلى قراءة خام مع 12 bits؟",
-      "term": "Analog Input — ADC & Potentiomètre",
+      "textAr": "GPIO متاع DAC في ESP32 classique؟",
+      "term": "DAC — sorties analogiques",
       "options": [
-        "1023",
-        "4095",
-        "3300",
-        "255"
+        "GPIO25",
+        "GPIO34",
+        "GPIO5",
+        "GPIO18"
       ],
-      "answer": 1,
-      "why": "القيم من 0 إلى 4095."
+      "answer": 0,
+      "why": "DAC1 في classique على GPIO25."
     }
   ],
   "esp32-basic-12": [
@@ -7945,55 +7945,55 @@
     },
     {
       "id": "esp32-basic-12-q9",
-      "textAr": "علاش نخلي مقاومة LED مع PWM؟",
-      "term": "PWM — التحكّم في الإضاءة",
+      "textAr": "PWM تغيّر شنوّة في LED؟",
+      "term": "PWM — modulation de largeur d’impulsion",
       "options": [
-        "PWM يلغي التيار",
-        "تزيد التردد",
-        "تحدّ التيار وقت HIGH",
-        "تخزن الكود"
+        "Luminosité apparente",
+        "Adresse IP",
+        "Tension USB",
+        "Code PIN"
       ],
-      "answer": 2,
-      "why": "التيار اللحظي يلزم تحديده."
+      "answer": 0,
+      "why": "PWM تبدّل الإضاءة باستعمال Duty."
     },
     {
       "id": "esp32-basic-12-q10",
-      "textAr": "نزيد Duty cycle في دارة LED هذه؟",
-      "term": "PWM — التحكّم في الإضاءة",
+      "textAr": "duty(0) يخلي LED ؟",
+      "term": "PWM — modulation de largeur d’impulsion",
       "options": [
-        "يتوقف البرنامج",
-        "الإضاءة عادة تزيد",
-        "الإضاءة تنقص دائماً",
-        "يتغير نوع اللوحة"
+        "Éteinte",
+        "Toujours brillante",
+        "En mode Wi-Fi",
+        "Rouge فقط"
       ],
-      "answer": 1,
-      "why": "متوسط الطاقة يزيد."
+      "answer": 0,
+      "why": "Duty 0 يعني وقت ON صفر."
     },
     {
       "id": "esp32-basic-12-q11",
-      "textAr": "هل التردد وDuty cycle نفس الشيء؟",
-      "term": "PWM — التحكّم في الإضاءة",
+      "textAr": "نقروا Potentiomètre باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
       "options": [
-        "نعم",
-        "لا",
-        "فقط مع USB",
-        "فقط مع LED"
+        "ADC",
+        "DAC",
+        "PWM",
+        "UART"
       ],
-      "answer": 1,
-      "why": "الأول عدد الدورات والثاني نسبة الوقت."
+      "answer": 0,
+      "why": "Pot يعطي analogique وADC تقراه."
     },
     {
       "id": "esp32-basic-12-q12",
-      "textAr": "مجال duty التقليدي على ESP32؟",
-      "term": "PWM — التحكّم في الإضاءة",
+      "textAr": "نبدّلوا luminosité LED باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
       "options": [
-        "0–255",
-        "0–180",
-        "0–1023",
-        "0–4095"
+        "PWM",
+        "SPI",
+        "RTC",
+        "EN"
       ],
-      "answer": 2,
-      "why": "الدالة duty تستعمل 10 bits في هذه الواجهة."
+      "answer": 0,
+      "why": "PWM تسمح بتغيير Duty."
     }
   ],
   "esp32-basic-13": [
@@ -8289,29 +8289,29 @@
     },
     {
       "id": "esp32-basic-14-q11",
-      "textAr": "مصدر 5V للـServo، كيف نختاره؟",
-      "term": "Servo — التحكّم في الزاوية",
+      "textAr": "Servo القياسي يستعمل غالبًا fréquence؟",
+      "term": "Contrôle des servomoteurs",
       "options": [
-        "حسب جهد وتيار المحرك",
-        "من GPIO مباشرة",
-        "حسب لون السلك فقط",
-        "من 3V3 دائماً"
+        "Environ 50 Hz",
+        "10000 Hz",
+        "0 Hz",
+        "1 MHz"
       ],
       "answer": 0,
-      "why": "نختار مصدر مناسب للمواصفات."
+      "why": "Servo hobby غالبًا 50 Hz."
     },
     {
       "id": "esp32-basic-14-q12",
-      "textAr": "شنوة معناها servo.duty(77) عند 50 Hz؟",
-      "term": "Servo — التحكّم في الزاوية",
+      "textAr": "Servo يحتاج شنوّة مع alimentation externe؟",
+      "term": "Contrôle des servomoteurs",
       "options": [
-        "تردد 77 Hz",
-        "تغذية 77V",
-        "زاوية 77° بالضبط",
-        "نبضة تقريباً 1.5ms"
+        "GND commune",
+        "12 V sur GPIO",
+        "Débrancher GND",
+        "EN à 0"
       ],
-      "answer": 3,
-      "why": "77/1023 × 20ms ≈ 1.5ms."
+      "answer": 0,
+      "why": "لازم Masse commune."
     }
   ],
   "esp32-basic-15": [
@@ -8740,55 +8740,55 @@
     },
     {
       "id": "esp32-basic-17-q9",
-      "textAr": "هل SDA/SCL تكفي بلا GND؟",
-      "term": "LCD / OLED — عرض المعلومات",
+      "textAr": "I2C عندها شحال من خط أساسي؟",
+      "term": "I2C — communication avec les capteurs",
       "options": [
-        "نعم دائماً",
-        "لا",
-        "فقط على OLED",
-        "فقط مع USB"
+        "Deux: SDA et SCL",
+        "Quatre sorties PWM",
+        "Un seul GND",
+        "Huit lignes data"
       ],
-      "answer": 1,
-      "why": "يلزم مرجع كهربائي مشترك."
+      "answer": 0,
+      "why": "SDA données وSCL horloge."
     },
     {
       "id": "esp32-basic-17-q10",
-      "textAr": "هل 0x27 مضمون لكل LCD؟",
-      "term": "LCD / OLED — عرض المعلومات",
+      "textAr": "i2c.scan() ترجع؟",
+      "term": "I2C — communication avec les capteurs",
       "options": [
-        "هو عدد الأسطر",
-        "لا، نعمل Scan",
-        "نعم دائماً",
-        "عنوان تغذية"
+        "Adresses détectées",
+        "Code Python",
+        "Liste Wi-Fi",
+        "Température مباشرة"
       ],
-      "answer": 1,
-      "why": "العنوان يتغير حسب الوحدة."
+      "answer": 0,
+      "why": "scan() تكتشف الأجهزة المتصلة."
     },
     {
       "id": "esp32-basic-17-q11",
-      "textAr": "SDA في المثال على ESP32؟",
-      "term": "LCD / OLED — عرض المعلومات",
+      "textAr": "SCK هي شنوّة؟",
+      "term": "SPI — communication série rapide",
       "options": [
-        "GPIO34",
-        "GPIO22",
-        "5V",
-        "GPIO21"
+        "Horloge SPI",
+        "Sortie DAC",
+        "Broche EN",
+        "Capteur analogique"
       ],
-      "answer": 3,
-      "why": "SDA=21 في الكود."
+      "answer": 0,
+      "why": "SCK تعطي Clock."
     },
     {
       "id": "esp32-basic-17-q12",
-      "textAr": "oled.show() تعمل؟",
-      "term": "LCD / OLED — عرض المعلومات",
+      "textAr": "MOSI نقل بيانات في اتجاه؟",
+      "term": "SPI — communication série rapide",
       "options": [
-        "تقرأ زر",
-        "توقف I2C",
-        "ترسل محتوى buffer للشاشة",
-        "تغذي محرك"
+        "Maître vers périphérique",
+        "Périphérique vers maître",
+        "GND vers 3V3",
+        "LED vers masse"
       ],
-      "answer": 2,
-      "why": "يلزم show لإظهار التعديلات."
+      "answer": 0,
+      "why": "MOSI Master Out Slave In."
     }
   ],
   "esp32-basic-18": [
@@ -8925,29 +8925,29 @@
     },
     {
       "id": "esp32-basic-18-q11",
-      "textAr": "duty(640) من 1023 تقريباً؟",
-      "term": "Moteur DC & L298N — التحكّم في الحركة",
+      "textAr": "علاش نستعملوا driver moteur؟",
+      "term": "Commande des moteurs",
       "options": [
-        "100%",
-        "63%",
-        "0%",
-        "640V"
+        "Fournir le courant nécessaire",
+        "Ajouter du Wi-Fi",
+        "Lire le DAC",
+        "Dessiner OLED"
       ],
-      "answer": 1,
-      "why": "640 ÷ 1023 ≈ 63%."
+      "answer": 0,
+      "why": "GPIO ما تتحمّلش courant moteur."
     },
     {
       "id": "esp32-basic-18-q12",
-      "textAr": "GPIO25 في المثال مربوط بـ؟",
-      "term": "Moteur DC & L298N — التحكّم في الحركة",
+      "textAr": "نبدّلوا direction باستعمال؟",
+      "term": "Commande des moteurs",
       "options": [
-        "OUT2",
-        "VS",
-        "ENA",
-        "IN2"
+        "IN1 et IN2",
+        "SDA et SCL",
+        "GPIO34 ADC",
+        "EN de l’ESP32"
       ],
-      "answer": 2,
-      "why": "GPIO25 يعطي PWM لـENA."
+      "answer": 0,
+      "why": "IN1/IN2 لتبديل sens."
     }
   ],
   "esp32-basic-19": [
@@ -9084,29 +9084,29 @@
     },
     {
       "id": "esp32-basic-19-q11",
-      "textAr": "شنوّة توقف الإعلان؟",
-      "term": "Wi-Fi & Bluetooth LE — الاتصال اللاسلكي",
+      "textAr": "Wi-Fi نستعملوه في؟",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
       "options": [
-        "print()",
-        "ADC.read()",
-        "wifi.scan()",
-        "gap_advertise(None)"
+        "Réseau IP",
+        "Sortie DAC",
+        "GND",
+        "Strapping"
       ],
-      "answer": 3,
-      "why": "توقف إرسال الإعلانات."
+      "answer": 0,
+      "why": "Wi-Fi يدخّل ESP32 للشبكة."
     },
     {
       "id": "esp32-basic-19-q12",
-      "textAr": "هل ننشر كلمة سر Wi-Fi في GitHub؟",
-      "term": "Wi-Fi & Bluetooth LE — الاتصال اللاسلكي",
+      "textAr": "BLE معناها؟",
+      "term": "Projets ESP32 avec Wi-Fi et Bluetooth",
       "options": [
-        "نعم",
-        "إذا قصيرة",
-        "لا",
-        "إذا باسم CFI"
+        "Bluetooth Low Energy",
+        "Bus LCD Ethernet",
+        "Batterie LED Enable",
+        "Boot Link ESP"
       ],
-      "answer": 2,
-      "why": "الأسرار تبقى خاصة."
+      "answer": 0,
+      "why": "BLE Bluetooth منخفض الطاقة."
     }
   ],
   "esp32-basic-20": [
@@ -9217,55 +9217,3713 @@
     },
     {
       "id": "esp32-basic-20-q9",
-      "textAr": "هل ننشر هذا السيرفر على الإنترنت؟",
-      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "textAr": "TouchPad يكتشف؟",
+      "term": "Touch Pins — broches tactiles",
       "options": [
-        "فقط مع اسم طويل",
-        "لا",
-        "نعم دون حماية",
-        "نعم مع LED ثانية"
+        "Variation de capacité",
+        "Vitesse Wi-Fi",
+        "Courant moteur",
+        "Température USB"
       ],
-      "answer": 1,
-      "why": "المثال بلا مصادقة."
+      "answer": 0,
+      "why": "Touch Capacitif."
     },
     {
       "id": "esp32-basic-20-q10",
-      "textAr": "عند فقدان Wi-Fi، ماذا يفعل الكود عند الخروج؟",
-      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "textAr": "أوّل حاجة نعملوها لاختيار seuil؟",
+      "term": "Touch Pins — broches tactiles",
       "options": [
-        "يزيد التيار",
-        "يطفئ LED",
-        "يغيّر كلمة السر",
-        "يشغل المحرك"
+        "Mesurer sans et avec toucher",
+        "Mettre 5 V sur Touch",
+        "Supprimer GND",
+        "Augmenter baudrate"
       ],
-      "answer": 1,
-      "why": "finally تستدعي led.off()."
+      "answer": 0,
+      "why": "الـcalibration تبدأ بالقراءات."
     },
     {
       "id": "esp32-basic-20-q11",
-      "textAr": "هل نربط 230V مباشرة؟",
-      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "textAr": "RTC GPIO يستعملوها في شنوّة؟",
+      "term": "RTC GPIO — basse consommation",
       "options": [
-        "نعم مع USB",
-        "نعم مع مقاومة 330Ω",
-        "ممنوع",
-        "نعم مع GPIO18"
+        "Fonctions basse consommation",
+        "Alimenter moteur 12 V",
+        "Créer DAC sur PC",
+        "Afficher PNG"
       ],
-      "answer": 2,
-      "why": "خطر كهربائي."
+      "answer": 0,
+      "why": "RTC domain للـlow power."
     },
     {
       "id": "esp32-basic-20-q12",
-      "textAr": "روبوت متحرك يحتاج زيادة؟",
-      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "textAr": "Deep sleep معناها؟",
+      "term": "RTC GPIO — basse consommation",
       "options": [
-        "تغذية من GPIO",
-        "إلغاء Driver",
-        "توقف آمن عند فقد الأوامر",
-        "حذف زر توقف"
+        "Mode de très faible consommation",
+        "Wi-Fi plus rapide",
+        "GPIO5 sortie فقط",
+        "Code compilé"
+      ],
+      "answer": 0,
+      "why": "Deep sleep يقتصد الطاقة."
+    }
+  ],
+  "project-traffic-01": [
+    {
+      "id": "project-traffic-01-q1",
+      "textAr": "المخرج الرقمي عنده قداش من حالة منطقية؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "256",
+        "حالتان",
+        "عدد غير محدود",
+        "ثلاث"
+      ],
+      "answer": 1,
+      "why": "HIGH وLOW هما الحالتان."
+    },
+    {
+      "id": "project-traffic-01-q2",
+      "textAr": "شنوة معنى HIGH؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "أرضي",
+        "مقاومة",
+        "حالة منطقية مرتفعة",
+        "حذف البرنامج"
       ],
       "answer": 2,
-      "why": "يلزم نظام توقف مستقل ومهلة."
+      "why": "HIGH تمثل 1 منطقي."
+    },
+    {
+      "id": "project-traffic-01-q3",
+      "textAr": "شنوة معنى LOW؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "5V دائماً",
+        "مدخل analogique",
+        "تيار لا نهائي",
+        "حالة منطقية منخفضة"
+      ],
+      "answer": 3,
+      "why": "LOW قريبة من 0V."
+    },
+    {
+      "id": "project-traffic-01-q4",
+      "textAr": "قبل التحكم في الطرف، نحدّد؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "USB",
+        "Wi-Fi",
+        "Output",
+        "Input فقط"
+      ],
+      "answer": 2,
+      "why": "نضبط الطرف كمخرج."
+    },
+    {
+      "id": "project-traffic-01-q5",
+      "textAr": "في دارتنا الكاثود يمشي إلى؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "مخرج آخر HIGH",
+        "طرف التغذية الموجب",
+        "USB data",
+        "GND"
+      ],
+      "answer": 3,
+      "why": "الكاثود نحو الأرضي."
+    },
+    {
+      "id": "project-traffic-01-q6",
+      "textAr": "علاش نستعمل 330 Ω؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "حفظ البرنامج",
+        "زيادة عدد الأطراف",
+        "رفع الجهد",
+        "تحديد تيار LED"
+      ],
+      "answer": 3,
+      "why": "المقاومة تحدّ من التيار."
+    },
+    {
+      "id": "project-traffic-01-q7",
+      "textAr": "إذا LED معكوسة؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "قد لا تضيء",
+        "تتحول لموتور",
+        "تشتغل دائماً",
+        "يزيد عدد GPIO"
+      ],
+      "answer": 0,
+      "why": "قطبية LED مهمة."
+    },
+    {
+      "id": "project-traffic-01-q8",
+      "textAr": "هل نربط موتور مباشرة بالمخرج؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "نعم إذا لون السلك أحمر",
+        "نعم دائماً",
+        "نعم من غير تغذية",
+        "لا، يلزم driver مناسب"
+      ],
+      "answer": 3,
+      "why": "الموتور يحتاج تياراً ودارة قيادة مناسبة."
+    },
+    {
+      "id": "project-traffic-01-q9",
+      "textAr": "الصورة: حالة المخرج 1. شنوّة تتوقع؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "LED تطفأ",
+        "البرنامج يتمسح",
+        "LED تضيء في دارتنا",
+        "المقاومة تختفي"
+      ],
+      "answer": 2,
+      "why": "HIGH يشغّل LED في التوصيل المعتمد.",
+      "visual": "<svg aria-label=\"حالتا المخرج\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#e2f3ff\" height=\"140\" rx=\"12\" width=\"320\" x=\"120\" y=\"24\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"51\">GPIO = 1</text><rect fill=\"#1e7291\" height=\"55\" rx=\"12\" width=\"70\" x=\"245\" y=\"76\"></rect><text fill=\"white\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"109\">OUT</text></svg>"
+    },
+    {
+      "id": "project-traffic-01-q10",
+      "textAr": "إذا نبدّل 1 إلى 0؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "LED تطفأ",
+        "LED تزيد إضاءة",
+        "المقاومة تتبدل",
+        "اللوحة تتبرمج وحدها"
+      ],
+      "answer": 0,
+      "why": "LOW يطفئها."
+    },
+    {
+      "id": "project-traffic-01-q11",
+      "textAr": "شنوة نعمل قبل تبديل الأسلاك؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "نزيد جهد التغذية",
+        "ننحي المقاومة",
+        "نفصل USB",
+        "نربط HIGH مع GND"
+      ],
+      "answer": 2,
+      "why": "نفصل التغذية لحماية الدارة."
+    },
+    {
+      "id": "project-traffic-01-q12",
+      "textAr": "هل الحالة تبقى حتى أمر آخر؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "لا، لازم Wi-Fi",
+        "نعم في المثال",
+        "لا، لازم زر",
+        "لا تتغير كل ثانية وحدها"
+      ],
+      "answer": 1,
+      "why": "المخرج يحافظ على الحالة ما دام البرنامج ما غيّرهاش."
+    }
+  ],
+  "project-traffic-02": [
+    {
+      "id": "project-traffic-02-q1",
+      "textAr": "Blink تعني؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "وميض متكرر",
+        "حفظ صورة",
+        "تغذية موتور",
+        "قياس حرارة"
+      ],
+      "answer": 0,
+      "why": "Blink هو تشغيل وإطفاء متكرران."
+    },
+    {
+      "id": "project-traffic-02-q2",
+      "textAr": "ترتيب صحيح؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "انتظار فقط",
+        "OFF → OFF فقط",
+        "ON → انتظار → OFF → انتظار",
+        "ON → ON فقط"
+      ],
+      "answer": 2,
+      "why": "يلزم تغيير الحالة مع الانتظار."
+    },
+    {
+      "id": "project-traffic-02-q3",
+      "textAr": "ثانية واحدة تساوي؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "100 ms",
+        "1000 ms",
+        "10 ms",
+        "1 ms"
+      ],
+      "answer": 1,
+      "why": "1000 millisecond = 1 seconde."
+    },
+    {
+      "id": "project-traffic-02-q4",
+      "textAr": "ON=1s وOFF=1s. الدورة؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "2s",
+        "1s",
+        "0s",
+        "10s"
+      ],
+      "answer": 0,
+      "why": "نجمع المدتين."
+    },
+    {
+      "id": "project-traffic-02-q5",
+      "textAr": "ON=0.5s وOFF=0.5s. الدورة؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "5s",
+        "0.5s",
+        "1s",
+        "2s"
+      ],
+      "answer": 2,
+      "why": "0.5+0.5=1."
+    },
+    {
+      "id": "project-traffic-02-q6",
+      "textAr": "إذا نقصنا المدتين؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "الوميض أبطأ",
+        "LED تتحول لبازر",
+        "الجهد يزيد",
+        "الوميض أسرع"
+      ],
+      "answer": 3,
+      "why": "الدورة تصبح أقصر."
+    },
+    {
+      "id": "project-traffic-02-q7",
+      "textAr": "إذا ننحي أمر OFF؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "USB يتفصل",
+        "الوميض أسرع بالضرورة",
+        "LED تبقى مضيئة بعد ON",
+        "تطفى وحدها"
+      ],
+      "answer": 2,
+      "why": "لا يوجد أمر يطفئها."
+    },
+    {
+      "id": "project-traffic-02-q8",
+      "textAr": "الصورة الزمنية: الجزء المرتفع يمثل؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "OFF",
+        "GND فقط",
+        "USB",
+        "ON في دارتنا"
+      ],
+      "answer": 3,
+      "why": "المستوى المرتفع يمثل تشغيل LED.",
+      "visual": "<svg aria-label=\"مخطط زمني للوميض\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"55\" y=\"53\">1</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"55\" y=\"132\">0</text><path d=\"M75 35 V135 H525\" fill=\"none\" stroke=\"#8199b1\" stroke-width=\"2\"></path><path d=\"M88 125 V55 H143 V125 H198 V55 H253 V125 H308 H515\" fill=\"none\" stroke=\"#1669bc\" stroke-width=\"5\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"300\" y=\"165\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-traffic-02-q9",
+      "textAr": "المدة بين بداية دورتين؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "Anode",
+        "Période",
+        "GPIO",
+        "Résistance"
+      ],
+      "answer": 1,
+      "why": "هي مدة دورة واحدة."
+    },
+    {
+      "id": "project-traffic-02-q10",
+      "textAr": "ON=2s وOFF=1s، LED تضيء أكثر؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "نعم، ثلثا الدورة",
+        "لا، نصف الدورة",
+        "لا، ربع الدورة",
+        "تطفأ دائماً"
+      ],
+      "answer": 0,
+      "why": "2 من مجموع 3 ثوانٍ."
+    },
+    {
+      "id": "project-traffic-02-q11",
+      "textAr": "هل نحتاج مقاومة في Blink؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "لا لأن الزمن قصير",
+        "لا إذا الكود صحيح",
+        "لا إذا LED حمراء",
+        "نعم في دارة LED الخارجية"
+      ],
+      "answer": 3,
+      "why": "تحديد التيار ضروري."
+    },
+    {
+      "id": "project-traffic-02-q12",
+      "textAr": "باش نوقف الوميض ونخلي LED مطفأة؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "نزيد الجهد",
+        "نحذف GND وهو متغذّي",
+        "نستعمل LOW دون تكرار التشغيل",
+        "نزيد ON"
+      ],
+      "answer": 2,
+      "why": "نبقي المخرج على LOW."
+    }
+  ],
+  "project-traffic-03": [
+    {
+      "id": "project-traffic-03-q1",
+      "textAr": "if معناها؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "انتظر",
+        "كرّر",
+        "إذا",
+        "اطبع دائماً"
+      ],
+      "answer": 2,
+      "why": "if تنفذ الفرع عند تحقق الشرط."
+    },
+    {
+      "id": "project-traffic-03-q2",
+      "textAr": "else يتنفذ وقتاش؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "عند كل HIGH",
+        "عندما الشرط غير صحيح",
+        "دائماً قبل if",
+        "وقت USB مفصول"
+      ],
+      "answer": 1,
+      "why": "else هو البديل."
+    },
+    {
+      "id": "project-traffic-03-q3",
+      "textAr": "5 > 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يساوي 0",
+        "غلط",
+        "لا يمكن",
+        "صحيح"
+      ],
+      "answer": 3,
+      "why": "5 أكبر من 3."
+    },
+    {
+      "id": "project-traffic-03-q4",
+      "textAr": "3 >= 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يساوي 6",
+        "صحيح",
+        "مستحيل",
+        "غلط"
+      ],
+      "answer": 1,
+      "why": ">= تشمل التساوي."
+    },
+    {
+      "id": "project-traffic-03-q5",
+      "textAr": "3 > 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "غلط",
+        "صحيح",
+        "يساوي 3",
+        "لا معنى له"
+      ],
+      "answer": 0,
+      "why": "> لا تشمل التساوي."
+    },
+    {
+      "id": "project-traffic-03-q6",
+      "textAr": "أي رمز يقارن التساوي؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "-",
+        "=",
+        "+",
+        "=="
+      ],
+      "answer": 3,
+      "why": "== للمقارنة."
+    },
+    {
+      "id": "project-traffic-03-q7",
+      "textAr": "x=25 وشرط x>=30؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "55",
+        "غلط",
+        "30",
+        "صحيح"
+      ],
+      "answer": 1,
+      "why": "25 أصغر من 30."
+    },
+    {
+      "id": "project-traffic-03-q8",
+      "textAr": "الصورة: القرار x=35 وx>=30؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "نعمل الفرعين دائماً",
+        "نتوقف عن البرمجة",
+        "نختار فرع لا",
+        "نختار فرع نعم"
+      ],
+      "answer": 3,
+      "why": "35 يحقق الشرط.",
+      "visual": "<svg aria-label=\"مخطط قرار\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#cee8ff\" height=\"40\" rx=\"12\" width=\"160\" x=\"200\" y=\"15\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"42\">x = 35</text><path d=\"M280 55 V65 M280 115 V125 H145 V145 M280 125 H415 V145\" fill=\"none\" stroke=\"#58758e\" stroke-width=\"3\"></path><path d=\"M280 65 L365 90 L280 115 L195 90 Z\" fill=\"#fce5a7\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"96\">x ≥ 30 ?</text><rect fill=\"#d5f6e6\" height=\"33\" rx=\"12\" width=\"130\" x=\"80\" y=\"145\"></rect><rect fill=\"#fce1df\" height=\"33\" rx=\"12\" width=\"130\" x=\"350\" y=\"145\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"167\">Oui</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"415\" y=\"167\">Non</text></svg>"
+    },
+    {
+      "id": "project-traffic-03-q9",
+      "textAr": "x=30 وشرط x>=30، LED؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "تومض دائماً",
+        "تطفأ",
+        "تضيء في مثالنا",
+        "تختفي"
+      ],
+      "answer": 2,
+      "why": "القيمة الحدية تحقق >=."
+    },
+    {
+      "id": "project-traffic-03-q10",
+      "textAr": "x=29، في نفس البرنامج LED؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "تتحول لحساس",
+        "تضيء",
+        "تطفأ",
+        "تزداد سرعتها"
+      ],
+      "answer": 2,
+      "why": "فرع else يطفئها."
+    },
+    {
+      "id": "project-traffic-03-q11",
+      "textAr": "هل نحتاج حساساً لهذا المثال؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "لا، القيمة افتراضية",
+        "نعم إجبارياً",
+        "يلزم موتور",
+        "يلزم Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "نختبر المنطق أولاً."
+    },
+    {
+      "id": "project-traffic-03-q12",
+      "textAr": "شنوة فائدة الشرط للروبوت؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يزيد التغذية",
+        "يختار السلوك حسب الحالة",
+        "يلغي الحساسات",
+        "يمنع البرمجة"
+      ],
+      "answer": 1,
+      "why": "القرار أساس السلوك الذكي."
+    }
+  ],
+  "project-traffic-04": [
+    {
+      "id": "project-traffic-04-q1",
+      "textAr": "المتغيّر يشبه؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "مقاومة",
+        "صندوق باسم وقيمة",
+        "سلكاً فقط",
+        "منفذ USB"
+      ],
+      "answer": 1,
+      "why": "المتغيّر يربط اسماً بقيمة."
+    },
+    {
+      "id": "project-traffic-04-q2",
+      "textAr": "أي اسم صالح؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "compteur",
+        "mon compteur",
+        "2compteur",
+        "mon-compteur"
+      ],
+      "answer": 0,
+      "why": "اسم بسيط بلا فراغ ويبدأ بحرف."
+    },
+    {
+      "id": "project-traffic-04-q3",
+      "textAr": "compteur=0 ثم compteur=compteur+1. القيمة؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "-1",
+        "1",
+        "0",
+        "2"
+      ],
+      "answer": 1,
+      "why": "نقرأ القيمة القديمة ثم نزيد 1."
+    },
+    {
+      "id": "project-traffic-04-q4",
+      "textAr": "x=4 ثم x=9. قيمة x؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "13",
+        "4",
+        "0",
+        "9"
+      ],
+      "answer": 3,
+      "why": "التعيين الثاني يستبدل القيمة."
+    },
+    {
+      "id": "project-traffic-04-q5",
+      "textAr": "شنوة يعمل = ؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "تكرار تلقائي",
+        "توصيل GND",
+        "مقارنة تساوي",
+        "إسناد قيمة"
+      ],
+      "answer": 3,
+      "why": "الإسناد يربط الاسم بالقيمة."
+    },
+    {
+      "id": "project-traffic-04-q6",
+      "textAr": "علاش نسمي المتغير duree؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "باش نفهم دوره",
+        "باش نلغي البرنامج",
+        "باش يزيد الجهد",
+        "باش نغير نوع LED"
+      ],
+      "answer": 0,
+      "why": "الاسم الواضح يساعد على القراءة."
+    },
+    {
+      "id": "project-traffic-04-q7",
+      "textAr": "أي قيمة عدد صحيح؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "\"LED\"",
+        "2.5",
+        "7",
+        "\"bonjour\""
+      ],
+      "answer": 2,
+      "why": "7 عدد صحيح."
+    },
+    {
+      "id": "project-traffic-04-q8",
+      "textAr": "الصندوق فيه 5 ثم نزيد 2، القيمة؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "2",
+        "10",
+        "7",
+        "5"
+      ],
+      "answer": 2,
+      "why": "5+2=7.",
+      "visual": "<svg aria-label=\"المتغير صندوق بقيمة\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#d9e8ff\" height=\"90\" rx=\"12\" width=\"120\" x=\"70\" y=\"50\"></rect><text fill=\"#18374e\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"130\" y=\"79\">compteur</text><text fill=\"#18374e\" font-size=\"28\" font-weight=\"bold\" text-anchor=\"middle\" x=\"130\" y=\"116\">5</text><rect fill=\"#d9e8ff\" height=\"90\" rx=\"12\" width=\"120\" x=\"370\" y=\"50\"></rect><text fill=\"#18374e\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"430\" y=\"79\">compteur</text><text fill=\"#18374e\" font-size=\"28\" font-weight=\"bold\" text-anchor=\"middle\" x=\"430\" y=\"116\">?</text><text fill=\"#167c88\" font-size=\"19\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"100\">+2 →</text></svg>"
+    },
+    {
+      "id": "project-traffic-04-q9",
+      "textAr": "إذا نستعمل نفس duree في مكانين ونبدّلها؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "يتبدّل GND",
+        "المكانان يستعملان القيمة الجديدة",
+        "لا شيء",
+        "الأول فقط دائماً"
+      ],
+      "answer": 1,
+      "why": "نفس الاسم يرجع للقيمة المخزنة."
+    },
+    {
+      "id": "project-traffic-04-q10",
+      "textAr": "compteur يبدأ 0 ويزيد 1 ثلاث مرات؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "3",
+        "0",
+        "4",
+        "1"
+      ],
+      "answer": 0,
+      "why": "0→1→2→3."
+    },
+    {
+      "id": "project-traffic-04-q11",
+      "textAr": "هل المتغيّر هو طرف في اللوحة؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "لا، مفهوم برمجي",
+        "هو GND",
+        "نعم دائماً",
+        "هو USB"
+      ],
+      "answer": 0,
+      "why": "المتغير قيمة في البرنامج."
+    },
+    {
+      "id": "project-traffic-04-q12",
+      "textAr": "إذا نحب مدتين مختلفتين؟",
+      "term": "Variables — المتغيّرات",
+      "options": [
+        "نربط LED بلا مقاومة",
+        "نزيد الجهد",
+        "نستعمل متغيّرين",
+        "نحذف كل المتغيرات"
+      ],
+      "answer": 2,
+      "why": "مدتان مستقلتان تسهّلان التعديل."
+    }
+  ],
+  "project-traffic-05": [
+    {
+      "id": "project-traffic-05-q1",
+      "textAr": "الزر بالنسبة للوحة هو؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "مخرج",
+        "بطارية",
+        "محرّك",
+        "مدخل"
+      ],
+      "answer": 3,
+      "why": "الزر يعطي معلومة للبرنامج."
+    },
+    {
+      "id": "project-traffic-05-q2",
+      "textAr": "شنوة حالة زر مفتوح مع Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "LOW",
+        "PWM",
+        "HIGH",
+        "قصر"
+      ],
+      "answer": 0,
+      "why": "المقاومة تربط المدخل بالأرضي عند الإفلات."
+    },
+    {
+      "id": "project-traffic-05-q3",
+      "textAr": "وقت نضغط زر مربوط بـ5 V في دارة Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "5 أمبير",
+        "LOW",
+        "تتوقف اللوحة",
+        "HIGH"
+      ],
+      "answer": 3,
+      "why": "المدخل يتصل بجهد التغذية المنطقي ويقرأ 1."
+    },
+    {
+      "id": "project-traffic-05-q4",
+      "textAr": "شنوة وظيفة Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تخزين الكود",
+        "تشغيل Servo",
+        "زيادة سرعة المعالج",
+        "تثبيت حالة المدخل"
+      ],
+      "answer": 3,
+      "why": "تمنع المدخل من البقاء عائماً وتثبّته في LOW عند الإفلات."
+    },
+    {
+      "id": "project-traffic-05-q5",
+      "textAr": "مدخل Floating ينجم يعطي؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "دائماً 0",
+        "زاوية 90°",
+        "دائماً 1",
+        "قراءات عشوائية"
+      ],
+      "answer": 3,
+      "why": "يلزمه مرجع واضح."
+    },
+    {
+      "id": "project-traffic-05-q6",
+      "textAr": "أي جزء ينفذ القرار؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "المقاومة وحدها",
+        "البرنامج",
+        "USB وحده",
+        "سلك GND"
+      ],
+      "answer": 1,
+      "why": "الشرط يختار المخرج."
+    },
+    {
+      "id": "project-traffic-05-q7",
+      "textAr": "علاش LED تستحق مقاومة؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "حفظ النتيجة",
+        "عكس البرنامج",
+        "تحديد التيار",
+        "زيادة الجهد"
+      ],
+      "answer": 2,
+      "why": "تحمي LED والمخرج."
+    },
+    {
+      "id": "project-traffic-05-q8",
+      "textAr": "في الرسم، الزر مضغوط. شنوّة القراءة؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "0",
+        "255",
+        "1",
+        "4095"
+      ],
+      "answer": 2,
+      "why": "Pull-down مع زر مضغوط إلى جهد التغذية يعني 1.",
+      "visual": "<svg aria-label=\"Pull-down : bouton ouvert et fermé\" role=\"img\" viewBox=\"0 0 560 250\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"550\" height=\"240\" rx=\"20\" fill=\"#edf5ff\"/><text x=\"130\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">OPEN</text><text x=\"130\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">5V</text><path d=\"M130 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"130\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M130 86 L153 111\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M130 120 V160 H205\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"205\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M130 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"94\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"130\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M130 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"130\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text><text x=\"390\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">PRESSED</text><text x=\"390\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">5V</text><path d=\"M390 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"390\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M390 86 L390 120\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M390 120 V160 H465\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"465\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M390 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"354\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"390\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M390 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"390\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text></svg>"
+    },
+    {
+      "id": "project-traffic-05-q9",
+      "textAr": "Rebond معناه؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تغيّر سريع مؤقت عند الضغط",
+        "LED محروقة",
+        "تغيير نوع المعالج",
+        "تغذية 5V"
+      ],
+      "answer": 0,
+      "why": "الاتصال الميكانيكي غير مثالي."
+    },
+    {
+      "id": "project-traffic-05-q10",
+      "textAr": "قبل تعديل التوصيلات؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "نزيد الجهد",
+        "نفصل التغذية",
+        "نحذف GND",
+        "نقص الأسلاك وهي مشغلة"
+      ],
+      "answer": 1,
+      "why": "نمنع القصر."
+    },
+    {
+      "id": "project-traffic-05-q11",
+      "textAr": "لو نحب نعكس سلوك LED؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "نلغي المدخل",
+        "نزيد بطارية",
+        "نعكس الشرط",
+        "نربط LED بلا مقاومة"
+      ],
+      "answer": 2,
+      "why": "البرنامج يحدد المنطق."
+    },
+    {
+      "id": "project-traffic-05-q12",
+      "textAr": "شنوة الأمر لقراءة D2؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "pinMode(2,OUTPUT)",
+        "digitalRead(2)",
+        "analogWrite(2,255)",
+        "delay(2)"
+      ],
+      "answer": 1,
+      "why": "digitalRead تقرأ الحالة الرقمية."
+    }
+  ],
+  "project-traffic-06": [
+    {
+      "id": "project-traffic-06-q1",
+      "textAr": "Buzzer وظيفته؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "تدوير العجلة",
+        "إصدار صوت",
+        "قياس الضوء",
+        "عرض النص"
+      ],
+      "answer": 1,
+      "why": "يحوّل إشارة كهربائية إلى صوت."
+    },
+    {
+      "id": "project-traffic-06-q2",
+      "textAr": "Passive Buzzer يحتاج؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "جهد ثابت فقط لكل نغمة",
+        "شاشة",
+        "إشارة بتردد مسموع",
+        "Wi-Fi"
+      ],
+      "answer": 2,
+      "why": "النبضات تصنع الاهتزاز."
+    },
+    {
+      "id": "project-traffic-06-q3",
+      "textAr": "Active Buzzer عادة فيه؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "دارة توليد نغمة",
+        "ADC خارجي",
+        "كاميرا",
+        "Servo"
+      ],
+      "answer": 0,
+      "why": "عنده مولد نغمة داخلي."
+    },
+    {
+      "id": "project-traffic-06-q4",
+      "textAr": "التردد يتقاس بـ؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "Ω",
+        "Hz",
+        "cm",
+        "V"
+      ],
+      "answer": 1,
+      "why": "دورات في الثانية."
+    },
+    {
+      "id": "project-traffic-06-q5",
+      "textAr": "نرفع تردد النغمة، شنوّة يتغيّر؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "عدد الأطراف",
+        "لون LED",
+        "نوع USB",
+        "حدة الصوت"
+      ],
+      "answer": 3,
+      "why": "النغمة عادة تصبح أحدّ."
+    },
+    {
+      "id": "project-traffic-06-q6",
+      "textAr": "فترة الصمت تستعمل لـ؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "زيادة الجهد",
+        "تغيير اللوحة",
+        "فصل النغمات",
+        "حذف الكود"
+      ],
+      "answer": 2,
+      "why": "تشكّل إيقاع الإنذار."
+    },
+    {
+      "id": "project-traffic-06-q7",
+      "textAr": "في الرسم، قداش من نغمة؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "1",
+        "4",
+        "3",
+        "2"
+      ],
+      "answer": 2,
+      "why": "ثلاث مناطق تشغيل منفصلة.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"35\">3 BIPS</text><path d=\"M35 180 L530 180\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><rect fill=\"#f6b84c\" height=\"95\" rx=\"6\" width=\"75\" x=\"70\" y=\"85\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"107\" y=\"130\">BIP</text><rect fill=\"#f6b84c\" height=\"95\" rx=\"6\" width=\"75\" x=\"240\" y=\"85\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"277\" y=\"130\">BIP</text><rect fill=\"#f6b84c\" height=\"95\" rx=\"6\" width=\"75\" x=\"410\" y=\"85\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"447\" y=\"130\">BIP</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"220\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-traffic-06-q8",
+      "textAr": "أي مكوّن لازم driver إذا تياره كبير؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "سلك USB",
+        "زر مفصول",
+        "Buzzer غير مناسب للـGPIO",
+        "مقاومة 330Ω وحدها"
+      ],
+      "answer": 2,
+      "why": "المخرج محدود التيار."
+    },
+    {
+      "id": "project-traffic-06-q9",
+      "textAr": "نخلي إنذار طويل بأقصى صوت؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "نزيد الجهد عشوائياً",
+        "نعم دائماً",
+        "لا، نستعمل صوتاً معتدلاً",
+        "نلغي فترات الراحة"
+      ],
+      "answer": 2,
+      "why": "نحافظ على السمع والمكوّن."
+    },
+    {
+      "id": "project-traffic-06-q10",
+      "textAr": "كي ننهي النغمة؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "نوقف إشارة الصوت",
+        "نفصل GND والدارة تعمل",
+        "نزيد التردد إلى الأبد",
+        "نحذف USB driver"
+      ],
+      "answer": 0,
+      "why": "الصمت يحتاج إيقاف الإشارة."
+    },
+    {
+      "id": "project-traffic-06-q11",
+      "textAr": "3 نغمات في حلقة، قداش تكرار؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "1",
+        "10",
+        "0",
+        "3"
+      ],
+      "answer": 3,
+      "why": "حلقة بثلاث دورات."
+    },
+    {
+      "id": "project-traffic-06-q12",
+      "textAr": "شنوة الأمر لإيقاف tone؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "analogRead(buzzer)",
+        "noTone(buzzer)",
+        "pinMode(buzzer,INPUT)",
+        "Serial.begin(9600)"
+      ],
+      "answer": 1,
+      "why": "noTone توقف الإشارة."
+    }
+  ],
+  "project-traffic-07": [
+    {
+      "id": "project-traffic-07-q1",
+      "textAr": "الحلقة تستعمل باش؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "نحدد نوع USB",
+        "نحذف GND",
+        "نزيد الجهد",
+        "نكرر التعليمات"
+      ],
+      "answer": 3,
+      "why": "تختصر التكرار."
+    },
+    {
+      "id": "project-traffic-07-q2",
+      "textAr": "for في مثالنا مناسب لـ؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "قياس جهد فقط",
+        "تغيير نوع اللوحة",
+        "عدد مرات معروف",
+        "إلغاء المقاومة"
+      ],
+      "answer": 2,
+      "why": "نحدد عدد الدورات."
+    },
+    {
+      "id": "project-traffic-07-q3",
+      "textAr": "نبدأ i=0 ونكرر ما دام i<3 مع زيادة 1. قداش؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "0",
+        "4",
+        "3",
+        "2"
+      ],
+      "answer": 2,
+      "why": "القيم 0 و1 و2."
+    },
+    {
+      "id": "project-traffic-07-q4",
+      "textAr": "بعد الحلقة المحدودة؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "نكمل التعليمات التالية",
+        "USB ينفصل",
+        "اللوحة تحترق",
+        "تتكرر دائماً بالضرورة"
+      ],
+      "answer": 0,
+      "why": "ينتقل التنفيذ بعد الحلقة."
+    },
+    {
+      "id": "project-traffic-07-q5",
+      "textAr": "while تتكرر ما دام؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "المقاومة 330",
+        "USB أسود",
+        "LED حمراء",
+        "الشرط صحيح"
+      ],
+      "answer": 3,
+      "why": "الشرط يتحكم في التكرار."
+    },
+    {
+      "id": "project-traffic-07-q6",
+      "textAr": "إذا الشرط غلط من البداية؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "إلى ما لا نهاية",
+        "صفر تكرار في while العادية",
+        "ثلاث مرات",
+        "مرة دائماً"
+      ],
+      "answer": 1,
+      "why": "الشرط يُختبر قبل الدخول."
+    },
+    {
+      "id": "project-traffic-07-q7",
+      "textAr": "شنوة دور العداد؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "يغير GND",
+        "يتابع عدد الدورات",
+        "يطفئ اللوحة",
+        "يزيد الجهد"
+      ],
+      "answer": 1,
+      "why": "يساعد على التحكم في العدد."
+    },
+    {
+      "id": "project-traffic-07-q8",
+      "textAr": "الصورة: 3 ومضات ثم خط منخفض. شنوة معناها؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "تكرار محدود ثم إطفاء",
+        "LED مضيئة دائماً",
+        "قصر كهربائي",
+        "وميض لا نهائي"
+      ],
+      "answer": 0,
+      "why": "البرنامج يوقف الوميض بعد ثلاث مرات.",
+      "visual": "<svg aria-label=\"مخطط ثلاث ومضات\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"55\" y=\"53\">1</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"55\" y=\"132\">0</text><path d=\"M75 35 V135 H525\" fill=\"none\" stroke=\"#8199b1\" stroke-width=\"2\"></path><path d=\"M88 125 V55 H143 V125 H198 V55 H253 V125 H308 V55 H363 V125 H418 H515\" fill=\"none\" stroke=\"#1669bc\" stroke-width=\"5\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"300\" y=\"165\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-traffic-07-q9",
+      "textAr": "نبدّل 3 إلى 5، قداش ومضة؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "0",
+        "3",
+        "5",
+        "8"
+      ],
+      "answer": 2,
+      "why": "عدد التكرارات يصبح خمسة."
+    },
+    {
+      "id": "project-traffic-07-q10",
+      "textAr": "حلقة لا نهائية بلا انتظار تنجم؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "تتوقف بعد 3",
+        "تنتظر ثانية وحدها",
+        "تنفذ بسرعة كبيرة",
+        "تزيد جهد التغذية"
+      ],
+      "answer": 2,
+      "why": "يلزم مراعاة التوقيت عند التحكم."
+    },
+    {
+      "id": "project-traffic-07-q11",
+      "textAr": "حلقة 2 ثم حلقة 3 ومضات، المجموع؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "5",
+        "3",
+        "6",
+        "2"
+      ],
+      "answer": 0,
+      "why": "التكراران متتاليان: 2+3."
+    },
+    {
+      "id": "project-traffic-07-q12",
+      "textAr": "كيف نخلي LED مطفأة بعد الحلقة؟",
+      "term": "Loops — الحلقات",
+      "options": [
+        "نزيد الجهد",
+        "ننحي المقاومة",
+        "آخر أمر إطفاء",
+        "نربطها مباشرة بـ5V"
+      ],
+      "answer": 2,
+      "why": "نضبط LOW بعد نهاية التكرار."
+    }
+  ],
+  "project-traffic-08": [
+    {
+      "id": "project-traffic-08-q1",
+      "textAr": "if معناها؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "انتظر",
+        "كرّر",
+        "إذا",
+        "اطبع دائماً"
+      ],
+      "answer": 2,
+      "why": "if تنفذ الفرع عند تحقق الشرط."
+    },
+    {
+      "id": "project-traffic-08-q2",
+      "textAr": "else يتنفذ وقتاش؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "عند كل HIGH",
+        "عندما الشرط غير صحيح",
+        "دائماً قبل if",
+        "وقت USB مفصول"
+      ],
+      "answer": 1,
+      "why": "else هو البديل."
+    },
+    {
+      "id": "project-traffic-08-q3",
+      "textAr": "5 > 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يساوي 0",
+        "غلط",
+        "لا يمكن",
+        "صحيح"
+      ],
+      "answer": 3,
+      "why": "5 أكبر من 3."
+    },
+    {
+      "id": "project-traffic-08-q4",
+      "textAr": "3 >= 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يساوي 6",
+        "صحيح",
+        "مستحيل",
+        "غلط"
+      ],
+      "answer": 1,
+      "why": ">= تشمل التساوي."
+    },
+    {
+      "id": "project-traffic-08-q5",
+      "textAr": "3 > 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "غلط",
+        "صحيح",
+        "يساوي 3",
+        "لا معنى له"
+      ],
+      "answer": 0,
+      "why": "> لا تشمل التساوي."
+    },
+    {
+      "id": "project-traffic-08-q6",
+      "textAr": "أي رمز يقارن التساوي؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "-",
+        "=",
+        "+",
+        "=="
+      ],
+      "answer": 3,
+      "why": "== للمقارنة."
+    },
+    {
+      "id": "project-traffic-08-q7",
+      "textAr": "x=25 وشرط x>=30؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "55",
+        "غلط",
+        "30",
+        "صحيح"
+      ],
+      "answer": 1,
+      "why": "25 أصغر من 30."
+    },
+    {
+      "id": "project-traffic-08-q8",
+      "textAr": "الصورة: القرار x=35 وx>=30؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "نعمل الفرعين دائماً",
+        "نتوقف عن البرمجة",
+        "نختار فرع لا",
+        "نختار فرع نعم"
+      ],
+      "answer": 3,
+      "why": "35 يحقق الشرط.",
+      "visual": "<svg aria-label=\"مخطط قرار\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#cee8ff\" height=\"40\" rx=\"12\" width=\"160\" x=\"200\" y=\"15\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"42\">x = 35</text><path d=\"M280 55 V65 M280 115 V125 H145 V145 M280 125 H415 V145\" fill=\"none\" stroke=\"#58758e\" stroke-width=\"3\"></path><path d=\"M280 65 L365 90 L280 115 L195 90 Z\" fill=\"#fce5a7\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"96\">x ≥ 30 ?</text><rect fill=\"#d5f6e6\" height=\"33\" rx=\"12\" width=\"130\" x=\"80\" y=\"145\"></rect><rect fill=\"#fce1df\" height=\"33\" rx=\"12\" width=\"130\" x=\"350\" y=\"145\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"167\">Oui</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"415\" y=\"167\">Non</text></svg>"
+    },
+    {
+      "id": "project-traffic-08-q9",
+      "textAr": "x=30 وشرط x>=30، LED؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "تومض دائماً",
+        "تطفأ",
+        "تضيء في مثالنا",
+        "تختفي"
+      ],
+      "answer": 2,
+      "why": "القيمة الحدية تحقق >=."
+    },
+    {
+      "id": "project-traffic-08-q10",
+      "textAr": "x=29، في نفس البرنامج LED؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "تتحول لحساس",
+        "تضيء",
+        "تطفأ",
+        "تزداد سرعتها"
+      ],
+      "answer": 2,
+      "why": "فرع else يطفئها."
+    },
+    {
+      "id": "project-traffic-08-q11",
+      "textAr": "هل نحتاج حساساً لهذا المثال؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "لا، القيمة افتراضية",
+        "نعم إجبارياً",
+        "يلزم موتور",
+        "يلزم Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "نختبر المنطق أولاً."
+    },
+    {
+      "id": "project-traffic-08-q12",
+      "textAr": "شنوة فائدة الشرط للروبوت؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يزيد التغذية",
+        "يختار السلوك حسب الحالة",
+        "يلغي الحساسات",
+        "يمنع البرمجة"
+      ],
+      "answer": 1,
+      "why": "القرار أساس السلوك الذكي."
+    }
+  ],
+  "project-home-01": [
+    {
+      "id": "project-home-01-q1",
+      "textAr": "المخرج الرقمي عنده قداش من حالة منطقية؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "حالتان",
+        "ثلاث",
+        "256",
+        "عدد غير محدود"
+      ],
+      "answer": 0,
+      "why": "HIGH وLOW هما الحالتان."
+    },
+    {
+      "id": "project-home-01-q2",
+      "textAr": "شنوة معنى HIGH؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "أرضي",
+        "مقاومة",
+        "حالة منطقية مرتفعة",
+        "حذف البرنامج"
+      ],
+      "answer": 2,
+      "why": "HIGH تمثل 1 منطقي."
+    },
+    {
+      "id": "project-home-01-q3",
+      "textAr": "شنوة معنى LOW؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "5V دائماً",
+        "تيار لا نهائي",
+        "مدخل analogique",
+        "حالة منطقية منخفضة"
+      ],
+      "answer": 3,
+      "why": "LOW قريبة من 0V."
+    },
+    {
+      "id": "project-home-01-q4",
+      "textAr": "قبل التحكم في الطرف، نحدّد؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "USB",
+        "Wi-Fi",
+        "Input فقط",
+        "Output"
+      ],
+      "answer": 3,
+      "why": "نضبط الطرف كمخرج."
+    },
+    {
+      "id": "project-home-01-q5",
+      "textAr": "في دارتنا الكاثود يمشي إلى؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "USB data",
+        "طرف التغذية الموجب",
+        "GND",
+        "مخرج آخر HIGH"
+      ],
+      "answer": 2,
+      "why": "الكاثود نحو الأرضي."
+    },
+    {
+      "id": "project-home-01-q6",
+      "textAr": "علاش نستعمل 330 Ω؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "تحديد تيار LED",
+        "زيادة عدد الأطراف",
+        "رفع الجهد",
+        "حفظ البرنامج"
+      ],
+      "answer": 0,
+      "why": "المقاومة تحدّ من التيار."
+    },
+    {
+      "id": "project-home-01-q7",
+      "textAr": "إذا LED معكوسة؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "قد لا تضيء",
+        "تشتغل دائماً",
+        "تتحول لموتور",
+        "يزيد عدد GPIO"
+      ],
+      "answer": 0,
+      "why": "قطبية LED مهمة."
+    },
+    {
+      "id": "project-home-01-q8",
+      "textAr": "هل نربط موتور مباشرة بالمخرج؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "نعم من غير تغذية",
+        "لا، يلزم driver مناسب",
+        "نعم إذا لون السلك أحمر",
+        "نعم دائماً"
+      ],
+      "answer": 1,
+      "why": "الموتور يحتاج تياراً ودارة قيادة مناسبة."
+    },
+    {
+      "id": "project-home-01-q9",
+      "textAr": "الصورة: حالة المخرج 1. شنوّة تتوقع؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "LED تطفأ",
+        "LED تضيء في دارتنا",
+        "المقاومة تختفي",
+        "البرنامج يتمسح"
+      ],
+      "answer": 1,
+      "why": "HIGH يشغّل LED في التوصيل المعتمد.",
+      "visual": "<svg aria-label=\"حالتا المخرج\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#e2f3ff\" height=\"140\" rx=\"12\" width=\"320\" x=\"120\" y=\"24\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"51\">GPIO = 1</text><rect fill=\"#1e7291\" height=\"55\" rx=\"12\" width=\"70\" x=\"245\" y=\"76\"></rect><text fill=\"white\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"109\">OUT</text></svg>"
+    },
+    {
+      "id": "project-home-01-q10",
+      "textAr": "إذا نبدّل 1 إلى 0؟",
+      "term": "Digital Output — المخرج الرقمي",
+      "options": [
+        "اللوحة تتبرمج وحدها",
+        "المقاومة تتبدل",
+        "LED تزيد إضاءة",
+        "LED تطفأ"
+      ],
+      "answer": 3,
+      "why": "LOW يطفئها."
+    },
+    {
+      "id": "project-home-01-q11",
+      "textAr": "Pin.OUT تستعمل في شنوّة؟",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Commander une sortie",
+        "Lire une tension analogique",
+        "Mesurer le Wi-Fi",
+        "Installer Python"
+      ],
+      "answer": 0,
+      "why": "Pin.OUT تستعمل للتحكّم في المخرجات."
+    },
+    {
+      "id": "project-home-01-q12",
+      "textAr": "led.on() تعمل شنوّة؟",
+      "term": "GPIO — entrées et sorties numériques",
+      "options": [
+        "Met le GPIO à 1",
+        "Éteint le Wi-Fi",
+        "Lit un capteur",
+        "Arrête le programme"
+      ],
+      "answer": 0,
+      "why": "led.on() تخلي الـsortie على HIGH."
+    }
+  ],
+  "project-home-02": [
+    {
+      "id": "project-home-02-q1",
+      "textAr": "Blink تعني؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "حفظ صورة",
+        "قياس حرارة",
+        "تغذية موتور",
+        "وميض متكرر"
+      ],
+      "answer": 3,
+      "why": "Blink هو تشغيل وإطفاء متكرران."
+    },
+    {
+      "id": "project-home-02-q2",
+      "textAr": "ترتيب صحيح؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "ON → ON فقط",
+        "انتظار فقط",
+        "OFF → OFF فقط",
+        "ON → انتظار → OFF → انتظار"
+      ],
+      "answer": 3,
+      "why": "يلزم تغيير الحالة مع الانتظار."
+    },
+    {
+      "id": "project-home-02-q3",
+      "textAr": "ثانية واحدة تساوي؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "1000 ms",
+        "100 ms",
+        "10 ms",
+        "1 ms"
+      ],
+      "answer": 0,
+      "why": "1000 millisecond = 1 seconde."
+    },
+    {
+      "id": "project-home-02-q4",
+      "textAr": "ON=1s وOFF=1s. الدورة؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "1s",
+        "10s",
+        "0s",
+        "2s"
+      ],
+      "answer": 3,
+      "why": "نجمع المدتين."
+    },
+    {
+      "id": "project-home-02-q5",
+      "textAr": "ON=0.5s وOFF=0.5s. الدورة؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "1s",
+        "5s",
+        "0.5s",
+        "2s"
+      ],
+      "answer": 0,
+      "why": "0.5+0.5=1."
+    },
+    {
+      "id": "project-home-02-q6",
+      "textAr": "إذا نقصنا المدتين؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "الجهد يزيد",
+        "الوميض أبطأ",
+        "LED تتحول لبازر",
+        "الوميض أسرع"
+      ],
+      "answer": 3,
+      "why": "الدورة تصبح أقصر."
+    },
+    {
+      "id": "project-home-02-q7",
+      "textAr": "إذا ننحي أمر OFF؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "LED تبقى مضيئة بعد ON",
+        "الوميض أسرع بالضرورة",
+        "USB يتفصل",
+        "تطفى وحدها"
+      ],
+      "answer": 0,
+      "why": "لا يوجد أمر يطفئها."
+    },
+    {
+      "id": "project-home-02-q8",
+      "textAr": "الصورة الزمنية: الجزء المرتفع يمثل؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "OFF",
+        "ON في دارتنا",
+        "USB",
+        "GND فقط"
+      ],
+      "answer": 1,
+      "why": "المستوى المرتفع يمثل تشغيل LED.",
+      "visual": "<svg aria-label=\"مخطط زمني للوميض\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"55\" y=\"53\">1</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"55\" y=\"132\">0</text><path d=\"M75 35 V135 H525\" fill=\"none\" stroke=\"#8199b1\" stroke-width=\"2\"></path><path d=\"M88 125 V55 H143 V125 H198 V55 H253 V125 H308 H515\" fill=\"none\" stroke=\"#1669bc\" stroke-width=\"5\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"300\" y=\"165\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-home-02-q9",
+      "textAr": "المدة بين بداية دورتين؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "Anode",
+        "Résistance",
+        "GPIO",
+        "Période"
+      ],
+      "answer": 3,
+      "why": "هي مدة دورة واحدة."
+    },
+    {
+      "id": "project-home-02-q10",
+      "textAr": "ON=2s وOFF=1s، LED تضيء أكثر؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "لا، نصف الدورة",
+        "نعم، ثلثا الدورة",
+        "لا، ربع الدورة",
+        "تطفأ دائماً"
+      ],
+      "answer": 1,
+      "why": "2 من مجموع 3 ثوانٍ."
+    },
+    {
+      "id": "project-home-02-q11",
+      "textAr": "هل نحتاج مقاومة في Blink؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "لا إذا LED حمراء",
+        "لا إذا الكود صحيح",
+        "لا لأن الزمن قصير",
+        "نعم في دارة LED الخارجية"
+      ],
+      "answer": 3,
+      "why": "تحديد التيار ضروري."
+    },
+    {
+      "id": "project-home-02-q12",
+      "textAr": "باش نوقف الوميض ونخلي LED مطفأة؟",
+      "term": "LED & Blink — الوميض",
+      "options": [
+        "نحذف GND وهو متغذّي",
+        "نزيد ON",
+        "نستعمل LOW دون تكرار التشغيل",
+        "نزيد الجهد"
+      ],
+      "answer": 2,
+      "why": "نبقي المخرج على LOW."
+    }
+  ],
+  "project-home-03": [
+    {
+      "id": "project-home-03-q1",
+      "textAr": "شنية برنامج البرمجة في المسار هذا؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "Supabase",
+        "Render",
+        "Thonny",
+        "Word"
+      ],
+      "answer": 2,
+      "why": "البرنامج هو محرر ووسيلة للاتصال باللوحة."
+    },
+    {
+      "id": "project-home-03-q2",
+      "textAr": "شنية نوع كابل USB اللازم؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "شحن فقط",
+        "كابل بيانات",
+        "RJ45",
+        "HDMI"
+      ],
+      "answer": 1,
+      "why": "يلزم كابل ينقل البيانات."
+    },
+    {
+      "id": "project-home-03-q3",
+      "textAr": "شنوة نختار قبل التشغيل؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "اللوحة والمنفذ",
+        "لون LED فقط",
+        "كود الغرفة",
+        "حجم الخط"
+      ],
+      "answer": 0,
+      "why": "اختيار اللوحة والمنفذ الصحيحين ضروري.",
+      "visual": "<svg aria-label=\"Cable, port et code: trois contrôles\" role=\"img\" viewbox=\"0 0 560 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#eef5fc\" height=\"214\" rx=\"20\" width=\"554\" x=\"3\" y=\"3\"></rect><rect fill=\"#fff\" height=\"125\" rx=\"12\" width=\"160\" x=\"20\" y=\"35\"></rect><rect fill=\"#fff\" height=\"125\" rx=\"12\" width=\"160\" x=\"200\" y=\"35\"></rect><rect fill=\"#fff\" height=\"125\" rx=\"12\" width=\"160\" x=\"380\" y=\"35\"></rect><text direction=\"ltr\" fill=\"#18374e\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" x=\"100\" y=\"66\">USB</text><path d=\"M64 112 H136\" fill=\"none\" stroke=\"#394f68\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"6\"></path><rect fill=\"#607789\" height=\"30\" rx=\"12\" width=\"28\" x=\"53\" y=\"96\"></rect><rect fill=\"#607789\" height=\"26\" rx=\"12\" width=\"23\" x=\"124\" y=\"98\"></rect><text direction=\"ltr\" fill=\"#18374e\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" x=\"280\" y=\"66\">PORT</text><rect fill=\"#4f74b1\" height=\"45\" rx=\"12\" width=\"108\" x=\"226\" y=\"84\"></rect><text direction=\"ltr\" fill=\"white\" font-size=\"16\" font-weight=\"600\" text-anchor=\"middle\" x=\"280.0\" y=\"111.5\">COM / USB</text><text direction=\"ltr\" fill=\"#18374e\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" x=\"460\" y=\"66\">CODE</text><text direction=\"ltr\" fill=\"#bc415b\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" x=\"460\" y=\"108\">SyntaxError</text><text direction=\"ltr\" fill=\"#18374e\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" x=\"280\" y=\"190\">3 pistes de diagnostic</text></svg>"
+    },
+    {
+      "id": "project-home-03-q4",
+      "textAr": "شنية الزر لتشغيل البرنامج؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "Print",
+        "Delete",
+        "Run / F5",
+        "Share"
+      ],
+      "answer": 2,
+      "why": "هذا الزر يطلق البرنامج على اللوحة."
+    },
+    {
+      "id": "project-home-03-q5",
+      "textAr": "إذا ما ظهرش المنفذ؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "نزيد الجهد",
+        "نحذف كل المشاريع",
+        "نربط التغذية بالأرضي",
+        "نتثبت من الكابل والتعريف والاتصال"
+      ],
+      "answer": 3,
+      "why": "نراجع الاتصال أولاً.",
+      "visual": "<svg aria-label=\"Cable, port et code: trois contrôles\" role=\"img\" viewbox=\"0 0 560 220\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#eef5fc\" height=\"214\" rx=\"20\" width=\"554\" x=\"3\" y=\"3\"></rect><rect fill=\"#fff\" height=\"125\" rx=\"12\" width=\"160\" x=\"20\" y=\"35\"></rect><rect fill=\"#fff\" height=\"125\" rx=\"12\" width=\"160\" x=\"200\" y=\"35\"></rect><rect fill=\"#fff\" height=\"125\" rx=\"12\" width=\"160\" x=\"380\" y=\"35\"></rect><text direction=\"ltr\" fill=\"#18374e\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" x=\"100\" y=\"66\">USB</text><path d=\"M64 112 H136\" fill=\"none\" stroke=\"#394f68\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"6\"></path><rect fill=\"#607789\" height=\"30\" rx=\"12\" width=\"28\" x=\"53\" y=\"96\"></rect><rect fill=\"#607789\" height=\"26\" rx=\"12\" width=\"23\" x=\"124\" y=\"98\"></rect><text direction=\"ltr\" fill=\"#18374e\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" x=\"280\" y=\"66\">PORT</text><rect fill=\"#4f74b1\" height=\"45\" rx=\"12\" width=\"108\" x=\"226\" y=\"84\"></rect><text direction=\"ltr\" fill=\"white\" font-size=\"16\" font-weight=\"600\" text-anchor=\"middle\" x=\"280.0\" y=\"111.5\">COM / USB</text><text direction=\"ltr\" fill=\"#18374e\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" x=\"460\" y=\"66\">CODE</text><text direction=\"ltr\" fill=\"#bc415b\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" x=\"460\" y=\"108\">SyntaxError</text><text direction=\"ltr\" fill=\"#18374e\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" x=\"280\" y=\"190\">3 pistes de diagnostic</text></svg>"
+    },
+    {
+      "id": "project-home-03-q6",
+      "textAr": "شنية لغة المسار؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "HTML",
+        "SQL",
+        "MicroPython",
+        "CSS"
+      ],
+      "answer": 2,
+      "why": "هذه اللغة المعتمدة."
+    },
+    {
+      "id": "project-home-03-q7",
+      "textAr": "شنية وظيفة Pin.OUT؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "تعيينه كمدخل",
+        "إغلاق المحرر",
+        "تعيين الطرف كمخرج",
+        "اختيار المنفذ USB"
+      ],
+      "answer": 2,
+      "why": "نحدد اتجاه الطرف كمخرج."
+    },
+    {
+      "id": "project-home-03-q8",
+      "textAr": "شنية الأمر اللي يشعل LED؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "led.on()",
+        "GND",
+        "RESET",
+        "led.off()"
+      ],
+      "answer": 0,
+      "why": "هذا الأمر يضع المخرج في HIGH."
+    },
+    {
+      "id": "project-home-03-q9",
+      "textAr": "LED تبقى مضيئة، علاش؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "ما أعطيناش أمر إطفاء",
+        "البرنامج توقف بالضرورة",
+        "المقاومة اختفت",
+        "اللوحة صارت أسرع"
+      ],
+      "answer": 0,
+      "why": "الحالة تبقى حتى نغيرها."
+    },
+    {
+      "id": "project-home-03-q10",
+      "textAr": "شنية نعمل إذا يظهر خطأ كتابة؟",
+      "term": "Thonny وMicroPython",
+      "options": [
+        "نزيد جهد التغذية",
+        "نبدل كل الأسلاك",
+        "نلغي المقاومة",
+        "نقرأ الرسالة ونراجع السطر"
+      ],
+      "answer": 3,
+      "why": "رسالة الخطأ تساعد على تحديد المشكلة."
+    },
+    {
+      "id": "project-home-03-q11",
+      "textAr": "ESP32 هي شنوّة؟ / Qu’est-ce que l’ESP32 ?",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "Microcontrôleur programmable",
+        "Écran LCD",
+        "Résistance",
+        "Batterie"
+      ],
+      "answer": 0,
+      "why": "ESP32 تنفّذ البرنامج وتتحكم في المداخل والمخارج."
+    },
+    {
+      "id": "project-home-03-q12",
+      "textAr": "باش نكتبوا MicroPython نستعملوا شنوّة؟",
+      "term": "Introduction à l’ESP32",
+      "options": [
+        "Thonny",
+        "PowerPoint",
+        "Paint",
+        "Word"
+      ],
+      "answer": 0,
+      "why": "Thonny محرّر بسيط مناسب للـESP32."
+    }
+  ],
+  "project-home-04": [
+    {
+      "id": "project-home-04-q1",
+      "textAr": "الزر بالنسبة للوحة هو؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "مخرج",
+        "بطارية",
+        "مدخل",
+        "محرّك"
+      ],
+      "answer": 2,
+      "why": "الزر يعطي معلومة للبرنامج."
+    },
+    {
+      "id": "project-home-04-q2",
+      "textAr": "شنوة حالة زر مفتوح مع Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "PWM",
+        "LOW",
+        "قصر",
+        "HIGH"
+      ],
+      "answer": 1,
+      "why": "المقاومة تربط المدخل بالأرضي عند الإفلات."
+    },
+    {
+      "id": "project-home-04-q3",
+      "textAr": "وقت نضغط زر مربوط بـ3,3 V (3V3) في دارة Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تتوقف اللوحة",
+        "HIGH",
+        "LOW",
+        "5 أمبير"
+      ],
+      "answer": 1,
+      "why": "المدخل يتصل بجهد التغذية المنطقي ويقرأ 1."
+    },
+    {
+      "id": "project-home-04-q4",
+      "textAr": "شنوة وظيفة Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تخزين الكود",
+        "تشغيل Servo",
+        "تثبيت حالة المدخل",
+        "زيادة سرعة المعالج"
+      ],
+      "answer": 2,
+      "why": "تمنع المدخل من البقاء عائماً وتثبّته في LOW عند الإفلات."
+    },
+    {
+      "id": "project-home-04-q5",
+      "textAr": "مدخل Floating ينجم يعطي؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "دائماً 1",
+        "قراءات عشوائية",
+        "دائماً 0",
+        "زاوية 90°"
+      ],
+      "answer": 1,
+      "why": "يلزمه مرجع واضح."
+    },
+    {
+      "id": "project-home-04-q6",
+      "textAr": "أي جزء ينفذ القرار؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "البرنامج",
+        "USB وحده",
+        "المقاومة وحدها",
+        "سلك GND"
+      ],
+      "answer": 0,
+      "why": "الشرط يختار المخرج."
+    },
+    {
+      "id": "project-home-04-q7",
+      "textAr": "علاش LED تستحق مقاومة؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تحديد التيار",
+        "حفظ النتيجة",
+        "عكس البرنامج",
+        "زيادة الجهد"
+      ],
+      "answer": 0,
+      "why": "تحمي LED والمخرج."
+    },
+    {
+      "id": "project-home-04-q8",
+      "textAr": "في الرسم، الزر مضغوط. شنوّة القراءة؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "1",
+        "255",
+        "0",
+        "4095"
+      ],
+      "answer": 0,
+      "why": "Pull-down مع زر مضغوط إلى جهد التغذية يعني 1.",
+      "visual": "<svg aria-label=\"Pull-down : bouton ouvert et fermé\" role=\"img\" viewBox=\"0 0 560 250\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"550\" height=\"240\" rx=\"20\" fill=\"#edf5ff\"/><text x=\"130\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">OPEN</text><text x=\"130\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">3V3</text><path d=\"M130 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"130\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M130 86 L153 111\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M130 120 V160 H205\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"205\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M130 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"94\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"130\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M130 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"130\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text><text x=\"390\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">PRESSED</text><text x=\"390\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">3V3</text><path d=\"M390 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"390\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M390 86 L390 120\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M390 120 V160 H465\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"465\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M390 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"354\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"390\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M390 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"390\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text></svg>"
+    },
+    {
+      "id": "project-home-04-q9",
+      "textAr": "Rebond معناه؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "LED محروقة",
+        "تغيير نوع المعالج",
+        "تغذية 5V",
+        "تغيّر سريع مؤقت عند الضغط"
+      ],
+      "answer": 3,
+      "why": "الاتصال الميكانيكي غير مثالي."
+    },
+    {
+      "id": "project-home-04-q10",
+      "textAr": "قبل تعديل التوصيلات؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "نقص الأسلاك وهي مشغلة",
+        "نفصل التغذية",
+        "نحذف GND",
+        "نزيد الجهد"
+      ],
+      "answer": 1,
+      "why": "نمنع القصر."
+    },
+    {
+      "id": "project-home-04-q11",
+      "textAr": "Pin.PULL_DOWN تخدم شنوّة؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "Stabiliser l’entrée à 0",
+        "Créer du Wi-Fi",
+        "Allumer OLED",
+        "Régler PWM"
+      ],
+      "answer": 0,
+      "why": "Pull-down يمنع input float."
+    },
+    {
+      "id": "project-home-04-q12",
+      "textAr": "bouton.value() تقرى؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "0 ou 1",
+        "Une tension continue directe",
+        "Une photo",
+        "Adresse IP"
+      ],
+      "answer": 0,
+      "why": "Digital input 0/1."
+    }
+  ],
+  "project-home-05": [
+    {
+      "id": "project-home-05-q1",
+      "textAr": "الزر بالنسبة للوحة هو؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "مخرج",
+        "بطارية",
+        "مدخل",
+        "محرّك"
+      ],
+      "answer": 2,
+      "why": "الزر يعطي معلومة للبرنامج."
+    },
+    {
+      "id": "project-home-05-q2",
+      "textAr": "شنوة حالة زر مفتوح مع Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "PWM",
+        "LOW",
+        "قصر",
+        "HIGH"
+      ],
+      "answer": 1,
+      "why": "المقاومة تربط المدخل بالأرضي عند الإفلات."
+    },
+    {
+      "id": "project-home-05-q3",
+      "textAr": "وقت نضغط زر مربوط بـ3,3 V (3V3) في دارة Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تتوقف اللوحة",
+        "HIGH",
+        "LOW",
+        "5 أمبير"
+      ],
+      "answer": 1,
+      "why": "المدخل يتصل بجهد التغذية المنطقي ويقرأ 1."
+    },
+    {
+      "id": "project-home-05-q4",
+      "textAr": "شنوة وظيفة Pull-down؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تخزين الكود",
+        "تشغيل Servo",
+        "تثبيت حالة المدخل",
+        "زيادة سرعة المعالج"
+      ],
+      "answer": 2,
+      "why": "تمنع المدخل من البقاء عائماً وتثبّته في LOW عند الإفلات."
+    },
+    {
+      "id": "project-home-05-q5",
+      "textAr": "مدخل Floating ينجم يعطي؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "دائماً 1",
+        "قراءات عشوائية",
+        "دائماً 0",
+        "زاوية 90°"
+      ],
+      "answer": 1,
+      "why": "يلزمه مرجع واضح."
+    },
+    {
+      "id": "project-home-05-q6",
+      "textAr": "أي جزء ينفذ القرار؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "البرنامج",
+        "USB وحده",
+        "المقاومة وحدها",
+        "سلك GND"
+      ],
+      "answer": 0,
+      "why": "الشرط يختار المخرج."
+    },
+    {
+      "id": "project-home-05-q7",
+      "textAr": "علاش LED تستحق مقاومة؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "تحديد التيار",
+        "حفظ النتيجة",
+        "عكس البرنامج",
+        "زيادة الجهد"
+      ],
+      "answer": 0,
+      "why": "تحمي LED والمخرج."
+    },
+    {
+      "id": "project-home-05-q8",
+      "textAr": "في الرسم، الزر مضغوط. شنوّة القراءة؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "1",
+        "255",
+        "0",
+        "4095"
+      ],
+      "answer": 0,
+      "why": "Pull-down مع زر مضغوط إلى جهد التغذية يعني 1.",
+      "visual": "<svg aria-label=\"Pull-down : bouton ouvert et fermé\" role=\"img\" viewBox=\"0 0 560 250\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"5\" y=\"5\" width=\"550\" height=\"240\" rx=\"20\" fill=\"#edf5ff\"/><text x=\"130\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">OPEN</text><text x=\"130\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">3V3</text><path d=\"M130 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"130\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M130 86 L153 111\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M130 120 V160 H205\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"130\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"205\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M130 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"94\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"130\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M130 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"130\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text><text x=\"390\" y=\"32\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">PRESSED</text><text x=\"390\" y=\"61\" fill=\"#b52e37\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">3V3</text><path d=\"M390 68 V86\" fill=\"none\" stroke=\"#e14d55\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"86\" r=\"4\" fill=\"#254a70\"/><circle cx=\"390\" cy=\"120\" r=\"4\" fill=\"#254a70\"/><path d=\"M390 86 L390 120\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M390 120 V160 H465\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"390\" cy=\"160\" r=\"4\" fill=\"#254a70\"/><text x=\"465\" y=\"151\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">IN</text><path d=\"M390 160 V178\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"354\" y=\"178\" width=\"72\" height=\"29\" rx=\"6\" fill=\"#a76519\"/><text x=\"390\" y=\"197\" fill=\"white\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\">10 kΩ</text><path d=\"M390 207 V220\" fill=\"none\" stroke=\"#254a70\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"390\" y=\"239\" fill=\"#18374e\" font-size=\"15\" font-weight=\"bold\" text-anchor=\"middle\">GND</text></svg>"
+    },
+    {
+      "id": "project-home-05-q9",
+      "textAr": "Rebond معناه؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "LED محروقة",
+        "تغيير نوع المعالج",
+        "تغذية 5V",
+        "تغيّر سريع مؤقت عند الضغط"
+      ],
+      "answer": 3,
+      "why": "الاتصال الميكانيكي غير مثالي."
+    },
+    {
+      "id": "project-home-05-q10",
+      "textAr": "قبل تعديل التوصيلات؟",
+      "term": "Digital Input — Bouton poussoir",
+      "options": [
+        "نقص الأسلاك وهي مشغلة",
+        "نفصل التغذية",
+        "نحذف GND",
+        "نزيد الجهد"
+      ],
+      "answer": 1,
+      "why": "نمنع القصر."
+    },
+    {
+      "id": "project-home-05-q11",
+      "textAr": "Pin.PULL_DOWN تخدم شنوّة؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "Stabiliser l’entrée à 0",
+        "Créer du Wi-Fi",
+        "Allumer OLED",
+        "Régler PWM"
+      ],
+      "answer": 0,
+      "why": "Pull-down يمنع input float."
+    },
+    {
+      "id": "project-home-05-q12",
+      "textAr": "bouton.value() تقرى؟",
+      "term": "Contrôle des LED et boutons",
+      "options": [
+        "0 ou 1",
+        "Une tension continue directe",
+        "Une photo",
+        "Adresse IP"
+      ],
+      "answer": 0,
+      "why": "Digital input 0/1."
+    }
+  ],
+  "project-home-06": [
+    {
+      "id": "project-home-06-q1",
+      "textAr": "شنوة وظيفة ADC؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "حذف البرنامج",
+        "تحويل الجهد إلى عدد",
+        "تشغيل موتور مباشرة",
+        "إنتاج الصوت"
+      ],
+      "answer": 1,
+      "why": "ADC يحوّل إشارة تناظرية إلى رقم."
+    },
+    {
+      "id": "project-home-06-q2",
+      "textAr": "Potentiomètre عنده عادة؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "8 أطراف",
+        "3 أطراف",
+        "USB",
+        "طرف واحد"
+      ],
+      "answer": 1,
+      "why": "طرفان للتغذية ووسط للقراءة."
+    },
+    {
+      "id": "project-home-06-q3",
+      "textAr": "شنوة نربط بالمدخل Analog؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "الطرف الأوسط",
+        "هيكل USB",
+        "مخرج موتور",
+        "GND وحده"
+      ],
+      "answer": 0,
+      "why": "الطرف الأوسط يعطي الجهد المتغيّر."
+    },
+    {
+      "id": "project-home-06-q4",
+      "textAr": "وقت ندوّر البكرة، شنوّة يتبدّل؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "عدد الأسلاك",
+        "لغة البرمجة",
+        "نوع اللوحة",
+        "جهد الطرف الأوسط"
+      ],
+      "answer": 3,
+      "why": "تتغير نسبة تقسيم الجهد."
+    },
+    {
+      "id": "project-home-06-q5",
+      "textAr": "10 bits فيها قداش مستوى؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "4095",
+        "1024",
+        "255",
+        "10"
+      ],
+      "answer": 1,
+      "why": "2 أس 10 = 1024."
+    },
+    {
+      "id": "project-home-06-q6",
+      "textAr": "12 bits فيها قداش مستوى؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "100",
+        "1024",
+        "4096",
+        "12"
+      ],
+      "answer": 2,
+      "why": "2 أس 12 = 4096."
+    },
+    {
+      "id": "project-home-06-q7",
+      "textAr": "هل القراءة نصف المجال لازم تكون دقيقة 100%؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "نعم دائماً",
+        "فقط مع USB مفصول",
+        "فقط من غير GND",
+        "لا، تنجم تختلف شوية"
+      ],
+      "answer": 3,
+      "why": "الدقة تتأثر بالمعايرة والمكوّنات."
+    },
+    {
+      "id": "project-home-06-q8",
+      "textAr": "في الرسم، الوسط متصل بالـADC. علاش؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "باش نقرا الجهد المتغيّر",
+        "باش نشعل LED مباشرة",
+        "باش نكتب الكود",
+        "باش نغذي موتور"
+      ],
+      "answer": 0,
+      "why": "الـADC يقيس جهد الـcurseur.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"34\">Analog → ADC → Digital</text><path d=\"M35 190 L210 190\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M35 190 L35 65\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M35 185 Q80 70 125 130 T210 80\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"55\" rx=\"10\" width=\"90\" x=\"240\" y=\"95\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"285.0\" y=\"128.5\">ADC</text><path d=\"M210 122 L240 122\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M330 122 L370 122\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"92\">0</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"130\">512 / 2048</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"170\">1023 / 4095</text></svg>"
+    },
+    {
+      "id": "project-home-06-q9",
+      "textAr": "ADC يعمل شنوّة؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "Convertit une tension en nombre",
+        "Écrit un fichier",
+        "Commande un servo",
+        "Affiche une image"
+      ],
+      "answer": 0,
+      "why": "ADC يحوّل signal analogique إلى valeur numérique."
+    },
+    {
+      "id": "project-home-06-q10",
+      "textAr": "Potentiomètre نربطوا وسطه في المثال على؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "GPIO34",
+        "GPIO5",
+        "EN",
+        "GND seulement"
+      ],
+      "answer": 0,
+      "why": "الـcurseur يتربط بـGPIO34."
+    },
+    {
+      "id": "project-home-06-q11",
+      "textAr": "DAC يعمل شنوّة؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "Convertit un nombre en tension analogique",
+        "Lit un bouton",
+        "Capte le Wi-Fi",
+        "Alimente à 12 V"
+      ],
+      "answer": 0,
+      "why": "DAC يعمل conversion numérique-analogique."
+    },
+    {
+      "id": "project-home-06-q12",
+      "textAr": "GPIO متاع DAC في ESP32 classique؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "GPIO25",
+        "GPIO34",
+        "GPIO5",
+        "GPIO18"
+      ],
+      "answer": 0,
+      "why": "DAC1 في classique على GPIO25."
+    }
+  ],
+  "project-home-07": [
+    {
+      "id": "project-home-07-q1",
+      "textAr": "if معناها؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "انتظر",
+        "إذا",
+        "اطبع دائماً",
+        "كرّر"
+      ],
+      "answer": 1,
+      "why": "if تنفذ الفرع عند تحقق الشرط."
+    },
+    {
+      "id": "project-home-07-q2",
+      "textAr": "else يتنفذ وقتاش؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "عندما الشرط غير صحيح",
+        "عند كل HIGH",
+        "دائماً قبل if",
+        "وقت USB مفصول"
+      ],
+      "answer": 0,
+      "why": "else هو البديل."
+    },
+    {
+      "id": "project-home-07-q3",
+      "textAr": "5 > 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يساوي 0",
+        "صحيح",
+        "لا يمكن",
+        "غلط"
+      ],
+      "answer": 1,
+      "why": "5 أكبر من 3."
+    },
+    {
+      "id": "project-home-07-q4",
+      "textAr": "3 >= 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "صحيح",
+        "مستحيل",
+        "يساوي 6",
+        "غلط"
+      ],
+      "answer": 0,
+      "why": ">= تشمل التساوي."
+    },
+    {
+      "id": "project-home-07-q5",
+      "textAr": "3 > 3؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يساوي 3",
+        "صحيح",
+        "غلط",
+        "لا معنى له"
+      ],
+      "answer": 2,
+      "why": "> لا تشمل التساوي."
+    },
+    {
+      "id": "project-home-07-q6",
+      "textAr": "أي رمز يقارن التساوي؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "=",
+        "+",
+        "-",
+        "=="
+      ],
+      "answer": 3,
+      "why": "== للمقارنة."
+    },
+    {
+      "id": "project-home-07-q7",
+      "textAr": "x=25 وشرط x>=30؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "غلط",
+        "صحيح",
+        "55",
+        "30"
+      ],
+      "answer": 0,
+      "why": "25 أصغر من 30."
+    },
+    {
+      "id": "project-home-07-q8",
+      "textAr": "الصورة: القرار x=35 وx>=30؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "نختار فرع لا",
+        "نعمل الفرعين دائماً",
+        "نختار فرع نعم",
+        "نتوقف عن البرمجة"
+      ],
+      "answer": 2,
+      "why": "35 يحقق الشرط.",
+      "visual": "<svg aria-label=\"مخطط قرار\" role=\"img\" viewbox=\"0 0 560 190\"><rect fill=\"#edf5ff\" height=\"180\" rx=\"18\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#cee8ff\" height=\"40\" rx=\"12\" width=\"160\" x=\"200\" y=\"15\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"42\">x = 35</text><path d=\"M280 55 V65 M280 115 V125 H145 V145 M280 125 H415 V145\" fill=\"none\" stroke=\"#58758e\" stroke-width=\"3\"></path><path d=\"M280 65 L365 90 L280 115 L195 90 Z\" fill=\"#fce5a7\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"96\">x ≥ 30 ?</text><rect fill=\"#d5f6e6\" height=\"33\" rx=\"12\" width=\"130\" x=\"80\" y=\"145\"></rect><rect fill=\"#fce1df\" height=\"33\" rx=\"12\" width=\"130\" x=\"350\" y=\"145\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"167\">Oui</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"415\" y=\"167\">Non</text></svg>"
+    },
+    {
+      "id": "project-home-07-q9",
+      "textAr": "x=30 وشرط x>=30، LED؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "تختفي",
+        "تضيء في مثالنا",
+        "تطفأ",
+        "تومض دائماً"
+      ],
+      "answer": 1,
+      "why": "القيمة الحدية تحقق >=."
+    },
+    {
+      "id": "project-home-07-q10",
+      "textAr": "x=29، في نفس البرنامج LED؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "تتحول لحساس",
+        "تضيء",
+        "تطفأ",
+        "تزداد سرعتها"
+      ],
+      "answer": 2,
+      "why": "فرع else يطفئها."
+    },
+    {
+      "id": "project-home-07-q11",
+      "textAr": "هل نحتاج حساساً لهذا المثال؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "لا، القيمة افتراضية",
+        "يلزم Wi-Fi",
+        "يلزم موتور",
+        "نعم إجبارياً"
+      ],
+      "answer": 0,
+      "why": "نختبر المنطق أولاً."
+    },
+    {
+      "id": "project-home-07-q12",
+      "textAr": "شنوة فائدة الشرط للروبوت؟",
+      "term": "Conditions — الشروط",
+      "options": [
+        "يمنع البرمجة",
+        "يلغي الحساسات",
+        "يزيد التغذية",
+        "يختار السلوك حسب الحالة"
+      ],
+      "answer": 3,
+      "why": "القرار أساس السلوك الذكي."
+    }
+  ],
+  "project-home-08": [
+    {
+      "id": "project-home-08-q1",
+      "textAr": "PWM تختصر؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "Pin Without Mode",
+        "Python Web Module",
+        "Pulse Width Modulation",
+        "Power Wire Motor"
+      ],
+      "answer": 2,
+      "why": "تعديل عرض النبضة."
+    },
+    {
+      "id": "project-home-08-q2",
+      "textAr": "Duty cycle 25% معناها؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "HIGH ربع الدورة",
+        "الجهد ربع القيمة لحظياً",
+        "HIGH كل الدورة",
+        "LOW دائماً"
+      ],
+      "answer": 0,
+      "why": "نسبة الزمن المرتفع هي الربع."
+    },
+    {
+      "id": "project-home-08-q3",
+      "textAr": "0% تعني؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "LOW دائماً",
+        "HIGH دائماً",
+        "موتور أسرع",
+        "نصف الدورة"
+      ],
+      "answer": 0,
+      "why": "وقت HIGH صفر."
+    },
+    {
+      "id": "project-home-08-q4",
+      "textAr": "100% تعني؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "HIGH دائماً",
+        "ربع الدورة",
+        "LOW دائماً",
+        "لا تغذية"
+      ],
+      "answer": 0,
+      "why": "وقت HIGH يساوي الدورة."
+    },
+    {
+      "id": "project-home-08-q5",
+      "textAr": "التردد يقاس بـ؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "A",
+        "Ω",
+        "V",
+        "Hz"
+      ],
+      "answer": 3,
+      "why": "Hz = دورة في الثانية."
+    },
+    {
+      "id": "project-home-08-q6",
+      "textAr": "دورة فيها 2ms HIGH و2ms LOW؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "100%",
+        "0%",
+        "50%",
+        "25%"
+      ],
+      "answer": 2,
+      "why": "2 من مجموع 4."
+    },
+    {
+      "id": "project-home-08-q7",
+      "textAr": "PWM هي جهد Analog حقيقي؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "لا، نبضات رقمية",
+        "نعم دائماً",
+        "فقط في ESP32",
+        "فقط في UNO"
+      ],
+      "answer": 0,
+      "why": "الجهد يتناوب بين مستويين."
+    },
+    {
+      "id": "project-home-08-q8",
+      "textAr": "في الرسم: أي إشارة وقت HIGH فيها أطول؟",
+      "term": "PWM — التحكّم في الإضاءة",
+      "options": [
+        "متساويان",
+        "لا توجد نبضات",
+        "B",
+        "A"
+      ],
+      "answer": 2,
+      "why": "B فيها نسبة HIGH أكبر.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"30\">PWM / pulse width</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"24\" y=\"75\">A</text><path d=\"M55 85 V55 H95.0 V85 H215 V55 H255.0 V85 H375 V55 H415.0 V85 H535\" fill=\"none\" stroke=\"#245bb0\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"24\" y=\"155\">B</text><path d=\"M55 165 V135 H175.0 V165 H215 V135 H335.0 V165 H375 V135 H495.0 V165 H535\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"219\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-home-08-q9",
+      "textAr": "PWM تغيّر شنوّة في LED؟",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "Luminosité apparente",
+        "Adresse IP",
+        "Tension USB",
+        "Code PIN"
+      ],
+      "answer": 0,
+      "why": "PWM تبدّل الإضاءة باستعمال Duty."
+    },
+    {
+      "id": "project-home-08-q10",
+      "textAr": "duty(0) يخلي LED ؟",
+      "term": "PWM — modulation de largeur d’impulsion",
+      "options": [
+        "Éteinte",
+        "Toujours brillante",
+        "En mode Wi-Fi",
+        "Rouge فقط"
+      ],
+      "answer": 0,
+      "why": "Duty 0 يعني وقت ON صفر."
+    },
+    {
+      "id": "project-home-08-q11",
+      "textAr": "نقروا Potentiomètre باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "ADC",
+        "DAC",
+        "PWM",
+        "UART"
+      ],
+      "answer": 0,
+      "why": "Pot يعطي analogique وADC تقراه."
+    },
+    {
+      "id": "project-home-08-q12",
+      "textAr": "نبدّلوا luminosité LED باستعمال؟",
+      "term": "Résumé GPIO, ADC, DAC et PWM",
+      "options": [
+        "PWM",
+        "SPI",
+        "RTC",
+        "EN"
+      ],
+      "answer": 0,
+      "why": "PWM تسمح بتغيير Duty."
+    }
+  ],
+  "project-home-09": [
+    {
+      "id": "project-home-09-q1",
+      "textAr": "Buzzer وظيفته؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "قياس الضوء",
+        "عرض النص",
+        "إصدار صوت",
+        "تدوير العجلة"
+      ],
+      "answer": 2,
+      "why": "يحوّل إشارة كهربائية إلى صوت."
+    },
+    {
+      "id": "project-home-09-q2",
+      "textAr": "Passive Buzzer يحتاج؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "شاشة",
+        "جهد ثابت فقط لكل نغمة",
+        "Wi-Fi",
+        "إشارة بتردد مسموع"
+      ],
+      "answer": 3,
+      "why": "النبضات تصنع الاهتزاز."
+    },
+    {
+      "id": "project-home-09-q3",
+      "textAr": "Active Buzzer عادة فيه؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "دارة توليد نغمة",
+        "ADC خارجي",
+        "Servo",
+        "كاميرا"
+      ],
+      "answer": 0,
+      "why": "عنده مولد نغمة داخلي."
+    },
+    {
+      "id": "project-home-09-q4",
+      "textAr": "التردد يتقاس بـ؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "Ω",
+        "Hz",
+        "V",
+        "cm"
+      ],
+      "answer": 1,
+      "why": "دورات في الثانية."
+    },
+    {
+      "id": "project-home-09-q5",
+      "textAr": "نرفع تردد النغمة، شنوّة يتغيّر؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "حدة الصوت",
+        "لون LED",
+        "نوع USB",
+        "عدد الأطراف"
+      ],
+      "answer": 0,
+      "why": "النغمة عادة تصبح أحدّ."
+    },
+    {
+      "id": "project-home-09-q6",
+      "textAr": "فترة الصمت تستعمل لـ؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "فصل النغمات",
+        "زيادة الجهد",
+        "حذف الكود",
+        "تغيير اللوحة"
+      ],
+      "answer": 0,
+      "why": "تشكّل إيقاع الإنذار."
+    },
+    {
+      "id": "project-home-09-q7",
+      "textAr": "في الرسم، قداش من نغمة؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "answer": 1,
+      "why": "ثلاث مناطق تشغيل منفصلة.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"35\">3 BIPS</text><path d=\"M35 180 L530 180\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><rect fill=\"#f6b84c\" height=\"95\" rx=\"6\" width=\"75\" x=\"70\" y=\"85\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"107\" y=\"130\">BIP</text><rect fill=\"#f6b84c\" height=\"95\" rx=\"6\" width=\"75\" x=\"240\" y=\"85\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"277\" y=\"130\">BIP</text><rect fill=\"#f6b84c\" height=\"95\" rx=\"6\" width=\"75\" x=\"410\" y=\"85\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"447\" y=\"130\">BIP</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"220\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-home-09-q8",
+      "textAr": "أي مكوّن لازم driver إذا تياره كبير؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "مقاومة 330Ω وحدها",
+        "Buzzer غير مناسب للـGPIO",
+        "زر مفصول",
+        "سلك USB"
+      ],
+      "answer": 1,
+      "why": "المخرج محدود التيار."
+    },
+    {
+      "id": "project-home-09-q9",
+      "textAr": "نخلي إنذار طويل بأقصى صوت؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "نلغي فترات الراحة",
+        "نزيد الجهد عشوائياً",
+        "لا، نستعمل صوتاً معتدلاً",
+        "نعم دائماً"
+      ],
+      "answer": 2,
+      "why": "نحافظ على السمع والمكوّن."
+    },
+    {
+      "id": "project-home-09-q10",
+      "textAr": "كي ننهي النغمة؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "نوقف إشارة الصوت",
+        "نزيد التردد إلى الأبد",
+        "نحذف USB driver",
+        "نفصل GND والدارة تعمل"
+      ],
+      "answer": 0,
+      "why": "الصمت يحتاج إيقاف الإشارة."
+    },
+    {
+      "id": "project-home-09-q11",
+      "textAr": "3 نغمات في حلقة، قداش تكرار؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "10",
+        "1",
+        "3",
+        "0"
+      ],
+      "answer": 2,
+      "why": "حلقة بثلاث دورات."
+    },
+    {
+      "id": "project-home-09-q12",
+      "textAr": "كيف نعمل صمت في المثال؟",
+      "term": "Buzzer — الصوت والإنذار",
+      "options": [
+        "buzzer.duty(512)",
+        "buzzer.duty(0)",
+        "buzzer.freq(1000)",
+        "sleep(0.2) وحدها"
+      ],
+      "answer": 1,
+      "why": "duty(0) يوقف النبضات."
+    }
+  ],
+  "project-home-10": [
+    {
+      "id": "project-home-10-q1",
+      "textAr": "Servo موضعي يستعمل لـ؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "قياس حرارة",
+        "تحديد المقاومة",
+        "تحديد وضعية زاوية",
+        "توليد Wi-Fi"
+      ],
+      "answer": 2,
+      "why": "يتبع وضعية مطلوبة."
+    },
+    {
+      "id": "project-home-10-q2",
+      "textAr": "Servo تقليدي عنده عادة؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "3 أسلاك",
+        "1 سلك",
+        "USB فقط",
+        "8 أسلاك"
+      ],
+      "answer": 0,
+      "why": "إشارة وتغذية وأرضي."
+    },
+    {
+      "id": "project-home-10-q3",
+      "textAr": "هل GPIO يغذي Servo؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "نعم دائماً",
+        "فقط على LOW",
+        "فقط على HIGH",
+        "لا"
+      ],
+      "answer": 3,
+      "why": "GPIO للإشارة وليس لتغذية المحرك."
+    },
+    {
+      "id": "project-home-10-q4",
+      "textAr": "GND بين مصدر Servo واللوحة؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "مشترك",
+        "منفصل دائماً",
+        "يتصل بـVCC",
+        "لا حاجة له"
+      ],
+      "answer": 0,
+      "why": "الإشارة تحتاج مرجعاً مشتركاً."
+    },
+    {
+      "id": "project-home-10-q5",
+      "textAr": "تردد 50 Hz يعطي دورة؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "20ms",
+        "100ms",
+        "50ms",
+        "1ms"
+      ],
+      "answer": 0,
+      "why": "1/50 ثانية = 20ms."
+    },
+    {
+      "id": "project-home-10-q6",
+      "textAr": "أي شيء يغيّر وضعية Servo؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "لون السلك",
+        "عدد LED",
+        "عرض نبضة التحكم",
+        "اسم البرنامج"
+      ],
+      "answer": 2,
+      "why": "عرض النبضة يحدد الأمر."
+    },
+    {
+      "id": "project-home-10-q7",
+      "textAr": "في الرسم، أي نبضة أطول؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "B",
+        "A",
+        "لا توجد نبضات",
+        "متساويتان"
+      ],
+      "answer": 0,
+      "why": "B لها عرض أكبر.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"30\">PWM / pulse width</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"24\" y=\"75\">A</text><path d=\"M55 85 V55 H63.0 V85 H215 V55 H223.0 V85 H375 V55 H383.0 V85 H535\" fill=\"none\" stroke=\"#245bb0\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"24\" y=\"155\">B</text><path d=\"M55 165 V135 H71.0 V165 H215 V135 H231.0 V165 H375 V135 H391.0 V165 H535\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"219\">Temps →</text></svg>"
+    },
+    {
+      "id": "project-home-10-q8",
+      "textAr": "هل زاوية 180° مضمونة لكل Servo؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "نعم دائماً",
+        "لا، تختلف الحدود",
+        "فقط بلا تغذية",
+        "فقط مع USB"
+      ],
+      "answer": 1,
+      "why": "يلزم المعايرة ومراجعة المواصفات."
+    },
+    {
+      "id": "project-home-10-q9",
+      "textAr": "إذا الذراع يعلق؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "نوقف التجربة ونراجع الحدود",
+        "نجبره بيدنا",
+        "نستمر حتى يسخن",
+        "نزيد الجهد عشوائياً"
+      ],
+      "answer": 0,
+      "why": "التعليق يسبب تياراً مرتفعاً."
+    },
+    {
+      "id": "project-home-10-q10",
+      "textAr": "Servo يختلف عن DC عادي لأنه؟",
+      "term": "Servo — التحكّم في الزاوية",
+      "options": [
+        "يتحكم في وضعية محددة",
+        "بدون أسلاك",
+        "ما يحتاجش تغذية",
+        "يقيس الضوء"
+      ],
+      "answer": 0,
+      "why": "Servo موضعي فيه تحكم داخلي."
+    },
+    {
+      "id": "project-home-10-q11",
+      "textAr": "Servo القياسي يستعمل غالبًا fréquence؟",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "Environ 50 Hz",
+        "10000 Hz",
+        "0 Hz",
+        "1 MHz"
+      ],
+      "answer": 0,
+      "why": "Servo hobby غالبًا 50 Hz."
+    },
+    {
+      "id": "project-home-10-q12",
+      "textAr": "Servo يحتاج شنوّة مع alimentation externe؟",
+      "term": "Contrôle des servomoteurs",
+      "options": [
+        "GND commune",
+        "12 V sur GPIO",
+        "Débrancher GND",
+        "EN à 0"
+      ],
+      "answer": 0,
+      "why": "لازم Masse commune."
+    }
+  ],
+  "project-home-11": [
+    {
+      "id": "project-home-11-q1",
+      "textAr": "شنوة وظيفة ADC؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "حذف البرنامج",
+        "تحويل الجهد إلى عدد",
+        "تشغيل موتور مباشرة",
+        "إنتاج الصوت"
+      ],
+      "answer": 1,
+      "why": "ADC يحوّل إشارة تناظرية إلى رقم."
+    },
+    {
+      "id": "project-home-11-q2",
+      "textAr": "Potentiomètre عنده عادة؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "8 أطراف",
+        "3 أطراف",
+        "USB",
+        "طرف واحد"
+      ],
+      "answer": 1,
+      "why": "طرفان للتغذية ووسط للقراءة."
+    },
+    {
+      "id": "project-home-11-q3",
+      "textAr": "شنوة نربط بالمدخل Analog؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "الطرف الأوسط",
+        "هيكل USB",
+        "مخرج موتور",
+        "GND وحده"
+      ],
+      "answer": 0,
+      "why": "الطرف الأوسط يعطي الجهد المتغيّر."
+    },
+    {
+      "id": "project-home-11-q4",
+      "textAr": "وقت ندوّر البكرة، شنوّة يتبدّل؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "عدد الأسلاك",
+        "لغة البرمجة",
+        "نوع اللوحة",
+        "جهد الطرف الأوسط"
+      ],
+      "answer": 3,
+      "why": "تتغير نسبة تقسيم الجهد."
+    },
+    {
+      "id": "project-home-11-q5",
+      "textAr": "10 bits فيها قداش مستوى؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "4095",
+        "1024",
+        "255",
+        "10"
+      ],
+      "answer": 1,
+      "why": "2 أس 10 = 1024."
+    },
+    {
+      "id": "project-home-11-q6",
+      "textAr": "12 bits فيها قداش مستوى؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "100",
+        "1024",
+        "4096",
+        "12"
+      ],
+      "answer": 2,
+      "why": "2 أس 12 = 4096."
+    },
+    {
+      "id": "project-home-11-q7",
+      "textAr": "هل القراءة نصف المجال لازم تكون دقيقة 100%؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "نعم دائماً",
+        "فقط مع USB مفصول",
+        "فقط من غير GND",
+        "لا، تنجم تختلف شوية"
+      ],
+      "answer": 3,
+      "why": "الدقة تتأثر بالمعايرة والمكوّنات."
+    },
+    {
+      "id": "project-home-11-q8",
+      "textAr": "في الرسم، الوسط متصل بالـADC. علاش؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "باش نقرا الجهد المتغيّر",
+        "باش نشعل LED مباشرة",
+        "باش نكتب الكود",
+        "باش نغذي موتور"
+      ],
+      "answer": 0,
+      "why": "الـADC يقيس جهد الـcurseur.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"34\">Analog → ADC → Digital</text><path d=\"M35 190 L210 190\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M35 190 L35 65\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M35 185 Q80 70 125 130 T210 80\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"55\" rx=\"10\" width=\"90\" x=\"240\" y=\"95\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"285.0\" y=\"128.5\">ADC</text><path d=\"M210 122 L240 122\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M330 122 L370 122\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"92\">0</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"130\">512 / 2048</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"170\">1023 / 4095</text></svg>"
+    },
+    {
+      "id": "project-home-11-q9",
+      "textAr": "ADC يعمل شنوّة؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "Convertit une tension en nombre",
+        "Écrit un fichier",
+        "Commande un servo",
+        "Affiche une image"
+      ],
+      "answer": 0,
+      "why": "ADC يحوّل signal analogique إلى valeur numérique."
+    },
+    {
+      "id": "project-home-11-q10",
+      "textAr": "Potentiomètre نربطوا وسطه في المثال على؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "GPIO34",
+        "GPIO5",
+        "EN",
+        "GND seulement"
+      ],
+      "answer": 0,
+      "why": "الـcurseur يتربط بـGPIO34."
+    },
+    {
+      "id": "project-home-11-q11",
+      "textAr": "DAC يعمل شنوّة؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "Convertit un nombre en tension analogique",
+        "Lit un bouton",
+        "Capte le Wi-Fi",
+        "Alimente à 12 V"
+      ],
+      "answer": 0,
+      "why": "DAC يعمل conversion numérique-analogique."
+    },
+    {
+      "id": "project-home-11-q12",
+      "textAr": "GPIO متاع DAC في ESP32 classique؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "GPIO25",
+        "GPIO34",
+        "GPIO5",
+        "GPIO18"
+      ],
+      "answer": 0,
+      "why": "DAC1 في classique على GPIO25."
+    }
+  ],
+  "project-home-12": [
+    {
+      "id": "project-home-12-q1",
+      "textAr": "IR معناها؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "Intelligent Relay",
+        "Internet Robot",
+        "Infrared",
+        "Input Resistance"
+      ],
+      "answer": 2,
+      "why": "الأشعة تحت الحمراء."
+    },
+    {
+      "id": "project-home-12-q2",
+      "textAr": "وظيفة émetteur؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "تخزين الكود",
+        "تحريك العجلة",
+        "عرض الرقم",
+        "إرسال الضوء"
+      ],
+      "answer": 3,
+      "why": "يبعث الأشعة."
+    },
+    {
+      "id": "project-home-12-q3",
+      "textAr": "وظيفة récepteur؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "تدوير المحرك",
+        "إصدار الصوت",
+        "إعطاء 5V",
+        "قراءة الضوء المنعكس"
+      ],
+      "answer": 3,
+      "why": "يستقبل الانعكاس."
+    },
+    {
+      "id": "project-home-12-q4",
+      "textAr": "أي سطح عادة يعكس أكثر؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "الأبيض",
+        "لا واحد",
+        "الأسود",
+        "كلاهما دائماً نفسه"
+      ],
+      "answer": 0,
+      "why": "الأسطح البيضاء غالباً أكثر انعكاساً."
+    },
+    {
+      "id": "project-home-12-q5",
+      "textAr": "OUT الرقمي يعطي؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "0 أو 1",
+        "زاوية",
+        "من 0 إلى 4095 دائماً",
+        "صوت"
+      ],
+      "answer": 0,
+      "why": "خرج comparator ثنائي."
+    },
+    {
+      "id": "project-home-12-q6",
+      "textAr": "دور potentiomètre على module؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "إلغاء GND",
+        "تغيير لون السلك",
+        "ضبط العتبة",
+        "تخزين البرنامج"
+      ],
+      "answer": 2,
+      "why": "يضبط حساسية المقارنة."
+    },
+    {
+      "id": "project-home-12-q7",
+      "textAr": "في الرسم، أي سطح يرجع الضوء أكثر؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "كلاهما صفر",
+        "لا يمكن رؤية الرسم",
+        "A",
+        "B"
+      ],
+      "answer": 2,
+      "why": "السهم الراجع أقوى في A.",
+      "visual": "<svg aria-label=\"انعكاس الأشعة تحت الحمراء على سطح أبيض وأسود\" role=\"img\" viewbox=\"0 0 560 245\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"235\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#ffffff\" height=\"38\" rx=\"10\" width=\"230\" x=\"30\" y=\"170\"></rect><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"226\">A</text><rect fill=\"#16878b\" height=\"60\" rx=\"10\" width=\"130\" x=\"80\" y=\"40\"></rect><circle cx=\"115\" cy=\"80\" fill=\"#e14d55\" r=\"12\"></circle><circle cx=\"175\" cy=\"80\" fill=\"#242a40\" r=\"12\"></circle><path d=\"M115 100 L130 166\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M130 166 L122.71806148499441 157.7554034990378\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M130 166 L133.00314056616085 155.4178855260454\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M140 165 L175 101\" fill=\"none\" stroke=\"#f0a43a\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M175 101 L174.9951510555368 111.99999893126075\" fill=\"none\" stroke=\"#f0a43a\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M175 101 L165.7412001705517 106.93924454103453\" fill=\"none\" stroke=\"#f0a43a\" stroke-linecap=\"round\" stroke-width=\"3\"></path><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"25\">A</text><rect fill=\"#283345\" height=\"38\" rx=\"10\" width=\"230\" x=\"300\" y=\"170\"></rect><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"415\" y=\"226\">B</text><rect fill=\"#16878b\" height=\"60\" rx=\"10\" width=\"130\" x=\"350\" y=\"40\"></rect><circle cx=\"385\" cy=\"80\" fill=\"#e14d55\" r=\"12\"></circle><circle cx=\"445\" cy=\"80\" fill=\"#242a40\" r=\"12\"></circle><path d=\"M385 100 L400 166\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M400 166 L392.7180614849944 157.7554034990378\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M400 166 L403.0031405661609 155.4178855260454\" fill=\"none\" stroke=\"#e14d55\" stroke-linecap=\"round\" stroke-width=\"3\"></path><path d=\"M415 166 L429 145\" fill=\"none\" stroke=\"#a9b5c4\" stroke-linecap=\"round\" stroke-width=\"2\"></path><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"415\" y=\"25\">B</text></svg>"
+    },
+    {
+      "id": "project-home-12-q8",
+      "textAr": "إذا الأسود يعطي 1 بدل 0؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "نزيد 12V",
+        "نعدّل BLACK بعد المعايرة",
+        "نعكس التغذية",
+        "الحساس مكسور دائماً"
+      ],
+      "answer": 1,
+      "why": "القطبية تختلف بين الوحدات."
+    },
+    {
+      "id": "project-home-12-q9",
+      "textAr": "الضوء المحيط يؤثر؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "نعم",
+        "فقط في الكود",
+        "فقط في USB",
+        "لا أبداً"
+      ],
+      "answer": 0,
+      "why": "قد يغيّر القراءة."
+    },
+    {
+      "id": "project-home-12-q10",
+      "textAr": "للمقارنة بين الأسود والأبيض نثبت؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "اسم المتغير فقط",
+        "لون USB",
+        "ارتفاع الحساس والإضاءة",
+        "تردد Wi-Fi"
+      ],
+      "answer": 2,
+      "why": "التجربة تحتاج ظروفاً متقاربة."
+    },
+    {
+      "id": "project-home-12-q11",
+      "textAr": "دالة قراءة GPIO في MicroPython؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "value()",
+        "print()",
+        "sleep()",
+        "duty()"
+      ],
+      "answer": 0,
+      "why": "value() تقرأ المدخل دون وسيط."
+    },
+    {
+      "id": "project-home-12-q12",
+      "textAr": "أقصى منطق مناسب لمدخل ESP32 هنا؟",
+      "term": "Capteur IR — اكتشاف الخط والحاجز",
+      "options": [
+        "24V",
+        "5V مباشرة",
+        "12V",
+        "3.3V"
+      ],
+      "answer": 3,
+      "why": "GPIO يعمل بمنطق 3.3V."
+    }
+  ],
+  "project-home-13": [
+    {
+      "id": "project-home-13-q1",
+      "textAr": "شنوة وظيفة ADC؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "حذف البرنامج",
+        "تحويل الجهد إلى عدد",
+        "تشغيل موتور مباشرة",
+        "إنتاج الصوت"
+      ],
+      "answer": 1,
+      "why": "ADC يحوّل إشارة تناظرية إلى رقم."
+    },
+    {
+      "id": "project-home-13-q2",
+      "textAr": "Potentiomètre عنده عادة؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "8 أطراف",
+        "3 أطراف",
+        "USB",
+        "طرف واحد"
+      ],
+      "answer": 1,
+      "why": "طرفان للتغذية ووسط للقراءة."
+    },
+    {
+      "id": "project-home-13-q3",
+      "textAr": "شنوة نربط بالمدخل Analog؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "الطرف الأوسط",
+        "هيكل USB",
+        "مخرج موتور",
+        "GND وحده"
+      ],
+      "answer": 0,
+      "why": "الطرف الأوسط يعطي الجهد المتغيّر."
+    },
+    {
+      "id": "project-home-13-q4",
+      "textAr": "وقت ندوّر البكرة، شنوّة يتبدّل؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "عدد الأسلاك",
+        "لغة البرمجة",
+        "نوع اللوحة",
+        "جهد الطرف الأوسط"
+      ],
+      "answer": 3,
+      "why": "تتغير نسبة تقسيم الجهد."
+    },
+    {
+      "id": "project-home-13-q5",
+      "textAr": "10 bits فيها قداش مستوى؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "4095",
+        "1024",
+        "255",
+        "10"
+      ],
+      "answer": 1,
+      "why": "2 أس 10 = 1024."
+    },
+    {
+      "id": "project-home-13-q6",
+      "textAr": "12 bits فيها قداش مستوى؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "100",
+        "1024",
+        "4096",
+        "12"
+      ],
+      "answer": 2,
+      "why": "2 أس 12 = 4096."
+    },
+    {
+      "id": "project-home-13-q7",
+      "textAr": "هل القراءة نصف المجال لازم تكون دقيقة 100%؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "نعم دائماً",
+        "فقط مع USB مفصول",
+        "فقط من غير GND",
+        "لا، تنجم تختلف شوية"
+      ],
+      "answer": 3,
+      "why": "الدقة تتأثر بالمعايرة والمكوّنات."
+    },
+    {
+      "id": "project-home-13-q8",
+      "textAr": "في الرسم، الوسط متصل بالـADC. علاش؟",
+      "term": "Analog Input — ADC & Potentiomètre",
+      "options": [
+        "باش نقرا الجهد المتغيّر",
+        "باش نشعل LED مباشرة",
+        "باش نكتب الكود",
+        "باش نغذي موتور"
+      ],
+      "answer": 0,
+      "why": "الـADC يقيس جهد الـcurseur.",
+      "visual": "<svg aria-label=\"رسم مبسط للمفهوم\" role=\"img\" viewbox=\"0 0 560 240\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"230\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"280\" y=\"34\">Analog → ADC → Digital</text><path d=\"M35 190 L210 190\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M35 190 L35 65\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M35 185 Q80 70 125 130 T210 80\" fill=\"none\" stroke=\"#159b9b\" stroke-width=\"4\"></path><rect fill=\"#1d4167\" height=\"55\" rx=\"10\" width=\"90\" x=\"240\" y=\"95\"></rect><text fill=\"white\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"285.0\" y=\"128.5\">ADC</text><path d=\"M210 122 L240 122\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><path d=\"M330 122 L370 122\" fill=\"none\" stroke=\"#254a70\" stroke-linecap=\"round\" stroke-width=\"4\"></path><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"92\">0</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"130\">512 / 2048</text><text fill=\"#18374e\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"440\" y=\"170\">1023 / 4095</text></svg>"
+    },
+    {
+      "id": "project-home-13-q9",
+      "textAr": "ADC يعمل شنوّة؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "Convertit une tension en nombre",
+        "Écrit un fichier",
+        "Commande un servo",
+        "Affiche une image"
+      ],
+      "answer": 0,
+      "why": "ADC يحوّل signal analogique إلى valeur numérique."
+    },
+    {
+      "id": "project-home-13-q10",
+      "textAr": "Potentiomètre نربطوا وسطه في المثال على؟",
+      "term": "ADC — entrées analogiques",
+      "options": [
+        "GPIO34",
+        "GPIO5",
+        "EN",
+        "GND seulement"
+      ],
+      "answer": 0,
+      "why": "الـcurseur يتربط بـGPIO34."
+    },
+    {
+      "id": "project-home-13-q11",
+      "textAr": "DAC يعمل شنوّة؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "Convertit un nombre en tension analogique",
+        "Lit un bouton",
+        "Capte le Wi-Fi",
+        "Alimente à 12 V"
+      ],
+      "answer": 0,
+      "why": "DAC يعمل conversion numérique-analogique."
+    },
+    {
+      "id": "project-home-13-q12",
+      "textAr": "GPIO متاع DAC في ESP32 classique؟",
+      "term": "DAC — sorties analogiques",
+      "options": [
+        "GPIO25",
+        "GPIO34",
+        "GPIO5",
+        "GPIO18"
+      ],
+      "answer": 0,
+      "why": "DAC1 في classique على GPIO25."
+    }
+  ],
+  "project-home-14": [
+    {
+      "id": "project-home-14-q1",
+      "textAr": "LCD 16×2 معناها؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "16 حرف × سطرين",
+        "32 GPIO",
+        "16V و2A",
+        "16 محرك"
+      ],
+      "answer": 0,
+      "why": "السعة النصية هي 32 خانة."
+    },
+    {
+      "id": "project-home-14-q2",
+      "textAr": "OLED تعرض؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "جهد فقط",
+        "Pixels",
+        "مقاومة",
+        "صوت"
+      ],
+      "answer": 1,
+      "why": "تنجم ترسم نصوص وأشكال."
+    },
+    {
+      "id": "project-home-14-q3",
+      "textAr": "SDA مسؤولة عن؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "GND",
+        "تغذية المحرك",
+        "البيانات",
+        "الصوت"
+      ],
+      "answer": 2,
+      "why": "سلك البيانات."
+    },
+    {
+      "id": "project-home-14-q4",
+      "textAr": "SCL مسؤولة عن؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "إضاءة LED",
+        "اتجاه المحرك",
+        "حرارة",
+        "التوقيت"
+      ],
+      "answer": 3,
+      "why": "ساعة I2C."
+    },
+    {
+      "id": "project-home-14-q5",
+      "textAr": "كيف نعرف العنوان الصحيح؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "اسم المتغير",
+        "لون الشاشة",
+        "I2C Scan",
+        "نجرب 12V"
+      ],
+      "answer": 2,
+      "why": "المسح يكشف العناوين."
+    },
+    {
+      "id": "project-home-14-q6",
+      "textAr": "عنوان 0x3C هو؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "عنوان جهاز محتمل",
+        "جهد 3V",
+        "تردد 3Hz",
+        "زاوية"
+      ],
+      "answer": 0,
+      "why": "عنوان شائع لـSSD1306."
+    },
+    {
+      "id": "project-home-14-q7",
+      "textAr": "في الرسم أي شاشة ترسم pixels؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "ولا واحدة",
+        "B",
+        "كلاهما LCD 16×2",
+        "A"
+      ],
+      "answer": 1,
+      "why": "B تمثل OLED رسومية.",
+      "visual": "<svg aria-label=\"شاشة LCD وشاشة OLED تعرضان بيانات الروبوت\" role=\"img\" viewbox=\"0 0 560 245\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"235\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#167b66\" height=\"140\" rx=\"10\" width=\"240\" x=\"25\" y=\"42\"></rect><rect fill=\"#b7d970\" height=\"86\" rx=\"5\" width=\"206\" x=\"42\" y=\"60\"></rect><text fill=\"#24402d\" font-family=\"Arial,sans-serif\" font-size=\"19\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"90\">CFI ROBOT</text><text fill=\"#24402d\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"118\">Distance: 25 cm</text><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"145\" y=\"205\">A — LCD 16 × 2</text><rect fill=\"#245bb0\" height=\"140\" rx=\"10\" width=\"220\" x=\"310\" y=\"42\"></rect><rect fill=\"#102238\" height=\"100\" rx=\"5\" width=\"190\" x=\"325\" y=\"56\"></rect><text fill=\"#e5f3ff\" font-family=\"Arial,sans-serif\" font-size=\"19\" font-weight=\"bold\" text-anchor=\"middle\" x=\"420\" y=\"87\">CFI ROBOT</text><text fill=\"#7ce0c4\" font-family=\"Arial,sans-serif\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"420\" y=\"112\">25 cm</text><rect fill=\"#55d4b4\" height=\"9\" rx=\"3\" width=\"146\" x=\"347\" y=\"128\"></rect><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"420\" y=\"205\">B — OLED</text></svg>"
+    },
+    {
+      "id": "project-home-14-q8",
+      "textAr": "إذا القيمة 100 تولّي 9؟",
+      "term": "LCD / OLED — عرض المعلومات",
+      "options": [
+        "نمسح أو نعوّض الخانات القديمة",
+        "نزيد الجهد",
+        "نقطع SDA",
+        "نبدل المحرك"
+      ],
+      "answer": 0,
+      "why": "حتى ما تبقاش أرقام قديمة."
+    },
+    {
+      "id": "project-home-14-q9",
+      "textAr": "I2C عندها شحال من خط أساسي؟",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "Deux: SDA et SCL",
+        "Quatre sorties PWM",
+        "Un seul GND",
+        "Huit lignes data"
+      ],
+      "answer": 0,
+      "why": "SDA données وSCL horloge."
+    },
+    {
+      "id": "project-home-14-q10",
+      "textAr": "i2c.scan() ترجع؟",
+      "term": "I2C — communication avec les capteurs",
+      "options": [
+        "Adresses détectées",
+        "Code Python",
+        "Liste Wi-Fi",
+        "Température مباشرة"
+      ],
+      "answer": 0,
+      "why": "scan() تكتشف الأجهزة المتصلة."
+    },
+    {
+      "id": "project-home-14-q11",
+      "textAr": "SCK هي شنوّة؟",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Horloge SPI",
+        "Sortie DAC",
+        "Broche EN",
+        "Capteur analogique"
+      ],
+      "answer": 0,
+      "why": "SCK تعطي Clock."
+    },
+    {
+      "id": "project-home-14-q12",
+      "textAr": "MOSI نقل بيانات في اتجاه؟",
+      "term": "SPI — communication série rapide",
+      "options": [
+        "Maître vers périphérique",
+        "Périphérique vers maître",
+        "GND vers 3V3",
+        "LED vers masse"
+      ],
+      "answer": 0,
+      "why": "MOSI Master Out Slave In."
+    }
+  ],
+  "project-home-15": [
+    {
+      "id": "project-home-15-q1",
+      "textAr": "من هو Client في المشروع؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "البطارية",
+        "LED",
+        "المقاومة",
+        "متصفح الهاتف"
+      ],
+      "answer": 3,
+      "why": "المتصفح يرسل الطلب."
+    },
+    {
+      "id": "project-home-15-q2",
+      "textAr": "من يستقبل HTTP؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "ESP32",
+        "Breadboard",
+        "LED",
+        "USB فقط"
+      ],
+      "answer": 0,
+      "why": "اللوحة هي السيرفر."
+    },
+    {
+      "id": "project-home-15-q3",
+      "textAr": "هل يلزم نفس الشبكة أو مسار شبكي صالح؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "نعم",
+        "لا يلزم IP",
+        "Bluetooth فقط",
+        "لا دائماً"
+      ],
+      "answer": 0,
+      "why": "الطلبات تحتاج وصولاً شبكياً."
+    },
+    {
+      "id": "project-home-15-q4",
+      "textAr": "IP اللوحة نلقاه وين؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "في اسم LED",
+        "على L298N",
+        "على المقاومة",
+        "Shell في Thonny"
+      ],
+      "answer": 3,
+      "why": "الكود يطبع IP."
+    },
+    {
+      "id": "project-home-15-q5",
+      "textAr": "في الرسم، ON يعمل شنوّة؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "يشغل LED",
+        "يشغل المحرك",
+        "يغير SSID",
+        "يقيس الحرارة"
+      ],
+      "answer": 0,
+      "why": "الطلب يشغل GPIO18.",
+      "visual": "<svg aria-label=\"واجهة هاتف تتحكم في LED على ESP32\" role=\"img\" viewbox=\"0 0 560 245\" xmlns=\"http://www.w3.org/2000/svg\"><rect fill=\"#edf5ff\" height=\"235\" rx=\"20\" width=\"550\" x=\"5\" y=\"5\"></rect><rect fill=\"#1d4167\" height=\"199\" rx=\"12\" width=\"215\" x=\"18\" y=\"22\"></rect><text fill=\"white\" font-family=\"Arial,sans-serif\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" x=\"125\" y=\"48\">Téléphone</text><rect fill=\"#fff\" height=\"139\" rx=\"12\" width=\"181\" x=\"35\" y=\"64\"></rect><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"125\" y=\"88\">CFI Smart Home</text><rect fill=\"#16878b\" height=\"42\" rx=\"12\" width=\"68\" x=\"51\" y=\"103\"></rect><text fill=\"white\" font-family=\"Arial,sans-serif\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"85\" y=\"130\">ON</text><rect fill=\"#b33a48\" height=\"42\" rx=\"12\" width=\"68\" x=\"132\" y=\"103\"></rect><text fill=\"white\" font-family=\"Arial,sans-serif\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\" x=\"166\" y=\"130\">OFF</text><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"125\" y=\"176\">État : ON</text><path d=\"M239 116 L321 116\" fill=\"none\" stroke=\"#16878b\" stroke-linecap=\"round\" stroke-width=\"3\"></path><rect fill=\"#dce8f6\" height=\"110\" rx=\"12\" width=\"210\" x=\"325\" y=\"68\"></rect><rect fill=\"#246ba3\" height=\"74\" rx=\"12\" width=\"83\" x=\"342\" y=\"86\"></rect><text fill=\"white\" font-family=\"Arial,sans-serif\" font-size=\"14\" font-weight=\"bold\" text-anchor=\"middle\" x=\"383\" y=\"128\">ESP32</text><path d=\"M425 123 L473 123\" fill=\"none\" stroke=\"#16878b\" stroke-linecap=\"round\" stroke-width=\"3\"></path><circle cx=\"490\" cy=\"123\" fill=\"#f4ba42\" r=\"18\"></circle><circle cx=\"490\" cy=\"123\" fill=\"#ffe9a0\" r=\"9\"></circle><text fill=\"#18374e\" font-family=\"Arial,sans-serif\" font-size=\"13\" font-weight=\"bold\" text-anchor=\"middle\" x=\"490\" y=\"160\">LED</text></svg>"
+    },
+    {
+      "id": "project-home-15-q6",
+      "textAr": "أي طلب يطفئ المصباح؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "POST /off",
+        "ADC.read()",
+        "POST /on",
+        "scan()"
+      ],
+      "answer": 0,
+      "why": "المسار /off يطفئ المخرج."
+    },
+    {
+      "id": "project-home-15-q7",
+      "textAr": "لماذا مقاومة 330Ω؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "لتحديد تيار LED",
+        "لحماية كلمة السر",
+        "لتغيير IP",
+        "لتقوية Wi-Fi"
+      ],
+      "answer": 0,
+      "why": "المقاومة تحد التيار."
+    },
+    {
+      "id": "project-home-15-q8",
+      "textAr": "ما المنفذ المستعمل؟",
+      "term": "Smart Home & Robot connecté — مشروع متصل",
+      "options": [
+        "330",
+        "8080",
+        "230",
+        "18"
+      ],
+      "answer": 1,
+      "why": "السيرفر يستمع على 8080."
+    },
+    {
+      "id": "project-home-15-q9",
+      "textAr": "TouchPad يكتشف؟",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Variation de capacité",
+        "Vitesse Wi-Fi",
+        "Courant moteur",
+        "Température USB"
+      ],
+      "answer": 0,
+      "why": "Touch Capacitif."
+    },
+    {
+      "id": "project-home-15-q10",
+      "textAr": "أوّل حاجة نعملوها لاختيار seuil؟",
+      "term": "Touch Pins — broches tactiles",
+      "options": [
+        "Mesurer sans et avec toucher",
+        "Mettre 5 V sur Touch",
+        "Supprimer GND",
+        "Augmenter baudrate"
+      ],
+      "answer": 0,
+      "why": "الـcalibration تبدأ بالقراءات."
+    },
+    {
+      "id": "project-home-15-q11",
+      "textAr": "RTC GPIO يستعملوها في شنوّة؟",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Fonctions basse consommation",
+        "Alimenter moteur 12 V",
+        "Créer DAC sur PC",
+        "Afficher PNG"
+      ],
+      "answer": 0,
+      "why": "RTC domain للـlow power."
+    },
+    {
+      "id": "project-home-15-q12",
+      "textAr": "Deep sleep معناها؟",
+      "term": "RTC GPIO — basse consommation",
+      "options": [
+        "Mode de très faible consommation",
+        "Wi-Fi plus rapide",
+        "GPIO5 sortie فقط",
+        "Code compilé"
+      ],
+      "answer": 0,
+      "why": "Deep sleep يقتصد الطاقة."
     }
   ]
 }

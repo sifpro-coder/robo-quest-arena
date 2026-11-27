@@ -9,7 +9,7 @@ const bank = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-bank.json')
 // V5.4 : nouveau cursus ESP32 PRO seul. Les 22 cours historiques restent archivés dans les fichiers.
 const proLessons=content.filter(c=>c.track==='esp32-pro');
 const baseIds=proLessons.map(c=>c.id);
-const beginnerTracks=['arduino-basic','esp32-basic'];
+const beginnerTracks=['arduino-basic','esp32-basic','project-traffic','project-home'];
 const activeLessons=content.filter(c=>c.track==='esp32-pro'||beginnerTracks.includes(c.track));
 const activeIds=new Set(activeLessons.map(c=>c.id));
 function beginnerProgress(rows,track){const map=new Map(rows.map(r=>[r.lesson_id,r]));const lessons=activeLessons.filter(c=>c.track===track);const required=lessons.map((c,i)=>{const score=Number(map.get(c.id)?.best_score||0);return {id:c.id,index:i+1,score,passed:score>=12,mastered:score===20,unlocked:i===0||Number(map.get(lessons[i-1].id)?.best_score||0)>=12}});return {required,total:required.length,passed:required.filter(x=>x.passed).length,done:required.filter(x=>x.mastered).length,unlocked:required.filter(x=>x.unlocked).map(x=>x.id)};}
@@ -228,7 +228,7 @@ async function respond(req,res,url){
  const method=req.method;const route=url.pathname;
  if(!route.startsWith('/api/academy/'))return false;
  try{
-  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:activeLessons.length,version:'6.0',mode:'email-approval-or-verified-payment'}),true;}
+  if(method==='GET'&&route==='/api/academy/status'){let price=10000;if(configured())price=await amountMillimes();return send(res,200,{configured:configured(),registrationConfigured:configured()&&emailReady(),paymentConfigured:configured()&&emailReady()&&payReady(),priceMillimes:price,subscription:'monthly',period:'one calendar month',courses:activeLessons.length,version:'6.3',mode:'email-approval-or-verified-payment'}),true;}
   if(method==='GET'&&route==='/api/academy/catalog'){
    const bases=activeLessons.map(publicInfo);let extras=[];if(configured())try{extras=(await db('cfi_extra_lessons','GET','?select=id,title,type,subject,week,terms')).map(x=>({id:x.id,title:x.title,originalTitle:x.title,type:x.type||'lesson',subject:x.subject||'ESP32',week:x.week,term:x.terms}))}catch{}return send(res,200,{courses:bases}),true;
   }
