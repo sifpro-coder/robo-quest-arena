@@ -1,4 +1,5 @@
 'use strict';
+const rewards=require('./rewards.js');
 // CFI Electro Snake — authoritative multiplayer engine, Node.js only.
 // Intentionally separate from academy/quiz persistence.
 const crypto = require('crypto');
@@ -62,15 +63,17 @@ function announce(r,msg){for(const p of online(r))send(p.conn,msg)}
 function roomInfo(r){return {type:'snakeLobby',code:r.code,phase:r.phase,host:r.host,topic:r.topic,level:r.level,from:r.from,to:r.to,duration:r.duration,players:[...r.players.values()].map(p=>({id:p.id,name:p.name,color:p.color,connected:p.connected,mass:p.mass})),max:MAX_PLAYERS};}
 function refresh(r){announce(r,roomInfo(r))}
 function makeRoom(options={}){const opts=courseInfo(options.topic||'esp32academy',options.level,options.from,options.to);if(!opts)return null;const r={code:code(),solo:options.solo===true,phase:'lobby',host:null,topic:opts.topic,level:opts.level,from:opts.from,to:opts.to,duration:Math.max(1,Math.min(5,Number.isInteger(Number(options.duration))?Number(options.duration):3)),ends:0,asked:new Set(),players:new Map(),food:[],created:Date.now(),lastUsed:Date.now(),lastTick:Date.now()};rooms.set(r.code,r);return r}
-function newPlayer(r,name,c){const p={id:crypto.randomUUID(),token:crypto.randomBytes(24).toString('hex'),name:sanitize(name),color:COLORS[r.players.size%COLORS.length],x:crypto.randomInt(120,1160),y:crypto.randomInt(120,680),vx:1,vy:0,dx:1,dy:0,mass:5,points:0,eaten:0,trail:[],connected:true,conn:c,offlineAt:0,quiz:null,respawnAt:0,shieldUntil:Date.now()+3000,joinedAt:Date.now()};p.trail=Array.from({length:65},(_,i)=>({x:p.x-i*3,y:p.y}));r.players.set(p.id,p);return p}
+function newPlayer(r,name,c){const p={id:crypto.randomUUID(),token:crypto.randomBytes(24).toString('hex'),name:sanitize(name),rankUser:rewards.account(c),color:COLORS[r.players.size%COLORS.length],x:crypto.randomInt(120,1160),y:crypto.randomInt(120,680),vx:1,vy:0,dx:1,dy:0,mass:5,points:0,eaten:0,trail:[],connected:true,conn:c,offlineAt:0,quiz:null,respawnAt:0,shieldUntil:Date.now()+3000,joinedAt:Date.now()};p.trail=Array.from({length:65},(_,i)=>({x:p.x-i*3,y:p.y}));r.players.set(p.id,p);return p}
 function detach(c){const ref=sessionsByConn.get(c);sessionsByConn.delete(c);if(!ref)return;const r=rooms.get(ref.code),p=r?.players.get(ref.id);if(!p||p.conn!==c)return;p.connected=false;p.conn=null;p.offlineAt=Date.now();p.dx=0;p.dy=0;r.lastUsed=Date.now();if(r.host===p.id){const next=online(r)[0];if(next)r.host=next.id}refresh(r)}
 function join(c,m,create){const requested=String(m.code||'').replace(/[٠-٩]/g,x=>String(x.charCodeAt(0)-1632)).replace(/[۰-۹]/g,x=>String(x.charCodeAt(0)-1776)).replace(/[\s\u200e\u200f\u061c\u202a-\u202e\u2066-\u2069]/g,'');const r=create?makeRoom(m):rooms.get(requested);if(!r){if(!create)console.warn('[Snake] join miss code='+(/^\d{6}$/.test(requested)?requested:'invalid')+' rooms='+rooms.size+' pid='+process.pid);send(c,{type:'snakeError',reason:create?'invalid_lessons':'room_not_found',code:/^\d{6}$/.test(requested)?requested:null,message:create?'اختيار الدروس غير صحيح أو ما فيهاش أسئلة. راجع من وإلى.':'غرفة Snake '+(/^\d{6}$/.test(requested)?requested:'')+' غير موجودة أو انتهت. تأكّد من رابط الدعوة.'});return}
  let p=null;const token=typeof m.token==='string'?m.token:'';if(token.length===48){p=[...r.players.values()].find(x=>x.token===token)||null}
+ if(p&&p.rankUser!==rewards.account(c)){send(c,{type:'snakeError',message:'Reconnectez le même compte.'});return}
+ const identity=rewards.playerIdentity(c,m.name,r,p);if(identity.error){if(create)rooms.delete(r.code);send(c,{type:'snakeError',message:identity.error});return}
  if(!create&&r.solo&&!p){send(c,{type:'snakeError',message:'Partie Solo privée.'});return}
  if(!p&&r.players.size>=MAX_PLAYERS){send(c,{type:'snakeError',message:'الغرفة كاملة (12 لاعبين).'});return}
  detach(c);
  if(p){if(p.conn&&p.conn!==c){const former=p.conn;sessionsByConn.delete(former);send(former,{type:'snakeError',message:'تم فتح نفس الحساب في جهاز آخر.'})}p.connected=true;p.conn=c;p.offlineAt=0;p.shieldUntil=Math.max(p.shieldUntil,Date.now()+2300);}
- else p=newPlayer(r,m.name,c);
+ else p=newPlayer(r,identity.name,c);
  if(!r.host||!r.players.has(r.host)||!r.players.get(r.host).connected)r.host=p.id;
  sessionsByConn.set(c,{code:r.code,id:p.id});r.lastUsed=Date.now();console.info('[Snake] '+(create?'create':'join')+' code='+r.code+' players='+r.players.size+' pid='+process.pid);
  send(c,{type:'snakeJoined',solo:r.solo===true,code:r.code,id:p.id,token:p.token,phase:r.phase,topic:r.topic,level:r.level,from:r.from,to:r.to,restored:!!token&&p.token===token,world:WORLD});
@@ -78,7 +81,7 @@ function join(c,m,create){const requested=String(m.code||'').replace(/[٠-٩]/g,
  if(create&&r.solo){start(c,r);return}
  if(r.phase==='playing'){send(c,{type:'snakeStarted',late:true});if(p.quiz&&p.quiz.deadline>Date.now())sendQuiz(c,p.quiz);}
 }
-function start(c,r){const ref=sessionsByConn.get(c);if(r.host!==ref.id)return;for(const p of r.players.values()){if(!p.connected)continue;p.mass=5;p.points=0;p.eaten=0;p.quiz=null;p.respawnAt=0;p.shieldUntil=Date.now()+2500;p.trail=Array.from({length:65},(_,i)=>({x:p.x-i*3,y:p.y}));}
+function start(c,r){const ref=sessionsByConn.get(c);if(r.host!==ref.id)return;rewards.start(r);for(const p of r.players.values()){if(!p.connected)continue;p.mass=5;p.points=0;p.eaten=0;p.quiz=null;p.respawnAt=0;p.shieldUntil=Date.now()+2500;p.trail=Array.from({length:65},(_,i)=>({x:p.x-i*3,y:p.y}));}
  r.asked=new Set();r.food=Array.from({length:75},randomFood);r.food.push(...Array.from({length:7},quizFood));r.phase='playing';r.lastTick=Date.now();r.ends=r.lastTick+r.duration*60000;refresh(r);announce(r,{type:'snakeStarted',late:false});}
 function quizFood(){return {kind:'quiz',label:'Quiz',icon:'❓',value:0,id:crypto.randomUUID().slice(0,8),x:Math.random()*WORLD.w,y:Math.random()*WORLD.h}}
 function sendQuiz(c,q){send(c,{type:'snakeQuestion',question:q.question,options:q.options,lesson:q.lesson,deadline:q.deadline})}
@@ -107,7 +110,7 @@ function tick(now=Date.now()){
  for(const [id,r] of rooms){if(now-r.lastUsed>REJOIN_MS&&!online(r).length){rooms.delete(id);continue}
   for(const [pid,p] of r.players){if(!p.connected&&now-p.offlineAt>REJOIN_MS){r.players.delete(pid);if(r.host===pid){r.host=online(r)[0]?.id||null}}}
   if(!r.players.size){rooms.delete(id);continue}
-  if(r.phase!=='playing')continue;if(now>=r.ends){r.phase='finished';refresh(r);announce(r,{type:'snakeFinished',board:[...r.players.values()].sort((a,b)=>b.mass-a.mass||b.points-a.points).map((p,i)=>({rank:i+1,name:p.name,mass:p.mass,points:p.points,color:p.color}))});continue}
+  if(r.phase!=='playing')continue;if(now>=r.ends){rewards.finish(r,'snake',p=>p.points,(a,b)=>b.mass-a.mass||b.points-a.points);r.phase='finished';refresh(r);announce(r,{type:'snakeFinished',board:[...r.players.values()].sort((a,b)=>b.mass-a.mass||b.points-a.points).map((p,i)=>({rank:i+1,name:p.name,mass:p.mass,points:p.points,color:p.color}))});continue}
   const dt=Math.min(2,Math.max(.35,(now-r.lastTick)/STEP_MS));r.lastTick=now;
   if(r.food.length<85)for(let i=r.food.length;i<85;i++)r.food.push(randomFood());if(r.food.filter(x=>x.kind==='quiz').length<7)r.food.push(quizFood());if(r.food.length>170)r.food.splice(0,r.food.length-170);
   for(const p of r.players.values()){

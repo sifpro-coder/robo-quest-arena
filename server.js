@@ -6,6 +6,7 @@ const academyApi=require('./academy-api.js');
 const snake=require('./snake-server.js');
 const battle=require('./battle-server.js');
 const challenge=require('./challenge-server.js');
+const rewards=require('./rewards.js');
 const PORT=Number(process.env.PORT||3000), W=1000,H=620,TICK=50,MAX=10;
 const COLORS=['#FFD33D','#FF5A64','#34D8F6','#8AFF8A','#F398FF','#FF9F43','#A0B5FF','#F9EC6A','#64F0C8','#E8A96D'];
 const WALLS=[{x:192,y:155,w:103,h:31},{x:705,y:155,w:103,h:31},{x:192,y:434,w:103,h:31},{x:705,y:434,w:103,h:31},{x:460,y:125,w:80,h:49},{x:460,y:447,w:80,h:49},{x:416,y:291,w:168,h:38}];
@@ -15,7 +16,7 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a);
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const circleRect=(x,y,r,w)=>{const cx=clamp(x,w.x,w.x+w.w),cy=clamp(y,w.y,w.y+w.h);return(x-cx)**2+(y-cy)**2<r*r};
 const blocked=(x,y,r=19)=>x<r||x>W-r||y<r||y>H-r||WALLS.some(w=>circleRect(x,y,r,w));
-const safeName=(s)=>String(s||'لاعب').replace(/[<>&\u0000-\u001f]/g,'').trim().slice(0,18)||'لاعب';
+const safeName=(s)=>String(s||'لاعب').replace(/[<>&\u0000-\u001f]/g,'').trim().slice(0,24)||'لاعب';
 const shuffle=(a)=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=crypto.randomInt(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
 function pool(room){return BANK.filter(q=>q.topic===room.topic&&q.level===room.level)}
 function quizQuestion(room,used){let set=pool(room);let candidates=set.filter(q=>!used.has(BANK.indexOf(q)));if(!candidates.length){used.clear();candidates=set}let q=candidates[crypto.randomInt(candidates.length)];used.add(BANK.indexOf(q));let order=shuffle([0,1,2,3]);return {q:q.q,options:order.map(i=>q.options[i]),correct:order.indexOf(q.answer),why:q.why}}
@@ -37,12 +38,14 @@ function join(c,params){const make=params.type==='create';let r=make?null:rooms.
  if(!make&&!r){send(c,{type:'error',message:'الغرفة موش موجودة أو انتهت'});return}
  const token=typeof params.token==='string'?params.token:'';let old=null;
  if(!make&&token.length===48)old=[...r.players.values()].find(p=>p.token===token)||null;
+ if(old&&old.rankUser!==rewards.account(c)){send(c,{type:'error',message:'Reconnectez le même compte.'});return}
+ const identity=rewards.playerIdentity(c,params.name,r,old);if(identity.error){send(c,{type:'error',message:identity.error});return}
  if(r&&!old&&r.players.size>=MAX){send(c,{type:'error',message:'الغرفة معمّرة (10 لاعبين)'});return}
  remove(c,true);
  if(make){const topic=['arduino','esp32','wokwi'].includes(params.topic)?params.topic:'arduino';const duration=Math.max(1,Math.min(5,Number.isInteger(Number(params.duration))?Number(params.duration):3));r={duration,code:codeGen(),players:new Map(),host:null,game:params.game==='quiz'?'quiz':'arena',mode:['versus','teams','coop'].includes(params.mode)?params.mode:'versus',topic,level:Number(params.level)===2?2:1,phase:'lobby',shots:[],pickups:[],enemies:[],seq:1,lastTick:Date.now(),started:0,ends:0,lastEnemy:0,lastPick:0,lastActive:Date.now(),quizRound:null,quizUsed:new Set(),quizCount:0};rooms.set(r.code,r)}
- const p=old||newPlayer(c.id,params.name,r.players.size);
+ const p=old||newPlayer(c.id,identity.name,r.players.size);
  if(old){if(p.conn&&p.conn!==c){p.conn.room=null;send(p.conn,{type:'error',message:'الحساب مفتوح في متصفح آخر'});p.conn.socket.end()}c.id=p.id;p.connected=true;p.offlineAt=0;p.invuln=Date.now()+2300;}
- else{r.players.set(p.id,p)}
+ else{p.rankUser=rewards.account(c);r.players.set(p.id,p)}
  p.conn=c;c.room=r.code;if(!r.host||!r.players.has(r.host)||!r.players.get(r.host).connected)r.host=p.id;
  r.lastActive=Date.now();send(c,{type:'joined',code:r.code,id:p.id,token:p.token,restored:!!old,phase:r.phase,game:r.game,topic:r.topic,level:r.level});broadcast(r,lobby(r));
  if(r.phase==='playing'){send(c,{type:'started',game:r.game,late:true});syncQuestion(r,p)}
@@ -52,12 +55,12 @@ function freeSpot(r=24){for(let i=0;i<60;i++){const p={x:rnd(35,W-35),y:rnd(35,H
 function enemy(r){const p=freeSpot(25);r.enemies.push({id:r.seq++,...p,hp:40,hitAt:0})}
 function pickup(r,forced){const p=freeSpot(25),type=forced||(['battery','battery','heal','quiz'][crypto.randomInt(4)]);r.pickups.push({id:r.seq++,...p,type})}
 function move(o,vx,vy,r=18){const nx=clamp(o.x+vx,r,W-r),ny=clamp(o.y+vy,r,H-r);if(!blocked(nx,o.y,r))o.x=nx;if(!blocked(o.x,ny,r))o.y=ny}
-function reset(r){r.phase='playing';r.started=Date.now();r.lastTick=r.started;r.quizUsed=new Set();r.quizCount=0;r.quizRound=null;
+function reset(r){rewards.start(r);r.phase='playing';r.started=Date.now();r.lastTick=r.started;r.quizUsed=new Set();r.quizCount=0;r.quizRound=null;
  let i=0;for(const p of r.players.values()){const n=i++,s=SPAWNS[n];Object.assign(p,{x:s[0],y:s[1],team:n%2===0?'A':'B',hp:100,score:0,kills:0,dx:0,dy:0,shoot:false,boost:false,boostAt:0,shotAt:0,invuln:0,respawnAt:0,quiz:null,quizStart:0,used:new Set()})}
  if(r.game==='quiz'){r.nextQuestionAt=r.started+1000;r.ends=r.started+r.duration*60000;broadcast(r,{type:'started',game:'quiz'});return}
  r.ends=r.started+r.duration*60000;r.lastEnemy=0;r.lastPick=0;r.shots=[];r.pickups=[];r.enemies=[];r.seq=1;for(let i=0;i<5;i++)enemy(r);for(let i=0;i<5;i++)pickup(r);pickup(r,'quiz');broadcast(r,{type:'started',game:'arena'});
 }
-function finish(r){r.phase='finished';broadcast(r,{type:'finished',board:board(r)});broadcast(r,lobby(r))}
+function finish(r){rewards.finish(r,r.game,p=>p.score);r.phase='finished';broadcast(r,{type:'finished',board:board(r)});broadcast(r,lobby(r))}
 function updateQuiz(r,now){if(r.phase!=='playing')return;if(now>=r.ends){finish(r);return}
  if(r.quizRound&&r.quizRound.phase==='asking'&&(now>=r.quizRound.deadline||r.quizRound.answers.size>=[...r.players.values()].filter(p=>p.connected).length)){
  const q=r.quizRound;r.quizRound.phase='reveal';r.nextQuestionAt=now+3200;
@@ -103,6 +106,7 @@ const server=http.createServer((req,res)=>{let u;try{u=new URL(req.url,'http://l
  if(u.pathname==='/api/battle/status'){ battle.status(req,res).catch(()=>{if(!res.headersSent){res.writeHead(503,{'Content-Type':'application/json'});res.end(JSON.stringify({error:'Service Battle temporairement indisponible'}))}});return; }
  if(u.pathname==='/api/snake/lessons'){res.writeHead(200,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify({lessons:snake.lessonCatalog()}));return}
  if(u.pathname==='/api/games/inventory'){(async()=>{const reply=(status,data)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data))};try{if(req.method!=='GET')return reply(405,{error:'method'});const u=await academyApi.viewer(req);if(!u||u.role!=='student'||u.must_change_password)return reply(401,{error:'login'});const items=await academyApi.db('cfi_battle_inventory','GET','?select=item_key&user_id=eq.'+encodeURIComponent(u.id)+'&limit=50');return reply(200,{items:items.map(x=>x.item_key)})}catch{return reply(503,{error:'unavailable'})}})();return;}
+ if(u.pathname==='/api/games/rewards'){rewards.respond(req,res);return}
  if(u.pathname==='/api/games/join'){
   const reply=(status,data)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(data))};
   if(req.method!=='GET')return reply(405,{error:'method'});
@@ -111,10 +115,10 @@ const server=http.createServer((req,res)=>{let u;try{u=new URL(req.url,'http://l
   if(found.length!==1)return reply(found.length?409:404,{error:found.length?'conflict':'not_found'});
   const [page,room]=found[0];return reply(200,{path:page+'?room='+code+'&auto=1',game:page==='/arena'?(room.game==='quiz'?'quiz':'arena'):page==='/challenge'?room.game:page.slice(1)});
  }
- if(u.pathname==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify({ok:true,rooms:rooms.size,maxPlayers:MAX,questionCount:BANK.length,snakeRooms:snake.rooms.size,battleRooms:battle.rooms.size,challengeRooms:challenge.rooms.size,version:'7.4.1'}));return}
- const files={'/':u.searchParams.has('room')?'index.html':'home.html','/index.html':'index.html','/arena':'index.html','/arena.html':'index.html','/home.html':'home.html','/academy':'academy.html','/academy.html':'academy.html','/global':'global.html','/global.html':'global.html','/questions.json':'questions.json','/logo-cfi.jpg':'logo-cfi.jpg','/snake':'snake.html','/snake.html':'snake.html','/battle':'battle.html','/battle.html':'battle.html','/challenge':'challenge.html'};const file=files[u.pathname];if(!file){res.writeHead(404).end('Not Found');return}
- fs.readFile(path.join(__dirname,file),(err,data)=>{if(err){res.writeHead(404).end('Not found');return}res.writeHead(200,{'Content-Type':file.endsWith('.json')?'application/json; charset=utf-8':file.endsWith('.jpg')?'image/jpeg':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(data)})});
-server.on('upgrade',async(req,socket)=>{let u;try{u=new URL(req.url,'http://localhost')}catch(e){socket.destroy();return}if(!['/ws','/snake-ws','/battle-ws','/challenge-ws'].includes(u.pathname)||req.headers.upgrade?.toLowerCase()!=='websocket'||!req.headers['sec-websocket-key']){socket.destroy();return}let academyUser=null;if(u.pathname==='/battle-ws'){try{academyUser=await academyApi.viewer(req)}catch{academyUser=null}}if(socket.destroyed)return;const accept=crypto.createHash('sha1').update(req.headers['sec-websocket-key']+'258EAFA5-E914-47DA-95CA-C5AB0DC85B11').digest('base64');socket.write('HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: '+accept+'\r\n\r\n');const c={id:crypto.randomUUID(),socket,room:null,namespace:u.pathname==='/snake-ws'?'snake':u.pathname==='/battle-ws'?'battle':u.pathname==='/challenge-ws'?'challenge':'arena',academyUser,buffer:Buffer.alloc(0),alive:true};sockets.add(c);socket.on('data',b=>parse(c,b));socket.on('close',()=>{c.alive=false;if(c.namespace==='snake')snake.detach(c);else if(c.namespace==='battle')battle.detach(c);else if(c.namespace==='challenge')challenge.detach(c);else remove(c,false);sockets.delete(c)});socket.on('error',()=>{});send(c,{type:'welcome',id:c.id});});
+ if(u.pathname==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify({ok:true,rooms:rooms.size,maxPlayers:MAX,questionCount:BANK.length,snakeRooms:snake.rooms.size,battleRooms:battle.rooms.size,challengeRooms:challenge.rooms.size,version:'7.5.0'}));return}
+ const files={'/':u.searchParams.has('room')?'index.html':'home.html','/index.html':'index.html','/arena':'index.html','/arena.html':'index.html','/home.html':'home.html','/academy':'academy.html','/academy.html':'academy.html','/global':'global.html','/global.html':'global.html','/questions.json':'questions.json','/logo-cfi.jpg':'logo-cfi.jpg','/snake':'snake.html','/snake.html':'snake.html','/battle':'battle.html','/battle.html':'battle.html','/challenge':'challenge.html','/player-name.js':'player-name.js'};const file=files[u.pathname];if(!file){res.writeHead(404).end('Not Found');return}
+ fs.readFile(path.join(__dirname,file),(err,data)=>{if(err){res.writeHead(404).end('Not found');return}res.writeHead(200,{'Content-Type':file.endsWith('.js')?'application/javascript; charset=utf-8':file.endsWith('.json')?'application/json; charset=utf-8':file.endsWith('.jpg')?'image/jpeg':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(data)})});
+server.on('upgrade',async(req,socket)=>{let u;try{u=new URL(req.url,'http://localhost')}catch(e){socket.destroy();return}if(!['/ws','/snake-ws','/battle-ws','/challenge-ws'].includes(u.pathname)||req.headers.upgrade?.toLowerCase()!=='websocket'||!req.headers['sec-websocket-key']){socket.destroy();return}let academyUser=null;if(req.headers.cookie){try{academyUser=await academyApi.viewer(req)}catch{academyUser=null}}if(socket.destroyed)return;const accept=crypto.createHash('sha1').update(req.headers['sec-websocket-key']+'258EAFA5-E914-47DA-95CA-C5AB0DC85B11').digest('base64');socket.write('HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: '+accept+'\r\n\r\n');const c={id:crypto.randomUUID(),socket,room:null,namespace:u.pathname==='/snake-ws'?'snake':u.pathname==='/battle-ws'?'battle':u.pathname==='/challenge-ws'?'challenge':'arena',academyUser,buffer:Buffer.alloc(0),alive:true};sockets.add(c);socket.on('data',b=>parse(c,b));socket.on('close',()=>{c.alive=false;if(c.namespace==='snake')snake.detach(c);else if(c.namespace==='battle')battle.detach(c);else if(c.namespace==='challenge')challenge.detach(c);else remove(c,false);sockets.delete(c)});socket.on('error',()=>{});send(c,{type:'welcome',id:c.id});});
 setInterval(()=>{const now=Date.now();snake.tick(now);battle.tick(now);challenge.tick(now);for(const [code,r] of rooms){for(const [id,p] of r.players){if(!p.connected&&now-p.offlineAt>REJOIN_MS){r.players.delete(id);if(r.host===id)r.host=[...r.players.values()].find(x=>x.connected)?.id||null;}}if(!r.players.size||now-r.lastActive>3600000){rooms.delete(code);continue}if(r.phase!=='playing')continue;if(r.game==='quiz')updateQuiz(r,now);else updateArena(r,now);for(const p of r.players.values())if(p.quiz&&now-p.quizStart>21000){const q=p.quiz;p.quiz=null;send(p.conn,{type:'arenaAnswer',correct:false,correctIndex:q.correct,why:'انتهى وقت السؤال. '+q.why})}}},TICK).unref();
 if(require.main===module)server.listen(PORT,'0.0.0.0',()=>console.log('CFI ARENA listening at '+PORT));
 module.exports={server,rooms,BANK,MAX,SPAWNS,blocked};

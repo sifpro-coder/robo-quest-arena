@@ -1,4 +1,5 @@
 'use strict';
+const rewards=require('./rewards.js');
 // CFI Battle — server-authoritative matches; only valid Academy sessions earn permanent rewards.
 const crypto=require('crypto');
 const academy=require('./academy-api.js');
@@ -15,7 +16,7 @@ const CATALOG=[
 ];
 const rooms=new Map(), sessions=new WeakMap();
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),rnd=(a,b)=>a+Math.random()*(b-a),distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-const nameClean=s=>String(s||'Robot').replace(/[<>\x00-\x1f\x7f]/g,'').trim().slice(0,22)||'Robot';
+const nameClean=s=>String(s||'Robot').replace(/[<>\x00-\x1f\x7f]/g,'').trim().slice(0,24)||'Robot';
 function send(c,m){if(!c?.alive||c.socket.destroyed||c.socket.writableLength>350000)return;const payload=Buffer.from(JSON.stringify(m));if(payload.length>=65536)return;const header=payload.length<126?Buffer.from([0x81,payload.length]):Buffer.from([0x81,126,payload.length>>8,payload.length&255]);try{c.socket.write(Buffer.concat([header,payload]))}catch{}}
 function active(r){return [...r.players.values()].filter(p=>p.connected)}
 function announce(r,m){for(const p of active(r))send(p.conn,m)}
@@ -30,18 +31,21 @@ async function getItems(userId){const arr=await academy.db('cfi_battle_inventory
 async function saveItem(userId,key){await academy.db('cfi_battle_inventory','POST','?on_conflict=user_id,item_key',[{user_id:userId,item_key:key}],'resolution=ignore-duplicates,return=minimal')}
 async function status(req,res){let u;try{u=await academy.viewer(req)}catch{u=null}const premium=!!(u&&u.role==='student'&&academy.subscription(u).valid&&!u.must_change_password);let items=[];let storageOk=true;if(premium){try{items=await getItems(u.id)}catch(e){storageOk=false}}
  res.writeHead(200,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify({premium:premium&&storageOk,items,catalog:CATALOG,lessons:snake.lessonCatalog()}))}
-function player(c,r,name){const n=r.players.size;const p={id:crypto.randomUUID(),token:crypto.randomBytes(24).toString('hex'),name:nameClean(name),userId:cookieUser(c)?.id||null,connected:true,conn:c,offlineAt:0,joinedAt:Date.now(),color:COLORS[n%COLORS.length],x:rnd(80,W-80),y:rnd(80,H-80),dx:0,dy:0,angle:0,hp:100,score:0,shotsAt:0,shieldUntil:Date.now()+2300,quiz:null,items:[],respawnAt:0};r.players.set(p.id,p);return p}
+function player(c,r,name){const n=r.players.size;const p={id:crypto.randomUUID(),token:crypto.randomBytes(24).toString('hex'),name:nameClean(name),userId:cookieUser(c)?.id||null,rankUser:rewards.account(c),connected:true,conn:c,offlineAt:0,joinedAt:Date.now(),color:COLORS[n%COLORS.length],x:rnd(80,W-80),y:rnd(80,H-80),dx:0,dy:0,angle:0,hp:100,score:0,shotsAt:0,shieldUntil:Date.now()+2300,quiz:null,items:[],respawnAt:0};r.players.set(p.id,p);return p}
 function detach(c){const s=sessions.get(c);sessions.delete(c);if(!s)return;const r=rooms.get(s.code),p=r?.players.get(s.id);if(!p||p.conn!==c)return;p.conn=null;p.connected=false;p.offlineAt=Date.now();p.dx=p.dy=0;r.lastUsed=Date.now();if(r.host===p.id)r.host=active(r)[0]?.id||p.id;announce(r,lobby(r))}
 async function join(c,m,create){const r=create?null:rooms.get(String(m.code||'').trim());if(!create&&!r)return send(c,{type:'battleError',message:'الغرفة موش موجودة أو انتهت.'});
  const mode=create?(m.mode==='premium'?'premium':'demo'):r.mode;
  if(mode==='premium'&&!cookieUser(c))return send(c,{type:'battleError',message:'الغرفة Premium تتطلب حساب تلميذ مفعّل.'});
  let newRoom=r;if(create){const from=Number(m.from),to=Number(m.to),duration=Number(m.duration);if(!validRange(from,to))return send(c,{type:'battleError',message:'اختار دروس عندها أسئلة.'});if(!Number.isInteger(duration)||duration<1||duration>5)return send(c,{type:'battleError',message:'اختار مدة بين دقيقة وخمس دقائق.'});newRoom={code:roomCode(),solo:m.solo===true,mode,from,to,duration,phase:'lobby',players:new Map(),asked:new Set(),host:null,lastUsed:Date.now(),started:0,ends:0,crates:[],shots:[]};rooms.set(newRoom.code,newRoom)}
  const token=String(m.token||'');const old=token.length===48?[...newRoom.players.values()].find(p=>p.token===token):null;
+ if(old&&old.rankUser!==rewards.account(c))return send(c,{type:'battleError',message:'Reconnectez le même compte.'});
  if(old&&mode==='premium'&&old.userId!==cookieUser(c)?.id)return send(c,{type:'battleError',message:'استرجاع هذا اللاعب يتطلب نفس حساب التلميذ.'});
+ const identity=rewards.playerIdentity(c,m.name,newRoom,old);if(identity.error){if(create)rooms.delete(newRoom.code);return send(c,{type:'battleError',message:identity.error});}
  if(!create&&newRoom.solo&&!old)return send(c,{type:'battleError',message:'Partie Solo privée.'});
  if(!old&&newRoom.players.size>=MAX)return send(c,{type:'battleError',message:'الغرفة كاملة (12 لاعب).'});
  let items=[];try{if(mode==='premium')items=await getItems(cookieUser(c).id)}catch{if(create)rooms.delete(newRoom.code);return send(c,{type:'battleError',message:'تعذّر قراءة المعدات من Supabase. راجع إعدادات Battle SQL.'})}
- detach(c);const p=old||player(c,newRoom,mode==='premium'?(cookieUser(c).display_name||m.name):m.name);
+ const checkedIdentity=rewards.playerIdentity(c,m.name,newRoom,old);if(checkedIdentity.error)return send(c,{type:'battleError',message:checkedIdentity.error});
+ detach(c);const p=old||player(c,newRoom,checkedIdentity.name);
  if(old&&old.conn&&old.conn!==c){const prev=old.conn;sessions.delete(prev);send(prev,{type:'battleError',message:'تم الدخول من جهاز آخر.'});prev.socket.end()}
  p.conn=c;p.connected=true;p.offlineAt=0;if(mode==='premium'){p.userId=cookieUser(c).id;p.items=items}else if(!old){p.items=[]}
  sessions.set(c,{code:newRoom.code,id:p.id});if(!newRoom.host||!newRoom.players.get(newRoom.host)?.connected)newRoom.host=p.id;newRoom.lastUsed=Date.now();
@@ -50,8 +54,8 @@ async function join(c,m,create){const r=create?null:rooms.get(String(m.code||'')
  if(newRoom.phase==='playing'){send(c,{type:'battleStarted',late:true});if(p.quiz?.deadline>Date.now())send(c,{type:'battleQuestion',text:p.quiz.question,options:p.quiz.options,lesson:p.quiz.lesson,deadline:p.quiz.deadline})}
  if(newRoom.phase==='finished')send(c,{type:'battleFinished',board:board(newRoom)})}
 function makeCrate(){return{id:crypto.randomUUID().slice(0,8),x:rnd(55,W-55),y:rnd(55,H-55),kind:['quiz','quiz','battery','repair'][crypto.randomInt(4)]}}
-function start(c,r){const s=sessions.get(c);if(r.host!==s.id||!['lobby','finished'].includes(r.phase))return;r.phase='playing';r.started=Date.now();r.ends=r.started+r.duration*60000;r.lastTick=r.started;r.lastState=0;r.asked=new Set();r.shots=[];r.crates=Array.from({length:24},makeCrate);for(const p of r.players.values()){p.hp=100;p.score=0;p.quiz=null;p.respawnAt=0;p.shieldUntil=Date.now()+2200;p.x=rnd(70,W-70);p.y=rnd(70,H-70)}announce(r,{type:'battleStarted',late:false});announce(r,lobby(r))}
-function finish(r){if(r.phase!=='playing')return;r.phase='finished';announce(r,{type:'battleFinished',board:board(r)});announce(r,lobby(r))}
+function start(c,r){const s=sessions.get(c);if(r.host!==s.id||!['lobby','finished'].includes(r.phase))return;rewards.start(r);r.phase='playing';r.started=Date.now();r.ends=r.started+r.duration*60000;r.lastTick=r.started;r.lastState=0;r.asked=new Set();r.shots=[];r.crates=Array.from({length:24},makeCrate);for(const p of r.players.values()){p.hp=100;p.score=0;p.quiz=null;p.respawnAt=0;p.shieldUntil=Date.now()+2200;p.x=rnd(70,W-70);p.y=rnd(70,H-70)}announce(r,{type:'battleStarted',late:false});announce(r,lobby(r))}
+function finish(r){if(r.phase!=='playing')return;rewards.finish(r,'battle',p=>p.score);r.phase='finished';announce(r,{type:'battleFinished',board:board(r)});announce(r,lobby(r))}
 function challenge(r,p,now){const q=quizDraw(r);if(!q)return;p.quiz={...q,deadline:now+18000};send(p.conn,{type:'battleQuestion',text:q.question,options:q.options,lesson:q.lesson,deadline:p.quiz.deadline})}
 async function answer(c,r,p,m){const q=p.quiz;if(!q||r.phase!=='playing'||Date.now()>=r.ends)return;p.quiz=null;const index=Number(m.answer),correct=Date.now()<=q.deadline&&Number.isInteger(index)&&index===q.answer;if(correct)p.score+=10;let reward=null,saveError=false;
  if(correct){const next=CATALOG.find(x=>!p.items.includes(x.key));if(next){reward=next.key;if(r.mode==='premium'){try{await saveItem(p.userId,reward);p.items.push(reward)}catch(e){saveError=true;reward=null}}else p.items.push(reward)}}

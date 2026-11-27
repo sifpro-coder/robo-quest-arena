@@ -32,7 +32,7 @@ function hasCourseAccess(u,lesson){if(!u?.active)return false;if(u.role==='admin
 const productKeys={arduino:'lifetime_arduino_millimes',esp32:'lifetime_esp32_millimes',pack:'lifetime_pack_millimes',traffic:'lifetime_traffic_millimes',home:'lifetime_home_millimes'};
 const productDefaults={arduino:49000,esp32:59000,pack:89000,traffic:9000,home:19000};
 async function storePrices(){const rows=await db('cfi_settings','GET','?select=key,value_int');return Object.fromEntries(Object.entries(productKeys).map(([k,v])=>[k,rows.find(x=>x.key===v)?.value_int??productDefaults[k]]));}
-function cleanUser(u){return {id:u.id,username:u.username,name:u.display_name,role:u.role,mustChangePassword:!!u.must_change_password,email:u.email||null,subscription:subscription(u),ownership:ownership(u)};}
+function cleanUser(u){return {id:u.id,username:u.username,name:u.display_name,role:u.role,mustChangePassword:!!u.must_change_password,email:u.email||null,subscription:subscription(u),ownership:ownership(u),playerName:u.player_name||null};}
 function randPass(){return crypto.randomBytes(13).toString('base64url');}
 function hash(p){const salt=crypto.randomBytes(16).toString('hex');return `scrypt$${salt}$${crypto.scryptSync(p,salt,64).toString('hex')}`;}
 function check(p,stored){try{const [algo,salt,key]=String(stored||'').split('$');if(algo!=='scrypt'||!salt||!key)return false;const actual=crypto.scryptSync(p,salt,64),expected=Buffer.from(key,'hex');return actual.length===expected.length && crypto.timingSafeEqual(actual,expected);}catch{return false;}}
@@ -307,6 +307,15 @@ async function respond(req,res,url){
   if(method==='POST'&&route==='/api/academy/logout'){await body(req);return send(res,200,{ok:true},{'Set-Cookie':clearCookie(req)}),true;}
   const u=await viewer(req);
   if(method==='GET'&&route==='/api/academy/me'){if(!u)throw apiError('يلزم تدخل بحسابك',401);return send(res,200,{user:cleanUser(u)}),true;}
+  if(method==='POST'&&route==='/api/academy/player-name'){
+   requireRole(u,['student']);if(u.must_change_password)throw apiError('Changez d’abord votre mot de passe.',403);
+   const b=await body(req),name=String(b.name||'').trim();
+   if(!/^[A-Za-z0-9_]{3,18}$/.test(name)||/^guest_/i.test(name))throw apiError('Pseudo: 3–18 lettres A-Z, chiffres ou _.',400);
+   const result=await db('rpc/cfi_claim_player_name_v75','POST','',{p_user:u.id,p_name:name});
+   if(result==='taken')throw apiError('Ce pseudo est déjà utilisé. Choisissez un autre.',409);
+   if(!['ok','already'].includes(result))throw apiError('Pseudo non enregistré.',400);
+   const saved=await getUserById(u.id);return send(res,200,{user:cleanUser(saved)}),true;
+  }
   if(method==='POST'&&route==='/api/academy/password'){
    requireRole(u,['admin','student']);const b=await body(req),old=String(b.oldPassword||''),fresh=String(b.newPassword||'');if(!check(old,u.password_hash))throw apiError('كلمة السر القديمة موش صحيحة',403);if(fresh.length<12||fresh.length>128)throw apiError('كلمة السرّ الجديدة لازم 12 حرف على الأقل');
    const sv=(u.session_version||1)+1;await db('cfi_users','PATCH',`?id=eq.${u.id}`,{password_hash:hash(fresh),must_change_password:false,session_version:sv});const tk=sign({type:'session',id:u.id,sv,exp:Date.now()+7*24*3600*1000});return send(res,200,{ok:true},{'Set-Cookie':sessionCookie(req,tk)}),true;
