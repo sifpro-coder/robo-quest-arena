@@ -35,16 +35,18 @@ function detach(c){const s=sessions.get(c);sessions.delete(c);if(!s)return;const
 async function join(c,m,create){const r=create?null:rooms.get(String(m.code||'').trim());if(!create&&!r)return send(c,{type:'battleError',message:'الغرفة موش موجودة أو انتهت.'});
  const mode=create?(m.mode==='premium'?'premium':'demo'):r.mode;
  if(mode==='premium'&&!cookieUser(c))return send(c,{type:'battleError',message:'الغرفة Premium تتطلب حساب تلميذ مفعّل.'});
- let newRoom=r;if(create){const from=Number(m.from),to=Number(m.to),duration=Number(m.duration);if(!validRange(from,to))return send(c,{type:'battleError',message:'اختار دروس عندها أسئلة.'});if(!Number.isInteger(duration)||duration<1||duration>5)return send(c,{type:'battleError',message:'اختار مدة بين دقيقة وخمس دقائق.'});newRoom={code:roomCode(),mode,from,to,duration,phase:'lobby',players:new Map(),asked:new Set(),host:null,lastUsed:Date.now(),started:0,ends:0,crates:[],shots:[]};rooms.set(newRoom.code,newRoom)}
+ let newRoom=r;if(create){const from=Number(m.from),to=Number(m.to),duration=Number(m.duration);if(!validRange(from,to))return send(c,{type:'battleError',message:'اختار دروس عندها أسئلة.'});if(!Number.isInteger(duration)||duration<1||duration>5)return send(c,{type:'battleError',message:'اختار مدة بين دقيقة وخمس دقائق.'});newRoom={code:roomCode(),solo:m.solo===true,mode,from,to,duration,phase:'lobby',players:new Map(),asked:new Set(),host:null,lastUsed:Date.now(),started:0,ends:0,crates:[],shots:[]};rooms.set(newRoom.code,newRoom)}
  const token=String(m.token||'');const old=token.length===48?[...newRoom.players.values()].find(p=>p.token===token):null;
  if(old&&mode==='premium'&&old.userId!==cookieUser(c)?.id)return send(c,{type:'battleError',message:'استرجاع هذا اللاعب يتطلب نفس حساب التلميذ.'});
+ if(!create&&newRoom.solo&&!old)return send(c,{type:'battleError',message:'Partie Solo privée.'});
  if(!old&&newRoom.players.size>=MAX)return send(c,{type:'battleError',message:'الغرفة كاملة (12 لاعب).'});
  let items=[];try{if(mode==='premium')items=await getItems(cookieUser(c).id)}catch{if(create)rooms.delete(newRoom.code);return send(c,{type:'battleError',message:'تعذّر قراءة المعدات من Supabase. راجع إعدادات Battle SQL.'})}
  detach(c);const p=old||player(c,newRoom,mode==='premium'?(cookieUser(c).display_name||m.name):m.name);
  if(old&&old.conn&&old.conn!==c){const prev=old.conn;sessions.delete(prev);send(prev,{type:'battleError',message:'تم الدخول من جهاز آخر.'});prev.socket.end()}
  p.conn=c;p.connected=true;p.offlineAt=0;if(mode==='premium'){p.userId=cookieUser(c).id;p.items=items}else if(!old){p.items=[]}
  sessions.set(c,{code:newRoom.code,id:p.id});if(!newRoom.host||!newRoom.players.get(newRoom.host)?.connected)newRoom.host=p.id;newRoom.lastUsed=Date.now();
- send(c,{type:'battleJoined',code:newRoom.code,id:p.id,token:p.token,restored:!!old,phase:newRoom.phase,mode:newRoom.mode,catalog:CATALOG,items:p.items});announce(newRoom,lobby(newRoom));
+ send(c,{type:'battleJoined',solo:newRoom.solo===true,code:newRoom.code,id:p.id,token:p.token,restored:!!old,phase:newRoom.phase,mode:newRoom.mode,catalog:CATALOG,items:p.items});announce(newRoom,lobby(newRoom));
+ if(create&&newRoom.solo){start(c,newRoom);return}
  if(newRoom.phase==='playing'){send(c,{type:'battleStarted',late:true});if(p.quiz?.deadline>Date.now())send(c,{type:'battleQuestion',text:p.quiz.question,options:p.quiz.options,lesson:p.quiz.lesson,deadline:p.quiz.deadline})}
  if(newRoom.phase==='finished')send(c,{type:'battleFinished',board:board(newRoom)})}
 function makeCrate(){return{id:crypto.randomUUID().slice(0,8),x:rnd(55,W-55),y:rnd(55,H-55),kind:['quiz','quiz','battery','repair'][crypto.randomInt(4)]}}
