@@ -51,7 +51,7 @@ const COLORS=['#74E4B7','#F6C75A','#67BCFF','#F48EAF','#AD92FF','#FF9A69','#6DE2
 const rooms = new Map();
 const sessionsByConn = new WeakMap();
 function sanitize(s){return String(s||'Robot').replace(/[<>\x00-\x1F\x7F]/g,'').trim().slice(0,24)||'Robot'}
-function code(){let s;do{s=String(crypto.randomInt(100000,999999))}while(rooms.has(s));return s}
+function code(){let s;do{s=String(crypto.randomInt(400000,700000))}while(rooms.has(s));return s}
 function mod(x,m){return (x%m+m)%m}
 function delta(a,b,span){let d=mod(a-b,span);return d>span/2?d-span:d}
 function distance(a,b){return Math.hypot(delta(a.x,b.x,WORLD.w),delta(a.y,b.y,WORLD.h))}

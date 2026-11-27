@@ -21,7 +21,7 @@ function active(r){return [...r.players.values()].filter(p=>p.connected)}
 function announce(r,m){for(const p of active(r))send(p.conn,m)}
 function board(r){return [...r.players.values()].sort((a,b)=>b.score-a.score||a.joinedAt-b.joinedAt).map((p,i)=>({rank:i+1,id:p.id,name:p.name,color:p.color,score:p.score,connected:p.connected}))}
 function lobby(r){return{type:'battleLobby',code:r.code,host:r.host,mode:r.mode,from:r.from,to:r.to,duration:r.duration,phase:r.phase,max:MAX,players:[...r.players.values()].map(p=>({id:p.id,name:p.name,color:p.color,connected:p.connected}))}}
-function roomCode(){let k;do{k=String(crypto.randomInt(100000,1000000))}while(rooms.has(k));return k}
+function roomCode(){let k;do{k=String(crypto.randomInt(700000,1000000))}while(rooms.has(k));return k}
 function lessonCount(){return snake.lessonCatalog().length}
 function validRange(from,to){return Number.isInteger(from)&&Number.isInteger(to)&&from>=1&&to>=from&&to<=lessonCount()}
 function quizDraw(r){return snake.__test.quizDraw({topic:'esp32academy',from:r.from,to:r.to,asked:r.asked})}
