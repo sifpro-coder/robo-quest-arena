@@ -1,0 +1,14 @@
+CFI ROBOT V7.7 — Connexion obligatoire et une session par élève
+
+1. Sauvegarder Supabase et le dépôt GitHub avant le déploiement.
+2. Exécuter CFI_V7_7_MIGRATION.sql dans Supabase SQL Editor (projet existant). Aucun compte supprimé.
+3. Déposer ensemble dans la racine du dépôt (branche main) :
+   academy.html, academy-api.js, server.js, access-sessions.js, login.html, connections.html, session-watch.js.
+   Conserver tous les autres fichiers V7.6, y compris logo-cfi.jpg, banques de questions et serveurs de jeux.
+4. Commit changes, Render Deploy latest commit. Éviter un match en cours.
+5. Vérifier /health version 7.7.0. Ouvrir / en navigation privée : connexion obligatoire.
+6. Se connecter comme administrateur, puis Academy > Connexions. Tester un élève sur deux navigateurs : le deuxième doit être refusé. Déconnecter le premier depuis Admin et réessayer le deuxième.
+
+Les anciens cookies ne comportent pas d'identifiant de session : tous les utilisateurs doivent se reconnecter une fois. Une session élève reste réservée pendant 7 jours au maximum, même si l'onglet est fermé, sauf déconnexion explicite ou révocation Admin. Les comptes admin ne sont pas limités à une session pour permettre la récupération. Les sockets de jeu sont revérifiés toutes les 30 secondes, les pages visibles envoient un signal chaque minute. L'activité récente signifie moins de deux minutes depuis le dernier signal. Le navigateur ne permet pas d'identifier un appareil physique de façon fiable. Le partage successif de mot de passe ou la copie d'un cookie ne peuvent pas être totalement empêchés. Pas de modification des mots de passe ou des droits de cours. Le portail est fermé, donc la vérification de certificat et les jeux de démonstration exigent désormais un compte. Les endpoints techniques health et webhook de paiement restent accessibles. La vérification de certificat publique peut être rétablie séparément si souhaité.
+
+Tests: syntaxe JS et HTML scripts; redirection HTTP anonyme sur serveur local; deuxième session refusée / révocation / reconnexion avec base simulée. RPC SQL, connexion réelle, UI et WebSocket sur Render non vérifiés en production.

@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const sessions=require('./access-sessions.js');
 const content = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-content.json'),'utf8')).modules;
 const bank = JSON.parse(fs.readFileSync(path.join(__dirname,'academy-bank.json'),'utf8'));
 // V5.4 : nouveau cursus ESP32 PRO seul. Les 22 cours historiques restent archivés dans les fichiers.
@@ -139,7 +140,7 @@ async function ensureAdmin(){if(!configured())throw apiError('يلزم تجهّ�
  })().catch(e=>{bootstrapPromise=null;throw e});
  return bootstrapPromise;
 }
-async function viewer(req){const tk=verify(getCookie(req));if(!tk?.id||tk.type!=='session')return null;const u=await getUserById(tk.id);if(!u||!u.active||tk.sv!==(u.session_version||1))return null;return u;}
+async function viewer(req){if(req.cfiViewer)return req.cfiViewer;return req.cfiViewer=(async()=>{const tk=verify(getCookie(req));if(!tk?.id||tk.type!=='session'||!sessions.uuid(tk.sid))return null;const u=await getUserById(tk.id);if(!u||!u.active||tk.sv!==(u.session_version||1)||!await sessions.valid(db,tk))return null;return u;})();}
 function requireRole(u,roles){if(!u)throw apiError('لازم تدخل بحسابك.',401);if(!roles.includes(u.role))throw apiError('ما عندكش صلاحية للعملية هاذي.',403);}
 function requireReady(){if(!configured())throw apiError('الحسابات الحقيقية موش مفعّلة بعد. لازم Supabase وSecrets على Render.',503);}
 async function body(req){const contentType=req.headers['content-type']||'';if(!contentType.startsWith('application/json'))throw apiError('Content-Type لازم يكون application/json',415);
@@ -306,10 +307,13 @@ async function respond(req,res,url){
    let u=await getUserByUsername(username);
    if(!u||!check(password,u.password_hash)){fail();throw apiError('الاسم ولا كلمة السرّ موش صحيحة',401)}
    if(!u.active)throw apiError(!u.email_verified?'لازم تثبّت البريد الإلكتروني أولًا.':u.approval_method==='payment'?'الحساب يستنى تأكيد الدفع.':'الحساب يستنّى موافقة الأستاذ.',403);
-   unlock(req,username);const tk=sign({type:'session',id:u.id,sv:u.session_version||1,exp:Date.now()+7*24*3600*1000});return send(res,200,{user:cleanUser(u)},{'Set-Cookie':sessionCookie(req,tk)}),true;
+   unlock(req,username);await sessions.revoke(db,verify(getCookie(req)));const tk=sign(await sessions.issue(db,req,u,u.session_version||1));return send(res,200,{user:cleanUser(u)},{'Set-Cookie':sessionCookie(req,tk)}),true;
   }
-  if(method==='POST'&&route==='/api/academy/logout'){await body(req);return send(res,200,{ok:true},{'Set-Cookie':clearCookie(req)}),true;}
+  if(method==='POST'&&route==='/api/academy/logout'){await body(req);await sessions.revoke(db,verify(getCookie(req)));return send(res,200,{ok:true},{'Set-Cookie':clearCookie(req)}),true;}
   const u=await viewer(req);
+  if(method==='POST'&&route==='/api/academy/session/heartbeat'){requireRole(u,['admin','student']);await body(req);await sessions.touch(db,verify(getCookie(req)));return send(res,200,{ok:true}),true;}
+  if(method==='GET'&&route==='/api/academy/admin/connections'){requireRole(u,['admin']);return send(res,200,await sessions.list(db)),true;}
+  if(method==='POST'&&route==='/api/academy/admin/revoke-session'){requireRole(u,['admin']);const b=await body(req);if(!sessions.uuid(b.id))throw apiError('Session invalide',400);if(b.id===verify(getCookie(req))?.sid)throw apiError('Utilisez Déconnexion pour votre session.',400);await db('cfi_sessions','PATCH','?id=eq.'+b.id+'&revoked_at=is.null',{revoked_at:new Date().toISOString()});return send(res,200,{ok:true}),true;}
   if(method==='GET'&&route==='/api/academy/me'){if(!u)throw apiError('يلزم تدخل بحسابك',401);return send(res,200,{user:cleanUser(u)}),true;}
   if(method==='POST'&&route==='/api/academy/player-name'){
    requireRole(u,['student']);if(u.must_change_password)throw apiError('Changez d’abord votre mot de passe.',403);
@@ -322,7 +326,7 @@ async function respond(req,res,url){
   }
   if(method==='POST'&&route==='/api/academy/password'){
    requireRole(u,['admin','student']);const b=await body(req),old=String(b.oldPassword||''),fresh=String(b.newPassword||'');if(!check(old,u.password_hash))throw apiError('كلمة السر القديمة موش صحيحة',403);if(fresh.length<12||fresh.length>128)throw apiError('كلمة السرّ الجديدة لازم 12 حرف على الأقل');
-   const sv=(u.session_version||1)+1;await db('cfi_users','PATCH',`?id=eq.${u.id}`,{password_hash:hash(fresh),must_change_password:false,session_version:sv});const tk=sign({type:'session',id:u.id,sv,exp:Date.now()+7*24*3600*1000});return send(res,200,{ok:true},{'Set-Cookie':sessionCookie(req,tk)}),true;
+   const sv=(u.session_version||1)+1;await db('cfi_users','PATCH',`?id=eq.${u.id}`,{password_hash:hash(fresh),must_change_password:false,session_version:sv});const tk=sign(await sessions.issue(db,req,u,sv));return send(res,200,{ok:true},{'Set-Cookie':sessionCookie(req,tk)}),true;
   }
   if(method==='GET'&&route==='/api/academy/lesson'){
    requireRole(u,['student','admin']);if(u.must_change_password)throw apiError('بدّل كلمة السرّ المؤقّتة قبل ما تبدأ',403);const id=str(url.searchParams.get('id'),80),m=await courseById(id);if(!m)throw apiError('الدرس موش موجود',404);if(u.role==='student')requireCourseAccess(u,m,await mySubmissions(u));
