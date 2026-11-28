@@ -239,6 +239,10 @@ async function respond(req,res,url){
    const bases=activeLessons.map(publicInfo);let extras=[];if(configured())try{extras=(await db('cfi_extra_lessons','GET','?select=id,title,type,subject,week,terms')).map(x=>({id:x.id,title:x.title,originalTitle:x.title,type:x.type||'lesson',subject:x.subject||'ESP32',week:x.week,term:x.terms}))}catch{}return send(res,200,{courses:bases}),true;
   }
   requireReady();
+  if(method==='GET'&&route==='/api/academy/verify'){
+   const code=str(url.searchParams.get('code'),30).toUpperCase();if(!/^CFI-[A-F0-9]{12}$/.test(code))throw apiError('رقم شهادة غير صحيح',404);
+   const cert=await getOne('cfi_certificates','&code=eq.'+code);return send(res,200,{valid:!!cert,session:cert?.session||null,issuedAt:cert?.issued_at||null}),true;
+  }
   if(method==='GET'&&route==='/api/academy/store')return send(res,200,{prices:await storePrices(),monthlyPriceMillimes:await amountMillimes(),freeLessons:5,freeProjectStages:2,lifetimePayment:'manual'}),true;
   // Registration is public but cannot grant an active role: professor approval or verified payment required.
   if(method==='POST'&&route==='/api/academy/register'){
@@ -366,10 +370,7 @@ async function respond(req,res,url){
    requireRole(u,['student','admin']);return send(res,200,{ranking:await getRanking(u),weights:{presence:25,efficiency:35,mastery:40},
     note:'Présence = journées avec quiz sur la plateforme, pas présence physique. Classement pseudonyme.'}),true;
   }
-  if(method==='GET'&&route==='/api/academy/verify'){
-   const code=str(url.searchParams.get('code'),30);if(!/^CFI-[A-F0-9]{12}$/.test(code))throw apiError('رقم شهادة غير صحيح',404);
-   const cert=await getOne('cfi_certificates','&code=eq.'+code);return send(res,200,{valid:!!cert,session:cert?.session||null,issuedAt:cert?.issued_at||null}),true;
-  }
+
   // Admin-only account provisioning and private student grades.
   if(method==='GET'&&route==='/api/academy/admin/overview'){
    requireRole(u,['admin']);const users=await db('cfi_users','GET','?select=id,username,display_name,email,email_verified,approval_method,activation_status,role,active,access_expires_at,access_source,must_change_password,lifetime_arduino,lifetime_esp32,lifetime_traffic,lifetime_home&role=eq.student&order=created_at.desc');const submissions=await db('cfi_submissions','GET','?select=user_id,lesson_id,score,best_score,code,notes,updated_at,review_status&order=updated_at.desc&limit=2000');

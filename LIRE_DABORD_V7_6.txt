@@ -1,0 +1,15 @@
+CFI V7.6 — Certificat + logo officiel
+
+Décompresser puis déposer à la racine du dépôt GitHub les 8 fichiers suivants dans un seul commit :
+academy.html
+academy-api.js
+home.html
+index.html
+snake.html
+battle.html
+challenge.html
+logo-cfi.jpg
+
+Aucun SQL supplémentaire. Aucun changement de server.js. Les routes /logo-cfi.jpg et /api/academy/verify existent déjà. Ne pas remplacer des fichiers modifiés indépendamment après V7.5.3 sans fusionner.
+Vérification : /academy?verify= ; le QR historique conserve sa destination. Le nom du mineur n’est pas affiché publiquement. Conditions de délivrance historiques inchangées (26 modules ESP32 PRO à 20/20).
+Contrôle syntaxique JS et test API simulé réussis. Impression et déploiement Render réel non vérifiés.
